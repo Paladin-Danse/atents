@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameMgr : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class GameMgr : MonoBehaviour
 
     private Player player;
     GameObject[] turrets;
-
+    
     private Bullet bulletPrefeb;
     private List<Bullet> listBullet;
 
@@ -25,33 +26,35 @@ public class GameMgr : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
 
+            SceneManager.sceneLoaded += (scene, mode) => { Init(); };
             return;
         }
 
         Destroy(gameObject);
     }
-
-    private void Start()
-    {
-        Init();
-    }
+    
     void Update()
     {
-        if(player && player.isLive)
+        if(player)
         {
-            checkTime += Time.deltaTime;
-
-            timer += Time.deltaTime;
-            UIMgr.Instance.Timer = timer;
-
-            if(SpawnRate <= checkTime)
+            if (player.isLive)
             {
-                checkTime = 0;
-                SpawnRate = Random.Range(spawnRate_Min, spawnRate_Max);
+                checkTime += Time.deltaTime;
 
-                SpawnBullet();
+                timer += Time.deltaTime;
+                UIMgr.Instance.Timer = timer;
+
+                if (SpawnRate <= checkTime)
+                {
+                    checkTime = 0;
+                    SpawnRate = Random.Range(spawnRate_Min, spawnRate_Max);
+
+                    SpawnBullet();
+                }
             }
+            else if (Input.GetKeyDown(KeyCode.R)) SceneManager.LoadScene("Dodge");
         }
+
     }
 
     void Init()
@@ -64,7 +67,7 @@ public class GameMgr : MonoBehaviour
         player = FindObjectOfType<Player>();
         if (!player) player.Init();
 
-        bulletPrefeb = Resources.Load<Bullet>("Prefabs/Sphere");
+        bulletPrefeb = Resources.Load<Bullet>("Prefebs/Sphere");
 
         turrets = GameObject.FindGameObjectsWithTag("Respawn");
         listBullet = new List<Bullet>();
