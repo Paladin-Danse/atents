@@ -1,0 +1,46 @@
+실행파일과 동일하게 만들 것
+
+필요 Class
+
+(Subject)
+--필요 순수가상함수: 옵저버 추가함수, 옵저버 정보업데이트함수
+
+(Observer)
+--필요 순수가상함수 : 정보업데이트함수, 정보출력함수
+
+(News)
+Subject Class 상속
+싱글톤으로 제작
+(Person)
+Observer 상속
+
+( 입력 받을 시 현재시간 실시간으로 받는 기능 추가)
+string currentDateTime() {  //현재 시간 받는 함수
+	time_t     now = time(0); //현재 시간을 time_t 타입으로 저장
+	struct tm  tstruct;
+	char       buf[80];
+	tstruct = *localtime(&now);
+	strftime(buf, sizeof(buf), "%Y-%m-%d.%X", &tstruct); // YYYY-MM-DD.HH:mm:ss 형태의 스트링
+
+	return buf;
+}
+
+
+( 뉴스 정보 띄어쓰기 포함하여 입력받는 방법 )
+	getline(cin,string 변수);
+(News)
+--필요 함수
+1.News정보 업데이트 함수 
+2.옵져버들 정보 출력 함수
+
+--필요 변수
+1.날짜 변수
+2.뉴스 정보 저장 변수
+3.옵저버 vector 변수
+
+
+(Person)
+--필요 변수
+1.이름 변수
+2.뉴스 변수
+3.날짜 변수

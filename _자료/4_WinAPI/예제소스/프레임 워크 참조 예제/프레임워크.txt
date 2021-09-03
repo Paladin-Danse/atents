@@ -1,0 +1,8 @@
+기본적인 틀
+class
+{
+Init()
+Render()
+Update()
+Release()
+}

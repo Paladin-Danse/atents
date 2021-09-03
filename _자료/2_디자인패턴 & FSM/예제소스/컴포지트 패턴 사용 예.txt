@@ -1,0 +1,5 @@
+{
+	GameObject* player = new GameObject(new PlayerInputComponent, ... );
+	// ...
+	delete player;
+}

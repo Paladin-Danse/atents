@@ -1,0 +1,6 @@
+간단하게 여러가지 class를 하나로 모아서 사용한다.
+
+
+먼저Caracter Class를 만들고
+Skill, Look, Stat Class생성 후 변수로 생성
+main에서 호출

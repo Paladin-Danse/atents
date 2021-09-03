@@ -1,0 +1,46 @@
+//.h
+#pragma once
+#include "D3DApp.h"
+
+class CGame : public CD3DApp
+{
+private:
+      virtual void OnInit();
+      virtual void OnRender();
+      virtual void OnUpdate();
+      virtual void OnRelease();
+
+public:
+      CGame(void);
+     ~CGame(void);
+};
+
+
+//.cpp
+#include "StdAfx.h"
+#include "~~.h"
+
+CGame::CGame(void)
+{
+}
+CGame::~CGame(void)
+{
+}
+
+void CGame::OnInit()
+{
+}
+
+void CGame::OnRender()
+{
+}
+
+void CGame::OnUpdate()
+{
+}
+
+void CGame::OnRelease()
+{
+}
+
+

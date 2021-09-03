@@ -1,0 +1,87 @@
+#include "stdafx.h"
+#include "D3DApp.h"
+#include "~~.h"
+
+
+#define MAX_LOADSTRING 100 
+
+HINSTANCE hInst;
+TCHAR szTitle[MAX_LOADSTRING];
+TCHAR szWindowClass[MAX_LOADSTRING];
+HWND g_hWnd; 
+
+CGame g_GameMgr;
+ 
+
+.... 부분 생략 .... 
+
+int APIENTRY _tWinMain(HINSTANCE hInstance,
+                     HINSTANCE hPrevInstance,
+                     LPTSTR    lpCmdLine,
+                     int       nCmdShow)
+{
+
+    ... 부분 생략 ... 
+
+    g_GameMgr.InitD3D( g_hWnd ); 
+
+    while ( true )
+    {
+       if( PeekMessage( &msg, 0, 0, 0, PM_REMOVE) )
+       {
+          if( msg.message == WM_QUIT )
+             break; 
+
+         TranslateMessage(&msg);
+         DispatchMessage(&msg);
+       }
+       else
+       {
+         g_GameMgr.Update();
+         g_GameMgr.Render();
+       }
+    }
+
+    return (int) msg.wParam;
+} 
+
+BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
+{
+   HWND hWnd;
+   hInst = hInstance;
+   RECT rect = { 0, 0, 800, 600 };
+   AdjustWindowRect( &rect, WS_OVERLAPPEDWINDOW , true);
+
+   g_hWnd = hWnd = CreateWindow(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
+      CW_USEDEFAULT, 0, rect.right - rect.left , rect.bottom - rect.top, NULL, NULL,
+      hInstance, NULL); 
+
+   if (!hWnd)
+   {
+      return FALSE;
+   }
+
+   ShowWindow(hWnd, nCmdShow);
+   UpdateWindow(hWnd); 
+
+   return TRUE;
+}
+
+LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
+{
+     int wmId, wmEvent;
+     PAINTSTRUCT ps;
+     HDC hdc;
+
+     switch (message)
+     {
+      case WM_DESTROY:
+               g_GameMgr.Cleanup();
+               PostQuitMessage(0);
+               break;
+       default:
+               return DefWindowProc(hWnd, message, wParam, lParam);
+     }
+
+     return 0;
+}
