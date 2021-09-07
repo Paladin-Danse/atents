@@ -38,4 +38,11 @@ public class PlayerMovement : MonoBehaviour
 
         playerRigidbody.rotation = playerRigidbody.rotation * Quaternion.Euler(0f, turn, 0f);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        IItem item = other.GetComponent<IItem>();
+
+        if(item != null) item.Use(gameObject);
+    }
 }
