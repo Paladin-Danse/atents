@@ -43,6 +43,26 @@ public class PlayerShooter : MonoBehaviour
     }
     private void UpdateUI()
     {
+        if (gun != null && UIManager.Instance != null)
+        {
+            UIManager.Instance.UpdateAmmoText(gun.magAmmo, gun.ammoRemain);
+        }
+    }
 
+    private void OnAnimatorIK(int layerIndex)
+    {
+        gunPivot.position = playerAnimator.GetIKHintPosition(AvatarIKHint.RightElbow);
+
+        playerAnimator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1.0f);
+        playerAnimator.SetIKRotationWeight(AvatarIKGoal.LeftHand, 1.0f);
+
+        playerAnimator.SetIKPosition(AvatarIKGoal.LeftHand, leftHandleMount.position);
+        playerAnimator.SetIKRotation(AvatarIKGoal.LeftHand, leftHandleMount.rotation);
+
+        playerAnimator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1.0f);
+        playerAnimator.SetIKRotationWeight(AvatarIKGoal.RightHand, 1.0f);
+
+        playerAnimator.SetIKPosition(AvatarIKGoal.RightHand, rightHandleMount.position);
+        playerAnimator.SetIKRotation(AvatarIKGoal.RightHand, rightHandleMount.rotation);
     }
 }

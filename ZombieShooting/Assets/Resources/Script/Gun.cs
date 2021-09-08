@@ -26,9 +26,9 @@ public class Gun : MonoBehaviour
     [SerializeField]private float damage = 25f;
     [SerializeField]private float fireDistance = 50f;
 
-    [SerializeField] private int ammoRemain = 100;
+    public int ammoRemain = 100;
     [SerializeField] private int magCapacity = 25;
-    [SerializeField] private int magAmmo;
+    public int magAmmo;
     [SerializeField] private float timeBetFire = 0.12f;
     [SerializeField] private float reloadTime = 1.8f;
     [SerializeField] private float lastFireTime;
