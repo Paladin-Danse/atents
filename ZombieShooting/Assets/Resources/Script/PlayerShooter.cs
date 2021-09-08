@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerShooter : MonoBehaviour
 {
-    Gun gun;
+    public Gun gun;
     public Transform gunPivot;
     public Transform leftHandleMount;
     public Transform rightHandleMount;
@@ -43,10 +43,12 @@ public class PlayerShooter : MonoBehaviour
     }
     private void UpdateUI()
     {
+        /*
         if (gun != null && UIManager.Instance != null)
         {
             UIManager.Instance.UpdateAmmoText(gun.magAmmo, gun.ammoRemain);
         }
+        */
     }
 
     private void OnAnimatorIK(int layerIndex)
