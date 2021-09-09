@@ -52,7 +52,7 @@ public class PlayerHealth : LivingEntity
             playerAudioPlayer.PlayOneShot(hitClip);
         }
 
-        base.OnDamage(damage, hitPoint, hitNomal);
+        base.OnDamage(damage, hitPoint, hitNormal);
 
         healthSlider.value = health;
     }
