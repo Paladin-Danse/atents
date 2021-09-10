@@ -95,4 +95,23 @@ public class Enemy : LivingEntity
 
         base.OnDamage(damage, hitPoint, hitNormal);
     }
+
+    public override void Die()
+    {
+        base.Die();
+        Collider[] enemyColliders = GetComponent<Collider[]>();
+        for(int i=0; i<enemyColliders.Length; i++)
+        {
+            enemyColliders[i].enabled = true;
+        }
+
+        //AI추적을 중지하고 네비에서 컴포넌트 비활성화
+        pathFinder.isStopped = true;
+        pathFinder.enabled = false;
+
+        enemyAnimator.SetTrigger("Die");
+        enemyAudioPlayer.PlayOneShot(deathSound);
+    }
+    
+
 }

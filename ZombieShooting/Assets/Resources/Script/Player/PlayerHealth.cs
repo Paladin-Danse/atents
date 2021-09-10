@@ -44,7 +44,7 @@ public class PlayerHealth : LivingEntity
         healthSlider.value = health;
     }
 
-    public override void OnDamage(float damage, Vector3 hitPoint, Vector3 hitNomal)
+    public override void OnDamage(float damage, Vector3 hitPoint, Vector3 hitNormal)
     {
         if(!dead)
         {
