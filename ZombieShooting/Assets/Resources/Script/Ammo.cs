@@ -13,6 +13,7 @@ public class Ammo : MonoBehaviour, IItem
         if(playerShooter != null && playerShooter.gun != null)
         {
             playerShooter.gun.ammoRemain += ammo;
+            UIManager.instance.UpdateAmmoText(playerShooter.gun.magAmmo, playerShooter.gun.ammoRemain);
         }
         Destroy(gameObject);
     }

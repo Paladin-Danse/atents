@@ -102,6 +102,16 @@ public class Gun : MonoBehaviour
             //충돌한 물체가 없을 시 총구에서 총의 최대 사거리만큼의 위치를 충돌위치로 표현
             hitPosition = fireTransform.position + fireTransform.forward * fireDistance;
         }
+
+        StartCoroutine(ShotEffect(hitPosition));
+
+        magAmmo--;
+        UIManager.instance.UpdateAmmoText(magAmmo, ammoRemain);
+
+        if(magAmmo <= 0)
+        {
+            state = State.EMPTY;
+        }
     }
 
     public bool Reload()
@@ -131,6 +141,8 @@ public class Gun : MonoBehaviour
 
         magAmmo += ammoToFill;
         ammoRemain -= ammoToFill;
+
+        UIManager.instance.UpdateAmmoText(magAmmo, ammoRemain);
 
         state = State.READY;
     }
