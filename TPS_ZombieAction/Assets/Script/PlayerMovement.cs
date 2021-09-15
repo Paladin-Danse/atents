@@ -43,5 +43,9 @@ public class PlayerMovement : MonoBehaviour
 
             rigid.rotation *= Quaternion.Euler(0f, mouseMove, 0f);
         }
+        if(playerInput.rotateY != 0)
+        {
+            float mouseMove = playerInput.rotateY * rotateSpeed;
+        }
     }
 }
