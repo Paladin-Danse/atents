@@ -24,35 +24,31 @@ public class PlayerShooter : MonoBehaviour
     private void Update()
     {
         WeaponSwap();
+
+        //왼손 오른손 위치 테스트할때만 사용
+        /*
+        playerAnimator.SetIKPosition(AvatarIKGoal.LeftHand, leftHandMount.position);
+        playerAnimator.SetIKRotation(AvatarIKGoal.LeftHand, leftHandMount.rotation);
+
+        playerAnimator.SetIKPosition(AvatarIKGoal.RightHand, rightHandMount.position);
+        playerAnimator.SetIKRotation(AvatarIKGoal.RightHand, rightHandMount.rotation);
+        */
+        
     }
     public void EquipMainWeapon()
     {
         mainWeapon.SetActive(true);
         subWeapon.SetActive(false);
 
-        equipGun = mainWeapon.GetComponentInChildren<Gun>();
-
-        if(equipGun)
-        {
-            leftHandMount = equipGun.transform.Find("Left Handle").transform;
-            rightHandMount = equipGun.transform.Find("Right Handle").transform;
-        }
+        EquipWeapon(mainWeapon);
     }
 
     public void EquipSubWeapon()
     {
-        Debug.Log("I'm Equip SubWeapon!!");
-
         mainWeapon.SetActive(false);
         subWeapon.SetActive(true);
 
-        equipGun = subWeapon.GetComponentInChildren<Gun>();
-
-        if(equipGun)
-        {
-            leftHandMount = equipGun.transform.Find("Left Handle").transform;
-            rightHandMount = equipGun.transform.Find("Right Handle").transform;
-        }
+        EquipWeapon(subWeapon);
     }
     public void WeaponSwap()
     {
@@ -69,6 +65,16 @@ public class PlayerShooter : MonoBehaviour
         }
         if (playerInput.mainWeaponSwap) EquipMainWeapon();
         if (playerInput.subWeaponSwap) EquipSubWeapon();
+    }
+    public void EquipWeapon(GameObject Weapon)
+    {
+        equipGun = Weapon.transform.Find("Gun").GetComponent<Gun>();
+
+        if (equipGun)
+        {
+            leftHandMount = equipGun.transform.Find("Left Handle").transform;
+            rightHandMount = equipGun.transform.Find("Right Handle").transform;
+        }
     }
 
     private void OnAnimatorIK(int layerIndex)
