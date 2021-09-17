@@ -86,11 +86,6 @@ public class Enemy : LivingEntity
         }
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(transform.position, 20f);
-    }
-
     public override void OnDamage(float damage, Vector3 hitPoint, Vector3 hitNormal)
     {
         if(!b_Dead)

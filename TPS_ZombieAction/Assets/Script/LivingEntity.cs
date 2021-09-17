@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class LivingEntity : MonoBehaviour, I_Damageable
 {
-    [SerializeField] protected float f_StartingHealth = 100f;
+    public float f_StartingHealth { get; protected set; } = 100f;
     public float f_Health { get; protected set; }
     public bool b_Dead { get; protected set; }
-    public event Action e_OnDeath;
+    public event Action OnDeath;
     public virtual void OnDamage(float damage, Vector3 hitPoint, Vector3 hitNormal)
     {
         f_Health -= damage;
@@ -25,9 +25,9 @@ public class LivingEntity : MonoBehaviour, I_Damageable
 
     public virtual void Die()
     {
-        if(e_OnDeath != null)
+        if(OnDeath != null)
         {
-            e_OnDeath();
+            OnDeath();
         }
 
         b_Dead = true;

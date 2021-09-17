@@ -6,8 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
     private PlayerInput playerInput;
     private Rigidbody rigid;
-    [SerializeField] float moveSpeed = 1.0f;
-    [SerializeField] float rotateSpeed = 1.0f;
+    [SerializeField] float f_moveSpeed = 1.0f;
+    [SerializeField] float f_rotateSpeed = 1.0f;
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
@@ -24,13 +24,13 @@ public class PlayerMovement : MonoBehaviour
     {
         if(playerInput.verticalMove != 0)
         {
-            Vector3 moveDistance = playerInput.verticalMove * transform.forward * moveSpeed * Time.deltaTime;
+            Vector3 moveDistance = playerInput.verticalMove * transform.forward * f_moveSpeed * Time.deltaTime;
 
             rigid.MovePosition(rigid.position + moveDistance);
         }
         if (playerInput.horizontalMove != 0)
         {
-            Vector3 moveDistance = playerInput.horizontalMove * transform.right * moveSpeed * Time.deltaTime;
+            Vector3 moveDistance = playerInput.horizontalMove * transform.right * f_moveSpeed * Time.deltaTime;
 
             rigid.MovePosition(rigid.position + moveDistance);
         }
@@ -39,13 +39,13 @@ public class PlayerMovement : MonoBehaviour
     {
         if(playerInput.rotateX != 0)
         {
-            float mouseMove = playerInput.rotateX * rotateSpeed;
+            float mouseMove = playerInput.rotateX * f_rotateSpeed;
 
             rigid.rotation *= Quaternion.Euler(0f, mouseMove, 0f);
         }
         if(playerInput.rotateY != 0)
         {
-            float mouseMove = playerInput.rotateY * rotateSpeed;
+            float mouseMove = playerInput.rotateY * f_rotateSpeed;
         }
     }
 }
