@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class PlayerShooter : MonoBehaviour
 {
-    public GameObject mainWeapon;
-    public GameObject subWeapon;
+    [SerializeField] private GameObject mainWeapon;
+    [SerializeField] private GameObject subWeapon;
     private Gun equipGun;
-    public Transform gunPivot;
-    public Transform leftHandMount;
-    public Transform rightHandMount;
+    [SerializeField] private Transform gunPivot;
+    [SerializeField] private Transform leftHandMount;
+    [SerializeField] private Transform rightHandMount;
 
     private PlayerInput playerInput;
     private Animator playerAnimator;
@@ -24,16 +24,6 @@ public class PlayerShooter : MonoBehaviour
     private void Update()
     {
         WeaponSwap();
-
-        //왼손 오른손 위치 테스트할때만 사용
-        /*
-        playerAnimator.SetIKPosition(AvatarIKGoal.LeftHand, leftHandMount.position);
-        playerAnimator.SetIKRotation(AvatarIKGoal.LeftHand, leftHandMount.rotation);
-
-        playerAnimator.SetIKPosition(AvatarIKGoal.RightHand, rightHandMount.position);
-        playerAnimator.SetIKRotation(AvatarIKGoal.RightHand, rightHandMount.rotation);
-        */
-        
     }
     public void EquipMainWeapon()
     {
@@ -66,6 +56,28 @@ public class PlayerShooter : MonoBehaviour
         if (playerInput.mainWeaponSwap) EquipMainWeapon();
         if (playerInput.subWeaponSwap) EquipSubWeapon();
     }
+
+    public void WeaponAimShot()
+    {
+        if(playerInput.aiming)
+        {
+            Debug.Log("I'm Aiming!");
+            if(equipGun.AutoType() == "SEMIAUTO" && playerInput.attack_ButtonDown)
+            {
+                
+                equipGun.Fire();
+                Debug.Log("Semi Shot!");
+            }
+
+            if(equipGun.AutoType() == "FULLAUTO" && playerInput.attack_Button)
+            {
+                
+                equipGun.Fire();
+                Debug.Log("Auto Shot!");
+            }
+        }
+    }
+
     public void EquipWeapon(GameObject Weapon)
     {
         equipGun = Weapon.transform.Find("Gun").GetComponent<Gun>();

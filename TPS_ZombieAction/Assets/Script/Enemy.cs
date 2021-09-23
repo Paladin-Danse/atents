@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 public class Enemy : LivingEntity
 {
-    public LayerMask whatIsTarget;
+    [SerializeField] private LayerMask whatIsTarget;
     [SerializeField] private LivingEntity targetEntity;
     private NavMeshAgent pathFinder;
 
@@ -16,8 +16,8 @@ public class Enemy : LivingEntity
     private AudioSource enemyAudioPlayer;
     private Renderer enemyRenderer;
 
-    public float f_Damage = 20f;
-    public float f_timeBetAttck = 0.5f;
+    [SerializeField] private float f_Damage = 20f;
+    [SerializeField] private float f_timeBetAttck = 0.5f;
     private float f_LastAttackTime;
 
     private bool hasTarget

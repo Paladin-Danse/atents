@@ -6,8 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
     private PlayerInput playerInput;
     private Rigidbody rigid;
-    [SerializeField] float f_moveSpeed = 1.0f;
-    [SerializeField] float f_rotateSpeed = 1.0f;
+    [SerializeField] private float f_moveSpeed = 1.0f;
+    [SerializeField] private float f_rotateSpeed = 1.0f;
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
