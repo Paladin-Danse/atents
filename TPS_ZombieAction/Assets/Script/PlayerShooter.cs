@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerShooter : MonoBehaviour
 {
-    [SerializeField] private GameObject mainWeapon;
-    [SerializeField] private GameObject subWeapon;
-    private Gun equipGun;
+    [SerializeField] private Gun mainWeapon;
+    [SerializeField] private Gun subWeapon;
+    public Gun equipGun { get; private set; }
     [SerializeField] private Transform gunPivot;
     [SerializeField] private Transform leftHandMount;
     [SerializeField] private Transform rightHandMount;
@@ -14,11 +14,14 @@ public class PlayerShooter : MonoBehaviour
     private PlayerInput playerInput;
     private Animator playerAnimator;
 
-    private void Start()
+    private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
         playerAnimator = GetComponent<Animator>();
+    }
 
+    private void Start()
+    {
         EquipMainWeapon();
     }
     private void Update()
@@ -28,16 +31,16 @@ public class PlayerShooter : MonoBehaviour
     }
     public void EquipMainWeapon()
     {
-        mainWeapon.SetActive(true);
-        subWeapon.SetActive(false);
+        mainWeapon.gameObject.SetActive(true);
+        subWeapon.gameObject.SetActive(false);
 
         EquipWeapon(mainWeapon);
     }
 
     public void EquipSubWeapon()
     {
-        mainWeapon.SetActive(false);
-        subWeapon.SetActive(true);
+        mainWeapon.gameObject.SetActive(false);
+        subWeapon.gameObject.SetActive(true);
 
         EquipWeapon(subWeapon);
     }
@@ -45,7 +48,7 @@ public class PlayerShooter : MonoBehaviour
     {
         if(playerInput.weaponSwap != 0)
         {
-            if(mainWeapon.activeSelf)
+            if(mainWeapon.gameObject.activeSelf)
             {
                 EquipSubWeapon();
             }
@@ -62,31 +65,36 @@ public class PlayerShooter : MonoBehaviour
     {
         if(playerInput.aiming)
         {
-            Debug.Log("I'm Aiming!");
             if(equipGun.AutoType() == "SEMIAUTO" && playerInput.attack_ButtonDown)
             {
-                
                 equipGun.Fire();
-                Debug.Log("Semi Shot!");
             }
 
             if(equipGun.AutoType() == "FULLAUTO" && playerInput.attack_Button)
             {
-                
                 equipGun.Fire();
-                Debug.Log("Auto Shot!");
             }
         }
     }
 
-    public void EquipWeapon(GameObject Weapon)
+    public bool GetAmmo(int newAmmo)
     {
-        equipGun = Weapon.transform.Find("Gun").GetComponent<Gun>();
+        if (mainWeapon.Ammo_Limit() && subWeapon.Ammo_Limit()) return false;
+
+        mainWeapon.GetAmmo(newAmmo);
+        subWeapon.GetAmmo(newAmmo);
+
+        return true;
+    }
+
+    public void EquipWeapon(Gun Weapon)
+    {
+        equipGun = Weapon;
 
         if (equipGun)
         {
-            leftHandMount = equipGun.transform.Find("Left Handle").transform;
-            rightHandMount = equipGun.transform.Find("Right Handle").transform;
+            leftHandMount = equipGun.LeftHandle;
+            rightHandMount = equipGun.RightHandle;
         }
     }
 
@@ -109,7 +117,7 @@ public class PlayerShooter : MonoBehaviour
 
     private void OnDisable()
     {
-        mainWeapon.SetActive(false);
-        subWeapon.SetActive(false);
+        mainWeapon.gameObject.SetActive(false);
+        subWeapon.gameObject.SetActive(false);
     }
 }

@@ -20,6 +20,10 @@ public class Gun : MonoBehaviour
     [SerializeField] private TYPE e_Type;
 
     [SerializeField] private Transform fireTransform;
+    [SerializeField] private Transform leftHandle;
+    public Transform LeftHandle { get { return leftHandle; } }
+    [SerializeField] private Transform rightHandle;
+    public Transform RightHandle { get { return rightHandle; } }
 
     [SerializeField] private ParticleSystem muzzleFlashEffect;
     [SerializeField] private ParticleSystem shellEjectEffect;
@@ -128,6 +132,17 @@ public class Gun : MonoBehaviour
         return true;
     }
 
+    public bool Ammo_Limit()
+    {
+        if (i_AmmoRemain >= i_MaxAmmoRemain) return true;
+        else return false;
+    }
+    public void GetAmmo(int m_i_newAmmo)
+    {
+        i_AmmoRemain += m_i_newAmmo;
+        if (i_AmmoRemain > i_MaxAmmoRemain) i_AmmoRemain = i_MaxAmmoRemain;
+    }
+
     private IEnumerator ReloadRoutine()
     {
         e_State = STATE.STATE_RELOADING;
@@ -136,14 +151,14 @@ public class Gun : MonoBehaviour
 
         yield return new WaitForSeconds(f_ReloadTime);
 
-        int i_AmmoToFill = i_MagCapacity - i_MagAmmo;
+        int AmmoToFill = i_MagCapacity - i_MagAmmo;
 
-        if (i_AmmoRemain < i_AmmoToFill)
+        if (i_AmmoRemain < AmmoToFill)
         {
-            i_AmmoToFill = i_AmmoRemain;
+            AmmoToFill = i_AmmoRemain;
         }
-        i_MagAmmo += i_AmmoToFill;
-        i_AmmoRemain -= i_AmmoToFill;
+        i_MagAmmo += AmmoToFill;
+        i_AmmoRemain -= AmmoToFill;
 
         e_State = STATE.STATE_READY;
     }
