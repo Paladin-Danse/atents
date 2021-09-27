@@ -2073,7 +2073,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afc22fe62e24de242ad7ee9e438038df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  f_moveSpeed: 1
+  f_moveSpeed: 1.5
   f_rotateSpeed: 1
 --- !u!114 &1982577552
 MonoBehaviour:
@@ -2154,6 +2154,19 @@ MonoBehaviour:
   deathSound: {fileID: 8300000, guid: 4265c953ea2b74edabac0c972182dcba, type: 3}
   hitSound: {fileID: 8300000, guid: cbfb3a79860ac42c89b09fc131ef4b61, type: 3}
   itemPickupSound: {fileID: 8300000, guid: 519ad2e4de69341948a938bf2a31e33b, type: 3}
+--- !u!114 &1982577559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1982577549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d25881d8a9879d745a9ce64b1d790b75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemPickUp: {fileID: 8300000, guid: 519ad2e4de69341948a938bf2a31e33b, type: 3}
 --- !u!1 &2103270543
 GameObject:
   m_ObjectHideFlags: 0
@@ -2297,6 +2310,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -3226849761115400403, guid: 63c75ed2b55b4b94bba9e43e08953be5, type: 3}
+      propertyPath: DropPercent
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: -3226849761115400403, guid: 63c75ed2b55b4b94bba9e43e08953be5, type: 3}
+      propertyPath: f_DropPercent
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -3226849761115400403, guid: 63c75ed2b55b4b94bba9e43e08953be5, type: 3}
       propertyPath: dropItem.Array.size
       value: 1

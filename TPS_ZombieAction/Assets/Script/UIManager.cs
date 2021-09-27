@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
+    //싱글톤
     private static UIManager m_instance;
     public static UIManager instance
     {
@@ -21,23 +22,27 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
-        playerHealth = GameObject.Find("Player").GetComponent<PlayerHealth>();
+        //플레이어를 찾아서 PlayerHealth스크립트를 가져온다.
+        var player = GameObject.Find("Player");
+        if (player) playerHealth = player.GetComponent<PlayerHealth>();
     }
 
     private void Start()
     {
         Setup();
     }
-
+    
     public void Setup()
     {
         if (playerHealth != null)
         {
+            //게임이 시작되면 플레이어에게서 체력값을 가져와 UI에 적용시킨다.
             playerHealthBar.maxValue = playerHealth.f_StartingHealth;
             playerHealthBar.value = playerHealth.f_Health;
         }
     }
 
+    //플레이어의 체력에 변동이 있을때마다 UI의 체력수치를 수정한다.
     public void UpdateplayerHealthBar()
     {
         playerHealthBar.value = playerHealth.f_Health;

@@ -5,7 +5,7 @@ using UnityEngine;
 public class AmmoPack : MonoBehaviour, i_Item
 {
     [SerializeField] private int i_Ammo = 30;
-    public void Use(GameObject target)
+    public void Loot(GameObject target)
     {
         PlayerShooter playerShooter = target.GetComponent<PlayerShooter>();
 

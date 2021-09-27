@@ -56,9 +56,4 @@ public class PlayerHealth : LivingEntity
         playerMovement.enabled = false;
         playerShooter.enabled = false;
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        
-    }
 }

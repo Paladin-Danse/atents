@@ -7,6 +7,7 @@ public class Enemy : LivingEntity
     [SerializeField] private LayerMask whatIsTarget;
     [SerializeField] private LivingEntity targetEntity;
     private NavMeshAgent pathFinder;
+    private ItemDrop itemDrop;
 
     public ParticleSystem hitEffect;
     public AudioClip deathSound;
@@ -38,11 +39,14 @@ public class Enemy : LivingEntity
         enemyAnimator = GetComponent<Animator>();
         enemyAudioPlayer = GetComponent<AudioSource>();
         enemyRenderer = GetComponentInChildren<Renderer>();
+        itemDrop = GetComponent<ItemDrop>();
     }
 
     public void Setup()
     {
         pathFinder.speed = 2.0f;
+
+        OnDeath += () => itemDrop.DropItem();
     }
 
     private void Start()
@@ -57,23 +61,27 @@ public class Enemy : LivingEntity
 
     private IEnumerator UpdatePath()
     {
+        //살아있는 동안
         while(!b_Dead)
         {
+            //타겟을 발견했다면
             if(hasTarget)
             {
+                //타겟을 향해 계속 이동
                 pathFinder.isStopped = false;
                 pathFinder.SetDestination(targetEntity.transform.position);
             }
+            //타겟을 발견하지 못했다면
             else
             {
+                //멈춰서
                 pathFinder.isStopped = true;
-
+                //20의반지름을 가진 구체를 만들고 그 안에 들어온 대상(whatIsTarget)을 탐색함.
                 Collider[] colliders = Physics.OverlapSphere(transform.position, 20f, whatIsTarget);
                 for(int i=0; i<colliders.Length; i++)
                 {
-
                     LivingEntity livingEntity = colliders[i].GetComponent<LivingEntity>();
-
+                    //발견한 대상이 null이 아니고 살아있다면
                     if(livingEntity != null && !livingEntity.b_Dead)
                     {
                         targetEntity = livingEntity;

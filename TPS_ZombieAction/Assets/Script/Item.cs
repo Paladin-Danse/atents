@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface i_Item
 {
-    void Use(GameObject target);
+    void Loot(GameObject target);
 }
