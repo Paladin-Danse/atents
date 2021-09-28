@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface i_Item
+//아이템류 인터페이스
+public abstract class CItem : MonoBehaviour
 {
-    void Loot(GameObject target);
+    public abstract void Loot(GameObject target);
+    public abstract void SetPosition(Vector3 pos);
 }

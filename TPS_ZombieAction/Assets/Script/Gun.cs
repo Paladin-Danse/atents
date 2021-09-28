@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum TYPE//총이 자동화기인지, 반자동화기인지 구분
+    {
+        TYPE_FULLAUTO,
+        TYPE_SEMIAUTO
+    }
+
 public class Gun : MonoBehaviour
 {
     public enum STATE//총의 현재 상태를 구분
@@ -10,13 +16,7 @@ public class Gun : MonoBehaviour
         STATE_EMPTY,
         STATE_RELOADING
     }
-    [SerializeField] private STATE e_State;
-
-    public enum TYPE//총이 자동화기인지, 반자동화기인지 구분
-    {
-        TYPE_FULLAUTO,
-        TYPE_SEMIAUTO
-    }
+    [SerializeField] private STATE e_State;    
     [SerializeField] private TYPE e_Type;
 
     [SerializeField] private Transform fireTransform;//총구 발사위치
@@ -42,6 +42,7 @@ public class Gun : MonoBehaviour
     [SerializeField] private float f_TimeBetFire = 0.12f;//발사속도
     [SerializeField] private float f_ReloadTime = 1.8f;//총의 장전속도
     [SerializeField] private float f_LastFireTime;//총이 마지막으로 격발한 시간
+    [SerializeField] private float f_TimeToEffect = 0.03f;//이펙트 발생 시간
 
     //총의 발사궤적이지만, 노란색으로 표시되는 현재와 달리 어느정도 진행 후 필요가 없어질 무렵에 제거할 예정
     private LineRenderer bulletLineRenderer;
@@ -78,12 +79,13 @@ public class Gun : MonoBehaviour
         muzzleFlashEffect.Play();
         shellEjectEffect.Play();
         gunAudioPlayer.PlayOneShot(shotClip);
+
         //라인렌더러 온오프
         bulletLineRenderer.SetPosition(0, fireTransform.position);
         bulletLineRenderer.SetPosition(1, hitPosition);
         bulletLineRenderer.enabled = true;
 
-        yield return new WaitForSeconds(0.03f);
+        yield return new WaitForSeconds(f_TimeToEffect);
 
         bulletLineRenderer.enabled = false;
     }
@@ -135,7 +137,9 @@ public class Gun : MonoBehaviour
 
     public bool Reload()
     {
-        //현재상태가 재장전중이거나, 현재 총의 탄약이 바닥 났거나, 탄창의 탄약이 가득한경우에는 재장전을 실행하지 않는다.
+        //현재상태가 재장전중이거나,
+        //현재 총의 탄약이 바닥 났거나,
+        //탄창의 탄약이 가득한경우에는 재장전을 실행하지 않는다.
         if (e_State == STATE.STATE_RELOADING || i_AmmoRemain <= 0 || i_MagAmmo >= i_MagCapacity) return false;
 
         StartCoroutine(ReloadRoutine());
