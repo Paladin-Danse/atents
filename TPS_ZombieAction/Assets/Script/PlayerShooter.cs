@@ -75,6 +75,10 @@ public class PlayerShooter : MonoBehaviour
                 equipGun.Fire();
             }
         }
+        if(playerInput.reload)
+        {
+            equipGun.Reload();
+        }
     }
 
     public bool GetAmmo(int newAmmo)

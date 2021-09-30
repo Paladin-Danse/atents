@@ -14,6 +14,8 @@ public class PlayerHealth : LivingEntity
     private PlayerMovement playerMovement;
     private PlayerShooter playerShooter;
 
+    private float f_HealthPoint = 100f;
+
     private void Awake()
     {
         playerAnimator = GetComponent<Animator>();

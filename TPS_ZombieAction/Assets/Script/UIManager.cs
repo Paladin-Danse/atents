@@ -17,14 +17,18 @@ public class UIManager : MonoBehaviour
             return m_instance;
         }
     }
-    public PlayerHealth playerHealth;
-    public Slider playerHealthBar;
+    private PlayerHealth playerHealth;
+    [SerializeField] private Slider playerHealthBar;
+    [SerializeField] private Text playerAmmoText;
 
     private void Awake()
     {
         //플레이어를 찾아서 PlayerHealth스크립트를 가져온다.
         var player = GameObject.Find("Player");
-        if (player) playerHealth = player.GetComponent<PlayerHealth>();
+        if (player)
+        {
+            playerHealth = player.GetComponent<PlayerHealth>();
+        }
     }
 
     private void Start()
@@ -46,5 +50,9 @@ public class UIManager : MonoBehaviour
     public void UpdateplayerHealthBar()
     {
         playerHealthBar.value = playerHealth.f_Health;
+    }
+    public void UpdateAmmoText(int magAmmo, int remainAmmo)
+    {
+        playerAmmoText.text = string.Format("{0} / {1}", magAmmo, remainAmmo);
     }
 }

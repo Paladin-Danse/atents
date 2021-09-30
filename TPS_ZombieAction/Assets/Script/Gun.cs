@@ -54,14 +54,16 @@ public class Gun : MonoBehaviour
 
         bulletLineRenderer.positionCount = 2;//불렛 라인렌더러에 총구와 총의 사거리만큼 두개의 지점이 필요
         bulletLineRenderer.enabled = true;//라인렌더러를 활성화
+
+        //총의 기본수치 정의(원래 OnEnable이었으나 총을 바꿀 때마다 총이 장전이 되기에 Awake에 표현하고 Scene을 새로 부를 때 문제가 있을경우, 해당 코드를 다시 부른다.)
+        i_MagAmmo = i_MagCapacity;
+        e_State = STATE.STATE_READY;
     }
 
     private void OnEnable()
     {
-        //총의 기본수치 정의
-        i_MagAmmo = i_MagCapacity;
-        e_State = STATE.STATE_READY;
         f_LastFireTime = 0;
+        UIManager.instance.UpdateAmmoText(i_MagAmmo, i_AmmoRemain);//총이 바뀔 때마다 각 총의 탄약으로 UI를 업데이트 함.
     }
 
     //현재 총이 무슨 타입의 총인지 다른 스크립트에 반환
@@ -128,6 +130,8 @@ public class Gun : MonoBehaviour
         StartCoroutine(ShotEffect(hitPosition));//사격효과 코루틴
 
         i_MagAmmo--;
+        UIManager.instance.UpdateAmmoText(i_MagAmmo, i_AmmoRemain);
+
         //탄약이 바닥났을 경우
         if(i_MagAmmo <= 0)
         {
@@ -158,6 +162,7 @@ public class Gun : MonoBehaviour
     {
         i_AmmoRemain += m_i_newAmmo;
         if (i_AmmoRemain > i_MaxAmmoRemain) i_AmmoRemain = i_MaxAmmoRemain;
+        if(gameObject.activeSelf) UIManager.instance.UpdateAmmoText(i_MagAmmo, i_AmmoRemain);//현재 활성화가 되어있는 총만 UI업데이트를 한다.
     }
 
     private IEnumerator ReloadRoutine()
@@ -178,6 +183,7 @@ public class Gun : MonoBehaviour
         i_MagAmmo += AmmoToFill;
         i_AmmoRemain -= AmmoToFill;
 
+        UIManager.instance.UpdateAmmoText(i_MagAmmo, i_AmmoRemain);
         e_State = STATE.STATE_READY;
     }
 }

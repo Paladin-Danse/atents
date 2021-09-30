@@ -10,6 +10,7 @@ public class PlayerInput : MonoBehaviour
     private string rotateYKeyName = "Mouse Y";
     private string attackKeyName = "Fire1";
     private string aimingKeyName = "Fire2";
+    private string reloadKeyName = "Reload";
     private string mainWeaponSwapKeyName = "MainSwap";
     private string subWeaponSwapKeyName = "SubSwap";
     private string weaponSwapKeyName = "Mouse ScrollWheel";
@@ -23,9 +24,11 @@ public class PlayerInput : MonoBehaviour
     public bool attack_ButtonDown { get; private set; }
     public bool attack_Button { get; private set; }
     public bool aiming { get; private set; }
+    public bool reload { get; private set; }
     public bool mainWeaponSwap { get; private set; }
     public bool subWeaponSwap { get; private set; }
     public bool playerInteraction { get; private set; }
+    
     private void Start()
     {
         Cursor.visible = false;
@@ -41,6 +44,7 @@ public class PlayerInput : MonoBehaviour
         attack_ButtonDown = Input.GetButtonDown(attackKeyName);
         attack_Button = Input.GetButton(attackKeyName);
         aiming = Input.GetButton(aimingKeyName);
+        reload = Input.GetButtonDown(reloadKeyName);
         mainWeaponSwap = Input.GetButtonDown(mainWeaponSwapKeyName);
         subWeaponSwap = Input.GetButtonDown(subWeaponSwapKeyName);
         weaponSwap = Input.GetAxisRaw(weaponSwapKeyName);
