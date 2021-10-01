@@ -15,6 +15,7 @@ public class PlayerInput : MonoBehaviour
     private string subWeaponSwapKeyName = "SubSwap";
     private string weaponSwapKeyName = "Mouse ScrollWheel";
     private string playerInteractionKeyName = "Interaction";
+    private string itemUseKeyName = "ItemUse";
     public float verticalMove { get; private set; }
     public float horizontalMove { get; private set; }
     public float rotateX { get; private set; }
@@ -28,6 +29,7 @@ public class PlayerInput : MonoBehaviour
     public bool mainWeaponSwap { get; private set; }
     public bool subWeaponSwap { get; private set; }
     public bool playerInteraction { get; private set; }
+    public bool itemUse { get; private set; }
     
     private void Start()
     {
@@ -49,5 +51,6 @@ public class PlayerInput : MonoBehaviour
         subWeaponSwap = Input.GetButtonDown(subWeaponSwapKeyName);
         weaponSwap = Input.GetAxisRaw(weaponSwapKeyName);
         playerInteraction = Input.GetButtonDown(playerInteractionKeyName);
+        itemUse = Input.GetButtonDown(itemUseKeyName);
     }
 }

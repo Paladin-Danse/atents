@@ -14,8 +14,6 @@ public class AmmoPack : CItem
             if (playerShooter.GetAmmo(i_Ammo))
             {
                 gameObject.SetActive(false);
-                //instantiate함수를 제외하면서 같이 제외.
-                //Destroy(gameObject);
             }
         }
     }
@@ -27,6 +25,6 @@ public class AmmoPack : CItem
 
     public override CItem NewItem()
     {
-        return Instantiate(gameObject.GetComponent<AmmoPack>());
+        return Instantiate(this);
     }
 }

@@ -19,7 +19,9 @@ public class UIManager : MonoBehaviour
     }
     private PlayerHealth playerHealth;
     [SerializeField] private Slider playerHealthBar;
+    [SerializeField] private Image inventoryImage;
     [SerializeField] private Text playerAmmoText;
+    [SerializeField] private Text inventoryItemNum;
 
     private void Awake()
     {
@@ -54,5 +56,10 @@ public class UIManager : MonoBehaviour
     public void UpdateAmmoText(int magAmmo, int remainAmmo)
     {
         playerAmmoText.text = string.Format("{0} / {1}", magAmmo, remainAmmo);
+    }
+    public void UpdateInventory(Sprite imgSprite, int newNum)
+    {
+        inventoryImage.sprite = imgSprite;
+        inventoryItemNum.text = newNum.ToString();
     }
 }

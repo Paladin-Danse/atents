@@ -383,7 +383,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropItem:
-  - {fileID: 2853829827826958788, guid: c90bf41c504e541b98989b07b736097c, type: 3}
+  - {fileID: 2250767254178530783, guid: b4e7df10a580e4a1a88a79995b741816, type: 3}
   f_DropPercent: 1
 --- !u!4 &383913638
 Transform:
@@ -1085,7 +1085,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealthBar: {fileID: 1132814783}
+  inventoryImage: {fileID: 118912604}
   playerAmmoText: {fileID: 96522815}
+  inventoryItemNum: {fileID: 1981194862}
 --- !u!1 &776284821
 GameObject:
   m_ObjectHideFlags: 0
@@ -1135,7 +1137,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9564de8a4baf4ca4cbf5cfb25d9f8c58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InvnetoryPanel: {fileID: 0}
 --- !u!1 &957335446
 GameObject:
   m_ObjectHideFlags: 0
@@ -1671,8 +1672,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 100, y: 50}
-  m_SizeDelta: {x: 160, y: 20}
+  m_AnchoredPosition: {x: 100, y: 150}
+  m_SizeDelta: {x: 160, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1132814783
 MonoBehaviour:
@@ -1721,7 +1722,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
