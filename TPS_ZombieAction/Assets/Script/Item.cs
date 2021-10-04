@@ -14,8 +14,8 @@ public abstract class CItem : MonoBehaviour
     public abstract CItem NewItem();
     public void NumUp() { Num++; }
     public void NumDown() { Num--; }
-    public void Use()
+    public virtual void Use()
     {
-        
+
     }
 }
