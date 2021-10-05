@@ -46,6 +46,7 @@ public class UIManager : MonoBehaviour
             playerHealthBar.maxValue = playerHealth.f_StartingHealth;
             playerHealthBar.value = playerHealth.f_Health;
         }
+        InventoryDisable();
     }
 
     //플레이어의 체력에 변동이 있을때마다 UI의 체력수치를 수정한다.
@@ -60,6 +61,13 @@ public class UIManager : MonoBehaviour
     public void UpdateInventory(Sprite imgSprite, int newNum)
     {
         inventoryImage.sprite = imgSprite;
+        if(!inventoryItemNum.gameObject.activeSelf)
+            inventoryItemNum.gameObject.SetActive(true);
         inventoryItemNum.text = newNum.ToString();
+    }
+    public void InventoryDisable()
+    {
+        inventoryImage.sprite = null;
+        inventoryItemNum.gameObject.SetActive(false);
     }
 }

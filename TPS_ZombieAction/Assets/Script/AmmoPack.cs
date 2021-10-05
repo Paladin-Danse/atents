@@ -22,9 +22,4 @@ public class AmmoPack : CItem
     {
         transform.position = pos;
     }
-
-    public override CItem NewItem()
-    {
-        return Instantiate(this);
-    }
 }

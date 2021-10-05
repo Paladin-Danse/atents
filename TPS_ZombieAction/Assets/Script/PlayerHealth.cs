@@ -14,7 +14,8 @@ public class PlayerHealth : LivingEntity
     private PlayerMovement playerMovement;
     private PlayerShooter playerShooter;
 
-    private float f_HealthPoint = 100f;
+    //테스트를 위해 가져오는 입력키값 실제로는 필요없음.
+    private PlayerInput playerInput;
 
     private void Awake()
     {
@@ -22,7 +23,20 @@ public class PlayerHealth : LivingEntity
         playerAudioPlayer = GetComponent<AudioSource>();
         playerMovement = GetComponent<PlayerMovement>();
         playerShooter = GetComponent<PlayerShooter>();
+
+        //테스트를 위해 가져오는 입력키값 실제로는 필요없음.
+        playerInput = GetComponent<PlayerInput>();
     }
+
+    private void Update()
+    {
+        //테스트를 위한 데미지입기
+        if(playerInput.test)
+        {
+            OnDamage(20f, Vector3.zero, Vector3.zero);
+        }
+    }
+
     protected override void OnEnable()
     {
         base.OnEnable();

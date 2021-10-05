@@ -21,7 +21,7 @@ public class PlayerItemLooting : MonoBehaviour
         CItem item = other.GetComponent<CItem>();//플레이어와 부딪힌 아이템을 받아옴.
         if (item != null)
         {
-            if (playerInput.playerInteraction)//플레이어가 상호작용키(F키)를 누른경우
+            if (playerInput.playerInteraction)//플레이어가 상호작용키(E키)를 누른경우
             {
                 item.Loot(gameObject);//아이템의 Loot함수를 실행
 

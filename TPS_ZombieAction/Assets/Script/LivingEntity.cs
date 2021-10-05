@@ -18,9 +18,10 @@ public class LivingEntity : MonoBehaviour, I_Damageable
 
     public virtual void RestoreHealth(float newHealth)
     {
-        if (b_Dead) return;
+        if (b_Dead || f_Health >= f_StartingHealth) return;
 
         f_Health += newHealth;
+        if (f_Health > f_StartingHealth) f_Health = f_Health;
     }
 
     public virtual void Die()

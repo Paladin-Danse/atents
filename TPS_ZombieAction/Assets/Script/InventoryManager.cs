@@ -19,8 +19,10 @@ public class InventoryManager : MonoBehaviour
 
     //[SerializeField] private Image InventoryPanel;//인벤토리 아이템 이미지
     private List<CItem> InventoryItemList = new List<CItem>();//인벤토리
-    private CItem SelectItem;//현재 선택중인 아이템
-    private PlayerInput playerInput;
+    private CItem selectItem;//현재 선택중인 아이템
+    private int i_SelectNum = 0;//현재 선택된 아이템의 List방 번호
+    private int i_SelectNum_Max = 3;//인벤토리 최대 방 갯수
+    private PlayerInput playerInput;//인벤토리와 상호작용하는 선택키(F)와 사용키(G)
 
     private void Awake()
     {
@@ -28,18 +30,36 @@ public class InventoryManager : MonoBehaviour
     }
     private void Update()
     {
-        if(playerInput.itemUse)
+        if (playerInput.itemUse)//사용키(G키)
         {
-            UseItem(SelectItem);
+            if (selectItem)//선택된 아이템이 Null이 아니라면
+            {
+                UseItem();
+            }
+        }
+        if (playerInput.itemSelect)//선택키(F키)
+        {
+            //아이템 선택키(F키)를 눌러도 인벤토리에 아무것도 없다면 함수를 실행시키지 않음
+            if (InventoryItemList.Count <= 0)
+            {
+                return;
+            }
+            ChoiceItem();
         }
     }
 
+    //아이템이 들어왔을때 부르는 함수
     public void LootItem(CItem m_item)
     {
         CItem item = InventoryItemList.Find(i => i == m_item);
         //인벤토리에 없는 아이템이라면
         if (item == null)
         {
+            //인벤토리가 꽉 찬 경우
+            if(InventoryItemList.Count >= i_SelectNum_Max)
+            {
+                return;
+            }
             m_item.NumUp();
             InventoryItemList.Add(m_item);//새로운 아이템을 추가한다.
         }
@@ -48,12 +68,33 @@ public class InventoryManager : MonoBehaviour
             item.NumUp();
         }
     }
-    public void UseItem(CItem m_item)
+    //인벤토리 내 아이템을 사용
+    public void UseItem()
     {
-        CItem item = InventoryItemList.Find(i => i == m_item);
-        if (item == null) return;
+        //CItem item = InventoryItemList.Find(i => i == selectItem);
+        if (selectItem == null) return ;
 
-        item.Use();
+        selectItem.Use();
 
+        if (selectItem.Num <= 0)
+        {
+            InventoryItemList.Remove(selectItem);
+            selectItem = null;
+            UIManager.instance.InventoryDisable();
+        }
+    }
+
+    //아이템을 선택하는 함수. 아이템 선택 키(F키)를 누를 경우 다음 아이템을 selectItem에 저장한다.
+    public void ChoiceItem()
+    {
+        if (InventoryItemList.Count != 0)
+        {
+            //i_SelectNum++;//다음 아이템을 선택
+            i_SelectNum = (int)Mathf.Repeat(++i_SelectNum, i_SelectNum_Max);
+            //if (i_SelectNum >= InventoryItemList.Count) i_SelectNum = 0;//선택한 아이템이 인벤토리의 List갯수를 넘어가면 0으로 초기화
+            selectItem = InventoryItemList[i_SelectNum];
+        }
+
+        UIManager.instance.UpdateInventory(selectItem.InventoryImage, selectItem.Num);
     }
 }
