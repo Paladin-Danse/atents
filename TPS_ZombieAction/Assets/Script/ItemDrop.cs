@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ItemDrop : MonoBehaviour
 {
+    /*
     private static ItemDrop m_instance;
     public static ItemDrop instance
     {
@@ -29,20 +30,19 @@ public class ItemDrop : MonoBehaviour
 
             dropItemList.Add(dropItem[i], itemList);//전체 아이템리스트<아이템 종류, 종류별 아이템리스트>에 보관
 
-            MakeItem(dropItem[i]);
+            //MakeItem(dropItem[i]);
 
-            /*
             var item = Instantiate(dropItem[i]);//아이템 목록(dropItem)에 있는 아이템을 종류별로 하나씩 생성
             if (item)
             {
                 item.gameObject.SetActive(false);//시작할때 생성한 모든 아이템은 비활성화 해놓는다.
                 itemList.Add(item);//생성한 아이템을 임시리스트에 넣고
             }
-            */
         }
     }
 
     //Awake함수에서 중복되는 부분을 MakeItem함수로 대체할것!
+    
     public CItem MakeItem(CItem m_item)
     {
         var item = Instantiate(m_item);//아이템을 생성
@@ -50,7 +50,7 @@ public class ItemDrop : MonoBehaviour
         item.gameObject.SetActive(false);//방금 생성된 아이템은 비활성화
         return item;
     }
-
+    
     public void DropItem(Vector3 pos)
     {
         //랜덤으로 0에서 1까지의 소수를 가져옴
@@ -75,4 +75,5 @@ public class ItemDrop : MonoBehaviour
             item.transform.position = pos;//아이템 위치를 드랍되어야 할 위치로 이동
         }
     }
+    */
 }

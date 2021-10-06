@@ -44,7 +44,7 @@ public class Enemy : LivingEntity
     {
         pathFinder.speed = 2.0f;
         //죽을 때 아이템을 드랍하는 함수를 OnDeath에 삽입
-        OnDeath += () => ItemDrop.instance.DropItem(transform.position);
+        //OnDeath += () => ItemDrop.instance.DropItem(transform.position);
     }
 
     private void Start()

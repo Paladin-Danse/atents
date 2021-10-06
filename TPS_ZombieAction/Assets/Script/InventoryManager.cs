@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class InventoryManager : MonoBehaviour
 {
     private static InventoryManager m_instance;
@@ -15,10 +16,83 @@ public class InventoryManager : MonoBehaviour
             }
             return m_instance;
         }
+
     }
 
+    [SerializeField] ItemData[] itemDatas;
+    private List<UseItem> InventoryItemList = new List<UseItem>();//인벤토리
+    PlayerShooter playerShooter;
+
+    private void Start()
+    {
+        playerShooter = GameManager.instance.playerShooter;
+        for(int i = 0; itemDatas.Length > i; i++)
+        {
+            UseItem data = new UseItem();
+            data.data.iconName = itemDatas[i].Data.iconName;
+            data.data.type = itemDatas[i].Data.type;
+            data.data.value = itemDatas[i].Data.value;
+            data.data.quantity = 0;
+
+            data.UseEvent += (target) => { InventoryItemUse(target, data.data.type); };
+
+            InventoryItemList.Add(data);
+        }
+    }
+
+    public void Loot(Type type)
+    {
+        switch(type)
+        {
+            case Type.AMMO :
+                InventoryItemList.Find(i => i.data.type == Type.AMMO) ;
+                break;
+            case Type.POTION:
+                InventoryItemList.Find(i => i.data.type == Type.POTION).data.quantity += 1;
+                break;
+            case Type.GRANADE:
+                InventoryItemList.Find(i => i.data.type == Type.GRANADE).data.quantity += 1;
+                break;
+            case Type.FLASHBANG:
+                InventoryItemList.Find(i => i.data.type == Type.FLASHBANG).data.quantity += 1;
+                break;
+            case Type.INCENDIARY_BOMB:
+                InventoryItemList.Find(i => i.data.type == Type.INCENDIARY_BOMB).data.quantity += 1;
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void InventoryItemUse(GameObject target, Type type)
+    {
+        switch (type)
+        {
+            case Type.AMMO:
+                int value = InventoryItemList.Find(i => i.data.type == Type.AMMO).data.value;
+                playerShooter.GetAmmo(value);
+                break;
+            case Type.POTION:
+                InventoryItemList.Find(i => i.data.type == Type.POTION).data.quantity -= 1;
+                
+                break;
+            case Type.GRANADE:
+                InventoryItemList.Find(i => i.data.type == Type.GRANADE).data.quantity += 1;
+                break;
+            case Type.FLASHBANG:
+                InventoryItemList.Find(i => i.data.type == Type.FLASHBANG).data.quantity += 1;
+                break;
+            case Type.INCENDIARY_BOMB:
+                InventoryItemList.Find(i => i.data.type == Type.INCENDIARY_BOMB).data.quantity += 1;
+                break;
+            default:
+                break;
+        }
+    }
+
+    /*
     //[SerializeField] private Image InventoryPanel;//인벤토리 아이템 이미지
-    private List<CItem> InventoryItemList = new List<CItem>();//인벤토리
+    
     private CItem selectItem;//현재 선택중인 아이템
     private int i_SelectNum = 0;//현재 선택된 아이템의 List방 번호
     private int i_SelectNum_Max = 3;//인벤토리 최대 방 갯수
@@ -97,4 +171,5 @@ public class InventoryManager : MonoBehaviour
 
         UIManager.instance.UpdateInventory(selectItem.InventoryImage, selectItem.Num);
     }
+    */
 }

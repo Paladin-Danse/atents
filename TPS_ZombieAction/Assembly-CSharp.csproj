@@ -72,6 +72,9 @@
     <Compile Include="Assets\Script\LivingEntity.cs" />
     <Compile Include="Assets\Script\Enemy.cs" />
     <Compile Include="Assets\Script\MedKit.cs" />
+    <Compile Include="Assets\Script\ItemData.cs" />
+    <Compile Include="Assets\Script\GetItem.cs" />
+    <Compile Include="Assets\Script\GameManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
