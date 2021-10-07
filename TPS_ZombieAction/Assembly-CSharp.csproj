@@ -57,9 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Script\UIManager.cs" />
-    <Compile Include="Assets\Script\AmmoPack.cs" />
     <Compile Include="Assets\Script\Gun.cs" />
-    <Compile Include="Assets\Script\ItemDrop.cs" />
     <Compile Include="Assets\Script\EnemySpawner.cs" />
     <Compile Include="Assets\Script\InventoryManager.cs" />
     <Compile Include="Assets\Script\PlayerMovement.cs" />
@@ -67,13 +65,12 @@
     <Compile Include="Assets\Script\PlayerHealth.cs" />
     <Compile Include="Assets\Script\PlayerItemLooting.cs" />
     <Compile Include="Assets\Script\PlayerInput.cs" />
-    <Compile Include="Assets\Script\Damaed.cs" />
+    <Compile Include="Assets\Script\ItemData.cs" />
+    <Compile Include="Assets\Script\Damaged.cs" />
+    <Compile Include="Assets\Script\GetItem.cs" />
     <Compile Include="Assets\Script\PlayerShooter.cs" />
     <Compile Include="Assets\Script\LivingEntity.cs" />
     <Compile Include="Assets\Script\Enemy.cs" />
-    <Compile Include="Assets\Script\MedKit.cs" />
-    <Compile Include="Assets\Script\ItemData.cs" />
-    <Compile Include="Assets\Script\GetItem.cs" />
     <Compile Include="Assets\Script\GameManager.cs" />
   </ItemGroup>
   <ItemGroup>

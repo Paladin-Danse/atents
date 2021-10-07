@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4533837315676430}
   - component: {fileID: 135053304893941300}
   - component: {fileID: 108646884597796964}
+  - component: {fileID: -3912704517373919362}
   m_Layer: 0
   m_Name: AmmoPack
   m_TagString: Item
@@ -108,6 +109,19 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &-3912704517373919362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1045172808418600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7122da8b7f1e8614f8e399ade5871fa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 2
 --- !u!1 &1496639653374222
 GameObject:
   m_ObjectHideFlags: 0

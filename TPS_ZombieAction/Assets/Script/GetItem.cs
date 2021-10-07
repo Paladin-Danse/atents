@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class GetItem : MonoBehaviour
 {
-    [SerializeField] Type type;
+    public Type type;
     public void Looting()
     {
         InventoryManager.instance.Loot(type);
+        gameObject.SetActive(false);
     }
 }

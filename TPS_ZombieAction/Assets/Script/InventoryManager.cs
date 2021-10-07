@@ -16,16 +16,17 @@ public class InventoryManager : MonoBehaviour
             }
             return m_instance;
         }
-
     }
 
     [SerializeField] ItemData[] itemDatas;
     private List<UseItem> InventoryItemList = new List<UseItem>();//인벤토리
     PlayerShooter playerShooter;
+    PlayerHealth playerHealth;
 
     private void Start()
     {
         playerShooter = GameManager.instance.playerShooter;
+        playerHealth = GameManager.instance.playerHealth;
         for(int i = 0; itemDatas.Length > i; i++)
         {
             UseItem data = new UseItem();
@@ -45,7 +46,7 @@ public class InventoryManager : MonoBehaviour
         switch(type)
         {
             case Type.AMMO :
-                InventoryItemList.Find(i => i.data.type == Type.AMMO) ;
+                InventoryItemUse(playerShooter.gameObject, type);
                 break;
             case Type.POTION:
                 InventoryItemList.Find(i => i.data.type == Type.POTION).data.quantity += 1;
@@ -66,16 +67,20 @@ public class InventoryManager : MonoBehaviour
 
     public void InventoryItemUse(GameObject target, Type type)
     {
+        int value;
+
         switch (type)
         {
-            case Type.AMMO:
-                int value = InventoryItemList.Find(i => i.data.type == Type.AMMO).data.value;
+            case Type.AMMO://탄약
+                value = InventoryItemList.Find(i => i.data.type == Type.AMMO).data.value;
                 playerShooter.GetAmmo(value);
                 break;
-            case Type.POTION:
+            case Type.POTION://회복아이템
                 InventoryItemList.Find(i => i.data.type == Type.POTION).data.quantity -= 1;
-                
+                value = InventoryItemList.Find(i => i.data.type == Type.POTION).data.value;
+                playerHealth.RestoreHealth(value);
                 break;
+                //아래로는 아직 미구현
             case Type.GRANADE:
                 InventoryItemList.Find(i => i.data.type == Type.GRANADE).data.quantity += 1;
                 break;
