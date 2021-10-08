@@ -58,9 +58,15 @@ public class UIManager : MonoBehaviour
     {
         playerAmmoText.text = string.Format("{0} / {1}", magAmmo, remainAmmo);
     }
-    public void UpdateInventory(Sprite imgSprite, int newNum)
+    public void UpdateInventory(string spriteName, int newNum)
     {
-        inventoryImage.sprite = imgSprite;
+        inventoryImage.sprite = Resources.Load<Sprite>(string.Format("Sprites/{0}", spriteName)); ;
+        if (inventoryImage.sprite == null)
+        {
+            Debug.Log(string.Format("Sprites/{0}", spriteName));
+            return;
+        }
+
         if(!inventoryItemNum.gameObject.activeSelf)
             inventoryItemNum.gameObject.SetActive(true);
         inventoryItemNum.text = newNum.ToString();

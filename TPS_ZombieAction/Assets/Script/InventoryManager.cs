@@ -18,15 +18,21 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    [SerializeField] ItemData[] itemDatas;
+    [SerializeField] private ItemData[] itemDatas;
     private List<UseItem> InventoryItemList = new List<UseItem>();//인벤토리
-    PlayerShooter playerShooter;
-    PlayerHealth playerHealth;
+    private UseItem selectItem;
+    private int i_SelectNum = 0;
+    private int i_SelectNum_Max;
+    private PlayerShooter playerShooter;
+    private PlayerHealth playerHealth;
+    private PlayerInput playerInput;
 
     private void Start()
     {
         playerShooter = GameManager.instance.playerShooter;
         playerHealth = GameManager.instance.playerHealth;
+        playerInput = GameManager.instance.playerInput;
+
         for(int i = 0; itemDatas.Length > i; i++)
         {
             UseItem data = new UseItem();
@@ -35,9 +41,29 @@ public class InventoryManager : MonoBehaviour
             data.data.value = itemDatas[i].Data.value;
             data.data.quantity = 0;
 
-            data.UseEvent += (target) => { InventoryItemUse(target, data.data.type); };
+            data.UseEvent += () => { InventoryItemUse(data.data.type); };
 
             InventoryItemList.Add(data);
+        }
+        i_SelectNum_Max = InventoryItemList.Count;
+    }
+    private void Update()
+    {
+        if (playerInput.itemUse)//사용키(G키)
+        {
+            if (selectItem != null)//선택된 아이템이 Null이 아니라면
+            {
+                selectItem.Use();
+            }
+        }
+        if (playerInput.itemSelect)//선택키(F키)
+        {
+            //아이템 선택키(F키)를 눌러도 인벤토리에 아무것도 없다면 함수를 실행시키지 않음
+            if (InventoryItemList.Count <= 0)
+            {
+                return;
+            }
+            ChoiceItem();
         }
     }
 
@@ -46,10 +72,18 @@ public class InventoryManager : MonoBehaviour
         switch(type)
         {
             case Type.AMMO :
-                InventoryItemUse(playerShooter.gameObject, type);
+                InventoryItemUse(type);
                 break;
             case Type.POTION:
-                InventoryItemList.Find(i => i.data.type == Type.POTION).data.quantity += 1;
+                InventoryItemList.Find(i => i.data.type == Type.POTION).data.quantity += 1;//개수증가
+                if(selectItem == null)
+                {
+                    selectItem = InventoryItemList.Find(i => i.data.type == Type.POTION);//먹은 아이템을 장비
+                }
+                if (selectItem.data.type == Type.POTION)
+                {
+                    UIManager.instance.UpdateInventory(selectItem.data.iconName, selectItem.data.quantity);
+                }
                 break;
             case Type.GRANADE:
                 InventoryItemList.Find(i => i.data.type == Type.GRANADE).data.quantity += 1;
@@ -59,39 +93,60 @@ public class InventoryManager : MonoBehaviour
                 break;
             case Type.INCENDIARY_BOMB:
                 InventoryItemList.Find(i => i.data.type == Type.INCENDIARY_BOMB).data.quantity += 1;
-                break;
-            default:
                 break;
         }
     }
 
-    public void InventoryItemUse(GameObject target, Type type)
+    public void InventoryItemUse(Type type)
     {
-        int value;
+        UseItem Item;
 
         switch (type)
         {
             case Type.AMMO://탄약
-                value = InventoryItemList.Find(i => i.data.type == Type.AMMO).data.value;
-                playerShooter.GetAmmo(value);
+                Item = InventoryItemList.Find(i => i.data.type == Type.AMMO);
+                if (Item != null)
+                {
+                    playerShooter.GetAmmo(Item.data.value);
+                }
                 break;
             case Type.POTION://회복아이템
-                InventoryItemList.Find(i => i.data.type == Type.POTION).data.quantity -= 1;
-                value = InventoryItemList.Find(i => i.data.type == Type.POTION).data.value;
-                playerHealth.RestoreHealth(value);
+                Item = InventoryItemList.Find(i => i.data.type == Type.POTION);
+                
+                //아이템 사용
+                if (Item != null && Item.data.quantity > 0)//아이템 갯수가 0보다 많아야 사용할 수 있다.
+                {
+                    Item.data.quantity--;
+                    playerHealth.RestoreHealth(Item.data.value);
+                    UIManager.instance.UpdateInventory(selectItem.data.iconName, selectItem.data.quantity);
+                }
                 break;
                 //아래로는 아직 미구현
-            case Type.GRANADE:
-                InventoryItemList.Find(i => i.data.type == Type.GRANADE).data.quantity += 1;
+            case Type.GRANADE:                
+                InventoryItemList.Find(i => i.data.type == Type.GRANADE).data.quantity -= 1;
                 break;
             case Type.FLASHBANG:
-                InventoryItemList.Find(i => i.data.type == Type.FLASHBANG).data.quantity += 1;
+                InventoryItemList.Find(i => i.data.type == Type.FLASHBANG).data.quantity -= 1;
                 break;
             case Type.INCENDIARY_BOMB:
-                InventoryItemList.Find(i => i.data.type == Type.INCENDIARY_BOMB).data.quantity += 1;
+                InventoryItemList.Find(i => i.data.type == Type.INCENDIARY_BOMB).data.quantity -= 1;
                 break;
-            default:
-                break;
+        }
+    }
+
+    public void ChoiceItem()
+    {
+        if (InventoryItemList.Count != 0)
+        {
+            i_SelectNum = (int)Mathf.Repeat(++i_SelectNum, i_SelectNum_Max);//선택한 아이템이 인벤토리의 List갯수를 넘어가면 0으로 초기화 아니면 1씩 증가
+            if (InventoryItemList[i_SelectNum].data.type == Type.AMMO)//총알은 인벤토리에 들어가지 않는 관계로 오류를 막기위해 총알이 들어오면 다음 아이템으로 넘긴다.
+                i_SelectNum = (int)Mathf.Repeat(++i_SelectNum, i_SelectNum_Max);
+            
+            selectItem = InventoryItemList[i_SelectNum];
+        }
+        if (selectItem != null)
+        {
+            UIManager.instance.UpdateInventory(selectItem.data.iconName, selectItem.data.quantity);
         }
     }
 

@@ -59,7 +59,6 @@ public class GameManager : MonoBehaviour
         if (Percentage < f_DropPercent)
         {
             int itemNum = Random.Range(0, dropItem.Length);//랜덤한 아이템 종류를 선택
-            Debug.Log(itemNum);
 
             var item = dropItemList.Find(i =>
             {

@@ -42,9 +42,9 @@ public struct Item// : MonoBehaviour
 public class UseItem
 {
     public Item data;
-    public event Action<GameObject> UseEvent;
-    public void Use(GameObject target)
+    public event Action UseEvent;
+    public void Use()
     {
-        if(null != UseEvent) UseEvent(target);
+        if(null != UseEvent) UseEvent();
     }
 }

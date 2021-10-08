@@ -2055,7 +2055,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropItem:
-  - {fileID: -3912704517373919362, guid: c90bf41c504e541b98989b07b736097c, type: 3}
   - {fileID: -2134814299029635001, guid: b4e7df10a580e4a1a88a79995b741816, type: 3}
   f_DropPercent: 1
 --- !u!4 &1573188616
