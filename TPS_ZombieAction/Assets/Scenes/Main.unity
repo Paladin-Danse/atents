@@ -350,8 +350,9 @@ Transform:
   m_Children:
   - {fileID: 731215204}
   - {fileID: 1427233741}
+  - {fileID: 963194228}
   m_Father: {fileID: 1982577555}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &419283862
 GameObject:
@@ -1382,12 +1383,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 1.5, z: -1.5}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1, y: 0.5, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1982577555}
-  m_RootOrder: 1
+  m_Father: {fileID: 354996861}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
@@ -2056,6 +2057,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropItem:
   - {fileID: -2134814299029635001, guid: b4e7df10a580e4a1a88a79995b741816, type: 3}
+  - {fileID: -3912704517373919362, guid: c90bf41c504e541b98989b07b736097c, type: 3}
   f_DropPercent: 1
 --- !u!4 &1573188616
 Transform:
@@ -2412,6 +2414,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   f_moveSpeed: 1.5
   f_rotateSpeed: 1
+  gunPivot: {fileID: 354996860}
 --- !u!114 &1982577552
 MonoBehaviour:
   m_ObjectHideFlags: 0

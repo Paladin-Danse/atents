@@ -69,67 +69,97 @@ public class InventoryManager : MonoBehaviour
 
     public void Loot(Type type)
     {
+        UseItem item;
+
         switch(type)
         {
             case Type.AMMO :
                 InventoryItemUse(type);
                 break;
             case Type.POTION:
-                InventoryItemList.Find(i => i.data.type == Type.POTION).data.quantity += 1;//개수증가
-                if(selectItem == null)
+                item = InventoryItemList.Find(i => i.data.type == Type.POTION);
+                if (item != null)
                 {
-                    selectItem = InventoryItemList.Find(i => i.data.type == Type.POTION);//먹은 아이템을 장비
-                }
-                if (selectItem.data.type == Type.POTION)
-                {
-                    UIManager.instance.UpdateInventory(selectItem.data.iconName, selectItem.data.quantity);
+                    item.data.quantity += 1;//개수증가
+                    if (selectItem == null)
+                    {
+                        selectItem = InventoryItemList.Find(i => i.data.type == Type.POTION);//먹은 아이템을 장비
+                    }
+                    if (selectItem.data.type == Type.POTION)
+                    {
+                        UIManager.instance.UpdateInventory(selectItem.data.iconName, selectItem.data.quantity);
+                    }
                 }
                 break;
             case Type.GRANADE:
-                InventoryItemList.Find(i => i.data.type == Type.GRANADE).data.quantity += 1;
+                item = InventoryItemList.Find(i => i.data.type == Type.GRANADE);
+                if(item != null)
+                {
+                    item.data.quantity++;
+                }
                 break;
             case Type.FLASHBANG:
-                InventoryItemList.Find(i => i.data.type == Type.FLASHBANG).data.quantity += 1;
+                item = InventoryItemList.Find(i => i.data.type == Type.FLASHBANG);
+                if (item != null)
+                {
+                    item.data.quantity++;
+                }
                 break;
             case Type.INCENDIARY_BOMB:
-                InventoryItemList.Find(i => i.data.type == Type.INCENDIARY_BOMB).data.quantity += 1;
+                item = InventoryItemList.Find(i => i.data.type == Type.INCENDIARY_BOMB);
+                if (item != null)
+                {
+                    item.data.quantity++;
+                }
                 break;
         }
     }
 
     public void InventoryItemUse(Type type)
     {
-        UseItem Item;
+        UseItem item;
 
         switch (type)
         {
             case Type.AMMO://탄약
-                Item = InventoryItemList.Find(i => i.data.type == Type.AMMO);
-                if (Item != null)
+                item = InventoryItemList.Find(i => i.data.type == Type.AMMO);
+                if (item != null)
                 {
-                    playerShooter.GetAmmo(Item.data.value);
+                    playerShooter.GetAmmo(item.data.value);
                 }
                 break;
             case Type.POTION://회복아이템
-                Item = InventoryItemList.Find(i => i.data.type == Type.POTION);
+                item = InventoryItemList.Find(i => i.data.type == Type.POTION);
                 
                 //아이템 사용
-                if (Item != null && Item.data.quantity > 0)//아이템 갯수가 0보다 많아야 사용할 수 있다.
+                if (item != null && item.data.quantity > 0)//아이템 갯수가 0보다 많아야 사용할 수 있다.
                 {
-                    Item.data.quantity--;
-                    playerHealth.RestoreHealth(Item.data.value);
+                    item.data.quantity--;
+                    playerHealth.RestoreHealth(item.data.value);
                     UIManager.instance.UpdateInventory(selectItem.data.iconName, selectItem.data.quantity);
                 }
                 break;
                 //아래로는 아직 미구현
-            case Type.GRANADE:                
-                InventoryItemList.Find(i => i.data.type == Type.GRANADE).data.quantity -= 1;
+            case Type.GRANADE:
+                item = InventoryItemList.Find(i => i.data.type == Type.GRANADE);
+                if (item != null)
+                {
+                    item.data.quantity--;
+                }
                 break;
             case Type.FLASHBANG:
-                InventoryItemList.Find(i => i.data.type == Type.FLASHBANG).data.quantity -= 1;
+                item = InventoryItemList.Find(i => i.data.type == Type.FLASHBANG);
+                if (item != null)
+                {
+                    item.data.quantity--;
+                }
                 break;
             case Type.INCENDIARY_BOMB:
-                InventoryItemList.Find(i => i.data.type == Type.INCENDIARY_BOMB).data.quantity -= 1;
+                item = InventoryItemList.Find(i => i.data.type == Type.INCENDIARY_BOMB);
+                if (item != null)
+                {
+                    item.data.quantity--;
+                }
                 break;
         }
     }
