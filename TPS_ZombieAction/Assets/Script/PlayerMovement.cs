@@ -2,19 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum MOVESTATE
+{
+    NONE = 0,
+    WALKMOVE,
+    AIMMOVE,
+    RUNMOVE
+}
+
 public class PlayerMovement : MonoBehaviour
 {
     private PlayerInput playerInput;
     private Rigidbody playerRigid;
     private Animator playerAnimator;
-    [SerializeField] private float f_moveSpeed = 1.0f;
+    private float f_moveSpeed;
+    [SerializeField] private float f_walkSpeed = 1.0f;
+    [SerializeField] private float f_aimMoveSpeed = 0.5f;
+    [SerializeField] private float f_runSpeed = 1.5f;
     [SerializeField] private float f_rotateSpeed = 1.0f;
     [SerializeField] private GameObject gunPivot;
+    [SerializeField] private float f_highCamRotation = -60f;//카메라 윗방향 제한
+    [SerializeField] private float f_lowCamRotation = 60f;//카메라 아랫방향 제한
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
         playerRigid = GetComponent<Rigidbody>();
         playerAnimator = GetComponent<Animator>();
+        f_moveSpeed = f_walkSpeed;
     }
 
     private void FixedUpdate()
@@ -49,13 +63,23 @@ public class PlayerMovement : MonoBehaviour
         }
         if(playerInput.rotateY != 0)
         {
-            float mouseMove = playerInput.rotateY * f_rotateSpeed;
-
+            float mouseMove = -(playerInput.rotateY) * f_rotateSpeed;
+        
             var rot = gunPivot.transform.rotation;
-            rot *= Quaternion.Euler(-mouseMove, 0f, 0f);
-            //제한범위가 0~60으로 걸림. 뭐가 문제인지 파악이 필요
-            rot.eulerAngles = new Vector3(Mathf.Clamp(rot.eulerAngles.x, -60f, 60f), rot.eulerAngles.y, rot.eulerAngles.z);
+            rot *= Quaternion.Euler(mouseMove, 0f, 0f);
+            
+            //마우스가 한없이 위로 올라가면 총이 반대방향을 향하거나 한바퀴 돌 수 있기때문에 한계를 두고 그 이상은 나가지 못하게 제한을 둔다.
+            float eulerAnglesX = ClampAngle(rot.eulerAngles.x, f_highCamRotation, f_lowCamRotation);
+            rot = Quaternion.Euler(eulerAnglesX, rot.eulerAngles.y, rot.eulerAngles.z);
             gunPivot.transform.rotation = rot;
         }
+    }
+
+    //eulerAnles가 360을 넘어가는 수치를 0으로 되돌리고 0아래로 넘어가는 수치를 360으로 되돌리는 문제가 있기에 일반적인 Mathf.Clamp를 사용할 수가 없어 해당 문제를 해결할 새 함수를 만듦.
+    private float ClampAngle(float angle, float from, float to)
+    {
+        if (angle < 0f) angle += 360;
+        if (angle > 180f) return Mathf.Max(angle, 360 + from);
+        return Mathf.Min(angle, to);
     }
 }

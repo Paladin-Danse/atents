@@ -2412,9 +2412,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afc22fe62e24de242ad7ee9e438038df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  f_moveSpeed: 1.5
+  f_walkSpeed: 1
+  f_aimMoveSpeed: 0.5
+  f_runSpeed: 1.5
   f_rotateSpeed: 1
   gunPivot: {fileID: 354996860}
+  f_highCamRotation: -60
+  f_lowCamRotation: 60
 --- !u!114 &1982577552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2594,6 +2598,14 @@ PrefabInstance:
     - target: {fileID: 4082009380262835216, guid: 63c75ed2b55b4b94bba9e43e08953be5, type: 3}
       propertyPath: m_Name
       value: Zombie
+      objectReference: {fileID: 0}
+    - target: {fileID: 4082009380262835216, guid: 63c75ed2b55b4b94bba9e43e08953be5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4082009380262867730, guid: 63c75ed2b55b4b94bba9e43e08953be5, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4082009380262867753, guid: 63c75ed2b55b4b94bba9e43e08953be5, type: 3}
       propertyPath: m_Enabled

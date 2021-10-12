@@ -15,6 +15,7 @@ public class Enemy : LivingEntity
     private Animator enemyAnimator;
     private AudioSource enemyAudioPlayer;
     private Renderer enemyRenderer;
+    private Rigidbody rigid;
 
     [SerializeField] private float f_Damage = 20f;
     [SerializeField] private float f_timeBetAttck = 0.5f;
@@ -38,11 +39,13 @@ public class Enemy : LivingEntity
         enemyAnimator = GetComponent<Animator>();
         enemyAudioPlayer = GetComponent<AudioSource>();
         enemyRenderer = GetComponentInChildren<Renderer>();
+        rigid = GetComponent<Rigidbody>();
     }
 
     public void Setup()
     {
         pathFinder.speed = 2.0f;
+        rigid.isKinematic = false;
         //죽을 때 아이템을 드랍하는 함수를 OnDeath에 삽입
         OnDeath += () => GameManager.instance.DropItem(transform.position);
     }
@@ -118,6 +121,7 @@ public class Enemy : LivingEntity
 
         pathFinder.isStopped = true;
         pathFinder.enabled = false;
+        rigid.isKinematic = true;//죽고나서 다른 물체와 충돌할경우 시체가 움직이는 상황방지
 
         enemyAnimator.SetTrigger("Die");
         enemyAudioPlayer.PlayOneShot(deathSound);
