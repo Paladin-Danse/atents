@@ -44,12 +44,16 @@ public class PlayerMovement : MonoBehaviour
             Vector3 moveDistance = playerInput.verticalMove * transform.forward * f_moveSpeed * Time.deltaTime;
 
             playerRigid.MovePosition(playerRigid.position + moveDistance);
+
+            //playerAnimator.SetFloat("Move", playerInput.verticalMove);
         }
         if (playerInput.horizontalMove != 0)
         {
             Vector3 moveDistance = playerInput.horizontalMove * transform.right * f_moveSpeed * Time.deltaTime;
 
             playerRigid.MovePosition(playerRigid.position + moveDistance);
+
+            //playerAnimator.SetFloat("Move", playerInput.horizontalMove);
         }
         
     }

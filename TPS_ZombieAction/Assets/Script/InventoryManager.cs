@@ -23,7 +23,7 @@ public class InventoryManager : MonoBehaviour
     private UseItem selectItem;
     private int i_SelectNum = 0;
     private int i_SelectNum_Max;
-    private PlayerShooter playerShooter;
+    private PlayerAttacks playerShooter;
     private PlayerHealth playerHealth;
     private PlayerInput playerInput;
 

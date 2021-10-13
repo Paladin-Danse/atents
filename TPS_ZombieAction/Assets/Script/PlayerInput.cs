@@ -27,6 +27,7 @@ public class PlayerInput : MonoBehaviour
     public bool attack_ButtonDown { get; private set; }
     public bool attack_Button { get; private set; }
     public bool aiming { get; private set; }
+    public bool Not_aiming { get; private set; }
     public bool reload { get; private set; }
     public bool mainWeaponSwap { get; private set; }
     public bool subWeaponSwap { get; private set; }
@@ -50,6 +51,7 @@ public class PlayerInput : MonoBehaviour
         attack_ButtonDown = Input.GetButtonDown(attackKeyName);
         attack_Button = Input.GetButton(attackKeyName);
         aiming = Input.GetButton(aimingKeyName);
+        Not_aiming = Input.GetButtonUp(aimingKeyName);
         reload = Input.GetButtonDown(reloadKeyName);
         mainWeaponSwap = Input.GetButtonDown(mainWeaponSwapKeyName);
         subWeaponSwap = Input.GetButtonDown(subWeaponSwapKeyName);

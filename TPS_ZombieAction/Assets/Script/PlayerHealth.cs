@@ -12,7 +12,7 @@ public class PlayerHealth : LivingEntity
     private AudioSource playerAudioPlayer;
 
     private PlayerMovement playerMovement;
-    private PlayerShooter playerShooter;
+    private PlayerAttacks playerShooter;
 
     //테스트를 위해 가져오는 입력키값 실제로는 필요없음.
     private PlayerInput playerInput;
