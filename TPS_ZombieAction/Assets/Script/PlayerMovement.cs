@@ -45,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
 
             playerRigid.MovePosition(playerRigid.position + moveDistance);
 
-            //playerAnimator.SetFloat("Move", playerInput.verticalMove);
+            playerAnimator.SetFloat("Move", playerInput.verticalMove);
         }
         if (playerInput.horizontalMove != 0)
         {
@@ -53,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
 
             playerRigid.MovePosition(playerRigid.position + moveDistance);
 
-            //playerAnimator.SetFloat("Move", playerInput.horizontalMove);
+            playerAnimator.SetFloat("Move", playerInput.horizontalMove);
         }
         
     }

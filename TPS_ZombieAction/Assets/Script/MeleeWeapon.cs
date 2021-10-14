@@ -9,26 +9,36 @@ public class MeleeWeapon : MonoBehaviour
     public Transform LeftHandle { get { return leftHandle; } }//왼손위치 호출
     [SerializeField] private Transform rightHandle;//실제 오른손위치값
     public Transform RightHandle { get { return rightHandle; } }//오른손위치 호출
-    [SerializeField] private Collider AttackingArea;
 
     [SerializeField] private float f_AttackTime;
 
     private void Awake()
     {
-        AttackingArea.enabled = false;
+        gameObject.SetActive(false);
     }
 
     public void Attack()
     {
+        gameObject.SetActive(true);
         StartCoroutine(AttackRoutin());
     }
 
-    IEnumerator AttackRoutin()
+    private IEnumerator AttackRoutin()
     {
-        AttackingArea.enabled = true;
-
         yield return new WaitForSeconds(f_AttackTime);
 
-        AttackingArea.enabled = false;
+        gameObject.SetActive(false);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag.Equals("Enemy"))
+        {
+            LivingEntity entity = other.gameObject.GetComponent<LivingEntity>();
+            if (entity)
+            {
+                entity.OnDamage(f_Damage, other.transform.position, other.transform.forward);
+            }
+        }
     }
 }

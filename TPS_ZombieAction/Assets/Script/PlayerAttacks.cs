@@ -13,9 +13,11 @@ public class PlayerAttacks : MonoBehaviour
 {
     [SerializeField] private Gun mainWeapon;
     [SerializeField] private Gun subWeapon;
+    [SerializeField] private MeleeWeapon equipMelee;
     public Gun equipGun { get; private set; }
-    public MeleeWeapon equipMelee {get; private set; }
+    //public MeleeWeapon equipMelee {get; private set; }
     [SerializeField] private Transform gunPivot;
+    [SerializeField] private Transform meleeWeapon;
     [SerializeField] private Transform leftHandMount;
     [SerializeField] private Transform rightHandMount;
 
@@ -105,7 +107,14 @@ public class PlayerAttacks : MonoBehaviour
     {
         if (playerAttackState == ATTACK_STATE.IDLE && playerInput.attack_ButtonDown)
         {
-            //playerAttackState = ATTACK_STATE.MELEE;
+            playerAttackState = ATTACK_STATE.MELEE;
+
+            equipGun.gameObject.SetActive(false);//근접무기를 휘두를 때, 장착하고 있는 총은 잠시 집어넣는다.
+            //현재 애니메이션이 구현되어있지 않아 손의 위치를 바꿔도 이상한 포즈가 될것이라 함.
+            HandPositioning(equipMelee.LeftHandle, equipMelee.RightHandle);
+
+            playerAnimator.SetTrigger("MeleeAttack");
+
             equipMelee.Attack();
         }
     }
@@ -126,15 +135,42 @@ public class PlayerAttacks : MonoBehaviour
 
         if (equipGun)
         {
-            leftHandMount = equipGun.LeftHandle;
-            rightHandMount = equipGun.RightHandle;
+            HandPositioning(equipGun.LeftHandle, equipGun.RightHandle);
         }
+    }
+
+    private void HandPositioning(Transform leftHand, Transform rightHand)
+    {
+        leftHandMount = leftHand;
+        rightHandMount = rightHand;
+    }
+
+    //근접공격 애니메이션이 끝날 때 애니메이션 이벤트로 불러올 함수
+    public void OnIdle()
+    {
+        playerAttackState = ATTACK_STATE.IDLE;
+        equipGun.gameObject.SetActive(true);
+        HandPositioning(equipGun.LeftHandle, equipGun.RightHandle);
     }
 
     private void OnAnimatorIK(int layerIndex)
     {
-        gunPivot.position = playerAnimator.GetIKHintPosition(AvatarIKHint.RightElbow);
+        if (playerAttackState == ATTACK_STATE.IDLE || playerAttackState == ATTACK_STATE.AIMING)
+        {
+            gunPivot.position = playerAnimator.GetIKHintPosition(AvatarIKHint.RightElbow);
 
+            HandAnimatorPosition();
+        }
+        if(playerAttackState == ATTACK_STATE.MELEE)
+        {
+            meleeWeapon.position = playerAnimator.GetIKHintPosition(AvatarIKHint.RightElbow);//gunPivot안에 근접무기를 넣으면 안되는 관계로 근접무기칸 Transform을 임시변수로 사용해봄.
+
+            HandAnimatorPosition();
+        }
+    }
+
+    private void HandAnimatorPosition()//겹치는 구간 함수화
+    {
         playerAnimator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1.0f);
         playerAnimator.SetIKRotationWeight(AvatarIKGoal.LeftHand, 1.0f);
 
