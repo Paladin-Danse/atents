@@ -2,15 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ATTACK_STATE
-{
-    IDLE,
-    MELEE,
-    AIMING
-}
 
 public class PlayerAttacks : MonoBehaviour
 {
+    public enum ATTACK_STATE
+    {
+        IDLE,
+        MELEE,
+        AIMING
+    }
+
     [SerializeField] private Gun mainWeapon;
     [SerializeField] private Gun subWeapon;
     [SerializeField] private MeleeWeapon equipMelee;
@@ -182,6 +183,30 @@ public class PlayerAttacks : MonoBehaviour
 
         playerAnimator.SetIKPosition(AvatarIKGoal.RightHand, rightHandMount.position);
         playerAnimator.SetIKRotation(AvatarIKGoal.RightHand, rightHandMount.rotation);
+    }
+    //플레이어가 적의 처형이 가능한 범위에 들어서는 순간 처형버튼이 활성화
+    private void OnTriggerEnter(Collider other)
+    {
+
+    }
+
+    //플레이어가 적의 처형이 가능한 범위에 들어서 있을경우 처형버튼을 누르면 처형을 실행
+    private void OnTriggerStay(Collider other)
+    {
+        var obj = other.gameObject;
+        if(obj.name.Equals("ExecutionArea"))
+        {
+            if(playerInput.attack_ButtonDown)
+            {
+                obj.GetComponentInParent<Enemy>().Execution();
+            }
+        }
+    }
+
+    //플레이어가 적의 처형이 가능한 범위에서 나가는 순간 처형버튼이 비활성화
+    private void OnTriggerExit(Collider other)
+    {
+
     }
 
     private void OnDisable()

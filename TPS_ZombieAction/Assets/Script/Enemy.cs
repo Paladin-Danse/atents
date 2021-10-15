@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.AI;
 public class Enemy : LivingEntity
 {
+    
+
     [SerializeField] private LayerMask whatIsTarget;
     [SerializeField] private LivingEntity targetEntity;
     private NavMeshAgent pathFinder;
@@ -17,8 +19,16 @@ public class Enemy : LivingEntity
     private Renderer enemyRenderer;
     private Rigidbody rigid;
 
-    [SerializeField] private float f_Damage = 20f;
-    [SerializeField] private float f_timeBetAttck = 0.5f;
+    //제압관련 변수
+    private bool b_Suppressed;
+    [SerializeField] private float f_SupTime = 3f;
+    [SerializeField] private float f_StartingSupHealth = 100f;
+    [SerializeField] private Collider ExecutionArea;
+    private float f_SupHealth;
+
+    //아직 쓰고 있지 않은 변수
+    //[SerializeField] private float f_Damage = 20f;
+    //[SerializeField] private float f_timeBetAttck = 0.5f;
     private float f_LastAttackTime;
 
     private bool hasTarget
@@ -44,8 +54,17 @@ public class Enemy : LivingEntity
 
     public void Setup()
     {
+        //제압관련 초기화
+        f_SupHealth = f_StartingSupHealth;
+        ExecutionArea.gameObject.SetActive(false);
+        b_Suppressed = false;
+
+        //기초스탯 초기화
+        f_StartingHealth = 300f;
         pathFinder.speed = 2.0f;
+
         rigid.isKinematic = false;
+        
         //죽을 때 아이템을 드랍하는 함수를 OnDeath에 삽입
         OnDeath += () => GameManager.instance.DropItem(transform.position);
     }
@@ -63,7 +82,7 @@ public class Enemy : LivingEntity
     private IEnumerator UpdatePath()
     {
         //살아있는 동안
-        while(!b_Dead)
+        while(!b_Dead && !b_Suppressed)
         {
             //타겟을 발견했다면
             if(hasTarget)
@@ -99,14 +118,26 @@ public class Enemy : LivingEntity
     {
         if(!b_Dead)
         {
-            hitEffect.transform.position = hitPoint;
-            hitEffect.transform.rotation = Quaternion.LookRotation(hitNormal);
+            var tr = hitEffect.transform;
+            tr.position = hitPoint;
+            tr.rotation = Quaternion.LookRotation(hitNormal);
             hitEffect.Play();
 
             enemyAudioPlayer.PlayOneShot(hitSound);
         }
-
+        OnSupDamage(damage);
         base.OnDamage(damage, hitPoint, hitNormal);
+    }
+    
+    public void OnSupDamage(float newSupDamage)
+    {
+        f_SupHealth -= newSupDamage;
+        
+        if(f_SupHealth <= 0)
+        {
+            b_Suppressed = true;
+            StartCoroutine(Suppressed());
+        }
     }
 
     public override void Die()
@@ -125,6 +156,31 @@ public class Enemy : LivingEntity
 
         enemyAnimator.SetTrigger("Die");
         enemyAudioPlayer.PlayOneShot(deathSound);
+    }
+
+    private IEnumerator Suppressed()
+    {
+        var exeArea = ExecutionArea.gameObject;
+
+        pathFinder.isStopped = true;
+        exeArea.SetActive(true);
+
+        yield return new WaitForSeconds(f_SupTime);
+
+        //제압된 상태에서 죽을경우 버그가 생기지 않게 코드처리를 막는다.
+        if (!b_Dead)
+        {
+            f_SupHealth = f_StartingSupHealth;
+            exeArea.SetActive(false);
+            b_Suppressed = false;
+            StartCoroutine(UpdatePath());
+        }
+    }
+
+    public void Execution()
+    {
+        Debug.Log("Execution On!");
+        Die();
     }
 
     protected override void OnEnable()

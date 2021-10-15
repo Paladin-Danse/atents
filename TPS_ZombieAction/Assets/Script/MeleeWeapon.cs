@@ -5,6 +5,8 @@ using UnityEngine;
 public class MeleeWeapon : MonoBehaviour
 {
     [SerializeField] private float f_Damage = 20f;
+    //아직 쓰고있지 않은 변수
+    //[SerializeField] private float f_SupDamage = 50f;
     [SerializeField] private Transform leftHandle;//실제 왼손위치값
     public Transform LeftHandle { get { return leftHandle; } }//왼손위치 호출
     [SerializeField] private Transform rightHandle;//실제 오른손위치값
@@ -37,7 +39,7 @@ public class MeleeWeapon : MonoBehaviour
             LivingEntity entity = other.gameObject.GetComponent<LivingEntity>();
             if (entity)
             {
-                entity.OnDamage(f_Damage, other.transform.position, other.transform.forward);
+                entity.OnDamage(f_Damage, other.transform.position, transform.forward);
             }
         }
     }

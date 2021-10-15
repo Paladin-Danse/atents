@@ -33,6 +33,7 @@ public class Gun : MonoBehaviour
     [SerializeField] private AudioClip reloadClip;//장전클립
     
     [SerializeField] private float f_Damage;//총의 대미지
+    [SerializeField] private float f_SupDamage;
     [SerializeField] private float f_FireDistance = 50;//총의 사거리
 
     [SerializeField] private int i_MaxAmmoRemain = 250;//총의 최대탄약
