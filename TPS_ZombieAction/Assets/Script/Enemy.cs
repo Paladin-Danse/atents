@@ -54,17 +54,20 @@ public class Enemy : LivingEntity
 
     public void Setup()
     {
+        pathFinder.enabled = true;
+
         //제압관련 초기화
         f_SupHealth = f_StartingSupHealth;
         ExecutionArea.gameObject.SetActive(false);
         b_Suppressed = false;
+        enemyAnimator.SetBool("Suppressed", false);
 
         //기초스탯 초기화
         f_StartingHealth = 300f;
         pathFinder.speed = 2.0f;
 
         rigid.isKinematic = false;
-        
+
         //죽을 때 아이템을 드랍하는 함수를 OnDeath에 삽입
         OnDeath += () => GameManager.instance.DropItem(transform.position);
     }
@@ -149,21 +152,28 @@ public class Enemy : LivingEntity
         {
             enemyColliders[i].enabled = true;
         }
+        ExecutionArea.gameObject.SetActive(false);
 
+        pathFinder.enabled = true;
         pathFinder.isStopped = true;
         pathFinder.enabled = false;
         rigid.isKinematic = true;//죽고나서 다른 물체와 충돌할경우 시체가 움직이는 상황방지
 
+        enemyAnimator.SetBool("Suppressed", false);
         enemyAnimator.SetTrigger("Die");
         enemyAudioPlayer.PlayOneShot(deathSound);
     }
 
     private IEnumerator Suppressed()
     {
+        pathFinder.enabled = true;
+
         var exeArea = ExecutionArea.gameObject;
 
         pathFinder.isStopped = true;
         exeArea.SetActive(true);
+
+        enemyAnimator.SetBool("Suppressed", true);
 
         yield return new WaitForSeconds(f_SupTime);
 
@@ -173,19 +183,20 @@ public class Enemy : LivingEntity
             f_SupHealth = f_StartingSupHealth;
             exeArea.SetActive(false);
             b_Suppressed = false;
+            enemyAnimator.SetBool("Suppressed", false);
+
             StartCoroutine(UpdatePath());
         }
     }
 
     public void Execution()
     {
-        Debug.Log("Execution On!");
         Die();
     }
 
     protected override void OnEnable()
     {
-        base.OnEnable();
         Setup();
+        base.OnEnable();
     }
 }

@@ -22,7 +22,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image inventoryImage;
     [SerializeField] private Text playerAmmoText;
     [SerializeField] private Text inventoryItemNum;
-
+    
+    //상호작용 키 UI
+    [SerializeField] private Image ItemGetKey;
+    [SerializeField] private Image ExecuteKey;
+    
     private void Awake()
     {
         //플레이어를 찾아서 PlayerHealth스크립트를 가져온다.

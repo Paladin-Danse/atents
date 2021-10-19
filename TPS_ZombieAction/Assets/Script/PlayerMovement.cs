@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody playerRigid;
     private Animator playerAnimator;
     private float f_moveSpeed;
+    private bool b_move;
     [SerializeField] private float f_walkSpeed = 1.0f;
     //아직 쓰고있지 않은 변수
     //[SerializeField] private float f_aimMoveSpeed = 0.5f;
@@ -30,11 +31,12 @@ public class PlayerMovement : MonoBehaviour
         playerRigid = GetComponent<Rigidbody>();
         playerAnimator = GetComponent<Animator>();
         f_moveSpeed = f_walkSpeed;
+        b_move = true;
     }
 
     private void FixedUpdate()
     {
-        Move();
+        if (b_move) Move();
         Rotate();
     }
 
@@ -86,5 +88,15 @@ public class PlayerMovement : MonoBehaviour
         if (angle < 0f) angle += 360;
         if (angle > 180f) return Mathf.Max(angle, 360 + from);
         return Mathf.Min(angle, to);
+    }
+    //꽤나 조잡하다 수정필요
+    public void OnMove()
+    {
+        b_move = true;
+    }
+
+    public void OffMove()
+    {
+        b_move = false;
     }
 }

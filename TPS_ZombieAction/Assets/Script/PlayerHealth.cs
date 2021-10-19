@@ -14,6 +14,8 @@ public class PlayerHealth : LivingEntity
     private PlayerMovement playerMovement;
     private PlayerAttacks playerShooter;
 
+    private bool b_Invincibility;
+
     //테스트를 위해 가져오는 입력키값 실제로는 필요없음.
     private PlayerInput playerInput;
 
@@ -23,7 +25,7 @@ public class PlayerHealth : LivingEntity
         playerAudioPlayer = GetComponent<AudioSource>();
         playerMovement = GameManager.instance.playerMovement;
         playerShooter = GameManager.instance.playerShooter;
-
+        b_Invincibility = false;
         //테스트를 위해 가져오는 입력키값 실제로는 필요없음.
         playerInput = GetComponent<PlayerInput>();
     }
@@ -53,14 +55,12 @@ public class PlayerHealth : LivingEntity
 
     public override void OnDamage(float damage, Vector3 hitPoint, Vector3 hitNormal)
     {
-        if(!b_Dead)
+        if (!b_Dead && !b_Invincibility)
         {
             playerAudioPlayer.PlayOneShot(hitSound);
+            base.OnDamage(damage, hitPoint, hitNormal);
+            UIManager.instance.UpdateplayerHealthBar();
         }
-
-        base.OnDamage(damage, hitPoint, hitNormal);
-
-        UIManager.instance.UpdateplayerHealthBar();
     }
 
     public override void Die()
@@ -71,5 +71,14 @@ public class PlayerHealth : LivingEntity
 
         playerMovement.enabled = false;
         playerShooter.enabled = false;
+    }
+
+    public void OnInvincibility()
+    {
+        b_Invincibility = true;
+    }
+    public void OffInvincibility()
+    {
+        b_Invincibility = false;
     }
 }

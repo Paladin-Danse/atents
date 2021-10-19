@@ -196,9 +196,11 @@ public class PlayerAttacks : MonoBehaviour
         var obj = other.gameObject;
         if(obj.name.Equals("ExecutionArea"))
         {
-            if(playerInput.attack_ButtonDown)
+            if(playerInput.attack_ButtonDown
+                && playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Execute") == false)
             {
                 obj.GetComponentInParent<Enemy>().Execution();
+                playerAnimator.SetTrigger("Execute");
             }
         }
     }

@@ -15,6 +15,13 @@ public class PlayerItemLooting : MonoBehaviour
         playerAudioPlayer = GetComponent<AudioSource>();
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag.Equals("Item"))
+        {
+            
+        }
+    }
     //OnTriggerEnter를 처음 사용했으나 안에서 지속적으로 플레이어의 입력처리를 받아들이지 못해 Stay에서 처리함.
     private void OnTriggerStay(Collider other)
     {
@@ -40,5 +47,9 @@ public class PlayerItemLooting : MonoBehaviour
         //        playerAudioPlayer.PlayOneShot(itemPickUp);//아이템 줍는 사운드 출력
         //    }
         //}
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        
     }
 }
