@@ -80,7 +80,7 @@ public class InventoryManager : MonoBehaviour
                 item = InventoryItemList.Find(i => i.data.type == Type.POTION);
                 if (item != null)
                 {
-                    item.data.quantity += 1;//개수증가
+                    item.data.quantity++;//개수증가
                     if (selectItem == null)
                     {
                         selectItem = InventoryItemList.Find(i => i.data.type == Type.POTION);//먹은 아이템을 장비
@@ -91,11 +91,20 @@ public class InventoryManager : MonoBehaviour
                     }
                 }
                 break;
-            case Type.GRANADE:
-                item = InventoryItemList.Find(i => i.data.type == Type.GRANADE);
+            case Type.GRENADE:
+                item = InventoryItemList.Find(i => i.data.type == Type.GRENADE);
                 if(item != null)
                 {
                     item.data.quantity++;
+                    if(selectItem == null)
+                    {
+                        selectItem = InventoryItemList.Find(i => i.data.type == Type.GRENADE);//먹은 아이템을 장비
+                    }
+                    if (selectItem.data.type == Type.GRENADE)
+                    {
+                        UIManager.instance.UpdateInventory(selectItem.data.iconName, selectItem.data.quantity);
+                    }
+                    Debug.Log(selectItem.data.iconName);
                 }
                 break;
             case Type.FLASHBANG:
@@ -139,14 +148,16 @@ public class InventoryManager : MonoBehaviour
                     UIManager.instance.UpdateInventory(selectItem.data.iconName, selectItem.data.quantity);
                 }
                 break;
-                //아래로는 아직 미구현
-            case Type.GRANADE:
-                item = InventoryItemList.Find(i => i.data.type == Type.GRANADE);
-                if (item != null)
+            case Type.GRENADE:
+                item = InventoryItemList.Find(i => i.data.type == Type.GRENADE);
+                if (item != null && item.data.quantity > 0)
                 {
                     item.data.quantity--;
+                    //이곳에 수류탄 사용코드 입력
+                    UIManager.instance.UpdateInventory(selectItem.data.iconName, selectItem.data.quantity);
                 }
                 break;
+            //아래로는 아직 미구현
             case Type.FLASHBANG:
                 item = InventoryItemList.Find(i => i.data.type == Type.FLASHBANG);
                 if (item != null)

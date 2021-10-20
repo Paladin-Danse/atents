@@ -9,6 +9,7 @@ public class PlayerAttacks : MonoBehaviour
     {
         IDLE,
         MELEE,
+        EXECUTE,
         AIMING
     }
 
@@ -187,20 +188,27 @@ public class PlayerAttacks : MonoBehaviour
     //플레이어가 적의 처형이 가능한 범위에 들어서는 순간 처형버튼이 활성화
     private void OnTriggerEnter(Collider other)
     {
-
+        if (other.gameObject.name.Equals("ExecutionArea"))
+        {
+            UIManager.instance.InteractionEnter(INTERACTION.EXECUTE);
+        }
     }
 
     //플레이어가 적의 처형이 가능한 범위에 들어서 있을경우 처형버튼을 누르면 처형을 실행
     private void OnTriggerStay(Collider other)
     {
         var obj = other.gameObject;
-        if(obj.name.Equals("ExecutionArea"))
+        if (obj.name.Equals("ExecutionArea") && obj.activeSelf == true)
         {
+            playerAttackState = ATTACK_STATE.EXECUTE;
+
             if(playerInput.attack_ButtonDown
                 && playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Execute") == false)
             {
                 obj.GetComponentInParent<Enemy>().Execution();
                 playerAnimator.SetTrigger("Execute");
+                UIManager.instance.InteractionExit();
+                playerAttackState = ATTACK_STATE.IDLE;
             }
         }
     }
@@ -209,8 +217,13 @@ public class PlayerAttacks : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
 
+        if (other.gameObject.name.Equals("ExecutionArea"))
+        {
+            UIManager.instance.InteractionExit();
+            playerAttackState = ATTACK_STATE.IDLE;
+        }
     }
-
+    
     private void OnDisable()
     {
         mainWeapon.gameObject.SetActive(false);

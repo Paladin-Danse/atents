@@ -2,6 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
+public enum INTERACTION
+{
+    NONE=0,
+    GETITEM,
+    EXECUTE
+}
+
 public class UIManager : MonoBehaviour
 {
     //싱글톤
@@ -24,9 +32,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Text inventoryItemNum;
     
     //상호작용 키 UI
-    [SerializeField] private Image ItemGetKey;
-    [SerializeField] private Image ExecuteKey;
-    
+    [SerializeField] private Sprite ItemGetKey;
+    [SerializeField] private Sprite ExecuteKey;
+    private Image InteractionKeyImg;
+
     private void Awake()
     {
         //플레이어를 찾아서 PlayerHealth스크립트를 가져온다.
@@ -35,6 +44,8 @@ public class UIManager : MonoBehaviour
         {
             playerHealth = player.GetComponent<PlayerHealth>();
         }
+        var temp = transform.Find("InteractionKeyGuide");
+        if (temp) InteractionKeyImg = temp.GetComponent<Image>();
     }
 
     private void Start()
@@ -50,6 +61,7 @@ public class UIManager : MonoBehaviour
             playerHealthBar.maxValue = playerHealth.f_StartingHealth;
             playerHealthBar.value = playerHealth.f_Health;
         }
+        InteractionExit();
         InventoryDisable();
     }
 
@@ -64,7 +76,7 @@ public class UIManager : MonoBehaviour
     }
     public void UpdateInventory(string spriteName, int newNum)
     {
-        inventoryImage.sprite = Resources.Load<Sprite>(string.Format("Sprites/{0}", spriteName)); ;
+        inventoryImage.sprite = Resources.Load<Sprite>(string.Format("Sprites/{0}", spriteName));
         if (inventoryImage.sprite == null)
         {
             Debug.Log(string.Format("Sprites/{0}", spriteName));
@@ -79,5 +91,25 @@ public class UIManager : MonoBehaviour
     {
         inventoryImage.sprite = null;
         inventoryItemNum.gameObject.SetActive(false);
+    }
+
+    public void InteractionEnter(INTERACTION inter)
+    {
+        switch (inter)
+        {
+            case INTERACTION.EXECUTE:
+                InteractionKeyImg.sprite = ExecuteKey;
+                break;
+            case INTERACTION.GETITEM:
+                InteractionKeyImg.sprite = ItemGetKey;
+                break;
+        }
+        InteractionKeyImg.gameObject.SetActive(true);
+    }
+
+    public void InteractionExit()
+    {
+        InteractionKeyImg.gameObject.SetActive(false);
+        InteractionKeyImg.sprite = null;
     }
 }

@@ -10,7 +10,7 @@ public enum Type
     NONE = 0,
     POTION,
     AMMO,
-    GRANADE,
+    GRENADE,
     FLASHBANG,
     INCENDIARY_BOMB
 }

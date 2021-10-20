@@ -73,6 +73,10 @@
     <Compile Include="Assets\Script\LivingEntity.cs" />
     <Compile Include="Assets\Script\Enemy.cs" />
     <Compile Include="Assets\Script\GameManager.cs" />
+    <Compile Include="Assets\Resources\Aligned Games\Polygonal Modern Weapons Asset Package\Scripts\Utility\FlyCameraBehaviour.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Resources\Aligned Games\Polygonal Modern Weapons Asset Package\Shaders\Diffuse.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

@@ -119,7 +119,7 @@ public class Enemy : LivingEntity
 
     public override void OnDamage(float damage, Vector3 hitPoint, Vector3 hitNormal)
     {
-        if(!b_Dead)
+        if (!b_Dead)
         {
             var tr = hitEffect.transform;
             tr.position = hitPoint;
@@ -127,19 +127,23 @@ public class Enemy : LivingEntity
             hitEffect.Play();
 
             enemyAudioPlayer.PlayOneShot(hitSound);
+
+            OnSupDamage(damage);
         }
-        OnSupDamage(damage);
         base.OnDamage(damage, hitPoint, hitNormal);
     }
     
     public void OnSupDamage(float newSupDamage)
     {
-        f_SupHealth -= newSupDamage;
-        
-        if(f_SupHealth <= 0)
+        if (!b_Dead)
         {
-            b_Suppressed = true;
-            StartCoroutine(Suppressed());
+            f_SupHealth -= newSupDamage;
+
+            if (f_SupHealth <= 0)
+            {
+                b_Suppressed = true;
+                StartCoroutine(Suppressed());
+            }
         }
     }
 
