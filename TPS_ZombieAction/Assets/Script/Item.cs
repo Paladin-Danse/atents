@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using System;
 
 
-public enum Type
+public enum ITEM_TYPE
 {
     NONE = 0,
     POTION,
@@ -18,7 +18,7 @@ public enum Type
 [System.Serializable]
 public struct Item// : MonoBehaviour
 {
-    public Type type;
+    public ITEM_TYPE type;
     public int quantity;
     public string iconName;
     public int value;

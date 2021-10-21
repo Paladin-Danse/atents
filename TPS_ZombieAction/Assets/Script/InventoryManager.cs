@@ -23,13 +23,13 @@ public class InventoryManager : MonoBehaviour
     private UseItem selectItem;
     private int i_SelectNum = 0;
     private int i_SelectNum_Max;
-    private PlayerAttacks playerShooter;
+    private PlayerAttacks playerAttack;
     private PlayerHealth playerHealth;
     private PlayerInput playerInput;
 
     private void Start()
     {
-        playerShooter = GameManager.instance.playerShooter;
+        playerAttack = GameManager.instance.playerAttack;
         playerHealth = GameManager.instance.playerHealth;
         playerInput = GameManager.instance.playerInput;
 
@@ -67,55 +67,54 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public void Loot(Type type)
+    public void Loot(ITEM_TYPE type)
     {
         UseItem item;
 
         switch(type)
         {
-            case Type.AMMO :
+            case ITEM_TYPE.AMMO :
                 InventoryItemUse(type);
                 break;
-            case Type.POTION:
-                item = InventoryItemList.Find(i => i.data.type == Type.POTION);
+            case ITEM_TYPE.POTION:
+                item = InventoryItemList.Find(i => i.data.type == ITEM_TYPE.POTION);
                 if (item != null)
                 {
                     item.data.quantity++;//개수증가
                     if (selectItem == null)
                     {
-                        selectItem = InventoryItemList.Find(i => i.data.type == Type.POTION);//먹은 아이템을 장비
+                        selectItem = InventoryItemList.Find(i => i.data.type == ITEM_TYPE.POTION);//먹은 아이템을 장비
                     }
-                    if (selectItem.data.type == Type.POTION)
+                    if (selectItem.data.type == ITEM_TYPE.POTION)
                     {
                         UIManager.instance.UpdateInventory(selectItem.data.iconName, selectItem.data.quantity);
                     }
                 }
                 break;
-            case Type.GRENADE:
-                item = InventoryItemList.Find(i => i.data.type == Type.GRENADE);
+            case ITEM_TYPE.GRENADE:
+                item = InventoryItemList.Find(i => i.data.type == ITEM_TYPE.GRENADE);
                 if(item != null)
                 {
                     item.data.quantity++;
                     if(selectItem == null)
                     {
-                        selectItem = InventoryItemList.Find(i => i.data.type == Type.GRENADE);//먹은 아이템을 장비
+                        selectItem = InventoryItemList.Find(i => i.data.type == ITEM_TYPE.GRENADE);//먹은 아이템을 장비
                     }
-                    if (selectItem.data.type == Type.GRENADE)
+                    if (selectItem.data.type == ITEM_TYPE.GRENADE)
                     {
                         UIManager.instance.UpdateInventory(selectItem.data.iconName, selectItem.data.quantity);
                     }
-                    Debug.Log(selectItem.data.iconName);
                 }
                 break;
-            case Type.FLASHBANG:
-                item = InventoryItemList.Find(i => i.data.type == Type.FLASHBANG);
+            case ITEM_TYPE.FLASHBANG:
+                item = InventoryItemList.Find(i => i.data.type == ITEM_TYPE.FLASHBANG);
                 if (item != null)
                 {
                     item.data.quantity++;
                 }
                 break;
-            case Type.INCENDIARY_BOMB:
-                item = InventoryItemList.Find(i => i.data.type == Type.INCENDIARY_BOMB);
+            case ITEM_TYPE.INCENDIARY_BOMB:
+                item = InventoryItemList.Find(i => i.data.type == ITEM_TYPE.INCENDIARY_BOMB);
                 if (item != null)
                 {
                     item.data.quantity++;
@@ -124,21 +123,21 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public void InventoryItemUse(Type type)
+    public void InventoryItemUse(ITEM_TYPE type)
     {
         UseItem item;
 
         switch (type)
         {
-            case Type.AMMO://탄약
-                item = InventoryItemList.Find(i => i.data.type == Type.AMMO);
+            case ITEM_TYPE.AMMO://탄약
+                item = InventoryItemList.Find(i => i.data.type == ITEM_TYPE.AMMO);
                 if (item != null)
                 {
-                    playerShooter.GetAmmo(item.data.value);
+                    playerAttack.GetAmmo(item.data.value);
                 }
                 break;
-            case Type.POTION://회복아이템
-                item = InventoryItemList.Find(i => i.data.type == Type.POTION);
+            case ITEM_TYPE.POTION://회복아이템
+                item = InventoryItemList.Find(i => i.data.type == ITEM_TYPE.POTION);
                 
                 //아이템 사용
                 if (item != null && item.data.quantity > 0)//아이템 갯수가 0보다 많아야 사용할 수 있다.
@@ -148,25 +147,40 @@ public class InventoryManager : MonoBehaviour
                     UIManager.instance.UpdateInventory(selectItem.data.iconName, selectItem.data.quantity);
                 }
                 break;
-            case Type.GRENADE:
-                item = InventoryItemList.Find(i => i.data.type == Type.GRENADE);
+            case ITEM_TYPE.GRENADE:
+                item = InventoryItemList.Find(i => i.data.type == ITEM_TYPE.GRENADE);
                 if (item != null && item.data.quantity > 0)
                 {
-                    item.data.quantity--;
-                    //이곳에 수류탄 사용코드 입력
-                    UIManager.instance.UpdateInventory(selectItem.data.iconName, selectItem.data.quantity);
+                    //매니저에서 조건에 맞춰 플레이어 보고 함수를 실행시키는 방법. 하지만 단 한번 불리는 함수이기에 한번 불리는 동안 던질것인지 취소할것인지 결과값을 낼 수 없었음.
+                    /*
+                    if (playerInput.itemUsing)//아이템사용키(G키)를 누르는 중
+                    {
+                        playerAttack.ThrowAiming(type);
+                        if(playerInput.useCancel)
+                        {
+                            playerAttack.ThrowCancel(type);
+                            break;
+                        }
+                    }
+                    else if (playerInput.throwing)//아이템사용키(G키)를 뗐을 때
+                    {
+                    */
+                        item.data.quantity--;
+                        //이곳에 수류탄 사용코드 입력
+                        UIManager.instance.UpdateInventory(selectItem.data.iconName, selectItem.data.quantity);
+                    //}
                 }
                 break;
-            //아래로는 아직 미구현
-            case Type.FLASHBANG:
-                item = InventoryItemList.Find(i => i.data.type == Type.FLASHBANG);
+            //아래로는 아직 미구현 아이템
+            case ITEM_TYPE.FLASHBANG:
+                item = InventoryItemList.Find(i => i.data.type == ITEM_TYPE.FLASHBANG);
                 if (item != null)
                 {
                     item.data.quantity--;
                 }
                 break;
-            case Type.INCENDIARY_BOMB:
-                item = InventoryItemList.Find(i => i.data.type == Type.INCENDIARY_BOMB);
+            case ITEM_TYPE.INCENDIARY_BOMB:
+                item = InventoryItemList.Find(i => i.data.type == ITEM_TYPE.INCENDIARY_BOMB);
                 if (item != null)
                 {
                     item.data.quantity--;
@@ -180,7 +194,7 @@ public class InventoryManager : MonoBehaviour
         if (InventoryItemList.Count != 0)
         {
             i_SelectNum = (int)Mathf.Repeat(++i_SelectNum, i_SelectNum_Max);//선택한 아이템이 인벤토리의 List갯수를 넘어가면 0으로 초기화 아니면 1씩 증가
-            if (InventoryItemList[i_SelectNum].data.type == Type.AMMO)//총알은 인벤토리에 들어가지 않는 관계로 오류를 막기위해 총알이 들어오면 다음 아이템으로 넘긴다.
+            if (InventoryItemList[i_SelectNum].data.type == ITEM_TYPE.AMMO)//총알은 인벤토리에 들어가지 않는 관계로 오류를 막기위해 총알이 들어오면 다음 아이템으로 넘긴다.
                 i_SelectNum = (int)Mathf.Repeat(++i_SelectNum, i_SelectNum_Max);
             
             selectItem = InventoryItemList[i_SelectNum];

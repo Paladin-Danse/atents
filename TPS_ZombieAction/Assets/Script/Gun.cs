@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum TYPE//총이 자동화기인지, 반자동화기인지 구분
+public enum SHOT_TYPE//총이 자동화기인지, 반자동화기인지 구분
     {
         TYPE_FULLAUTO,
         TYPE_SEMIAUTO
@@ -17,7 +17,7 @@ public class Gun : MonoBehaviour
         STATE_RELOADING
     }
     [SerializeField] private STATE e_State;    
-    [SerializeField] private TYPE e_Type;
+    [SerializeField] private SHOT_TYPE e_Type;
 
     [SerializeField] private Transform fireTransform;//총구 발사위치
     [SerializeField] private Transform leftHandle;//실제 왼손위치값
@@ -70,7 +70,7 @@ public class Gun : MonoBehaviour
     //현재 총이 무슨 타입의 총인지 다른 스크립트에 반환
     public string AutoType()
     {
-        if (e_Type == TYPE.TYPE_FULLAUTO)
+        if (e_Type == SHOT_TYPE.TYPE_FULLAUTO)
             return "FULLAUTO";
         else
             return "SEMIAUTO";

@@ -10,12 +10,15 @@ public class PlayerAttacks : MonoBehaviour
         IDLE,
         MELEE,
         EXECUTE,
-        AIMING
+        AIMING,
+        THROW
     }
 
     [SerializeField] private Gun mainWeapon;
     [SerializeField] private Gun subWeapon;
     [SerializeField] private MeleeWeapon equipMelee;
+    [SerializeField] private GameObject grenade;
+
     public Gun equipGun { get; private set; }
     //public MeleeWeapon equipMelee {get; private set; }
     [SerializeField] private Transform gunPivot;
@@ -42,6 +45,8 @@ public class PlayerAttacks : MonoBehaviour
         WeaponSwap();
         WeaponAimShot();
         MeleeAttacking();
+        //현재 아이템을 던지는 상태일 경우 Throwing함수를 호출. 하지만 이 경우 무슨 아이템을 던지는지 타입값을 줄 수 없었음.
+        //if (playerAttackState == ATTACK_STATE.THROW) Throwing();
     }
     public void EquipMainWeapon()
     {
@@ -105,6 +110,37 @@ public class PlayerAttacks : MonoBehaviour
             equipGun.Reload();
         }
     }
+    public bool Throwing(ITEM_TYPE type)
+    {
+        GameObject throwItem;
+
+        switch(type)
+        {
+            case ITEM_TYPE.GRENADE:
+                throwItem = grenade;
+                break;
+            case ITEM_TYPE.FLASHBANG:
+                break;
+            case ITEM_TYPE.INCENDIARY_BOMB:
+                break;
+            default:
+                break;
+        }
+
+        if (playerInput.itemUsing)
+        {
+            if (playerInput.useCancel)
+            {
+                return false;
+            }
+        }
+        else if (playerInput.throwing)
+        {
+            return true;
+        }
+        return false;
+    }
+
     public void MeleeAttacking()
     {
         if (playerAttackState == ATTACK_STATE.IDLE && playerInput.attack_ButtonDown)

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GetItem : MonoBehaviour
 {
-    public Type type;
+    public ITEM_TYPE type;
     public void Looting()
     {
         InventoryManager.instance.Loot(type);

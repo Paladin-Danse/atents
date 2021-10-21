@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public PlayerAttacks playerShooter { get; private set; }
+    public PlayerAttacks playerAttack { get; private set; }
     public PlayerHealth playerHealth { get; private set; }
     public PlayerInput playerInput { get; private set; }
     public PlayerItemLooting playerItemLooting { get; private set; }
@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         GameObject player = GameObject.Find("Player");
-        playerShooter = player.GetComponent<PlayerAttacks>();
+        playerAttack = player.GetComponent<PlayerAttacks>();
         playerHealth = player.GetComponent<PlayerHealth>();
         playerInput = player.GetComponent<PlayerInput>();
         playerItemLooting = player.GetComponent<PlayerItemLooting>();
