@@ -110,36 +110,6 @@ public class PlayerAttacks : MonoBehaviour
             equipGun.Reload();
         }
     }
-    public bool Throwing(ITEM_TYPE type)
-    {
-        GameObject throwItem;
-
-        switch(type)
-        {
-            case ITEM_TYPE.GRENADE:
-                throwItem = grenade;
-                break;
-            case ITEM_TYPE.FLASHBANG:
-                break;
-            case ITEM_TYPE.INCENDIARY_BOMB:
-                break;
-            default:
-                break;
-        }
-
-        if (playerInput.itemUsing)
-        {
-            if (playerInput.useCancel)
-            {
-                return false;
-            }
-        }
-        else if (playerInput.throwing)
-        {
-            return true;
-        }
-        return false;
-    }
 
     public void MeleeAttacking()
     {

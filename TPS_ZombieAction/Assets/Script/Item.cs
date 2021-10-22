@@ -43,6 +43,23 @@ public class UseItem
 {
     public Item data;
     public event Action UseEvent;
+    public bool isThrowing
+    {
+        get
+        {
+            switch(data.type)
+            {
+                case ITEM_TYPE.POTION:
+                case ITEM_TYPE.AMMO:
+                    return false;
+                case ITEM_TYPE.GRENADE:
+                case ITEM_TYPE.FLASHBANG:
+                case ITEM_TYPE.INCENDIARY_BOMB:
+                    return true;
+            }
+            return false;
+        }
+    }
     public void Use()
     {
         if(null != UseEvent) UseEvent();

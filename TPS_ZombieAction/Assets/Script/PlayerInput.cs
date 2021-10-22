@@ -33,7 +33,7 @@ public class PlayerInput : MonoBehaviour
     public bool subWeaponSwap { get; private set; }
     public bool playerInteraction { get; private set; }
     public bool itemUse { get; private set; }
-    public bool itemUsing { get; private set; }
+    public bool itemCheck { get; private set; }
     public bool throwing { get; private set; }
     public bool useCancel { get; private set; }
     public bool itemSelect { get; private set; }
@@ -60,9 +60,9 @@ public class PlayerInput : MonoBehaviour
         subWeaponSwap = Input.GetButtonDown(subWeaponSwapKeyName);
         weaponSwap = Input.GetAxisRaw(weaponSwapKeyName);
         playerInteraction = Input.GetButtonDown(playerInteractionKeyName);
-        itemUse = Input.GetButtonDown(itemUseKeyName);
-        itemUsing = Input.GetButton(itemUseKeyName);
-        throwing = Input.GetButtonUp(itemUseKeyName);
+        throwing = Input.GetButton(itemUseKeyName);
+        itemCheck = Input.GetButtonDown(itemUseKeyName);
+        itemUse = Input.GetButtonUp(itemUseKeyName);
         useCancel = Input.GetButtonDown(aimingKeyName);
         itemSelect = Input.GetButtonDown(itemSelectKeyName);
         test = Input.GetButtonDown(testKeyName);

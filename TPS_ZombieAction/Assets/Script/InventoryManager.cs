@@ -26,13 +26,24 @@ public class InventoryManager : MonoBehaviour
     private PlayerAttacks playerAttack;
     private PlayerHealth playerHealth;
     private PlayerInput playerInput;
+    private LineRenderer parabolaRenderer;
+    private float timeResolution = 0.02f;
+    private float maxTime = 10f;
 
-    private void Start()
+    [SerializeField] private GameObject grenade;
+    [SerializeField] private GameObject flashBang;
+    [SerializeField] private GameObject incenBomb;
+
+    private void Awake()
     {
         playerAttack = GameManager.instance.playerAttack;
         playerHealth = GameManager.instance.playerHealth;
         playerInput = GameManager.instance.playerInput;
+        parabolaRenderer = playerAttack.gameObject.GetComponent<LineRenderer>();
+    }
 
+    private void Start()
+    {
         for(int i = 0; itemDatas.Length > i; i++)
         {
             UseItem data = new UseItem();
@@ -46,16 +57,11 @@ public class InventoryManager : MonoBehaviour
             InventoryItemList.Add(data);
         }
         i_SelectNum_Max = InventoryItemList.Count;
+
+        parabolaRenderer.enabled = true;
     }
     private void Update()
     {
-        if (playerInput.itemUse)//사용키(G키)
-        {
-            if (selectItem != null)//선택된 아이템이 Null이 아니라면
-            {
-                selectItem.Use();
-            }
-        }
         if (playerInput.itemSelect)//선택키(F키)
         {
             //아이템 선택키(F키)를 눌러도 인벤토리에 아무것도 없다면 함수를 실행시키지 않음
@@ -64,6 +70,71 @@ public class InventoryManager : MonoBehaviour
                 return;
             }
             ChoiceItem();
+        }
+
+        if (selectItem != null)
+        {
+            if (playerInput.throwing)
+            {
+                if (selectItem.isThrowing)//투척아이템이 맞을경우 투척아이템의 궤적을 그린다.
+                {
+                    parabolaRenderer.SetPosition(0, playerAttack.gameObject.transform.position);//플레이어 위치
+                    //parabolaRenderer.SetPosition(1, );//투척아이템을 던졌을 때 부딪히게 될 위치
+                }
+                else if (playerInput.itemCheck)//투척아이템이 아니라면 아이템사용키(G키)가 한 번 눌리는 순간 아이템이 사용되게 한다.
+                {
+                    selectItem.Use();
+                }
+                
+                if(playerInput.useCancel)
+                {
+                    
+                }
+
+            }
+            else if (playerInput.itemUse)
+            {
+                selectItem.Use();
+            }
+        }
+
+        /*
+        if (playerInput.itemUse)//사용키(G키)
+        {
+            if (selectItem != null)//선택된 아이템이 Null이 아니라면
+            {
+                selectItem.Use();
+            }
+        }
+        */
+    }
+    public void DrawParabola()
+    {
+
+    }
+    public void Throwing(ITEM_TYPE type)
+    {
+        GameObject throwItem = new GameObject();
+
+        switch (type)
+        {
+            case ITEM_TYPE.GRENADE:
+                throwItem = grenade;
+                break;
+            case ITEM_TYPE.FLASHBANG:
+                throwItem = flashBang;
+                break;
+            case ITEM_TYPE.INCENDIARY_BOMB:
+                throwItem = incenBomb;
+                break;
+            default:
+                break;
+        }
+
+        if (throwItem != null)
+        {
+            throwItem.SetActive(true);
+            //이후 투척아이템을 날리는 코드 만들기
         }
     }
 
