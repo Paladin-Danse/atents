@@ -27,6 +27,7 @@ public class InventoryManager : MonoBehaviour
     private PlayerHealth playerHealth;
     private PlayerInput playerInput;
     private LineRenderer parabolaRenderer;
+    private float f_ThrowPower = 10.0f;
     private float timeResolution = 0.02f;
     private float maxTime = 10f;
 
@@ -36,10 +37,11 @@ public class InventoryManager : MonoBehaviour
 
     private void Awake()
     {
-        playerAttack = GameManager.instance.playerAttack;
-        playerHealth = GameManager.instance.playerHealth;
-        playerInput = GameManager.instance.playerInput;
-        parabolaRenderer = playerAttack.gameObject.GetComponent<LineRenderer>();
+        var player = GameObject.Find("Player");
+        playerAttack = player.GetComponent<PlayerAttacks>();
+        playerHealth = player.GetComponent<PlayerHealth>();
+        playerInput = player.GetComponent<PlayerInput>();
+        parabolaRenderer = player.GetComponent<LineRenderer>();
     }
 
     private void Start()
@@ -60,8 +62,11 @@ public class InventoryManager : MonoBehaviour
 
         parabolaRenderer.enabled = true;
     }
+
     private void Update()
     {
+        playerInput = GameManager.instance.playerInput;
+
         if (playerInput.itemSelect)//선택키(F키)
         {
             //아이템 선택키(F키)를 눌러도 인벤토리에 아무것도 없다면 함수를 실행시키지 않음
@@ -72,14 +77,40 @@ public class InventoryManager : MonoBehaviour
             ChoiceItem();
         }
 
-        if (selectItem != null)
+        if (selectItem != null && selectItem.data.quantity > 0)
         {
             if (playerInput.throwing)
             {
                 if (selectItem.isThrowing)//투척아이템이 맞을경우 투척아이템의 궤적을 그린다.
                 {
-                    parabolaRenderer.SetPosition(0, playerAttack.gameObject.transform.position);//플레이어 위치
-                    //parabolaRenderer.SetPosition(1, );//투척아이템을 던졌을 때 부딪히게 될 위치
+                    int index = 0;
+                    RaycastHit hit;
+                    Vector3 hitposition;
+                    var player = playerAttack.gameObject;
+
+                    parabolaRenderer.positionCount = ((int)(maxTime / timeResolution));
+                    
+                    Vector3 veloVector3 = player.transform.forward * f_ThrowPower;
+                    Vector3 currentPosition = player.transform.position;
+
+                    //플레이어의 발이 플레이어 위치값의 기준이 되어있으므로 약간 올림.
+                    currentPosition.y += 1.25f;
+
+                    for (float t = 0.0f; t < maxTime; t += timeResolution)
+                    {
+                        parabolaRenderer.SetPosition(index, currentPosition);//플레이어 위치
+
+                        //부딪히는 위치까지만 라인렌더러를 그리게 수정하기
+                        if (Physics.Raycast(currentPosition, player.transform.forward, out hit, f_ThrowPower * timeResolution))
+                        {
+                            //hitposition = hit.point;
+                            break;
+                        }
+                        currentPosition += veloVector3 * timeResolution;
+                        veloVector3 += Physics.gravity * timeResolution;
+
+                        index++;
+                    }
                 }
                 else if (playerInput.itemCheck)//투척아이템이 아니라면 아이템사용키(G키)가 한 번 눌리는 순간 아이템이 사용되게 한다.
                 {
@@ -88,12 +119,12 @@ public class InventoryManager : MonoBehaviour
                 
                 if(playerInput.useCancel)
                 {
-                    
                 }
 
             }
             else if (playerInput.itemUse)
             {
+                parabolaRenderer.enabled = false;
                 selectItem.Use();
             }
         }

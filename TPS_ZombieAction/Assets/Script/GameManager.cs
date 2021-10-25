@@ -29,9 +29,11 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         GameObject player = GameObject.Find("Player");
+        if (player == null) Debug.Log("player Null");
         playerAttack = player.GetComponent<PlayerAttacks>();
         playerHealth = player.GetComponent<PlayerHealth>();
         playerInput = player.GetComponent<PlayerInput>();
+        if(playerInput == null) Debug.Log("playerInput Null");
         playerItemLooting = player.GetComponent<PlayerItemLooting>();
         playerMovement = player.GetComponent<PlayerMovement>();
 
