@@ -31,6 +31,9 @@ public class InventoryManager : MonoBehaviour
     private float timeResolution = 0.02f;
     private float maxTime = 10f;
 
+    private float f_ThrowYSpeed = 0.30f;
+    private float f_RotateY = 0;
+
     [SerializeField] private GameObject grenade;
     [SerializeField] private GameObject flashBang;
     [SerializeField] private GameObject incenBomb;
@@ -66,7 +69,10 @@ public class InventoryManager : MonoBehaviour
     private void Update()
     {
         playerInput = GameManager.instance.playerInput;
-
+        if (playerInput.rotateY != 0)
+        {
+            f_RotateY = Mathf.Clamp(f_RotateY + (playerInput.rotateY * f_ThrowYSpeed), -10f, 10f);
+        }
         if (playerInput.itemSelect)//선택키(F키)
         {
             //아이템 선택키(F키)를 눌러도 인벤토리에 아무것도 없다면 함수를 실행시키지 않음
@@ -84,13 +90,16 @@ public class InventoryManager : MonoBehaviour
                 if (selectItem.isThrowing)//투척아이템이 맞을경우 투척아이템의 궤적을 그린다.
                 {
                     int index = 0;
+                    //땅이나 벽, 오브젝트와 부딪혔을 때 사용할 변수들
                     RaycastHit hit;
                     Vector3 hitposition;
-                    var player = playerAttack.gameObject;
 
+                    var player = playerAttack.gameObject;
+                    
                     parabolaRenderer.positionCount = ((int)(maxTime / timeResolution));
                     
                     Vector3 veloVector3 = player.transform.forward * f_ThrowPower;
+                    veloVector3.y += f_RotateY;
                     Vector3 currentPosition = player.transform.position;
 
                     //플레이어의 발이 플레이어 위치값의 기준이 되어있으므로 약간 올림.
@@ -98,14 +107,16 @@ public class InventoryManager : MonoBehaviour
 
                     for (float t = 0.0f; t < maxTime; t += timeResolution)
                     {
-                        parabolaRenderer.SetPosition(index, currentPosition);//플레이어 위치
-
                         //부딪히는 위치까지만 라인렌더러를 그리게 수정하기
                         if (Physics.Raycast(currentPosition, player.transform.forward, out hit, f_ThrowPower * timeResolution))
                         {
-                            //hitposition = hit.point;
+                            parabolaRenderer.SetPosition(index, hit.point);
+                            parabolaRenderer.positionCount = index + 1;
                             break;
                         }
+
+                        parabolaRenderer.SetPosition(index, currentPosition);//플레이어 위치
+
                         currentPosition += veloVector3 * timeResolution;
                         veloVector3 += Physics.gravity * timeResolution;
 
