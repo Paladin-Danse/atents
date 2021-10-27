@@ -1319,7 +1319,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 997ef9b89ac7e674a97fee221ddc553d, type: 2}
   - {fileID: 11400000, guid: 321616590aa27834f91ca1f30675ece4, type: 2}
   - {fileID: 11400000, guid: 24345ac745e6e7346a22a742f5e0f558, type: 2}
-  grenade: {fileID: 0}
+  grenade: {fileID: 7988112600261963218, guid: 3060300fea53e324bade33aaaeef7e80, type: 3}
   flashBang: {fileID: 0}
   incenBomb: {fileID: 0}
 --- !u!1 &779022736

@@ -27,6 +27,9 @@ public class InventoryManager : MonoBehaviour
     private PlayerHealth playerHealth;
     private PlayerInput playerInput;
     private LineRenderer parabolaRenderer;
+
+    private Vector3 ThrowVector;
+    private Vector3 PlayerThrowItemPosition;
     private float f_ThrowPower = 10.0f;
     private float timeResolution = 0.02f;
     private float maxTime = 10f;
@@ -37,6 +40,7 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private GameObject grenade;
     [SerializeField] private GameObject flashBang;
     [SerializeField] private GameObject incenBomb;
+    private List<GameObject> throwItemList = new List<GameObject>();
 
     private void Awake()
     {
@@ -49,6 +53,7 @@ public class InventoryManager : MonoBehaviour
 
     private void Start()
     {
+        //아이템 데이터를 Inventory Item List에 저장하고 각 아이템 사용 시 코딩된 내용을 처리하도록 이벤트를 삽입한다.
         for(int i = 0; itemDatas.Length > i; i++)
         {
             UseItem data = new UseItem();
@@ -63,7 +68,15 @@ public class InventoryManager : MonoBehaviour
         }
         i_SelectNum_Max = InventoryItemList.Count;
 
-        parabolaRenderer.enabled = true;
+        parabolaRenderer.enabled = false;
+
+        //투척아이템 미리 생성 후 감추기
+        var throwItem = Instantiate(grenade, transform.position, Quaternion.identity);
+        if (throwItem)
+        {
+            throwItem.SetActive(false);
+            throwItemList.Add(throwItem);
+        }
     }
 
     private void Update()
@@ -95,15 +108,18 @@ public class InventoryManager : MonoBehaviour
                     Vector3 hitposition;
 
                     var player = playerAttack.gameObject;
-                    
+
+                    parabolaRenderer.enabled = true;
                     parabolaRenderer.positionCount = ((int)(maxTime / timeResolution));
                     
                     Vector3 veloVector3 = player.transform.forward * f_ThrowPower;
                     veloVector3.y += f_RotateY;
-                    Vector3 currentPosition = player.transform.position;
+                    ThrowVector = veloVector3;
 
+                    Vector3 currentPosition = player.transform.position;
                     //플레이어의 발이 플레이어 위치값의 기준이 되어있으므로 약간 올림.
                     currentPosition.y += 1.25f;
+                    PlayerThrowItemPosition = currentPosition;
 
                     for (float t = 0.0f; t < maxTime; t += timeResolution)
                     {
@@ -150,33 +166,24 @@ public class InventoryManager : MonoBehaviour
         }
         */
     }
-    public void DrawParabola()
+    //투척아이템을 던지는 함수
+    public void Throwing(GameObject m_throwItem)
     {
-
-    }
-    public void Throwing(ITEM_TYPE type)
-    {
-        GameObject throwItem = new GameObject();
-
-        switch (type)
+        if (m_throwItem)
         {
-            case ITEM_TYPE.GRENADE:
-                throwItem = grenade;
-                break;
-            case ITEM_TYPE.FLASHBANG:
-                throwItem = flashBang;
-                break;
-            case ITEM_TYPE.INCENDIARY_BOMB:
-                throwItem = incenBomb;
-                break;
-            default:
-                break;
+            m_throwItem.transform.position = PlayerThrowItemPosition;
+            m_throwItem.SetActive(true);
         }
-
-        if (throwItem != null)
+        else
         {
-            throwItem.SetActive(true);
-            //이후 투척아이템을 날리는 코드 만들기
+            m_throwItem = Instantiate(grenade, PlayerThrowItemPosition, Quaternion.identity);
+            throwItemList.Add(m_throwItem);
+        }
+        
+        Rigidbody rigid = m_throwItem.GetComponent<Rigidbody>();
+        if (rigid)
+        {
+            rigid.velocity = ThrowVector;
         }
     }
 
@@ -278,9 +285,19 @@ public class InventoryManager : MonoBehaviour
                     else if (playerInput.throwing)//아이템사용키(G키)를 뗐을 때
                     {
                     */
-                        item.data.quantity--;
-                        //이곳에 수류탄 사용코드 입력
-                        UIManager.instance.UpdateInventory(selectItem.data.iconName, selectItem.data.quantity);
+                    item.data.quantity--;
+
+                    GameObject throwItem = throwItemList.Find(i =>
+                    {
+                        if (!i.activeSelf && i.tag.Equals("Grenade"))
+                        {
+                            return true;
+                        }
+                        return false;
+                    });
+                    Throwing(throwItem);
+
+                    UIManager.instance.UpdateInventory(selectItem.data.iconName, selectItem.data.quantity);
                     //}
                 }
                 break;
