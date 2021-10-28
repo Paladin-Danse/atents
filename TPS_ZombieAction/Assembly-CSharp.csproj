@@ -74,9 +74,22 @@
     <Compile Include="Assets\Script\LivingEntity.cs" />
     <Compile Include="Assets\Script\Enemy.cs" />
     <Compile Include="Assets\Script\GameManager.cs" />
+    <Compile Include="Assets\Script\Grenade.cs" />
+    <Compile Include="Assets\Resources\True Explosions\System\Scripts\exploders\Exploder.cs" />
+    <Compile Include="Assets\Resources\True Explosions\System\Scripts\effects\exploderComponents\VolumetricComponent.cs" />
+    <Compile Include="Assets\Resources\True Explosions\System\Scripts\exploders\Exploder2D.cs" />
+    <Compile Include="Assets\Resources\True Explosions\System\Scripts\effects\exploderComponents\ExploderComponent.cs" />
+    <Compile Include="Assets\Resources\True Explosions\System\Scripts\effects\exploderComponents\ParticleComponent.cs" />
+    <Compile Include="Assets\Resources\True Explosions\System\Scripts\effects\PseudoVolumetricExplosion.cs" />
+    <Compile Include="Assets\Resources\True Explosions\System\Scripts\effects\exploderComponents\VolumetricComponent2D.cs" />
+    <Compile Include="Assets\Resources\True Explosions\System\Scripts\exploders\SphereExploder.cs" />
+    <Compile Include="Assets\Resources\True Explosions\System\Scripts\effects\exploderComponents\PseudoVolumetricComponent.cs" />
+    <Compile Include="Assets\Resources\True Explosions\System\Scripts\effects\exploderComponents\LightComponent.cs" />
+    <Compile Include="Assets\Script\ThrowItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\Aligned Games\Polygonal Modern Weapons Asset Package\Shaders\Diffuse.shader" />
+    <None Include="Assets\Resources\True Explosions\System\Shaders\SphereVolumetricExplosion.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

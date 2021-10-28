@@ -105,7 +105,6 @@ public class InventoryManager : MonoBehaviour
                     int index = 0;
                     //땅이나 벽, 오브젝트와 부딪혔을 때 사용할 변수들
                     RaycastHit hit;
-                    Vector3 hitposition;
 
                     var player = playerAttack.gameObject;
 
@@ -139,17 +138,19 @@ public class InventoryManager : MonoBehaviour
                         index++;
                     }
                 }
+
                 else if (playerInput.itemCheck)//투척아이템이 아니라면 아이템사용키(G키)가 한 번 눌리는 순간 아이템이 사용되게 한다.
                 {
                     selectItem.Use();
                 }
-                
+
                 if(playerInput.useCancel)
                 {
+                    parabolaRenderer.enabled = false;
+                    return;
                 }
-
             }
-            else if (playerInput.itemUse)
+            else if (playerInput.itemUse && parabolaRenderer.enabled == true)
             {
                 parabolaRenderer.enabled = false;
                 selectItem.Use();
@@ -333,6 +334,13 @@ public class InventoryManager : MonoBehaviour
         {
             UIManager.instance.UpdateInventory(selectItem.data.iconName, selectItem.data.quantity);
         }
+    }
+
+    private IEnumerator ThrowBomb(GameObject m_throwItem)
+    {
+        yield return new WaitForSeconds(3.0f);
+
+        m_throwItem.SetActive(false);
     }
 
     /*

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2629176529242594943}
   - component: {fileID: -7315359038010028259}
   - component: {fileID: 9221589122673147931}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ThrowItem_Grenade
   m_TagString: Grenade
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 7988112600261963218}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   m_Radius: 0.18038066
   m_Height: 0.411372
   m_Direction: 1
