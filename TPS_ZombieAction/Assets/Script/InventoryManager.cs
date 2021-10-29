@@ -37,10 +37,10 @@ public class InventoryManager : MonoBehaviour
     private float f_ThrowYSpeed = 0.30f;
     private float f_RotateY = 0;
 
-    [SerializeField] private GameObject grenade;
-    [SerializeField] private GameObject flashBang;
-    [SerializeField] private GameObject incenBomb;
-    private List<GameObject> throwItemList = new List<GameObject>();
+    [SerializeField] private ThrowItem grenade;
+    [SerializeField] private ThrowItem flashBang;
+    [SerializeField] private ThrowItem incenBomb;
+    private List<ThrowItem> throwItemList = new List<ThrowItem>();
 
     private void Awake()
     {
@@ -74,7 +74,7 @@ public class InventoryManager : MonoBehaviour
         var throwItem = Instantiate(grenade, transform.position, Quaternion.identity);
         if (throwItem)
         {
-            throwItem.SetActive(false);
+            throwItem.gameObject.SetActive(false);
             throwItemList.Add(throwItem);
         }
     }
@@ -168,12 +168,12 @@ public class InventoryManager : MonoBehaviour
         */
     }
     //투척아이템을 던지는 함수
-    public void Throwing(GameObject m_throwItem)
+    public void Throwing(ThrowItem m_throwItem)
     {
         if (m_throwItem)
         {
             m_throwItem.transform.position = PlayerThrowItemPosition;
-            m_throwItem.SetActive(true);
+            m_throwItem.gameObject.SetActive(true);
         }
         else
         {
@@ -181,11 +181,12 @@ public class InventoryManager : MonoBehaviour
             throwItemList.Add(m_throwItem);
         }
         
-        Rigidbody rigid = m_throwItem.GetComponent<Rigidbody>();
+        Rigidbody rigid = m_throwItem.gameObject.GetComponent<Rigidbody>();
         if (rigid)
         {
             rigid.velocity = ThrowVector;
         }
+        m_throwItem.Explosion();
     }
 
     public void Loot(ITEM_TYPE type)
@@ -288,9 +289,9 @@ public class InventoryManager : MonoBehaviour
                     */
                     item.data.quantity--;
 
-                    GameObject throwItem = throwItemList.Find(i =>
+                    ThrowItem throwItem = throwItemList.Find(i =>
                     {
-                        if (!i.activeSelf && i.tag.Equals("Grenade"))
+                        if (!i.gameObject.activeSelf && i.gameObject.tag.Equals("Grenade"))
                         {
                             return true;
                         }

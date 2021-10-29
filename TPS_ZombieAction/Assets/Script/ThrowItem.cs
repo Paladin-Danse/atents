@@ -4,21 +4,13 @@ using UnityEngine;
 
 public class ThrowItem : MonoBehaviour
 {
-    [SerializeField] private ParticleSystem boomEffect;
-    [SerializeField] private float f_Damage;
-    [SerializeField] private float f_ExploTime;
+    [SerializeField] protected ParticleSystem boomEffect;
+    [SerializeField] protected float f_Damage;
+    [SerializeField] protected float f_ExplosionTime;
+    [SerializeField] protected float f_ExplosionRange;
 
-    protected IEnumerator Explosion()
+    public virtual void Explosion()
     {
-        yield return new WaitForSeconds(f_ExploTime);
-
-        boomEffect.Play();
-    }
-
-    protected void ExplosionDamage()
-    {
-        LivingEntity[] entities;
-
-        Collider[] colliders = Physics.OverlapSphere(transform.position, 20f);
+        
     }
 }
