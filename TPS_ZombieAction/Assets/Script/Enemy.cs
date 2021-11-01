@@ -100,7 +100,7 @@ public class Enemy : LivingEntity
                 //멈춰서
                 pathFinder.isStopped = true;
                 //20의 반지름을 가진 구체를 만들고 그 안에 들어온 대상(whatIsTarget)을 탐색함.
-                Collider[] colliders = Physics.OverlapSphere(transform.position, 20f, whatIsTarget);
+                Collider[] colliders = Physics.OverlapSphere(transform.position, 2f, whatIsTarget);
                 for(int i=0; i<colliders.Length; i++)
                 {
                     LivingEntity livingEntity = colliders[i].GetComponent<LivingEntity>();

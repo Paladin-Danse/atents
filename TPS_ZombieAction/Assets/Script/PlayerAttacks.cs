@@ -152,15 +152,7 @@ public class PlayerAttacks : MonoBehaviour
         leftHandMount = leftHand;
         rightHandMount = rightHand;
     }
-
-    //근접공격 애니메이션이 끝날 때 애니메이션 이벤트로 불러올 함수
-    public void OnIdle()
-    {
-        playerAttackState = ATTACK_STATE.IDLE;
-        equipGun.gameObject.SetActive(true);
-        HandPositioning(equipGun.LeftHandle, equipGun.RightHandle);
-    }
-
+    
     private void OnAnimatorIK(int layerIndex)
     {
         if (playerAttackState == ATTACK_STATE.IDLE || playerAttackState == ATTACK_STATE.AIMING)
@@ -222,7 +214,6 @@ public class PlayerAttacks : MonoBehaviour
     //플레이어가 적의 처형이 가능한 범위에서 나가는 순간 처형버튼이 비활성화
     private void OnTriggerExit(Collider other)
     {
-
         if (other.gameObject.name.Equals("ExecutionArea"))
         {
             UIManager.instance.InteractionExit();
@@ -234,5 +225,15 @@ public class PlayerAttacks : MonoBehaviour
     {
         mainWeapon.gameObject.SetActive(false);
         subWeapon.gameObject.SetActive(false);
+        equipMelee.gameObject.SetActive(false);
+    }
+
+    //이하 애니메이션 이벤트
+    //근접공격 애니메이션이 끝날 때 애니메이션 이벤트로 불러올 함수
+    public void OnIdle()
+    {
+        playerAttackState = ATTACK_STATE.IDLE;
+        equipGun.gameObject.SetActive(true);
+        HandPositioning(equipGun.LeftHandle, equipGun.RightHandle);
     }
 }

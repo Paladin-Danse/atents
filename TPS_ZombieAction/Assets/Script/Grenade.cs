@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Grenade : ThrowItem
 {
-    [SerializeField] private GameObject ExplosionEffect;
-    private ParticleSystem FireBall;
     MeshRenderer mesh;
 
     private void Awake()
@@ -28,7 +26,8 @@ public class Grenade : ThrowItem
     protected void ExplosionDamage()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, f_ExplosionRange);
-        for(int i=0; i<colliders.Length; i++)
+        
+        for (int i=0; i<colliders.Length; i++)
         {
             LivingEntity entity = colliders[i].GetComponent<LivingEntity>();
             if(entity != null && !entity.b_Dead)
@@ -41,7 +40,7 @@ public class Grenade : ThrowItem
     private IEnumerator GrenadeExplosionEffect()
     {
         boomEffect.Play();
-
+        
         yield return new WaitWhile(() => boomEffect.isPlaying);
 
         gameObject.SetActive(false);

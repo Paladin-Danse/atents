@@ -17,10 +17,10 @@ public class PlayerMovement : MonoBehaviour
     private Animator playerAnimator;
     private float f_moveSpeed;
     private bool b_move;
-    [SerializeField] private float f_walkSpeed = 1.0f;
+    [SerializeField] private float f_walkSpeed = 1.5f;
     //아직 쓰고있지 않은 변수
-    //[SerializeField] private float f_aimMoveSpeed = 0.5f;
-    //[SerializeField] private float f_runSpeed = 1.5f;
+    //[SerializeField] private float f_aimMoveSpeed = 1.0f;
+    //[SerializeField] private float f_runSpeed = 3.0f;
     [SerializeField] private float f_rotateSpeed = 1.0f;
     [SerializeField] private GameObject gunPivot;
     [SerializeField] private float f_highCamRotation = -60f;//카메라 윗방향 제한
@@ -34,9 +34,14 @@ public class PlayerMovement : MonoBehaviour
         b_move = true;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (b_move) Move();
+    }
+
+    private void FixedUpdate()
+    {
+        //if (b_move) Move();
         Rotate();
     }
 
@@ -58,7 +63,6 @@ public class PlayerMovement : MonoBehaviour
 
             playerAnimator.SetFloat("Move", playerInput.horizontalMove);
         }
-        
     }
     public void Rotate()
     {
@@ -89,6 +93,8 @@ public class PlayerMovement : MonoBehaviour
         if (angle > 180f) return Mathf.Max(angle, 360 + from);
         return Mathf.Min(angle, to);
     }
+
+    //이하 애니메이션 이벤트
     //꽤나 조잡하다 수정필요
     public void OnMove()
     {

@@ -13,6 +13,7 @@ public class PlayerHealth : LivingEntity
 
     private PlayerMovement playerMovement;
     private PlayerAttacks playerShooter;
+    private PlayerItemLooting playerItemLooting;
 
     private bool b_Invincibility;
 
@@ -25,6 +26,7 @@ public class PlayerHealth : LivingEntity
         playerAudioPlayer = GetComponent<AudioSource>();
         playerMovement = GameManager.instance.playerMovement;
         playerShooter = GameManager.instance.playerAttack;
+        playerItemLooting = GameManager.instance.playerItemLooting;
         b_Invincibility = false;
         //테스트를 위해 가져오는 입력키값 실제로는 필요없음.
         playerInput = GetComponent<PlayerInput>();
@@ -71,8 +73,11 @@ public class PlayerHealth : LivingEntity
 
         playerMovement.enabled = false;
         playerShooter.enabled = false;
+        playerItemLooting.enabled = false;
     }
 
+
+    //이하 애니메이션 이벤트
     public void OnInvincibility()
     {
         b_Invincibility = true;
