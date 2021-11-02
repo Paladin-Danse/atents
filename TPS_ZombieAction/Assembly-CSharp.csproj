@@ -57,39 +57,46 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Script\PlayerAttacks.cs" />
+    <Compile Include="Assets\Resources\True Explosions\System\Scripts\effects\exploderComponents\ExploderComponent.cs" />
+    <Compile Include="Assets\Resources\True Explosions\System\Scripts\effects\exploderComponents\LightComponent.cs" />
     <Compile Include="Assets\Resources\Aligned Games\Polygonal Modern Weapons Asset Package\Scripts\Utility\FlyCameraBehaviour.cs" />
     <Compile Include="Assets\Script\UIManager.cs" />
+    <Compile Include="Assets\Resources\True Explosions\System\Scripts\exploders\Exploder2D.cs" />
     <Compile Include="Assets\Script\Gun.cs" />
+    <Compile Include="Assets\Script\Grenade.cs" />
     <Compile Include="Assets\Script\MeleeWeapon.cs" />
     <Compile Include="Assets\Script\EnemySpawner.cs" />
     <Compile Include="Assets\Script\InventoryManager.cs" />
     <Compile Include="Assets\Script\PlayerMovement.cs" />
+    <Compile Include="Assets\Resources\True Explosions\System\Scripts\effects\PseudoVolumetricExplosion.cs" />
     <Compile Include="Assets\Script\Item.cs" />
     <Compile Include="Assets\Script\PlayerHealth.cs" />
+    <Compile Include="Assets\Resources\True Explosions\System\Scripts\effects\exploderComponents\VolumetricComponent.cs" />
     <Compile Include="Assets\Script\PlayerItemLooting.cs" />
+    <Compile Include="Assets\Resources\True Explosions\System\Scripts\effects\exploderComponents\ParticleComponent.cs" />
+    <Compile Include="Assets\Resources\True Explosions\System\Scripts\exploders\Exploder.cs" />
+    <Compile Include="Assets\Resources\True Explosions\System\Scripts\effects\exploderComponents\VolumetricComponent2D.cs" />
     <Compile Include="Assets\Script\PlayerInput.cs" />
     <Compile Include="Assets\Script\ItemData.cs" />
     <Compile Include="Assets\Script\Damaged.cs" />
+    <Compile Include="Assets\Resources\True Explosions\System\Scripts\effects\exploderComponents\PseudoVolumetricComponent.cs" />
     <Compile Include="Assets\Script\GetItem.cs" />
     <Compile Include="Assets\Script\LivingEntity.cs" />
     <Compile Include="Assets\Script\Enemy.cs" />
-    <Compile Include="Assets\Script\GameManager.cs" />
-    <Compile Include="Assets\Script\Grenade.cs" />
-    <Compile Include="Assets\Resources\True Explosions\System\Scripts\exploders\Exploder.cs" />
-    <Compile Include="Assets\Resources\True Explosions\System\Scripts\effects\exploderComponents\VolumetricComponent.cs" />
-    <Compile Include="Assets\Resources\True Explosions\System\Scripts\exploders\Exploder2D.cs" />
-    <Compile Include="Assets\Resources\True Explosions\System\Scripts\effects\exploderComponents\ExploderComponent.cs" />
-    <Compile Include="Assets\Resources\True Explosions\System\Scripts\effects\exploderComponents\ParticleComponent.cs" />
-    <Compile Include="Assets\Resources\True Explosions\System\Scripts\effects\PseudoVolumetricExplosion.cs" />
-    <Compile Include="Assets\Resources\True Explosions\System\Scripts\effects\exploderComponents\VolumetricComponent2D.cs" />
-    <Compile Include="Assets\Resources\True Explosions\System\Scripts\exploders\SphereExploder.cs" />
-    <Compile Include="Assets\Resources\True Explosions\System\Scripts\effects\exploderComponents\PseudoVolumetricComponent.cs" />
-    <Compile Include="Assets\Resources\True Explosions\System\Scripts\effects\exploderComponents\LightComponent.cs" />
     <Compile Include="Assets\Script\ThrowItem.cs" />
+    <Compile Include="Assets\Resources\True Explosions\System\Scripts\exploders\SphereExploder.cs" />
+    <Compile Include="Assets\Script\GameManager.cs" />
+    <Compile Include="Assets\Script\Flashbang.cs" />
+    <Compile Include="Assets\Resources\StylizedExplosionPack\scripts\destroyMe.cs" />
+    <Compile Include="Assets\Resources\StylizedExplosionPack\scripts\particleColorChanger.cs" />
+    <Compile Include="Assets\Resources\StylizedExplosionPack\scripts\instantiateEffectCaller.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Resources\StylizedExplosionPack\Tips &amp; Documentations.txt" />
     <None Include="Assets\Resources\Aligned Games\Polygonal Modern Weapons Asset Package\Shaders\Diffuse.shader" />
+    <None Include="Assets\Resources\StylizedExplosionPack\shader\alphaBlend_depthBlend_glow.shader" />
     <None Include="Assets\Resources\True Explosions\System\Shaders\SphereVolumetricExplosion.shader" />
+    <None Include="Assets\Resources\StylizedExplosionPack\shader\alphaBlend_glow.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

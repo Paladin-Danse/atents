@@ -38,7 +38,7 @@ public class InventoryManager : MonoBehaviour
     private float f_RotateY = 0;
 
     [SerializeField] private ThrowItem grenade;
-    [SerializeField] private ThrowItem flashBang;
+    [SerializeField] private ThrowItem flashbang;
     [SerializeField] private ThrowItem incenBomb;
     private List<ThrowItem> throwItemList = new List<ThrowItem>();
 
@@ -170,17 +170,9 @@ public class InventoryManager : MonoBehaviour
     //투척아이템을 던지는 함수
     public void Throwing(ThrowItem m_throwItem)
     {
-        if (m_throwItem)
-        {
-            m_throwItem.transform.position = PlayerThrowItemPosition;
-            m_throwItem.gameObject.SetActive(true);
-        }
-        else
-        {
-            m_throwItem = Instantiate(grenade, PlayerThrowItemPosition, Quaternion.identity);
-            throwItemList.Add(m_throwItem);
-        }
-        
+        m_throwItem.transform.position = PlayerThrowItemPosition;
+        m_throwItem.gameObject.SetActive(true);
+
         Rigidbody rigid = m_throwItem.gameObject.GetComponent<Rigidbody>();
         if (rigid)
         {
@@ -233,6 +225,14 @@ public class InventoryManager : MonoBehaviour
                 if (item != null)
                 {
                     item.data.quantity++;
+                    if (selectItem == null)
+                    {
+                        selectItem = InventoryItemList.Find(i => i.data.type == ITEM_TYPE.FLASHBANG);//먹은 아이템을 장비
+                    }
+                    if (selectItem.data.type == ITEM_TYPE.FLASHBANG)
+                    {
+                        UIManager.instance.UpdateInventory(selectItem.data.iconName, selectItem.data.quantity);
+                    }
                 }
                 break;
             case ITEM_TYPE.INCENDIARY_BOMB:
@@ -273,20 +273,6 @@ public class InventoryManager : MonoBehaviour
                 item = InventoryItemList.Find(i => i.data.type == ITEM_TYPE.GRENADE);
                 if (item != null && item.data.quantity > 0)
                 {
-                    //매니저에서 조건에 맞춰 플레이어 보고 함수를 실행시키는 방법. 하지만 단 한번 불리는 함수이기에 한번 불리는 동안 던질것인지 취소할것인지 결과값을 낼 수 없었음.
-                    /*
-                    if (playerInput.itemUsing)//아이템사용키(G키)를 누르는 중
-                    {
-                        playerAttack.ThrowAiming(type);
-                        if(playerInput.useCancel)
-                        {
-                            playerAttack.ThrowCancel(type);
-                            break;
-                        }
-                    }
-                    else if (playerInput.throwing)//아이템사용키(G키)를 뗐을 때
-                    {
-                    */
                     item.data.quantity--;
 
                     ThrowItem throwItem = throwItemList.Find(i =>
@@ -297,18 +283,47 @@ public class InventoryManager : MonoBehaviour
                         }
                         return false;
                     });
-                    Throwing(throwItem);
 
+                    if (throwItem)
+                    {
+                        Throwing(throwItem);
+                    }
+                    else
+                    {
+                        throwItem = Instantiate(grenade, PlayerThrowItemPosition, Quaternion.identity);
+                        throwItemList.Add(throwItem);
+                        Throwing(throwItem);
+                    }
                     UIManager.instance.UpdateInventory(selectItem.data.iconName, selectItem.data.quantity);
-                    //}
                 }
                 break;
             //아래로는 아직 미구현 아이템
             case ITEM_TYPE.FLASHBANG:
                 item = InventoryItemList.Find(i => i.data.type == ITEM_TYPE.FLASHBANG);
-                if (item != null)
+                if (item != null && item.data.quantity > 0)
                 {
                     item.data.quantity--;
+                    ThrowItem throwItem = throwItemList.Find(i =>
+                    {
+                        if (!i.gameObject.activeSelf && i.gameObject.tag.Equals("Flashbang"))
+                        {
+                            return true;
+                        }
+                        return false;
+                    });
+
+                    if (throwItem)
+                    {
+                        Throwing(throwItem);
+                    }
+                    else
+                    {
+                        throwItem = Instantiate(flashbang, PlayerThrowItemPosition, Quaternion.identity);
+                        throwItemList.Add(throwItem);
+                        Throwing(throwItem);
+                    }
+
+                    UIManager.instance.UpdateInventory(selectItem.data.iconName, selectItem.data.quantity);
                 }
                 break;
             case ITEM_TYPE.INCENDIARY_BOMB:

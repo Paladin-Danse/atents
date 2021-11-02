@@ -4,26 +4,7 @@ using UnityEngine;
 
 public class Grenade : ThrowItem
 {
-    MeshRenderer mesh;
-
-    private void Awake()
-    {
-        mesh = GetComponent<MeshRenderer>();
-    }
-
-    private void OnEnable()
-    {
-        mesh.enabled = true;
-    }
-
-    public override void Explosion()
-    {
-        base.Explosion();
-
-        StartCoroutine(Boom());
-    }
-
-    protected void ExplosionDamage()
+    protected override void ExplosionDamage()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, f_ExplosionRange);
         
@@ -37,21 +18,5 @@ public class Grenade : ThrowItem
         }
     }
 
-    private IEnumerator GrenadeExplosionEffect()
-    {
-        boomEffect.Play();
-        
-        yield return new WaitWhile(() => boomEffect.isPlaying);
-
-        gameObject.SetActive(false);
-    }
-
-    private IEnumerator Boom()
-    {
-        yield return new WaitForSeconds(f_ExplosionTime);
-
-        StartCoroutine(GrenadeExplosionEffect());
-        ExplosionDamage();
-        mesh.enabled = false;
-    }
+    
 }

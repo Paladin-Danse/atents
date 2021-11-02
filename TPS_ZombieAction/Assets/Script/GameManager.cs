@@ -37,7 +37,6 @@ public class GameManager : MonoBehaviour
         playerItemLooting = player.GetComponent<PlayerItemLooting>();
         playerMovement = player.GetComponent<PlayerMovement>();
 
-
         for (int i = 0; i < dropItem.Length; i++)
         {
             MakeItem(dropItem[i]);
