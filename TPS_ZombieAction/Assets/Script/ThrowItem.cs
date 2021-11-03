@@ -10,12 +10,12 @@ public class ThrowItem : MonoBehaviour
     [SerializeField] protected float f_ExplosionRange;
     protected MeshRenderer mesh;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         mesh = GetComponent<MeshRenderer>();
     }
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         mesh.enabled = true;
     }

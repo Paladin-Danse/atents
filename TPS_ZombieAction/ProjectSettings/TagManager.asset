@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Grenade
   - Flashbang
+  - Incendiarybomb
   layers:
   - Default
   - TransparentFX
