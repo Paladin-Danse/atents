@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Incendiarybomb : ThrowItem
 {
-    [SerializeField] private ParticleSystem Flame;//불길
+    [SerializeField] private ParticleSystem FlameEffect;//불길
 
     protected override void OnEnable()
     {
         base.OnEnable();
-        Flame.gameObject.SetActive(false);
+        FlameEffect.gameObject.SetActive(false);
     }
 
     protected override void ExplosionDamage()
@@ -28,9 +28,27 @@ public class Incendiarybomb : ThrowItem
         OnFlame();
     }
 
+    protected override IEnumerator ExplosionEffect()
+    {
+        if (boomEffect)
+        {
+            boomEffect.Play();
+
+            if (FlameEffect)
+            {
+                FlameEffect.gameObject.SetActive(true);
+                FlameEffect.Play();
+
+                yield return new WaitWhile(() => FlameEffect.isPlaying);
+
+                gameObject.SetActive(false);
+            }
+        }
+    }
+
     protected void OnFlame()
     {
-        Flame.gameObject.SetActive(true);
-        Flame.Play();
+        FlameEffect.gameObject.SetActive(true);
+        FlameEffect.Play();
     }
 }

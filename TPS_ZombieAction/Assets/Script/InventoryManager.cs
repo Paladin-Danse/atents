@@ -39,7 +39,7 @@ public class InventoryManager : MonoBehaviour
 
     [SerializeField] private ThrowItem grenade;
     [SerializeField] private ThrowItem flashbang;
-    [SerializeField] private ThrowItem incenBomb;
+    [SerializeField] private ThrowItem incenbomb;
     private List<ThrowItem> throwItemList = new List<ThrowItem>();
 
     private void Awake()
@@ -240,6 +240,14 @@ public class InventoryManager : MonoBehaviour
                 if (item != null)
                 {
                     item.data.quantity++;
+                    if (selectItem == null)
+                    {
+                        selectItem = InventoryItemList.Find(i => i.data.type == ITEM_TYPE.INCENDIARY_BOMB);//먹은 아이템을 장비
+                    }
+                    if (selectItem.data.type == ITEM_TYPE.INCENDIARY_BOMB)
+                    {
+                        UIManager.instance.UpdateInventory(selectItem.data.iconName, selectItem.data.quantity);
+                    }
                 }
                 break;
         }
@@ -331,6 +339,27 @@ public class InventoryManager : MonoBehaviour
                 if (item != null)
                 {
                     item.data.quantity--;
+                    ThrowItem throwItem = throwItemList.Find(i =>
+                    {
+                        if (!i.gameObject.activeSelf && i.gameObject.tag.Equals("Incendiarybomb"))
+                        {
+                            return true;
+                        }
+                        return false;
+                    });
+
+                    if (throwItem)
+                    {
+                        Throwing(throwItem);
+                    }
+                    else
+                    {
+                        throwItem = Instantiate(incenbomb, PlayerThrowItemPosition, Quaternion.identity);
+                        throwItemList.Add(throwItem);
+                        Throwing(throwItem);
+                    }
+
+                    UIManager.instance.UpdateInventory(selectItem.data.iconName, selectItem.data.quantity);
                 }
                 break;
         }

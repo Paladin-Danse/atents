@@ -30,7 +30,7 @@ public class ThrowItem : MonoBehaviour
         
     }
 
-    protected IEnumerator ExplosionEffect()
+    protected virtual IEnumerator ExplosionEffect()
     {
         if (boomEffect)
         {

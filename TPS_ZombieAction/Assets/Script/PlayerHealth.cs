@@ -65,6 +65,12 @@ public class PlayerHealth : LivingEntity
         }
     }
 
+    public override void OnDotDamage(float m_damage, float m_dotTime)
+    {
+        base.OnDotDamage(m_damage, m_dotTime);
+        UIManager.instance.UpdateplayerHealthBar();
+    }
+
     public override void Die()
     {
         base.Die();
