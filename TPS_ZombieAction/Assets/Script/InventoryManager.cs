@@ -33,6 +33,7 @@ public class InventoryManager : MonoBehaviour
     private float f_ThrowPower = 10.0f;
     private float timeResolution = 0.02f;
     private float maxTime = 10f;
+    private bool b_throwCancel;
 
     private float f_ThrowYSpeed = 0.30f;
     private float f_RotateY = 0;
@@ -71,12 +72,19 @@ public class InventoryManager : MonoBehaviour
         parabolaRenderer.enabled = false;
 
         //투척아이템 미리 생성 후 감추기
-        var throwItem = Instantiate(grenade, transform.position, Quaternion.identity);
-        if (throwItem)
+        ThrowItem[] throwItems = { grenade, flashbang, incenbomb };
+
+        for (int i = 0; i < throwItems.Length; i++)
         {
-            throwItem.gameObject.SetActive(false);
-            throwItemList.Add(throwItem);
+            var throwItem = Instantiate(throwItems[i], transform.position, Quaternion.identity);
+            if (throwItem)
+            {
+                throwItem.gameObject.SetActive(false);
+                throwItemList.Add(throwItem);
+            }
         }
+
+        b_throwCancel = false;
     }
 
     private void Update()
@@ -88,17 +96,25 @@ public class InventoryManager : MonoBehaviour
         }
         if (playerInput.itemSelect)//선택키(F키)
         {
-            //아이템 선택키(F키)를 눌러도 인벤토리에 아무것도 없다면 함수를 실행시키지 않음
+            //아이템 선택키(F키)를 눌러도 인벤토리 데이터가 아무것도 없다면 함수를 실행시키지 않음
             if (InventoryItemList.Count <= 0)
             {
                 return;
             }
+
+            //인벤토리에 데이터는 있지만 아이템이 전혀 없더라도 함수를 실행시키지 않음
+            int quantity = 0;
+            for(int i=0; i<InventoryItemList.Count; i++)
+            {
+                quantity += InventoryItemList[i].data.quantity;
+            }
+            if (quantity <= 0) return;
             ChoiceItem();
         }
 
         if (selectItem != null && selectItem.data.quantity > 0)
         {
-            if (playerInput.throwing)
+            if (playerInput.throwing && b_throwCancel == false)
             {
                 if (selectItem.isThrowing)//투척아이템이 맞을경우 투척아이템의 궤적을 그린다.
                 {
@@ -147,13 +163,18 @@ public class InventoryManager : MonoBehaviour
                 if(playerInput.useCancel)
                 {
                     parabolaRenderer.enabled = false;
+                    b_throwCancel = true;
                     return;
                 }
             }
-            else if (playerInput.itemUse && parabolaRenderer.enabled == true)
+            else if (playerInput.itemUse)
             {
-                parabolaRenderer.enabled = false;
-                selectItem.Use();
+                b_throwCancel = false;
+                if (parabolaRenderer.enabled == true)
+                {
+                    parabolaRenderer.enabled = false;
+                    selectItem.Use();
+                }
             }
         }
 
@@ -181,81 +202,52 @@ public class InventoryManager : MonoBehaviour
         m_throwItem.Explosion();
     }
 
+    //Loot에서 불필요하게 중복되는 코드를 줄이는 함수
+    private void LootItem(UseItem item)
+    {
+        item.data.quantity++;//개수증가
+        if (selectItem == null)
+        {
+            selectItem = item;//먹은 아이템을 장비
+            i_SelectNum = InventoryItemList.FindIndex(i => i == selectItem);
+        }
+        if (selectItem.data.type == item.data.type)
+        {
+            UIManager.instance.UpdateInventory(item.data.iconName, item.data.quantity);
+        }
+    }
+
     public void Loot(ITEM_TYPE type)
     {
-        UseItem item;
+        UseItem item = new UseItem();
 
         switch(type)
         {
             case ITEM_TYPE.AMMO :
-                InventoryItemUse(type);
+                item = InventoryItemList.Find(i => i.data.type == ITEM_TYPE.AMMO);
+                item.Use();
+                item = null;
                 break;
             case ITEM_TYPE.POTION:
                 item = InventoryItemList.Find(i => i.data.type == ITEM_TYPE.POTION);
-                if (item != null)
-                {
-                    item.data.quantity++;//개수증가
-                    if (selectItem == null)
-                    {
-                        selectItem = InventoryItemList.Find(i => i.data.type == ITEM_TYPE.POTION);//먹은 아이템을 장비
-                    }
-                    if (selectItem.data.type == ITEM_TYPE.POTION)
-                    {
-                        UIManager.instance.UpdateInventory(selectItem.data.iconName, selectItem.data.quantity);
-                    }
-                }
                 break;
             case ITEM_TYPE.GRENADE:
                 item = InventoryItemList.Find(i => i.data.type == ITEM_TYPE.GRENADE);
-                if(item != null)
-                {
-                    item.data.quantity++;
-                    if(selectItem == null)
-                    {
-                        selectItem = InventoryItemList.Find(i => i.data.type == ITEM_TYPE.GRENADE);//먹은 아이템을 장비
-                    }
-                    if (selectItem.data.type == ITEM_TYPE.GRENADE)
-                    {
-                        UIManager.instance.UpdateInventory(selectItem.data.iconName, selectItem.data.quantity);
-                    }
-                }
                 break;
             case ITEM_TYPE.FLASHBANG:
                 item = InventoryItemList.Find(i => i.data.type == ITEM_TYPE.FLASHBANG);
-                if (item != null)
-                {
-                    item.data.quantity++;
-                    if (selectItem == null)
-                    {
-                        selectItem = InventoryItemList.Find(i => i.data.type == ITEM_TYPE.FLASHBANG);//먹은 아이템을 장비
-                    }
-                    if (selectItem.data.type == ITEM_TYPE.FLASHBANG)
-                    {
-                        UIManager.instance.UpdateInventory(selectItem.data.iconName, selectItem.data.quantity);
-                    }
-                }
                 break;
             case ITEM_TYPE.INCENDIARY_BOMB:
                 item = InventoryItemList.Find(i => i.data.type == ITEM_TYPE.INCENDIARY_BOMB);
-                if (item != null)
-                {
-                    item.data.quantity++;
-                    if (selectItem == null)
-                    {
-                        selectItem = InventoryItemList.Find(i => i.data.type == ITEM_TYPE.INCENDIARY_BOMB);//먹은 아이템을 장비
-                    }
-                    if (selectItem.data.type == ITEM_TYPE.INCENDIARY_BOMB)
-                    {
-                        UIManager.instance.UpdateInventory(selectItem.data.iconName, selectItem.data.quantity);
-                    }
-                }
                 break;
         }
+        if (item != null) LootItem(item);
+        
     }
 
     public void InventoryItemUse(ITEM_TYPE type)
     {
-        UseItem item;
+        UseItem item = new UseItem();
 
         switch (type)
         {
@@ -265,6 +257,7 @@ public class InventoryManager : MonoBehaviour
                 {
                     playerAttack.GetAmmo(item.data.value);
                 }
+                item = null;
                 break;
             case ITEM_TYPE.POTION://회복아이템
                 item = InventoryItemList.Find(i => i.data.type == ITEM_TYPE.POTION);
@@ -363,16 +356,29 @@ public class InventoryManager : MonoBehaviour
                 }
                 break;
         }
+        if(item != null)
+        {
+            if (item.data.quantity <= 0)
+            {
+                selectItem = null;
+                UIManager.instance.UpdateInventory(null, 0);
+            }
+        }
     }
 
     public void ChoiceItem()
     {
         if (InventoryItemList.Count != 0)
         {
-            i_SelectNum = (int)Mathf.Repeat(++i_SelectNum, i_SelectNum_Max);//선택한 아이템이 인벤토리의 List갯수를 넘어가면 0으로 초기화 아니면 1씩 증가
-            if (InventoryItemList[i_SelectNum].data.type == ITEM_TYPE.AMMO)//총알은 인벤토리에 들어가지 않는 관계로 오류를 막기위해 총알이 들어오면 다음 아이템으로 넘긴다.
+            do
+            {
+                //선택한 아이템이 인벤토리의 List갯수를 넘어가면 0으로 초기화 아니면 1씩 증가
                 i_SelectNum = (int)Mathf.Repeat(++i_SelectNum, i_SelectNum_Max);
-            
+            } while (InventoryItemList[i_SelectNum].data.type == ITEM_TYPE.AMMO
+                || InventoryItemList[i_SelectNum].data.quantity <= 0);
+            //총알은 인벤토리에 들어가지 않는 관계로 오류를 막기위해 총알이 들어오면 다음 아이템으로 넘긴다.
+            //마찬가지로 인벤토리에 비어있는 아이템도 선택할 수 없게 막는다.
+
             selectItem = InventoryItemList[i_SelectNum];
         }
         if (selectItem != null)

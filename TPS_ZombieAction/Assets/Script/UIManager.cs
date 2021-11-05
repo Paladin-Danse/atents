@@ -76,16 +76,25 @@ public class UIManager : MonoBehaviour
     }
     public void UpdateInventory(string spriteName, int newNum)
     {
-        inventoryImage.sprite = Resources.Load<Sprite>(string.Format("Sprites/{0}", spriteName));
-        if (inventoryImage.sprite == null)
+        if (spriteName == null)
         {
-            Debug.Log(string.Format("Sprites/{0}", spriteName));
+            inventoryImage.sprite = null;
+            inventoryItemNum.gameObject.SetActive(false);
             return;
         }
+        else
+        {
+            inventoryImage.sprite = Resources.Load<Sprite>(string.Format("Sprites/{0}", spriteName));
+            if (inventoryImage.sprite == null)
+            {
+                Debug.Log(string.Format("Sprites/{0}", spriteName));
+                return;
+            }
 
-        if(!inventoryItemNum.gameObject.activeSelf)
-            inventoryItemNum.gameObject.SetActive(true);
-        inventoryItemNum.text = newNum.ToString();
+            if (!inventoryItemNum.gameObject.activeSelf)
+                inventoryItemNum.gameObject.SetActive(true);
+            inventoryItemNum.text = newNum.ToString();
+        }
     }
     public void InventoryDisable()
     {
