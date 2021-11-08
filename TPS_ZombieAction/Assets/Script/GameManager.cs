@@ -30,13 +30,15 @@ public class GameManager : MonoBehaviour
     {
         GameObject player = GameObject.Find("Player");
         if (player == null) Debug.Log("player Null");
-        playerAttack = player.GetComponent<PlayerAttacks>();
-        playerHealth = player.GetComponent<PlayerHealth>();
-        playerInput = player.GetComponent<PlayerInput>();
-        if(playerInput == null) Debug.Log("playerInput Null");
-        playerItemLooting = player.GetComponent<PlayerItemLooting>();
-        playerMovement = player.GetComponent<PlayerMovement>();
-
+        else
+        {
+            playerAttack = player.GetComponent<PlayerAttacks>();
+            playerHealth = player.GetComponent<PlayerHealth>();
+            playerInput = player.GetComponent<PlayerInput>();
+            if (playerInput == null) Debug.Log("playerInput Null");
+            playerItemLooting = player.GetComponent<PlayerItemLooting>();
+            playerMovement = player.GetComponent<PlayerMovement>();
+        }
         for (int i = 0; i < dropItem.Length; i++)
         {
             MakeItem(dropItem[i]);

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Cinemachine;
 
 public class PlayerAttacks : MonoBehaviour
 {
@@ -25,28 +25,34 @@ public class PlayerAttacks : MonoBehaviour
     [SerializeField] private Transform meleeWeapon;
     [SerializeField] private Transform leftHandMount;
     [SerializeField] private Transform rightHandMount;
-
+    
     private PlayerInput playerInput;
     private Animator playerAnimator;
     private ATTACK_STATE playerAttackState;
+
+    private CinemachineVirtualCamera MainWeaponCam;
+    private CinemachineVirtualCamera SubWeaponCam;
 
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
         playerAnimator = GetComponent<Animator>();
+        MainWeaponCam = mainWeapon.transform.Find("MainWeapon vcam").GetComponent<CinemachineVirtualCamera>();
+        SubWeaponCam = subWeapon.transform.Find("SubWeapon vcam").GetComponent<CinemachineVirtualCamera>();
     }
 
     private void Start()
     {
         EquipMainWeapon();
+
+        MainWeaponCam.gameObject.SetActive(false);
+        SubWeaponCam.gameObject.SetActive(false);
     }
     private void Update()
     {
         WeaponSwap();
         WeaponAimShot();
         MeleeAttacking();
-        //현재 아이템을 던지는 상태일 경우 Throwing함수를 호출. 하지만 이 경우 무슨 아이템을 던지는지 타입값을 줄 수 없었음.
-        //if (playerAttackState == ATTACK_STATE.THROW) Throwing();
     }
     public void EquipMainWeapon()
     {
@@ -82,9 +88,18 @@ public class PlayerAttacks : MonoBehaviour
 
     public void WeaponAimShot()
     {
-        if(playerInput.aiming && playerAttackState != ATTACK_STATE.MELEE)
+        CinemachineVirtualCamera vcam = new CinemachineVirtualCamera();
+
+        if (playerInput.aiming && playerAttackState != ATTACK_STATE.MELEE)
         {
             playerAttackState = ATTACK_STATE.AIMING;
+
+            
+            if (equipGun == mainWeapon) vcam = MainWeaponCam;
+            else if (equipGun == subWeapon) vcam = SubWeaponCam;
+
+            if (vcam) vcam.gameObject.SetActive(true);
+            
             if (equipGun.AutoType() == "SEMIAUTO"
                 && playerInput.attack_ButtonDown
                 && playerAttackState == ATTACK_STATE.AIMING)
@@ -103,6 +118,7 @@ public class PlayerAttacks : MonoBehaviour
         if(playerInput.Not_aiming && playerAttackState == ATTACK_STATE.AIMING)
         {
             playerAttackState = ATTACK_STATE.IDLE;
+            if(vcam) vcam.gameObject.SetActive(false);
         }
 
         if(playerInput.reload)
