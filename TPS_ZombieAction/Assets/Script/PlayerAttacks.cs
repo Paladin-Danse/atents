@@ -25,6 +25,7 @@ public class PlayerAttacks : MonoBehaviour
     [SerializeField] private Transform meleeWeapon;
     [SerializeField] private Transform leftHandMount;
     [SerializeField] private Transform rightHandMount;
+    private Vector3 aimPoint;
     
     private PlayerInput playerInput;
     private Animator playerAnimator;
@@ -88,37 +89,35 @@ public class PlayerAttacks : MonoBehaviour
 
     public void WeaponAimShot()
     {
-        CinemachineVirtualCamera vcam = new CinemachineVirtualCamera();
-
         if (playerInput.aiming && playerAttackState != ATTACK_STATE.MELEE)
         {
             playerAttackState = ATTACK_STATE.AIMING;
+            aimPoint = Camera.main.ScreenToWorldPoint(Vector3.zero);
 
-            
-            if (equipGun == mainWeapon) vcam = MainWeaponCam;
-            else if (equipGun == subWeapon) vcam = SubWeaponCam;
+            if (equipGun == mainWeapon) MainWeaponCam.gameObject.SetActive(true);
+            else if (equipGun == subWeapon) SubWeaponCam.gameObject.SetActive(true);
 
-            if (vcam) vcam.gameObject.SetActive(true);
-            
             if (equipGun.AutoType() == "SEMIAUTO"
                 && playerInput.attack_ButtonDown
                 && playerAttackState == ATTACK_STATE.AIMING)
             {
-                equipGun.Fire();
+                equipGun.Fire(aimPoint);
             }
 
             if(equipGun.AutoType() == "FULLAUTO"
                 && playerInput.attack_Button
                 && playerAttackState == ATTACK_STATE.AIMING)
             {
-                equipGun.Fire();
+                equipGun.Fire(aimPoint);
             }
         }
         
         if(playerInput.Not_aiming && playerAttackState == ATTACK_STATE.AIMING)
         {
             playerAttackState = ATTACK_STATE.IDLE;
-            if(vcam) vcam.gameObject.SetActive(false);
+
+            if (equipGun == mainWeapon) MainWeaponCam.gameObject.SetActive(false);
+            else if (equipGun == subWeapon) SubWeaponCam.gameObject.SetActive(false);
         }
 
         if(playerInput.reload)

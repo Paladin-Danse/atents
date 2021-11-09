@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
+    //플레이어 움직임
     private string verticalMoveKeyName = "Vertical";
     private string horizontalMoveKeyName = "Horizontal";
+    private string runMoveKeyName = "Run";
     private string rotateXKeyName = "Mouse X";
     private string rotateYKeyName = "Mouse Y";
+
+    //플레이어 공격 및 조작
     private string attackKeyName = "Fire1";
     private string aimingKeyName = "Fire2";
     private string reloadKeyName = "Reload";
@@ -17,11 +21,17 @@ public class PlayerInput : MonoBehaviour
     private string playerInteractionKeyName = "Interaction";
     private string itemUseKeyName = "ItemUse";
     private string itemSelectKeyName = "ItemSelect";
+    
+    //디버그
     private string testKeyName = "Test";
+    
     public float verticalMove { get; private set; }
     public float horizontalMove { get; private set; }
+    public bool onRun { get; private set; }
+    public bool offRun { get; private set; }
     public float rotateX { get; private set; }
     public float rotateY { get; private set; }
+    
     public float weaponSwap { get; private set; }
 
     public bool attack_ButtonDown { get; private set; }
@@ -47,10 +57,15 @@ public class PlayerInput : MonoBehaviour
 
     private void Update()
     {
+        //플레이어 움직임
         verticalMove = Input.GetAxis(verticalMoveKeyName);
         horizontalMove = Input.GetAxis(horizontalMoveKeyName);
+        onRun = Input.GetButton(runMoveKeyName);
+        offRun = Input.GetButtonUp(runMoveKeyName);
         rotateX = Input.GetAxis(rotateXKeyName);
         rotateY = Input.GetAxis(rotateYKeyName);
+
+        //플레이어 공격 및 조작
         attack_ButtonDown = Input.GetButtonDown(attackKeyName);
         attack_Button = Input.GetButton(attackKeyName);
         aiming = Input.GetButton(aimingKeyName);
@@ -65,6 +80,8 @@ public class PlayerInput : MonoBehaviour
         itemUse = Input.GetButtonUp(itemUseKeyName);
         useCancel = Input.GetButtonDown(aimingKeyName);
         itemSelect = Input.GetButtonDown(itemSelectKeyName);
+
+        //디버그
         test = Input.GetButtonDown(testKeyName);
     }
 }

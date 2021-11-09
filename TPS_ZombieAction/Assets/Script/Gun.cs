@@ -94,13 +94,13 @@ public class Gun : MonoBehaviour
     }
 
     //사격입력을 받았을때 들어옴.
-    public void Fire()
+    public void Fire(Vector3 aimPoint)
     {
         //총이 준비상태이고, 마지막 발사시간으로부터 발사속도만큼의 시간이 지났다면
         if (e_State == STATE.STATE_READY && Time.time >= f_LastFireTime + f_TimeBetFire)
         {
             f_LastFireTime = Time.time;
-            Shot();
+            Shot(aimPoint);
         }
         //탄창이 비어있는 상태이면 자동으로 재장전을 거침.
         else if(e_State == STATE.STATE_EMPTY)
@@ -109,7 +109,7 @@ public class Gun : MonoBehaviour
         }
     }
     //사격
-    public void Shot()
+    public void Shot(Vector3 aimPoint)
     {
         RaycastHit hit;//충돌체
         Vector3 hitPosition = Vector3.zero;//충돌위치

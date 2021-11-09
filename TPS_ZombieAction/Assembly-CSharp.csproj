@@ -76,6 +76,7 @@
     <Compile Include="Assets\Resources\True Explosions\System\Scripts\effects\exploderComponents\ParticleComponent.cs" />
     <Compile Include="Assets\Resources\True Explosions\System\Scripts\exploders\Exploder.cs" />
     <Compile Include="Assets\Resources\StylizedExplosionPack\scripts\destroyMe.cs" />
+    <Compile Include="Assets\Script\Incendiarybomb.cs" />
     <Compile Include="Assets\Resources\StylizedExplosionPack\scripts\particleColorChanger.cs" />
     <Compile Include="Assets\Resources\True Explosions\System\Scripts\effects\exploderComponents\VolumetricComponent2D.cs" />
     <Compile Include="Assets\Script\PlayerInput.cs" />
@@ -88,10 +89,12 @@
     <Compile Include="Assets\Script\LivingEntity.cs" />
     <Compile Include="Assets\Script\Enemy.cs" />
     <Compile Include="Assets\Script\ThrowItem.cs" />
+    <Compile Include="Assets\Script\Flame.cs" />
     <Compile Include="Assets\Resources\True Explosions\System\Scripts\exploders\SphereExploder.cs" />
     <Compile Include="Assets\Script\GameManager.cs" />
-    <Compile Include="Assets\Script\Incendiarybomb.cs" />
-    <Compile Include="Assets\Script\Flame.cs" />
+    <Compile Include="Assets\Resources\SMC Pack 1\Demo\DemoAssets\V_SMC_Handler.cs" />
+    <Compile Include="Assets\Resources\SMC Pack 1\Demo\DemoAssets\V_SMC_Camera.cs" />
+    <Compile Include="Assets\Resources\SMC Pack 1\Demo\DemoAssets\V_Text.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\StylizedExplosionPack\Tips &amp; Documentations.txt" />
@@ -680,6 +683,12 @@
     <Reference Include="com.unity.cinemachine.editor">
       <HintPath>Library\ScriptAssemblies\com.unity.cinemachine.editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.2D.Tilemap.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.Tilemap.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Postprocessing.Runtime">
+      <HintPath>Library\ScriptAssemblies\Unity.Postprocessing.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
@@ -695,35 +704,29 @@
     <Reference Include="Unity.TextMeshPro">
       <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.UI">
-      <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.PlasticSCM.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Rider.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.ProGrids.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.ProGrids.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.ProGrids">
-      <HintPath>Library\ScriptAssemblies\Unity.ProGrids.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.2D.Tilemap.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.2D.Tilemap.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Postprocessing.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Postprocessing.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Postprocessing.Runtime">
-      <HintPath>Library\ScriptAssemblies\Unity.Postprocessing.Runtime.dll</HintPath>
+    <Reference Include="UnityEditor.UI">
+      <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Rider.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ProGrids.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.ProGrids.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ProGrids">
+      <HintPath>Library\ScriptAssemblies\Unity.ProGrids.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.PlasticSCM.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

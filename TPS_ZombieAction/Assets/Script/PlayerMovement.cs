@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float f_walkSpeed = 1.5f;
     //아직 쓰고있지 않은 변수
     //[SerializeField] private float f_aimMoveSpeed = 1.0f;
-    //[SerializeField] private float f_runSpeed = 3.0f;
+    [SerializeField] private float f_runSpeed = 3.0f;
     [SerializeField] private float f_rotateSpeed = 1.0f;
     [SerializeField] private GameObject gunPivot;
     [SerializeField] private float f_highCamRotation = -60f;//카메라 윗방향 제한
@@ -47,6 +47,21 @@ public class PlayerMovement : MonoBehaviour
 
     public void Move()
     {
+        if(playerInput.verticalMove > 0)
+        {
+            if(playerInput.onRun)
+            {
+                f_moveSpeed = f_runSpeed;
+                playerAnimator.speed = 1.5f;
+            }
+        }
+
+        if(playerInput.offRun || playerInput.verticalMove <= 0)
+        {
+            f_moveSpeed = f_walkSpeed;
+            playerAnimator.speed = 1.0f;
+        }
+
         if(playerInput.verticalMove != 0)
         {
             Vector3 moveDistance = playerInput.verticalMove * transform.forward * f_moveSpeed * Time.deltaTime;
@@ -55,6 +70,7 @@ public class PlayerMovement : MonoBehaviour
 
             playerAnimator.SetFloat("Move", playerInput.verticalMove);
         }
+
         if (playerInput.horizontalMove != 0)
         {
             Vector3 moveDistance = playerInput.horizontalMove * transform.right * f_moveSpeed * Time.deltaTime;
