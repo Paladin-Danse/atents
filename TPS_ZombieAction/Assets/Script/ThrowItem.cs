@@ -45,7 +45,7 @@ public class ThrowItem : MonoBehaviour
         }
     }
 
-    protected IEnumerator Boom()
+    protected virtual IEnumerator Boom()
     {
         yield return new WaitForSeconds(f_ExplosionTime);
 

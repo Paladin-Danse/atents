@@ -30,7 +30,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image inventoryImage;
     [SerializeField] private Text playerAmmoText;
     [SerializeField] private Text inventoryItemNum;
-    
+    [SerializeField] private GameObject CrosshairUI;
+
     //상호작용 키 UI
     [SerializeField] private Sprite ItemGetKey;
     [SerializeField] private Sprite ExecuteKey;

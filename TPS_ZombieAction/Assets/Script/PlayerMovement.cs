@@ -2,14 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum MOVESTATE
-{
-    NONE = 0,
-    WALKMOVE,
-    AIMMOVE,
-    RUNMOVE
-}
-
 public class PlayerMovement : MonoBehaviour
 {
     private PlayerInput playerInput;

@@ -25,7 +25,6 @@ public class PlayerAttacks : MonoBehaviour
     [SerializeField] private Transform meleeWeapon;
     [SerializeField] private Transform leftHandMount;
     [SerializeField] private Transform rightHandMount;
-    private Vector3 aimPoint;
     
     private PlayerInput playerInput;
     private Animator playerAnimator;
@@ -92,8 +91,7 @@ public class PlayerAttacks : MonoBehaviour
         if (playerInput.aiming && playerAttackState != ATTACK_STATE.MELEE)
         {
             playerAttackState = ATTACK_STATE.AIMING;
-            aimPoint = Camera.main.ScreenToWorldPoint(Vector3.zero);
-
+            
             if (equipGun == mainWeapon) MainWeaponCam.gameObject.SetActive(true);
             else if (equipGun == subWeapon) SubWeaponCam.gameObject.SetActive(true);
 
@@ -101,14 +99,14 @@ public class PlayerAttacks : MonoBehaviour
                 && playerInput.attack_ButtonDown
                 && playerAttackState == ATTACK_STATE.AIMING)
             {
-                equipGun.Fire(aimPoint);
+                equipGun.Fire();
             }
 
             if(equipGun.AutoType() == "FULLAUTO"
                 && playerInput.attack_Button
                 && playerAttackState == ATTACK_STATE.AIMING)
             {
-                equipGun.Fire(aimPoint);
+                equipGun.Fire();
             }
         }
         

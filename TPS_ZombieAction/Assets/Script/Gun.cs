@@ -35,7 +35,6 @@ public class Gun : MonoBehaviour
     [SerializeField] private float f_Damage;//총의 대미지
     [SerializeField] private float f_SupDamage;
     [SerializeField] private float f_FireDistance = 50;//총의 사거리
-
     [SerializeField] private int i_MaxAmmoRemain = 250;//총의 최대탄약
     [SerializeField] private int i_AmmoRemain = 100;//총의 현재탄약
     [SerializeField] private int i_MagCapacity = 25;//총의 탄창크기
@@ -44,6 +43,8 @@ public class Gun : MonoBehaviour
     [SerializeField] private float f_ReloadTime = 1.8f;//총의 장전속도
     [SerializeField] private float f_LastFireTime;//총이 마지막으로 격발한 시간
     [SerializeField] private float f_TimeToEffect = 0.03f;//이펙트 발생 시간
+    [SerializeField] private float f_Accuracy;//총의 정확도
+    [SerializeField] private float f_Recoil;//총의 반동
 
     //총의 발사궤적이지만, 노란색으로 표시되는 현재와 달리 어느정도 진행 후 필요가 없어질 무렵에 제거할 예정
     private LineRenderer bulletLineRenderer;
@@ -94,13 +95,13 @@ public class Gun : MonoBehaviour
     }
 
     //사격입력을 받았을때 들어옴.
-    public void Fire(Vector3 aimPoint)
+    public void Fire()
     {
         //총이 준비상태이고, 마지막 발사시간으로부터 발사속도만큼의 시간이 지났다면
         if (e_State == STATE.STATE_READY && Time.time >= f_LastFireTime + f_TimeBetFire)
         {
             f_LastFireTime = Time.time;
-            Shot(aimPoint);
+            Shot();
         }
         //탄창이 비어있는 상태이면 자동으로 재장전을 거침.
         else if(e_State == STATE.STATE_EMPTY)
@@ -109,13 +110,24 @@ public class Gun : MonoBehaviour
         }
     }
     //사격
-    public void Shot(Vector3 aimPoint)
+    public void Shot()
     {
         RaycastHit hit;//충돌체
         Vector3 hitPosition = Vector3.zero;//충돌위치
+        Vector3 aimCenter;//에임이 조준하고 있는 위치
+
+        //화면 정중앙엔 에임이 위치하고 있고 정중앙에서 선을 쏘았을 때, 부딪히는 물체가 있다면 해당 물체를 쏘게 해야한다.(정확히는 에임에 들어온 물체)
+        if(Physics.Raycast(Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, f_FireDistance)), out hit))
+        {
+            aimCenter = hit.point;
+        }
+        else//만약 부딪힌 물체가 없다면 화면 정중앙에서 해당총의 사거리가 끝나는 위치를 에임의 위치로 삼는다.
+        {
+            aimCenter = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, f_FireDistance));
+        }
 
         //선을 그려서 충돌하는 물체가 있다면
-        if(Physics.Raycast(fireTransform.position, fireTransform.forward, out hit, f_FireDistance))
+        if(Physics.Raycast(fireTransform.position, (aimCenter - fireTransform.position), out hit, f_FireDistance))
         {
             I_Damageable target = hit.collider.GetComponent<I_Damageable>();//대미지를 입는 오브젝트인 경우만
             if(target != null)
@@ -126,7 +138,7 @@ public class Gun : MonoBehaviour
         }
         else
         {
-            hitPosition = fireTransform.position + fireTransform.forward * f_FireDistance;//부딪히는 물체가 없는 경우 충돌위치를 총구+총의 사거리로 지정
+            hitPosition = fireTransform.position + (aimCenter - fireTransform.position) * f_FireDistance;//부딪히는 물체가 없는 경우 충돌위치를 총구+총의 사거리로 지정
         }
         StartCoroutine(ShotEffect(hitPosition));//사격효과 코루틴
 
