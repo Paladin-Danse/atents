@@ -30,7 +30,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image inventoryImage;
     [SerializeField] private Text playerAmmoText;
     [SerializeField] private Text inventoryItemNum;
-    [SerializeField] private GameObject CrosshairUI;
+    [SerializeField] private GunCrosshair CrosshairUI;
 
     //상호작용 키 UI
     [SerializeField] private Sprite ItemGetKey;
@@ -47,6 +47,7 @@ public class UIManager : MonoBehaviour
         }
         var temp = transform.Find("InteractionKeyGuide");
         if (temp) InteractionKeyImg = temp.GetComponent<Image>();
+
     }
 
     private void Start()
@@ -64,6 +65,7 @@ public class UIManager : MonoBehaviour
         }
         InteractionExit();
         InventoryDisable();
+        CrosshairUI.gameObject.SetActive(false);
     }
 
     //플레이어의 체력에 변동이 있을때마다 UI의 체력수치를 수정한다.
@@ -121,5 +123,19 @@ public class UIManager : MonoBehaviour
     {
         InteractionKeyImg.gameObject.SetActive(false);
         InteractionKeyImg.sprite = null;
+    }
+
+    public void CrosshairEnable()
+    {
+        CrosshairUI.gameObject.SetActive(true);
+    }
+    public void CrosshairDisable()
+    {
+        CrosshairUI.gameObject.SetActive(false);
+    }
+
+    public void CrosshairRecoil(float RecoilValue)
+    {
+        CrosshairUI.CrosshairDivide(RecoilValue);
     }
 }

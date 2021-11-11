@@ -91,6 +91,8 @@ public class PlayerAttacks : MonoBehaviour
         if (playerInput.aiming && playerAttackState != ATTACK_STATE.MELEE)
         {
             playerAttackState = ATTACK_STATE.AIMING;
+
+            UIManager.instance.CrosshairEnable();
             
             if (equipGun == mainWeapon) MainWeaponCam.gameObject.SetActive(true);
             else if (equipGun == subWeapon) SubWeaponCam.gameObject.SetActive(true);
@@ -100,6 +102,7 @@ public class PlayerAttacks : MonoBehaviour
                 && playerAttackState == ATTACK_STATE.AIMING)
             {
                 equipGun.Fire();
+                UIManager.instance.CrosshairRecoil(10f);
             }
 
             if(equipGun.AutoType() == "FULLAUTO"
@@ -107,12 +110,15 @@ public class PlayerAttacks : MonoBehaviour
                 && playerAttackState == ATTACK_STATE.AIMING)
             {
                 equipGun.Fire();
+                UIManager.instance.CrosshairRecoil(10f);
             }
         }
         
         if(playerInput.Not_aiming && playerAttackState == ATTACK_STATE.AIMING)
         {
             playerAttackState = ATTACK_STATE.IDLE;
+
+            UIManager.instance.CrosshairDisable();
 
             if (equipGun == mainWeapon) MainWeaponCam.gameObject.SetActive(false);
             else if (equipGun == subWeapon) SubWeaponCam.gameObject.SetActive(false);
