@@ -813,8 +813,8 @@ MonoBehaviour:
   f_ReloadTime: 1.8
   f_LastFireTime: 0
   f_TimeToEffect: 0.03
-  f_Accuracy: 0
-  f_Recoil: 0
+  f_Accuracy: 60
+  f_Recoil: 30
 --- !u!82 &432941181
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2355,8 +2355,8 @@ MonoBehaviour:
   f_ReloadTime: 1.8
   f_LastFireTime: 0
   f_TimeToEffect: 0.03
-  f_Accuracy: 0
-  f_Recoil: 0
+  f_Accuracy: 80
+  f_Recoil: 15
 --- !u!120 &1037804707
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -3092,8 +3092,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0c06bb3de3b2834ba7a1cf3c58a0df5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  f_Size: 100
-  f_MaxSize: 250
+  f_Size: 60
+  f_MaxSize: 500
   f_MinSize: 60
   CrosshairUp: {fileID: 274839286}
   CrosshairDown: {fileID: 1255563110}

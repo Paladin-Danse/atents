@@ -138,4 +138,9 @@ public class UIManager : MonoBehaviour
     {
         CrosshairUI.CrosshairDivide(RecoilValue);
     }
+
+    public float CrosshairReturnSize()
+    {
+        return CrosshairUI.GetSize();
+    }
 }

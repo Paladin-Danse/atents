@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class GunCrosshair : MonoBehaviour
 {
-    [SerializeField] [Range(60, 250)] private float f_Size = 100;
+    [SerializeField] [Range(60, 500)] private float f_Size = 100;
     [SerializeField] private float f_MaxSize = 250;
     [SerializeField] private float f_MinSize = 60;
     [SerializeField] private RectTransform CrosshairUp;
@@ -20,7 +20,7 @@ public class GunCrosshair : MonoBehaviour
 
     private void OnEnable()
     {
-        f_Size = f_MaxSize;
+        f_Size = f_MinSize;
     }
 
     private void FixedUpdate()
@@ -57,6 +57,7 @@ public class GunCrosshair : MonoBehaviour
     {
         f_Size += AppendValue;
         if (f_MaxSize < f_Size) f_Size = f_MaxSize;
+        CrosshairSizeUpdate();
         /*
         CrosshairUp.localPosition = new Vector3(CrosshairUp.localPosition.x, CrosshairUp.localPosition.y + AppendValue, CrosshairUp.localPosition.z);
         CrosshairDown.localPosition = new Vector3(CrosshairDown.localPosition.x, CrosshairDown.localPosition.y - AppendValue, CrosshairDown.localPosition.z);
@@ -69,5 +70,10 @@ public class GunCrosshair : MonoBehaviour
     {
         f_MaxSize = MaxValue;
         f_MinSize = MinValue;
+    }
+
+    public float GetSize()
+    {
+        return f_Size;
     }
 }

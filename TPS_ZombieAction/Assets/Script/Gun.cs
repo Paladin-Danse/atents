@@ -32,8 +32,8 @@ public class Gun : MonoBehaviour
     [SerializeField] private AudioClip shotClip;//격발클립
     [SerializeField] private AudioClip reloadClip;//장전클립
     
-    [SerializeField] private float f_Damage;//총의 대미지
-    [SerializeField] private float f_SupDamage;
+    [SerializeField] private float f_Damage;//총의 데미지
+    [SerializeField] private float f_SupDamage;//제압 데미지
     [SerializeField] private float f_FireDistance = 50;//총의 사거리
     [SerializeField] private int i_MaxAmmoRemain = 250;//총의 최대탄약
     [SerializeField] private int i_AmmoRemain = 100;//총의 현재탄약
@@ -101,6 +101,7 @@ public class Gun : MonoBehaviour
         if (e_State == STATE.STATE_READY && Time.time >= f_LastFireTime + f_TimeBetFire)
         {
             f_LastFireTime = Time.time;
+            UIManager.instance.CrosshairRecoil(f_Recoil);
             Shot();
         }
         //탄창이 비어있는 상태이면 자동으로 재장전을 거침.
@@ -126,8 +127,17 @@ public class Gun : MonoBehaviour
             aimCenter = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, f_FireDistance));
         }
 
+        //현재 막히는 구간
+        //에임이 벌어진만큼만 총알이 튀어야하지만 확실한 공식이 없어 총알이 튀는 구간을 정확하게 지정할 수가 없다.
+
+        //Debug.Log(string.Format("Before - aimCenter.x : {0}, aimCenter.y : {1}, aimCenter.z : {2}", aimCenter.x, aimCenter.y, aimCenter.z));
+        Vector3 randVector = Random.insideUnitCircle * (UIManager.instance.CrosshairReturnSize() - 60.0f) * 0.0033f;
+        aimCenter += new Vector3(randVector.x, randVector.y, 0);
+        
+        //Debug.Log(string.Format("After - aimCenter.x : {0}, aimCenter.y : {1}, aimCenter.z : {2}", aimCenter.x, aimCenter.y, aimCenter.z));
+
         //선을 그려서 충돌하는 물체가 있다면
-        if(Physics.Raycast(fireTransform.position, (aimCenter - fireTransform.position), out hit, f_FireDistance))
+        if (Physics.Raycast(fireTransform.position, (aimCenter - fireTransform.position), out hit, f_FireDistance))
         {
             I_Damageable target = hit.collider.GetComponent<I_Damageable>();//대미지를 입는 오브젝트인 경우만
             if(target != null)

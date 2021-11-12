@@ -102,7 +102,6 @@ public class PlayerAttacks : MonoBehaviour
                 && playerAttackState == ATTACK_STATE.AIMING)
             {
                 equipGun.Fire();
-                UIManager.instance.CrosshairRecoil(10f);
             }
 
             if(equipGun.AutoType() == "FULLAUTO"
@@ -110,7 +109,6 @@ public class PlayerAttacks : MonoBehaviour
                 && playerAttackState == ATTACK_STATE.AIMING)
             {
                 equipGun.Fire();
-                UIManager.instance.CrosshairRecoil(10f);
             }
         }
         
