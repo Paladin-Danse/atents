@@ -101,8 +101,10 @@ public class Gun : MonoBehaviour
         if (e_State == STATE.STATE_READY && Time.time >= f_LastFireTime + f_TimeBetFire)
         {
             f_LastFireTime = Time.time;
-            UIManager.instance.CrosshairRecoil(f_Recoil);
             Shot();
+
+            //반동
+            UIManager.instance.CrosshairRecoil(f_Recoil);
         }
         //탄창이 비어있는 상태이면 자동으로 재장전을 거침.
         else if(e_State == STATE.STATE_EMPTY)
@@ -117,24 +119,28 @@ public class Gun : MonoBehaviour
         Vector3 hitPosition = Vector3.zero;//충돌위치
         Vector3 aimCenter;//에임이 조준하고 있는 위치
 
+        //현재 막히는 구간
+        //에임이 벌어진만큼만 총알이 튀어야하지만 확실한 공식이 없어 총알이 튀는 구간을 정확하게 지정할 수가 없다.
+        
+        //Debug.Log(string.Format("Before - aimCenter.x : {0}, aimCenter.y : {1}, aimCenter.z : {2}", aimCenter.x, aimCenter.y, aimCenter.z));
+        var randAim = new Vector3(Random.Range(-(UIManager.instance.CrosshairReturnSize() - 60f) * 0.5f, (UIManager.instance.CrosshairReturnSize() - 60f) * 0.5f),
+                                  Random.Range(-(UIManager.instance.CrosshairReturnSize() - 60f) * 0.5f, (UIManager.instance.CrosshairReturnSize() - 60f) * 0.5f),
+                                  0);
+        Debug.Log(UIManager.instance.CrosshairReturnSize());
+
+        Vector3 finalAimVector = new Vector3(Screen.width * 0.5f, Screen.height * 0.5f, f_FireDistance) + randAim;
+
+        Debug.Log(string.Format("x : {0}, y : {1}, z : {2}", finalAimVector.x, finalAimVector.y, finalAimVector.z));
+
         //화면 정중앙엔 에임이 위치하고 있고 정중앙에서 선을 쏘았을 때, 부딪히는 물체가 있다면 해당 물체를 쏘게 해야한다.(정확히는 에임에 들어온 물체)
-        if(Physics.Raycast(Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, f_FireDistance)), out hit))
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(finalAimVector), out hit))
         {
             aimCenter = hit.point;
         }
         else//만약 부딪힌 물체가 없다면 화면 정중앙에서 해당총의 사거리가 끝나는 위치를 에임의 위치로 삼는다.
         {
-            aimCenter = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, f_FireDistance));
+            aimCenter = Camera.main.ScreenToWorldPoint(finalAimVector);
         }
-
-        //현재 막히는 구간
-        //에임이 벌어진만큼만 총알이 튀어야하지만 확실한 공식이 없어 총알이 튀는 구간을 정확하게 지정할 수가 없다.
-
-        //Debug.Log(string.Format("Before - aimCenter.x : {0}, aimCenter.y : {1}, aimCenter.z : {2}", aimCenter.x, aimCenter.y, aimCenter.z));
-        Vector3 randVector = Random.insideUnitCircle * (UIManager.instance.CrosshairReturnSize() - 60.0f) * 0.0033f;
-        aimCenter += new Vector3(randVector.x, randVector.y, 0);
-        
-        //Debug.Log(string.Format("After - aimCenter.x : {0}, aimCenter.y : {1}, aimCenter.z : {2}", aimCenter.x, aimCenter.y, aimCenter.z));
 
         //선을 그려서 충돌하는 물체가 있다면
         if (Physics.Raycast(fireTransform.position, (aimCenter - fireTransform.position), out hit, f_FireDistance))

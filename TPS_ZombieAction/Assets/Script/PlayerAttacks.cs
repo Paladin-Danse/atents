@@ -88,7 +88,7 @@ public class PlayerAttacks : MonoBehaviour
 
     public void WeaponAimShot()
     {
-        if (playerInput.aiming && playerAttackState != ATTACK_STATE.MELEE)
+        if (playerInput.aiming && playerAttackState != ATTACK_STATE.MELEE && !playerInput.onRun)
         {
             playerAttackState = ATTACK_STATE.AIMING;
 
@@ -112,7 +112,7 @@ public class PlayerAttacks : MonoBehaviour
             }
         }
         
-        if(playerInput.Not_aiming && playerAttackState == ATTACK_STATE.AIMING)
+        if((playerInput.Not_aiming && playerAttackState == ATTACK_STATE.AIMING) || playerInput.onRun)
         {
             playerAttackState = ATTACK_STATE.IDLE;
 
