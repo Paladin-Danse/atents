@@ -92,10 +92,10 @@
     <Compile Include="Assets\Script\Enemy.cs" />
     <Compile Include="Assets\Script\ThrowItem.cs" />
     <Compile Include="Assets\Resources\SMC Pack 1\Demo\DemoAssets\V_SMC_Camera.cs" />
+    <Compile Include="Assets\Script\GunCrosshair.cs" />
     <Compile Include="Assets\Script\Flame.cs" />
     <Compile Include="Assets\Resources\True Explosions\System\Scripts\exploders\SphereExploder.cs" />
     <Compile Include="Assets\Script\GameManager.cs" />
-    <Compile Include="Assets\Script\GunCrosshair.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\StylizedExplosionPack\Tips &amp; Documentations.txt" />

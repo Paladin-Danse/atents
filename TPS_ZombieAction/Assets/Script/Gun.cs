@@ -121,14 +121,27 @@ public class Gun : MonoBehaviour
 
         //현재 막히는 구간
         //에임이 벌어진만큼만 총알이 튀어야하지만 확실한 공식이 없어 총알이 튀는 구간을 정확하게 지정할 수가 없다.
-        
+        //아직도 엉성해보이는 느낌이 나지만 그나마 에임안에서 노는듯한 느낌처럼 보인다.
+
+        //Random.insideUnitCircle을 사용하지 않음 코드. 사각형 에임이 되는게 눈에 보임.
         //Debug.Log(string.Format("Before - aimCenter.x : {0}, aimCenter.y : {1}, aimCenter.z : {2}", aimCenter.x, aimCenter.y, aimCenter.z));
+        /*
+        //십자선 크기를 기준으로 랜덤하게 값을 가져옴.(ex : size = 90이면 기본크기 60만큼 빼고 -15에서 15안에서 랜덤값을 가져옴.)
         var randAim = new Vector3(Random.Range(-(UIManager.instance.CrosshairReturnSize() - 60f) * 0.5f, (UIManager.instance.CrosshairReturnSize() - 60f) * 0.5f),
                                   Random.Range(-(UIManager.instance.CrosshairReturnSize() - 60f) * 0.5f, (UIManager.instance.CrosshairReturnSize() - 60f) * 0.5f),
                                   0);
-        Debug.Log(UIManager.instance.CrosshairReturnSize());
+        */
+        //Debug.Log(UIManager.instance.CrosshairReturnSize());
+
+        //Vector3 finalAimVector = new Vector3(Screen.width * 0.5f, Screen.height * 0.5f, f_FireDistance) + randAim;
+
+        //Random.insideUnitCircle을 사용한 코드. 원형 에임을 그려주지만 잘못된 사용인건지 엉성한 느낌이 남.
+        Vector3 randAim = Random.insideUnitCircle * ((UIManager.instance.CrosshairReturnSize() - 60f) * 0.5f);
+
+        //Debug.Log(string.Format("Random.insideUnitCircle : {0}, CrosshairSize : {1}", Random.insideUnitCircle, UIManager.instance.CrosshairReturnSize() - 60f));
 
         Vector3 finalAimVector = new Vector3(Screen.width * 0.5f, Screen.height * 0.5f, f_FireDistance) + randAim;
+        //finalAimVector.z = f_FireDistance;
 
         Debug.Log(string.Format("x : {0}, y : {1}, z : {2}", finalAimVector.x, finalAimVector.y, finalAimVector.z));
 
