@@ -16,7 +16,7 @@ public class Gun : MonoBehaviour
         STATE_EMPTY,
         STATE_RELOADING
     }
-    [SerializeField] private STATE e_State;    
+    [SerializeField] private STATE e_State;
     [SerializeField] private SHOT_TYPE e_Type;
 
     [SerializeField] private Transform fireTransform;//총구 발사위치
@@ -31,6 +31,7 @@ public class Gun : MonoBehaviour
     [SerializeField] private AudioSource gunAudioPlayer;//총의 AudioSource
     [SerializeField] private AudioClip shotClip;//격발클립
     [SerializeField] private AudioClip reloadClip;//장전클립
+    
     
     [SerializeField] private float f_Damage;//총의 데미지
     [SerializeField] private float f_SupDamage;//제압 데미지
@@ -85,13 +86,14 @@ public class Gun : MonoBehaviour
         gunAudioPlayer.PlayOneShot(shotClip);
 
         //라인렌더러 온오프
+        /*
         bulletLineRenderer.SetPosition(0, fireTransform.position);
         bulletLineRenderer.SetPosition(1, hitPosition);
         bulletLineRenderer.enabled = true;
-
+        */
         yield return new WaitForSeconds(f_TimeToEffect);
 
-        bulletLineRenderer.enabled = false;
+        //bulletLineRenderer.enabled = false;
     }
 
     //사격입력을 받았을때 들어옴.
@@ -105,6 +107,9 @@ public class Gun : MonoBehaviour
 
             //반동
             UIManager.instance.CrosshairRecoil(f_Recoil);
+            //float moveRotation = f_Recoil * 0.1f;
+            //var rot = gameObject.transform.rotation;
+            //rot *= Quaternion.Euler(moveRotation, 0, 0);
         }
         //탄창이 비어있는 상태이면 자동으로 재장전을 거침.
         else if(e_State == STATE.STATE_EMPTY)
