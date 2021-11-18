@@ -53,14 +53,26 @@ public class Gun : MonoBehaviour
     private void Awake()
     {
         gunAudioPlayer = GetComponent<AudioSource>();
-        bulletLineRenderer = GetComponent<LineRenderer>();
+        //bulletLineRenderer = GetComponent<LineRenderer>();
 
+        i_MagAmmo = i_MagCapacity;
+    }
+
+    private void Start()
+    {
+        /*
         bulletLineRenderer.positionCount = 2;//불렛 라인렌더러에 총구와 총의 사거리만큼 두개의 지점이 필요
         bulletLineRenderer.enabled = true;//라인렌더러를 활성화
+        */
 
         //총의 기본수치 정의(원래 OnEnable이었으나 총을 바꿀 때마다 총이 장전이 되기에 Awake에 표현하고 Scene을 새로 부를 때 문제가 있을경우, 해당 코드를 다시 부른다.)
-        i_MagAmmo = i_MagCapacity;
+
         e_State = STATE.STATE_READY;
+    }
+
+    private void Update()
+    {
+        if(transform.rotation != transform.parent.parent.rotation) RecoilBackupRotation();
     }
 
     private void OnEnable()
@@ -96,6 +108,11 @@ public class Gun : MonoBehaviour
         //bulletLineRenderer.enabled = false;
     }
 
+    private void RecoilBackupRotation()
+    {
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, transform.parent.parent.rotation, 0.2f);
+    }
+
     //사격입력을 받았을때 들어옴.
     public void Fire()
     {
@@ -107,9 +124,7 @@ public class Gun : MonoBehaviour
 
             //반동
             UIManager.instance.CrosshairRecoil(f_Recoil);
-            //float moveRotation = f_Recoil * 0.1f;
-            //var rot = gameObject.transform.rotation;
-            //rot *= Quaternion.Euler(moveRotation, 0, 0);
+            transform.rotation *= Quaternion.Euler(f_Recoil * -0.1f, 0, 0);
         }
         //탄창이 비어있는 상태이면 자동으로 재장전을 거침.
         else if(e_State == STATE.STATE_EMPTY)
@@ -195,6 +210,22 @@ public class Gun : MonoBehaviour
 
         StartCoroutine(ReloadRoutine());
         return true;
+    }
+
+    public void ReloadCancel()
+    {
+        if(e_State == STATE.STATE_RELOADING)
+        {
+            if (i_MagAmmo <= 0)
+            {
+                e_State = STATE.STATE_EMPTY;
+            }
+            else
+            {
+                e_State = STATE.STATE_READY;
+            }
+            StopCoroutine(ReloadRoutine());
+        }
     }
 
     //들고있을 수 있는 탄약이 최대치보다 많을 경우

@@ -20,7 +20,6 @@ public class PlayerAttacks : MonoBehaviour
     [SerializeField] private GameObject grenade;
 
     public Gun equipGun { get; private set; }
-    //public MeleeWeapon equipMelee {get; private set; }
     [SerializeField] private Transform gunPivot;
     [SerializeField] private Transform meleeWeapon;
     [SerializeField] private Transform leftHandMount;
@@ -56,6 +55,8 @@ public class PlayerAttacks : MonoBehaviour
     }
     public void EquipMainWeapon()
     {
+        if (!mainWeapon.gameObject.activeSelf) subWeapon.ReloadCancel();
+
         mainWeapon.gameObject.SetActive(true);
         subWeapon.gameObject.SetActive(false);
 
@@ -64,6 +65,8 @@ public class PlayerAttacks : MonoBehaviour
 
     public void EquipSubWeapon()
     {
+        if (!subWeapon.gameObject.activeSelf) mainWeapon.ReloadCancel();
+
         mainWeapon.gameObject.SetActive(false);
         subWeapon.gameObject.SetActive(true);
 
@@ -73,7 +76,7 @@ public class PlayerAttacks : MonoBehaviour
     {
         if(playerInput.weaponSwap != 0)
         {
-            if(mainWeapon.gameObject.activeSelf)
+            if (mainWeapon.gameObject.activeSelf)
             {
                 EquipSubWeapon();
             }
