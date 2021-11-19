@@ -44,8 +44,8 @@ public class Gun : MonoBehaviour
     [SerializeField] private float f_ReloadTime = 1.8f;//총의 장전속도
     [SerializeField] private float f_LastFireTime;//총이 마지막으로 격발한 시간
     [SerializeField] private float f_TimeToEffect = 0.03f;//이펙트 발생 시간
-    [SerializeField] private float f_Accuracy;//총의 정확도
-    [SerializeField] private float f_Recoil;//총의 반동
+    [SerializeField] [Range(0, 100)]private float f_Accuracy;//총의 정확도
+    [SerializeField] [Range(0, 100)]private float f_Recoil;//총의 반동
 
     //총의 발사궤적이지만, 노란색으로 표시되는 현재와 달리 어느정도 진행 후 필요가 없어질 무렵에 제거할 예정
     private LineRenderer bulletLineRenderer;
@@ -70,7 +70,8 @@ public class Gun : MonoBehaviour
         e_State = STATE.STATE_READY;
     }
 
-    private void Update()
+    //일반 업데이트를 사용했을 경우 반동으로 올라간 각도가 다시 되돌아오기까지의 시간이 그때마다 다름.
+    private void FixedUpdate()
     {
         if(transform.rotation != transform.parent.parent.rotation) RecoilBackupRotation();
     }
@@ -79,6 +80,7 @@ public class Gun : MonoBehaviour
     {
         f_LastFireTime = 0;
         UIManager.instance.UpdateAmmoText(i_MagAmmo, i_AmmoRemain);//총이 바뀔 때마다 각 총의 탄약으로 UI를 업데이트 함.
+        UIManager.instance.SetGunAccuracy(f_Accuracy);//총을 꺼낼 때 십자선 크기를 총의 적중률에 맞춰 조절한다.
     }
 
     //현재 총이 무슨 타입의 총인지 다른 스크립트에 반환
@@ -108,9 +110,10 @@ public class Gun : MonoBehaviour
         //bulletLineRenderer.enabled = false;
     }
 
+    //반동으로 올라간 각도를 RotateTowards를 사용해 최대한 자연스럽게 원래 각도로 되돌린다.
     private void RecoilBackupRotation()
     {
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, transform.parent.parent.rotation, 0.2f);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, transform.parent.parent.rotation, 0.4f);
     }
 
     //사격입력을 받았을때 들어옴.
@@ -212,11 +215,12 @@ public class Gun : MonoBehaviour
         return true;
     }
 
+    //재장전을 할 때 총을 바꿀경우, 재장전이 취소된 총이 고장났음. 이외에도 고장이 나는 경우를 방지하기 위해 해당함수를 호출할 것.
     public void ReloadCancel()
     {
         if(e_State == STATE.STATE_RELOADING)
         {
-            if (i_MagAmmo <= 0)
+            if (i_MagAmmo <= 0)//총알이 비어있는 상태에서 총을 바꿀 땐, 반드시 EMPTY로 바꿔야한다. 아니면 재장전이 취소된 총은 남은 탄약이 0발이라도 반드시 한발은 쏘게 됨.
             {
                 e_State = STATE.STATE_EMPTY;
             }

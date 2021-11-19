@@ -89,104 +89,97 @@ public class InventoryManager : MonoBehaviour
 
     private void Update()
     {
-        playerInput = GameManager.instance.playerInput;
-        if (playerInput.rotateY != 0)
+        if (!playerHealth.b_Dead)
         {
-            f_RotateY = Mathf.Clamp(f_RotateY + (playerInput.rotateY * f_ThrowYSpeed), -10f, 10f);
-        }
-        if (playerInput.itemSelect)//선택키(F키)
-        {
-            //아이템 선택키(F키)를 눌러도 인벤토리 데이터가 아무것도 없다면 함수를 실행시키지 않음
-            if (InventoryItemList.Count <= 0)
+            playerInput = GameManager.instance.playerInput;
+            if (playerInput.rotateY != 0)
             {
-                return;
+                f_RotateY = Mathf.Clamp(f_RotateY + (playerInput.rotateY * f_ThrowYSpeed), -10f, 10f);
             }
-
-            //인벤토리에 데이터는 있지만 아이템이 전혀 없더라도 함수를 실행시키지 않음
-            int quantity = 0;
-            for(int i=0; i<InventoryItemList.Count; i++)
+            if (playerInput.itemSelect)//선택키(F키)
             {
-                quantity += InventoryItemList[i].data.quantity;
-            }
-            if (quantity <= 0) return;
-            ChoiceItem();
-        }
-
-        if (selectItem != null && selectItem.data.quantity > 0)
-        {
-            if (playerInput.throwing && b_throwCancel == false)
-            {
-                if (selectItem.isThrowing)//투척아이템이 맞을경우 투척아이템의 궤적을 그린다.
+                //아이템 선택키(F키)를 눌러도 인벤토리 데이터가 아무것도 없다면 함수를 실행시키지 않음
+                if (InventoryItemList.Count <= 0)
                 {
-                    int index = 0;
-                    //땅이나 벽, 오브젝트와 부딪혔을 때 사용할 변수들
-                    RaycastHit hit;
-
-                    var player = playerAttack.gameObject;
-
-                    parabolaRenderer.enabled = true;
-                    parabolaRenderer.positionCount = ((int)(maxTime / timeResolution));
-                    
-                    Vector3 veloVector3 = player.transform.forward * f_ThrowPower;
-                    veloVector3.y += f_RotateY;
-                    ThrowVector = veloVector3;
-
-                    Vector3 currentPosition = player.transform.position;
-                    //플레이어의 발이 플레이어 위치값의 기준이 되어있으므로 약간 올림.
-                    currentPosition.y += 1.25f;
-                    PlayerThrowItemPosition = currentPosition;
-
-                    for (float t = 0.0f; t < maxTime; t += timeResolution)
-                    {
-                        //부딪히는 위치까지만 라인렌더러를 그리게 수정하기
-                        if (Physics.Raycast(currentPosition, player.transform.forward, out hit, f_ThrowPower * timeResolution))
-                        {
-                            parabolaRenderer.SetPosition(index, hit.point);
-                            parabolaRenderer.positionCount = index + 1;
-                            break;
-                        }
-
-                        parabolaRenderer.SetPosition(index, currentPosition);//플레이어 위치
-
-                        currentPosition += veloVector3 * timeResolution;
-                        veloVector3 += Physics.gravity * timeResolution;
-
-                        index++;
-                    }
-                }
-
-                else if (playerInput.itemCheck)//투척아이템이 아니라면 아이템사용키(G키)가 한 번 눌리는 순간 아이템이 사용되게 한다.
-                {
-                    selectItem.Use();
-                }
-
-                if(playerInput.useCancel)
-                {
-                    parabolaRenderer.enabled = false;
-                    b_throwCancel = true;
                     return;
                 }
-            }
-            else if (playerInput.itemUse)
-            {
-                b_throwCancel = false;
-                if (parabolaRenderer.enabled == true)
+
+                //인벤토리에 데이터는 있지만 아이템이 전혀 없더라도 함수를 실행시키지 않음
+                int quantity = 0;
+                for (int i = 0; i < InventoryItemList.Count; i++)
                 {
-                    parabolaRenderer.enabled = false;
-                    selectItem.Use();
+                    quantity += InventoryItemList[i].data.quantity;
+                }
+                if (quantity <= 0) return;
+                ChoiceItem();
+            }
+
+            if (selectItem != null && selectItem.data.quantity > 0)
+            {
+                if (playerInput.throwing && b_throwCancel == false)
+                {
+                    if (selectItem.isThrowing)//투척아이템이 맞을경우 투척아이템의 궤적을 그린다.
+                    {
+                        int index = 0;
+                        //땅이나 벽, 오브젝트와 부딪혔을 때 사용할 변수들
+                        RaycastHit hit;
+
+                        var player = playerAttack.gameObject;
+
+                        parabolaRenderer.enabled = true;
+                        parabolaRenderer.positionCount = ((int)(maxTime / timeResolution));
+
+                        Vector3 veloVector3 = player.transform.forward * f_ThrowPower;
+                        veloVector3.y += f_RotateY;
+                        ThrowVector = veloVector3;
+
+                        Vector3 currentPosition = player.transform.position;
+                        //플레이어의 발이 플레이어 위치값의 기준이 되어있으므로 약간 올림.
+                        currentPosition.y += 1.25f;
+                        PlayerThrowItemPosition = currentPosition;
+
+                        for (float t = 0.0f; t < maxTime; t += timeResolution)
+                        {
+                            //부딪히는 위치까지만 라인렌더러를 그리게 수정하기
+                            if (Physics.Raycast(currentPosition, player.transform.forward, out hit, f_ThrowPower * timeResolution))
+                            {
+                                parabolaRenderer.SetPosition(index, hit.point);
+                                parabolaRenderer.positionCount = index + 1;
+                                break;
+                            }
+
+                            parabolaRenderer.SetPosition(index, currentPosition);//플레이어 위치
+
+                            currentPosition += veloVector3 * timeResolution;
+                            veloVector3 += Physics.gravity * timeResolution;
+
+                            index++;
+                        }
+                    }
+
+                    else if (playerInput.itemCheck)//투척아이템이 아니라면 아이템사용키(G키)가 한 번 눌리는 순간 아이템이 사용되게 한다.
+                    {
+                        selectItem.Use();
+                    }
+
+                    if (playerInput.useCancel)
+                    {
+                        parabolaRenderer.enabled = false;
+                        b_throwCancel = true;
+                        return;
+                    }
+                }
+                else if (playerInput.itemUse)
+                {
+                    b_throwCancel = false;
+                    if (parabolaRenderer.enabled == true)
+                    {
+                        parabolaRenderer.enabled = false;
+                        selectItem.Use();
+                    }
                 }
             }
         }
-
-        /*
-        if (playerInput.itemUse)//사용키(G키)
-        {
-            if (selectItem != null)//선택된 아이템이 Null이 아니라면
-            {
-                selectItem.Use();
-            }
-        }
-        */
     }
     //투척아이템을 던지는 함수
     public void Throwing(ThrowItem m_throwItem)
@@ -223,7 +216,7 @@ public class InventoryManager : MonoBehaviour
 
         switch(type)
         {
-            case ITEM_TYPE.AMMO :
+            case ITEM_TYPE.AMMO:
                 item = InventoryItemList.Find(i => i.data.type == ITEM_TYPE.AMMO);
                 item.Use();
                 item = null;
@@ -393,87 +386,4 @@ public class InventoryManager : MonoBehaviour
 
         m_throwItem.SetActive(false);
     }
-
-    /*
-    //[SerializeField] private Image InventoryPanel;//인벤토리 아이템 이미지
-    
-    private CItem selectItem;//현재 선택중인 아이템
-    private int i_SelectNum = 0;//현재 선택된 아이템의 List방 번호
-    private int i_SelectNum_Max = 3;//인벤토리 최대 방 갯수
-    private PlayerInput playerInput;//인벤토리와 상호작용하는 선택키(F)와 사용키(G)
-
-    private void Awake()
-    {
-        playerInput = FindObjectOfType<PlayerInput>();
-    }
-    private void Update()
-    {
-        if (playerInput.itemUse)//사용키(G키)
-        {
-            if (selectItem)//선택된 아이템이 Null이 아니라면
-            {
-                UseItem();
-            }
-        }
-        if (playerInput.itemSelect)//선택키(F키)
-        {
-            //아이템 선택키(F키)를 눌러도 인벤토리에 아무것도 없다면 함수를 실행시키지 않음
-            if (InventoryItemList.Count <= 0)
-            {
-                return;
-            }
-            ChoiceItem();
-        }
-    }
-
-    //아이템이 들어왔을때 부르는 함수
-    public void LootItem(CItem m_item)
-    {
-        CItem item = InventoryItemList.Find(i => i == m_item);
-        //인벤토리에 없는 아이템이라면
-        if (item == null)
-        {
-            //인벤토리가 꽉 찬 경우
-            if(InventoryItemList.Count >= i_SelectNum_Max)
-            {
-                return;
-            }
-            m_item.NumUp();
-            InventoryItemList.Add(m_item);//새로운 아이템을 추가한다.
-        }
-        else
-        {
-            item.NumUp();
-        }
-    }
-    //인벤토리 내 아이템을 사용
-    public void UseItem()
-    {
-        //CItem item = InventoryItemList.Find(i => i == selectItem);
-        if (selectItem == null) return ;
-
-        selectItem.Use();
-
-        if (selectItem.Num <= 0)
-        {
-            InventoryItemList.Remove(selectItem);
-            selectItem = null;
-            UIManager.instance.InventoryDisable();
-        }
-    }
-
-    //아이템을 선택하는 함수. 아이템 선택 키(F키)를 누를 경우 다음 아이템을 selectItem에 저장한다.
-    public void ChoiceItem()
-    {
-        if (InventoryItemList.Count != 0)
-        {
-            //i_SelectNum++;//다음 아이템을 선택
-            i_SelectNum = (int)Mathf.Repeat(++i_SelectNum, i_SelectNum_Max);
-            //if (i_SelectNum >= InventoryItemList.Count) i_SelectNum = 0;//선택한 아이템이 인벤토리의 List갯수를 넘어가면 0으로 초기화
-            selectItem = InventoryItemList[i_SelectNum];
-        }
-
-        UIManager.instance.UpdateInventory(selectItem.InventoryImage, selectItem.Num);
-    }
-    */
 }

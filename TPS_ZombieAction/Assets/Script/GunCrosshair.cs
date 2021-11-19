@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class GunCrosshair : MonoBehaviour
 {
-    [SerializeField] [Range(60, 500)] private float f_Size = 100;
+    [SerializeField] [Range(60, 250)] private float f_Size = 100;
     [SerializeField] private float f_MaxSize = 250;
     [SerializeField] private float f_MinSize = 60;
     [SerializeField] private RectTransform CrosshairUp;
@@ -66,14 +67,13 @@ public class GunCrosshair : MonoBehaviour
         */
     }
 
-    public void SetCrosshairMaxMinSize(float MaxValue, float MinValue)
-    {
-        f_MaxSize = MaxValue;
-        f_MinSize = MinValue;
-    }
-
     public float GetSize()
     {
         return f_Size;
+    }
+
+    public void GunAccuracyToSize(float Accuracy)
+    {
+        f_MinSize = 60 + (190 * (1.0f - (Accuracy * 0.01f)));
     }
 }

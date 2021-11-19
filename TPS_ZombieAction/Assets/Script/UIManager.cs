@@ -143,4 +143,9 @@ public class UIManager : MonoBehaviour
     {
         return CrosshairUI.GetSize();
     }
+
+    public void SetGunAccuracy(float Accuracy)
+    {
+        CrosshairUI.GunAccuracyToSize(Accuracy);
+    }
 }

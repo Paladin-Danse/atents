@@ -76,13 +76,13 @@ public class PlayerMovement : MonoBehaviour
     {
         if(playerInput.rotateX != 0)
         {
-            float mouseMove = playerInput.rotateX * f_rotateSpeed;
+            float mouseMove = playerInput.rotateX * f_rotateSpeed * Time.deltaTime;
 
             playerRigid.rotation *= Quaternion.Euler(0f, mouseMove, 0f);
         }
         if(playerInput.rotateY != 0)
         {
-            float mouseMove = -(playerInput.rotateY) * f_rotateSpeed;
+            float mouseMove = -(playerInput.rotateY) * f_rotateSpeed * Time.deltaTime;
         
             var rot = gunPivot.transform.rotation;
             rot *= Quaternion.Euler(mouseMove, 0f, 0f);

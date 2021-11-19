@@ -2356,7 +2356,7 @@ MonoBehaviour:
   f_LastFireTime: 0
   f_TimeToEffect: 0.03
   f_Accuracy: 80
-  f_Recoil: 30
+  f_Recoil: 45
 --- !u!120 &1037804707
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -3898,7 +3898,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   f_walkSpeed: 1.5
   f_runSpeed: 3
-  f_rotateSpeed: 1
+  f_rotateSpeed: 100
   gunPivot: {fileID: 354996860}
   f_highCamRotation: -60
   f_lowCamRotation: 60
