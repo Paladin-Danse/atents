@@ -6,6 +6,7 @@ public class PlayerItemLooting : MonoBehaviour
 {
     private PlayerInput playerInput;
     private AudioSource playerAudioPlayer;
+    private List<GetItem> Item;
     [SerializeField] private AudioClip itemPickUp;//아이템 주울 때 나는 소리
 
 
@@ -13,44 +14,49 @@ public class PlayerItemLooting : MonoBehaviour
     {
         playerInput = GetComponent<PlayerInput>();
         playerAudioPlayer = GetComponent<AudioSource>();
+        Item = new List<GetItem>();
     }
 
+    private void Update()
+    {
+        //상호작용키(E키)를 눌렀을 때 리스트에 담아둔 아이템이 있을 경우, 해당 아이템을 주워서 인벤토리에 넣은 뒤, 리스트에서 제거하고 효과음 재생. 마무리로 리스트에 남은 아이템이 없다면 UI제거.
+        if(playerInput.playerInteraction)
+        {
+            if (Item.Count != 0)
+            {
+                var item = Item.Find(i => i);
+                item.Looting();
+                Item.Remove(item);
+                playerAudioPlayer.PlayOneShot(itemPickUp);//아이템 줍는 사운드 출력
+                if(Item.Count == 0) UIManager.instance.InteractionExit();
+            }
+        }
+    }
+    //아이템과 충돌하면 UI를 띄우고 리스트에 해당 아이템을 추가.
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag.Equals("Item"))
         {
             UIManager.instance.InteractionEnter(INTERACTION.GETITEM);
+            Item.Add(other.GetComponent<GetItem>());
         }
     }
-    //OnTriggerEnter를 처음 사용했으나 안에서 지속적으로 플레이어의 입력처리를 받아들이지 못해 Stay에서 처리함.
+    //키를 입력할 때 가끔씩 처리를 못하는 문제가 있어 Update에서 처리함. 키를 입력받지 않아도 되는 코드가 생기면 해당 함수에서 처리할 것.
+    /*
     private void OnTriggerStay(Collider other)
     {
-        if (playerInput.playerInteraction && other.tag.Equals("Item"))//플레이어가 상호작용키(E키)를 누른경우
-        {    
-            var item = other.GetComponent<GetItem>();
-            if (item)
-            {
-                item.Looting();
-                playerAudioPlayer.PlayOneShot(itemPickUp);//아이템 줍는 사운드 출력
-                UIManager.instance.InteractionExit();
-            }
-        }
-        //CItem item = other.GetComponent<CItem>();//플레이어와 부딪힌 아이템을 받아옴.
-        //if (item != null)
-        //{
-        //    if (playerInput.playerInteraction)//플레이어가 상호작용키(E키)를 누른경우
-        //    {
-        //        item.Loot(gameObject);//아이템의 Loot함수를 실행
-        //
-        //        playerAudioPlayer.PlayOneShot(itemPickUp);//아이템 줍는 사운드 출력
-        //    }
-        //}
+        
     }
+    */
+
+    //아이템의 충돌범위를 벗어나면 리스트에서 해당 아이템을 제거하고, 리스트에 남은 아이템이 없다면 UI를 제거.
     private void OnTriggerExit(Collider other)
     {
         if(other.tag.Equals("Item"))
         {
-            UIManager.instance.InteractionExit();
+            var item = Item.Find(i => i == other.GetComponent<GetItem>());
+            Item.Remove(item);
+            if(Item.Count == 0) UIManager.instance.InteractionExit();
         }
     }
 }

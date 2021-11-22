@@ -26,14 +26,15 @@ public class PlayerMovement : MonoBehaviour
         b_move = true;
     }
 
+    private void Start()
+    {
+        //가끔 gunPivot의 rotation이 엉뚱한 각도에서 시작해서 총이 뒤를 보는 바람에 플레이어 몸을 뚫고 뒤를 향한 상태에서 빠져나가질 못한다.
+        gunPivot.transform.rotation = Quaternion.Euler(Vector3.zero);
+    }
+
     private void Update()
     {
         if (b_move) Move();
-    }
-
-    private void FixedUpdate()
-    {
-        //if (b_move) Move();
         Rotate();
     }
 
