@@ -28,6 +28,8 @@ public class PlayerAttacks : MonoBehaviour
     private PlayerInput playerInput;
     private Animator playerAnimator;
     private ATTACK_STATE playerAttackState;
+    private bool b_OnExecution;
+    private Enemy ExecutionTarget;
 
     private CinemachineVirtualCamera MainWeaponCam;
     private CinemachineVirtualCamera SubWeaponCam;
@@ -46,6 +48,8 @@ public class PlayerAttacks : MonoBehaviour
 
         MainWeaponCam.gameObject.SetActive(false);
         SubWeaponCam.gameObject.SetActive(false);
+        b_OnExecution = false;
+        ExecutionTarget = null;
     }
     private void Update()
     {
@@ -139,7 +143,21 @@ public class PlayerAttacks : MonoBehaviour
 
     public void MeleeAttacking()
     {
-        if (playerAttackState == ATTACK_STATE.IDLE && playerInput.attack_ButtonDown)
+        if (playerInput.attack_ButtonDown
+                && playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Execute") == false
+                && b_OnExecution)
+        {
+            playerAttackState = ATTACK_STATE.EXECUTE;
+            if (ExecutionTarget != null)
+                ExecutionTarget.Execution();
+            else
+                Debug.Log("No Target");
+            playerAnimator.SetTrigger("Execute");
+            UIManager.instance.InteractionExit();
+            playerAttackState = ATTACK_STATE.IDLE;
+            b_OnExecution = false;
+        }
+        else if (playerAttackState == ATTACK_STATE.IDLE && playerInput.attack_ButtonDown)
         {
             playerAttackState = ATTACK_STATE.MELEE;
 
@@ -215,6 +233,7 @@ public class PlayerAttacks : MonoBehaviour
         if (other.gameObject.name.Equals("ExecutionArea"))
         {
             UIManager.instance.InteractionEnter(INTERACTION.EXECUTE);
+            ExecutionTarget = other.transform.parent.GetComponent<Enemy>();
         }
     }
 
@@ -224,16 +243,7 @@ public class PlayerAttacks : MonoBehaviour
         var obj = other.gameObject;
         if (obj.name.Equals("ExecutionArea") && obj.activeSelf == true)
         {
-            playerAttackState = ATTACK_STATE.EXECUTE;
-
-            if(playerInput.attack_ButtonDown
-                && playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Execute") == false)
-            {
-                obj.GetComponentInParent<Enemy>().Execution();
-                playerAnimator.SetTrigger("Execute");
-                UIManager.instance.InteractionExit();
-                playerAttackState = ATTACK_STATE.IDLE;
-            }
+            b_OnExecution = true;
         }
     }
 
@@ -244,6 +254,8 @@ public class PlayerAttacks : MonoBehaviour
         {
             UIManager.instance.InteractionExit();
             playerAttackState = ATTACK_STATE.IDLE;
+            ExecutionTarget = null;
+            b_OnExecution = false;
         }
     }
     

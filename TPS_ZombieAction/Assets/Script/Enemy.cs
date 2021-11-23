@@ -7,6 +7,8 @@ public class Enemy : LivingEntity
     
 
     [SerializeField] private LayerMask whatIsTarget;
+    [SerializeField] private float f_SearchRange = 2f;
+    [SerializeField] private float f_AttackRange = 0.5f;
     [SerializeField] private LivingEntity targetEntity;
     private NavMeshAgent pathFinder;
 
@@ -25,10 +27,8 @@ public class Enemy : LivingEntity
     [SerializeField] private float f_StartingSupHealth = 100f;
     [SerializeField] private Collider ExecutionArea;
     private float f_SupHealth;
-
-    //아직 쓰고 있지 않은 변수
-    //[SerializeField] private float f_Damage = 20f;
-    //[SerializeField] private float f_timeBetAttck = 0.5f;
+    [SerializeField] private float f_Damage = 20f;
+    [SerializeField] private float f_timeBetAttck = 0.5f;
     private float f_LastAttackTime;
 
     private bool hasTarget
@@ -93,6 +93,21 @@ public class Enemy : LivingEntity
                 //타겟을 향해 계속 이동
                 pathFinder.isStopped = false;
                 pathFinder.SetDestination(targetEntity.transform.position);
+                pathFinder.stoppingDistance = f_AttackRange;
+
+                Collider[] colliders = Physics.OverlapSphere(transform.position, f_AttackRange + 0.1f, whatIsTarget);
+                for(int i=0; i<colliders.Length; i++)
+                {
+                    LivingEntity livingEntity = colliders[i].GetComponent<LivingEntity>();
+                    //발견한 대상이 null이 아니고 살아있다면
+                    if (livingEntity != null && !livingEntity.b_Dead)
+                    {
+                        livingEntity.OnDamage(f_Damage, transform.position, transform.position - livingEntity.transform.position);
+                        enemyAnimator.SetTrigger("Attack");
+                        break;
+                    }
+                }
+
             }
             //타겟을 발견하지 못했다면
             else
@@ -100,7 +115,7 @@ public class Enemy : LivingEntity
                 //멈춰서
                 pathFinder.isStopped = true;
                 //20의 반지름을 가진 구체를 만들고 그 안에 들어온 대상(whatIsTarget)을 탐색함.
-                Collider[] colliders = Physics.OverlapSphere(transform.position, 2f, whatIsTarget);
+                Collider[] colliders = Physics.OverlapSphere(transform.position, f_SearchRange, whatIsTarget);
                 for(int i=0; i<colliders.Length; i++)
                 {
                     LivingEntity livingEntity = colliders[i].GetComponent<LivingEntity>();
@@ -112,7 +127,6 @@ public class Enemy : LivingEntity
                     }
                 }
             }
-
             yield return new WaitForSeconds(0.25f);
         }
     }
@@ -170,11 +184,9 @@ public class Enemy : LivingEntity
 
     private IEnumerator Suppressed()
     {
-        pathFinder.enabled = true;
-
         var exeArea = ExecutionArea.gameObject;
 
-        pathFinder.isStopped = true;
+        pathFinder.ResetPath();
         exeArea.SetActive(true);
 
         enemyAnimator.SetBool("Suppressed", true);
