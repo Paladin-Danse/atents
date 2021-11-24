@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 825852915}
   - component: {fileID: 825852916}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ExecutionArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,13 +60,13 @@ GameObject:
   - component: {fileID: 4082009380262867732}
   - component: {fileID: 4082009380262867733}
   - component: {fileID: 4082009380262867753}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Zombie
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4082009380263258608
 Transform:
   m_ObjectHideFlags: 0
@@ -251,8 +251,8 @@ NavMeshAgent:
   m_GameObject: {fileID: 4082009380262835216}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
+  m_Radius: 0.3
+  m_Speed: 1
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -260,7 +260,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 2
+  m_Height: 1.5
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
@@ -279,6 +279,8 @@ MonoBehaviour:
   whatIsTarget:
     serializedVersion: 2
     m_Bits: 8
+  f_SearchRange: 2
+  f_AttackRange: 1
   targetEntity: {fileID: 0}
   hitEffect: {fileID: 4186476358789480673}
   deathSound: {fileID: 8300000, guid: b86f03005ed394911b43027aeaaedeb7, type: 3}
@@ -286,6 +288,8 @@ MonoBehaviour:
   f_SupTime: 3
   f_StartingSupHealth: 50
   ExecutionArea: {fileID: 825852916}
+  f_Damage: 20
+  f_timeBetAttck: 2
 --- !u!1 &4082009380262835220
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,7 +300,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4082009380263258612}
   - component: {fileID: 4082009380268046512}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Zombie_Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -376,9 +380,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4082009380263258608}
     m_Modifications:
+    - target: {fileID: 1000010159161520, guid: da33d2f1d5c4b41689d8063e19e3a7dc, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1000012909287652, guid: da33d2f1d5c4b41689d8063e19e3a7dc, type: 3}
       propertyPath: m_Name
       value: BloodSprayEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000012909287652, guid: da33d2f1d5c4b41689d8063e19e3a7dc, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4000013488956786, guid: da33d2f1d5c4b41689d8063e19e3a7dc, type: 3}
       propertyPath: m_RootOrder

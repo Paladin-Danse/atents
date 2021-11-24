@@ -184,7 +184,7 @@ public class Gun : MonoBehaviour
             I_Damageable target = hit.collider.GetComponent<I_Damageable>();//대미지를 입는 오브젝트인 경우만
             if(target != null)
             {
-                target.OnDamage(f_Damage, hit.point, hit.normal);
+                target.OnDamage(f_Damage, hit.point, fireTransform.position - hit.point);
             }
             hitPosition = hit.point;
         }

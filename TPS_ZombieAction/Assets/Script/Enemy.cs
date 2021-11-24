@@ -10,11 +10,17 @@ public class Enemy : LivingEntity
     [SerializeField] private float f_SearchRange = 2f;
     [SerializeField] private float f_AttackRange = 0.5f;
     [SerializeField] private LivingEntity targetEntity;
+    [SerializeField] private float f_Damage = 20f;
+    [SerializeField] private float f_Speed = 1.0f;
+    [SerializeField] private float f_timeBetAttck = 0.5f;
+    private float f_LastAttackTime;
     private NavMeshAgent pathFinder;
 
     public ParticleSystem hitEffect;
     public AudioClip deathSound;
     public AudioClip hitSound;
+    [SerializeField] private Collider Leftarm_AttackBox;
+    [SerializeField] private Collider Rightarm_AttackBox;
 
     private Animator enemyAnimator;
     private AudioSource enemyAudioPlayer;
@@ -27,9 +33,7 @@ public class Enemy : LivingEntity
     [SerializeField] private float f_StartingSupHealth = 100f;
     [SerializeField] private Collider ExecutionArea;
     private float f_SupHealth;
-    [SerializeField] private float f_Damage = 20f;
-    [SerializeField] private float f_timeBetAttck = 0.5f;
-    private float f_LastAttackTime;
+    
 
     private bool hasTarget
     {
@@ -55,6 +59,11 @@ public class Enemy : LivingEntity
     public void Setup()
     {
         pathFinder.enabled = true;
+        Leftarm_AttackBox.GetComponent<DamageBox>().Setup(f_Damage * 0.5f);
+        Rightarm_AttackBox.GetComponent<DamageBox>().Setup(f_Damage * 0.5f);
+
+        Leftarm_AttackBox.enabled = false;
+        Rightarm_AttackBox.enabled = false;
 
         //제압관련 초기화
         f_SupHealth = f_StartingSupHealth;
@@ -64,7 +73,9 @@ public class Enemy : LivingEntity
 
         //기초스탯 초기화
         f_StartingHealth = 300f;
-        pathFinder.speed = 2.0f;
+        pathFinder.speed = f_Speed;
+        f_LastAttackTime = Time.time;
+        pathFinder.stoppingDistance = f_AttackRange;
 
         rigid.isKinematic = false;
 
@@ -93,21 +104,23 @@ public class Enemy : LivingEntity
                 //타겟을 향해 계속 이동
                 pathFinder.isStopped = false;
                 pathFinder.SetDestination(targetEntity.transform.position);
-                pathFinder.stoppingDistance = f_AttackRange;
 
-                Collider[] colliders = Physics.OverlapSphere(transform.position, f_AttackRange + 0.1f, whatIsTarget);
-                for(int i=0; i<colliders.Length; i++)
+                if (Time.time >= f_LastAttackTime + f_timeBetAttck)
                 {
-                    LivingEntity livingEntity = colliders[i].GetComponent<LivingEntity>();
-                    //발견한 대상이 null이 아니고 살아있다면
-                    if (livingEntity != null && !livingEntity.b_Dead)
+                    Collider[] colliders = Physics.OverlapSphere(transform.position, f_AttackRange + 0.1f, whatIsTarget);
+                    for (int i = 0; i < colliders.Length; i++)
                     {
-                        livingEntity.OnDamage(f_Damage, transform.position, transform.position - livingEntity.transform.position);
-                        enemyAnimator.SetTrigger("Attack");
-                        break;
+                        LivingEntity livingEntity = colliders[i].GetComponent<LivingEntity>();
+                        //발견한 대상이 null이 아니고 살아있다면
+                        if (livingEntity != null && !livingEntity.b_Dead)
+                        {
+                            livingEntity.OnDamage(f_Damage, transform.position, transform.position - livingEntity.transform.position);
+                            enemyAnimator.SetTrigger("Attack");
+                            f_LastAttackTime = Time.time;
+                            break;
+                        }
                     }
                 }
-
             }
             //타겟을 발견하지 못했다면
             else
@@ -214,5 +227,25 @@ public class Enemy : LivingEntity
     {
         Setup();
         base.OnEnable();
+    }
+
+    public IEnumerator LeftArmAttack()
+    {
+        Debug.Log("LeftAttack");
+        Leftarm_AttackBox.enabled = true;
+
+        yield return new WaitForSeconds(0.05f);
+
+        Leftarm_AttackBox.enabled = false;
+    }
+
+    public IEnumerator RightArmAttack()
+    {
+        Debug.Log("RightAttack");
+        Rightarm_AttackBox.enabled = true;
+
+        yield return new WaitForSeconds(0.08f);
+
+        Rightarm_AttackBox.enabled = false;
     }
 }
