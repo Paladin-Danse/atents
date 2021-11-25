@@ -21,10 +21,12 @@ public class PlayerInput : MonoBehaviour
     private string playerInteractionKeyName = "Interaction";
     private string itemUseKeyName = "ItemUse";
     private string itemSelectKeyName = "ItemSelect";
+    private string dodgeKeyName = "Dodge";
     
     //디버그
     private string testKeyName = "Test";
     
+    //플레이어 움직임.
     public float verticalMove { get; private set; }
     public float horizontalMove { get; private set; }
     public bool onRun { get; private set; }
@@ -32,8 +34,8 @@ public class PlayerInput : MonoBehaviour
     public float rotateX { get; private set; }
     public float rotateY { get; private set; }
     
+    //플레이어 공격 및 조작
     public float weaponSwap { get; private set; }
-
     public bool attack_ButtonDown { get; private set; }
     public bool attack_Button { get; private set; }
     public bool aiming { get; private set; }
@@ -47,6 +49,9 @@ public class PlayerInput : MonoBehaviour
     public bool throwing { get; private set; }
     public bool useCancel { get; private set; }
     public bool itemSelect { get; private set; }
+    public bool dodge { get; private set; }
+
+    //디버그
     public bool test { get; private set; }
     
     private void Start()
@@ -80,6 +85,7 @@ public class PlayerInput : MonoBehaviour
         itemUse = Input.GetButtonUp(itemUseKeyName);
         useCancel = Input.GetButtonDown(aimingKeyName);
         itemSelect = Input.GetButtonDown(itemSelectKeyName);
+        dodge = Input.GetButtonDown(dodgeKeyName);
 
         //디버그
         test = Input.GetButtonDown(testKeyName);

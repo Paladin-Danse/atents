@@ -9,7 +9,9 @@ public class PlayerMovement : MonoBehaviour
     private Animator playerAnimator;
     private float f_moveSpeed;
     private bool b_move;
+    private bool b_Dodge;
     [SerializeField] private float f_walkSpeed = 1.5f;
+    [SerializeField] private float f_DodgeDistance = 5f;
     //아직 쓰고있지 않은 변수
     //[SerializeField] private float f_aimMoveSpeed = 1.0f;
     [SerializeField] private float f_runSpeed = 3.0f;
@@ -17,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GameObject gunPivot;
     [SerializeField] private float f_highCamRotation = -60f;//카메라 윗방향 제한
     [SerializeField] private float f_lowCamRotation = 60f;//카메라 아랫방향 제한
+
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
@@ -24,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
         playerAnimator = GetComponent<Animator>();
         f_moveSpeed = f_walkSpeed;
         b_move = true;
+        b_Dodge = false;
     }
 
     private void Start()
@@ -34,8 +38,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (b_move) Move();
+        if (b_move && !b_Dodge) Move();
         Rotate();
+        Dodge();
     }
 
     public void Move()
@@ -55,7 +60,15 @@ public class PlayerMovement : MonoBehaviour
             playerAnimator.speed = 1.0f;
         }
 
-        if(playerInput.verticalMove != 0)
+
+        //Vector3 move = ((playerInput.verticalMove * transform.forward) + (playerInput.horizontalMove * transform.right)).normalized;
+        //if(move.magnitude > 0)
+        //{
+        //    playerRigid.MovePosition(playerRigid.position + move * f_moveSpeed * Time.deltaTime);
+        //    playerAnimator.SetFloat("Move", move.magnitude);
+        //}
+
+        if (playerInput.verticalMove != 0)
         {
             Vector3 moveDistance = playerInput.verticalMove * transform.forward * f_moveSpeed * Time.deltaTime;
 
@@ -93,6 +106,35 @@ public class PlayerMovement : MonoBehaviour
             rot = Quaternion.Euler(eulerAnglesX, rot.eulerAngles.y, rot.eulerAngles.z);
             gunPivot.transform.rotation = rot;
         }
+    }
+
+    private void Dodge()
+    {
+        if(playerInput.dodge)
+        {
+            Vector3 DodgeVector;
+            Vector3 DodgeDirection = ((playerInput.verticalMove * transform.forward) + (playerInput.horizontalMove * transform.right)).normalized;
+            if (DodgeDirection.magnitude > 0)
+            {
+                DodgeVector = playerRigid.position + (DodgeDirection * f_DodgeDistance);
+            }
+            else
+            {
+                DodgeVector = playerRigid.position + (-transform.forward * f_DodgeDistance);
+            }
+
+            StartCoroutine(DodgeRoutine(DodgeVector));
+        }
+    }
+
+    private IEnumerator DodgeRoutine(Vector3 DodgeVector)
+    {
+        b_Dodge = true;
+        playerRigid.AddForce(DodgeVector);
+
+        yield return new WaitForSeconds(2f);
+
+        b_Dodge = false;
     }
 
     //eulerAnles가 360을 넘어가는 수치를 0으로 되돌리고 0아래로 넘어가는 수치를 360으로 되돌리는 문제가 있기에 일반적인 Mathf.Clamp를 사용할 수가 없어 해당 문제를 해결할 새 함수를 만듦.

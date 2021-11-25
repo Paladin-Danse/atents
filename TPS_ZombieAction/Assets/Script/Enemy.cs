@@ -114,7 +114,8 @@ public class Enemy : LivingEntity
                         //발견한 대상이 null이 아니고 살아있다면
                         if (livingEntity != null && !livingEntity.b_Dead)
                         {
-                            livingEntity.OnDamage(f_Damage, transform.position, transform.position - livingEntity.transform.position);
+                            rigid.rotation = Quaternion.LookRotation(livingEntity.transform.position - transform.position);
+                            //livingEntity.OnDamage(f_Damage, transform.position, transform.position - livingEntity.transform.position);
                             enemyAnimator.SetTrigger("Attack");
                             f_LastAttackTime = Time.time;
                             break;
