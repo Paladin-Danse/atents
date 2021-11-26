@@ -9,9 +9,13 @@ public class PlayerMovement : MonoBehaviour
     private Animator playerAnimator;
     private float f_moveSpeed;
     private bool b_move;
+
+    //회피
     private bool b_Dodge;
-    [SerializeField] private float f_walkSpeed = 1.5f;
+    private Vector3 DodgeVector;
     [SerializeField] private float f_DodgeDistance = 5f;
+
+    [SerializeField] private float f_walkSpeed = 1.5f;
     //아직 쓰고있지 않은 변수
     //[SerializeField] private float f_aimMoveSpeed = 1.0f;
     [SerializeField] private float f_runSpeed = 3.0f;
@@ -34,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
     {
         //가끔 gunPivot의 rotation이 엉뚱한 각도에서 시작해서 총이 뒤를 보는 바람에 플레이어 몸을 뚫고 뒤를 향한 상태에서 빠져나가질 못한다.
         gunPivot.transform.rotation = Quaternion.Euler(Vector3.zero);
+        DodgeVector = new Vector3();
     }
 
     private void Update()
@@ -110,31 +115,51 @@ public class PlayerMovement : MonoBehaviour
 
     private void Dodge()
     {
-        if(playerInput.dodge)
+        //회피 동작 속도를 정해주는 변수
+        float perTime = 0.1f;
+
+        if (playerInput.dodge && !b_Dodge)
         {
-            Vector3 DodgeVector;
+            //지형에 부딪힐 땐 가로막혀야 한다.
+            int layermask = 1 << LayerMask.NameToLayer("Terrain");
+
+            RaycastHit hit;
+            //움직이고 있는 방향으로 회피
             Vector3 DodgeDirection = ((playerInput.verticalMove * transform.forward) + (playerInput.horizontalMove * transform.right)).normalized;
-            if (DodgeDirection.magnitude > 0)
+            if (DodgeDirection.magnitude == 0) DodgeDirection = -transform.forward;
+            Vector3 Distance;//임시저장값
+
+            if (Physics.Raycast(transform.position + (Vector3.up * 0.5f), DodgeDirection, out hit, f_DodgeDistance, layermask))
             {
-                DodgeVector = playerRigid.position + (DodgeDirection * f_DodgeDistance);
+                perTime = (f_DodgeDistance / hit.distance) * 0.1f;
+                Distance = DodgeDirection * hit.distance;
             }
             else
             {
-                DodgeVector = playerRigid.position + (-transform.forward * f_DodgeDistance);
+                Distance = DodgeDirection * f_DodgeDistance;
             }
+            DodgeVector = transform.position + Distance;
 
             StartCoroutine(DodgeRoutine(DodgeVector));
+        }
+
+        if(b_Dodge)
+        {
+            playerRigid.position = Vector3.Lerp(transform.position, DodgeVector, perTime);
         }
     }
 
     private IEnumerator DodgeRoutine(Vector3 DodgeVector)
     {
+        //회피하는 동안은 무적
+        GameManager.instance.playerHealth.OnInvincibility();
         b_Dodge = true;
-        playerRigid.AddForce(DodgeVector);
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
 
+        GameManager.instance.playerHealth.OffInvincibility();
         b_Dodge = false;
+        DodgeVector = new Vector3();
     }
 
     //eulerAnles가 360을 넘어가는 수치를 0으로 되돌리고 0아래로 넘어가는 수치를 360으로 되돌리는 문제가 있기에 일반적인 Mathf.Clamp를 사용할 수가 없어 해당 문제를 해결할 새 함수를 만듦.
@@ -156,4 +181,12 @@ public class PlayerMovement : MonoBehaviour
     {
         b_move = false;
     }
+
+    /*
+    private void OnDrawGizmos()
+    {
+        Vector3 direction = ((playerInput.verticalMove * transform.forward) + (playerInput.horizontalMove * transform.right)).normalized;
+        Gizmos.DrawRay(transform.position + (Vector3.up * 0.5f), direction * f_DodgeDistance);
+    }
+    */
 }
