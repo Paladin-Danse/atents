@@ -21,6 +21,10 @@ public class UIManager : MonoBehaviour
             if (m_instance == null)
             {
                 m_instance = FindObjectOfType<UIManager>();
+                if(m_instance == null)
+                {
+                    m_instance = Instantiate(new UIManager());
+                }
             }
             return m_instance;
         }

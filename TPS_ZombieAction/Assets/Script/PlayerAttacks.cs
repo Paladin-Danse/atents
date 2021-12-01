@@ -147,6 +147,9 @@ public class PlayerAttacks : MonoBehaviour
                 && playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Execute") == false
                 && b_OnExecution)
         {
+            //총을 장전중에 근접무기를 들수도 있기에 재장전 캔슬
+            equipGun.ReloadCancel();
+
             playerAttackState = ATTACK_STATE.EXECUTE;
             if (ExecutionTarget != null)
                 ExecutionTarget.Execution();
@@ -159,6 +162,9 @@ public class PlayerAttacks : MonoBehaviour
         }
         else if (playerAttackState == ATTACK_STATE.IDLE && playerInput.attack_ButtonDown)
         {
+            //총을 장전중에 근접무기를 들수도 있기에 재장전 캔슬
+            equipGun.ReloadCancel();
+
             playerAttackState = ATTACK_STATE.MELEE;
 
             equipGun.gameObject.SetActive(false);//근접무기를 휘두를 때, 장착하고 있는 총은 잠시 집어넣는다.
