@@ -24,9 +24,9 @@ public class PlayerHealth : LivingEntity
     {
         playerAnimator = GetComponent<Animator>();
         playerAudioPlayer = GetComponent<AudioSource>();
-        playerMovement = GameManager.instance.playerMovement;
-        playerShooter = GameManager.instance.playerAttack;
-        playerItemLooting = GameManager.instance.playerItemLooting;
+        playerMovement = GetComponent<PlayerMovement>();
+        playerShooter = GetComponent<PlayerAttacks>();
+        playerItemLooting = GetComponent<PlayerItemLooting>();
         b_Invincibility = false;
         //테스트를 위해 가져오는 입력키값 실제로는 필요없음.
         playerInput = GetComponent<PlayerInput>();

@@ -2072,7 +2072,7 @@ MonoBehaviour:
   whatIsTarget:
     serializedVersion: 2
     m_Bits: 8
-  f_SearchRange: 2
+  f_SearchRange: 10
   f_AttackRange: 0.8
   targetEntity: {fileID: 0}
   f_Damage: 20
