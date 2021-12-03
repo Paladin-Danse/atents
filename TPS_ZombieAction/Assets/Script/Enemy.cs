@@ -182,8 +182,9 @@ public class Enemy : LivingEntity
         Collider[] enemyColliders = GetComponents<Collider>();
         for(int i=0; i < enemyColliders.Length; i++)
         {
-            enemyColliders[i].enabled = true;
+            enemyColliders[i].enabled = false;
         }
+        rigid.useGravity = false;
         ExecutionArea.gameObject.SetActive(false);
 
         pathFinder.enabled = true;

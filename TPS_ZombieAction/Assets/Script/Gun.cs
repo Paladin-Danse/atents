@@ -167,6 +167,8 @@ public class Gun : MonoBehaviour
         //finalAimVector.z = f_FireDistance;
 
         Debug.Log(string.Format("x : {0}, y : {1}, z : {2}", finalAimVector.x, finalAimVector.y, finalAimVector.z));
+        if (Camera.main != null) Debug.Log("On Main Camera!");
+        else Debug.Log("Main Camera is Null!");
 
         //화면 정중앙엔 에임이 위치하고 있고 정중앙에서 선을 쏘았을 때, 부딪히는 물체가 있다면 해당 물체를 쏘게 해야한다.(정확히는 에임에 들어온 물체)
         if (Physics.Raycast(Camera.main.ScreenPointToRay(finalAimVector), out hit))
