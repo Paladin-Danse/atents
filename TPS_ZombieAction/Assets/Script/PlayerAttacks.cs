@@ -151,6 +151,8 @@ public class PlayerAttacks : MonoBehaviour
             equipGun.ReloadCancel();
 
             playerAttackState = ATTACK_STATE.EXECUTE;
+            transform.rotation = Quaternion.LookRotation(ExecutionTarget.transform.position - transform.position);
+
             if (ExecutionTarget != null)
                 ExecutionTarget.Execution();
             else

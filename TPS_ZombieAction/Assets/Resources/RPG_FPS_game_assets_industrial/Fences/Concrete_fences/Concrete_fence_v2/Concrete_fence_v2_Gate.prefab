@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 33000012010456290}
   - component: {fileID: 23000013636385150}
   - component: {fileID: 64000014045595570}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Concrete_fence_v2_Gate_lattice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 33000012124036682}
   - component: {fileID: 23000010400686510}
   - component: {fileID: 64000010960438940}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Concrete_fence_v2_Gate
   m_TagString: Untagged
   m_Icon: {fileID: 0}

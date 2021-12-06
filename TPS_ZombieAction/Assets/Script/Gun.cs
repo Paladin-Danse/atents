@@ -53,17 +53,17 @@ public class Gun : MonoBehaviour
     private void Awake()
     {
         gunAudioPlayer = GetComponent<AudioSource>();
-        //bulletLineRenderer = GetComponent<LineRenderer>();
+        bulletLineRenderer = GetComponent<LineRenderer>();
 
         i_MagAmmo = i_MagCapacity;
     }
 
     private void Start()
     {
-        /*
+        
         bulletLineRenderer.positionCount = 2;//불렛 라인렌더러에 총구와 총의 사거리만큼 두개의 지점이 필요
         bulletLineRenderer.enabled = true;//라인렌더러를 활성화
-        */
+        
 
         //총의 기본수치 정의(원래 OnEnable이었으나 총을 바꿀 때마다 총이 장전이 되기에 Awake에 표현하고 Scene을 새로 부를 때 문제가 있을경우, 해당 코드를 다시 부른다.)
 
@@ -100,14 +100,14 @@ public class Gun : MonoBehaviour
         gunAudioPlayer.PlayOneShot(shotClip);
 
         //라인렌더러 온오프
-        /*
+        
         bulletLineRenderer.SetPosition(0, fireTransform.position);
         bulletLineRenderer.SetPosition(1, hitPosition);
         bulletLineRenderer.enabled = true;
-        */
+        
         yield return new WaitForSeconds(f_TimeToEffect);
 
-        //bulletLineRenderer.enabled = false;
+        bulletLineRenderer.enabled = false;
     }
 
     //반동으로 올라간 각도를 RotateTowards를 사용해 최대한 자연스럽게 원래 각도로 되돌린다.
@@ -141,24 +141,9 @@ public class Gun : MonoBehaviour
         RaycastHit hit;//충돌체
         Vector3 hitPosition = Vector3.zero;//충돌위치
         Vector3 aimCenter;//에임이 조준하고 있는 위치
+        int PierceObject = 1 << LayerMask.NameToLayer("Penetrable");
+        PierceObject = ~PierceObject;
 
-        //현재 막히는 구간
-        //에임이 벌어진만큼만 총알이 튀어야하지만 확실한 공식이 없어 총알이 튀는 구간을 정확하게 지정할 수가 없다.
-        //아직도 엉성해보이는 느낌이 나지만 그나마 에임안에서 노는듯한 느낌처럼 보인다.
-
-        //Random.insideUnitCircle을 사용하지 않음 코드. 사각형 에임이 되는게 눈에 보임.
-        //Debug.Log(string.Format("Before - aimCenter.x : {0}, aimCenter.y : {1}, aimCenter.z : {2}", aimCenter.x, aimCenter.y, aimCenter.z));
-        /*
-        //십자선 크기를 기준으로 랜덤하게 값을 가져옴.(ex : size = 90이면 기본크기 60만큼 빼고 -15에서 15안에서 랜덤값을 가져옴.)
-        var randAim = new Vector3(Random.Range(-(UIManager.instance.CrosshairReturnSize() - 60f) * 0.5f, (UIManager.instance.CrosshairReturnSize() - 60f) * 0.5f),
-                                  Random.Range(-(UIManager.instance.CrosshairReturnSize() - 60f) * 0.5f, (UIManager.instance.CrosshairReturnSize() - 60f) * 0.5f),
-                                  0);
-        */
-        //Debug.Log(UIManager.instance.CrosshairReturnSize());
-
-        //Vector3 finalAimVector = new Vector3(Screen.width * 0.5f, Screen.height * 0.5f, f_FireDistance) + randAim;
-
-        //Random.insideUnitCircle을 사용한 코드. 원형 에임을 그려주지만 잘못된 사용인건지 엉성한 느낌이 남.
         Vector3 randAim = Random.insideUnitCircle * ((UIManager.instance.CrosshairReturnSize() - 60f) * 0.5f);
 
         //Debug.Log(string.Format("Random.insideUnitCircle : {0}, CrosshairSize : {1}", Random.insideUnitCircle, UIManager.instance.CrosshairReturnSize() - 60f));
@@ -166,12 +151,8 @@ public class Gun : MonoBehaviour
         Vector3 finalAimVector = new Vector3(Screen.width * 0.5f, Screen.height * 0.5f, f_FireDistance) + randAim;
         //finalAimVector.z = f_FireDistance;
 
-        Debug.Log(string.Format("x : {0}, y : {1}, z : {2}", finalAimVector.x, finalAimVector.y, finalAimVector.z));
-        if (Camera.main != null) Debug.Log("On Main Camera!");
-        else Debug.Log("Main Camera is Null!");
-
         //화면 정중앙엔 에임이 위치하고 있고 정중앙에서 선을 쏘았을 때, 부딪히는 물체가 있다면 해당 물체를 쏘게 해야한다.(정확히는 에임에 들어온 물체)
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(finalAimVector), out hit))
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(finalAimVector), out hit, Mathf.Infinity, PierceObject))
         {
             aimCenter = hit.point;
         }
@@ -181,7 +162,7 @@ public class Gun : MonoBehaviour
         }
 
         //선을 그려서 충돌하는 물체가 있다면
-        if (Physics.Raycast(fireTransform.position, (aimCenter - fireTransform.position), out hit, f_FireDistance))
+        if (Physics.Raycast(fireTransform.position, (aimCenter - fireTransform.position), out hit, f_FireDistance, PierceObject))
         {
             I_Damageable target = hit.collider.GetComponent<I_Damageable>();//대미지를 입는 오브젝트인 경우만
             if(target != null)
