@@ -151,10 +151,12 @@ public class PlayerAttacks : MonoBehaviour
             equipGun.ReloadCancel();
 
             playerAttackState = ATTACK_STATE.EXECUTE;
-            transform.rotation = Quaternion.LookRotation(ExecutionTarget.transform.position - transform.position);
 
             if (ExecutionTarget != null)
+            {
+                transform.rotation = Quaternion.LookRotation(ExecutionTarget.transform.position - transform.position);
                 ExecutionTarget.Execution();
+            }
             else
                 Debug.Log("No Target");
             playerAnimator.SetTrigger("Execute");

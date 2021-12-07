@@ -39,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
         //가끔 gunPivot의 rotation이 엉뚱한 각도에서 시작해서 총이 뒤를 보는 바람에 플레이어 몸을 뚫고 뒤를 향한 상태에서 빠져나가질 못한다.
         //gunPivot.transform.rotation = Quaternion.Euler(Vector3.zero);
         DodgeVector = new Vector3();
+        f_rotateSpeed = 100f;
     }
 
     private void Update()
@@ -108,7 +109,8 @@ public class PlayerMovement : MonoBehaviour
             
             //마우스가 한없이 위로 올라가면 총이 반대방향을 향하거나 한바퀴 돌 수 있기때문에 한계를 두고 그 이상은 나가지 못하게 제한을 둔다.
             float eulerAnglesX = ClampAngle(rot.eulerAngles.x, f_highCamRotation, f_lowCamRotation);
-            rot = Quaternion.Euler(eulerAnglesX, rot.eulerAngles.y, rot.eulerAngles.z);
+            rot = Quaternion.Euler(eulerAnglesX, rot.eulerAngles.y, rot.eulerAngles.z);            
+
             gunPivot.transform.rotation = rot;
         }
     }

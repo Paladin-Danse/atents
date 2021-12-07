@@ -233,7 +233,6 @@ public class Enemy : LivingEntity
 
     public IEnumerator LeftArmAttack()
     {
-        Debug.Log("LeftAttack");
         Leftarm_AttackBox.enabled = true;
 
         yield return new WaitForSeconds(0.05f);
@@ -243,7 +242,6 @@ public class Enemy : LivingEntity
 
     public IEnumerator RightArmAttack()
     {
-        Debug.Log("RightAttack");
         Rightarm_AttackBox.enabled = true;
 
         yield return new WaitForSeconds(0.08f);
