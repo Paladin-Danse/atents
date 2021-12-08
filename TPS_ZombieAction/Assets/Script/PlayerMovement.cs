@@ -37,13 +37,16 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         //가끔 gunPivot의 rotation이 엉뚱한 각도에서 시작해서 총이 뒤를 보는 바람에 플레이어 몸을 뚫고 뒤를 향한 상태에서 빠져나가질 못한다.
-        //gunPivot.transform.rotation = Quaternion.Euler(Vector3.zero);
+        gunPivot.transform.rotation = Quaternion.LookRotation(transform.forward);
         DodgeVector = new Vector3();
         f_rotateSpeed = 100f;
     }
 
     private void Update()
     {
+        if (GameManager.instance.playerAttack.playerAttackState != PlayerAttacks.ATTACK_STATE.EXECUTE) b_move = false;
+        else b_move = true;
+
         if (b_move && !b_Dodge) Move();
         Rotate();
         Dodge();
@@ -67,13 +70,13 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
-        //Vector3 move = ((playerInput.verticalMove * transform.forward) + (playerInput.horizontalMove * transform.right)).normalized;
-        //if(move.magnitude > 0)
-        //{
-        //    playerRigid.MovePosition(playerRigid.position + move * f_moveSpeed * Time.deltaTime);
-        //    playerAnimator.SetFloat("Move", move.magnitude);
-        //}
-
+        Vector3 moveDistance = ((playerInput.verticalMove * transform.forward) + (playerInput.horizontalMove * transform.right)).normalized;
+        if(moveDistance.magnitude > 0)
+        {
+            playerRigid.MovePosition(playerRigid.position + moveDistance * f_moveSpeed * Time.deltaTime);
+        }
+        playerAnimator.SetFloat("Move", moveDistance.magnitude);
+        /*
         if (playerInput.verticalMove != 0)
         {
             Vector3 moveDistance = playerInput.verticalMove * transform.forward * f_moveSpeed * Time.deltaTime;
@@ -91,6 +94,7 @@ public class PlayerMovement : MonoBehaviour
 
             playerAnimator.SetFloat("Move", playerInput.horizontalMove);
         }
+        */
     }
     public void Rotate()
     {
@@ -109,7 +113,7 @@ public class PlayerMovement : MonoBehaviour
             
             //마우스가 한없이 위로 올라가면 총이 반대방향을 향하거나 한바퀴 돌 수 있기때문에 한계를 두고 그 이상은 나가지 못하게 제한을 둔다.
             float eulerAnglesX = ClampAngle(rot.eulerAngles.x, f_highCamRotation, f_lowCamRotation);
-            rot = Quaternion.Euler(eulerAnglesX, rot.eulerAngles.y, rot.eulerAngles.z);            
+            rot = Quaternion.Euler(eulerAnglesX, rot.eulerAngles.y, 0f);
 
             gunPivot.transform.rotation = rot;
         }
@@ -120,7 +124,8 @@ public class PlayerMovement : MonoBehaviour
         //회피 동작 속도를 정해주는 변수
         float perTime = 0.1f;
 
-        if (playerInput.dodge && !b_Dodge)
+        if (playerInput.dodge && !b_Dodge
+            && GameManager.instance.playerAttack.playerAttackState != PlayerAttacks.ATTACK_STATE.EXECUTE) // 처형상태가 아니라면
         {
             //지형에 부딪힐 땐 가로막혀야 한다.
             int layermask = 1 << LayerMask.NameToLayer("Terrain");

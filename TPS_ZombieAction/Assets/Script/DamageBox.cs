@@ -13,10 +13,13 @@ public class DamageBox : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        LivingEntity livingEntity = other.GetComponent<LivingEntity>();
-        if(livingEntity != null && !livingEntity.b_Dead)
+        if (other.tag.Equals("Player"))
         {
-            livingEntity.OnDamage(f_Damage, transform.position, transform.position - other.transform.position);
+            LivingEntity livingEntity = other.GetComponent<LivingEntity>();
+            if (livingEntity != null && !livingEntity.b_Dead)
+            {
+                livingEntity.OnDamage(f_Damage, transform.position, transform.position - other.transform.position);
+            }
         }
     }
 }

@@ -27,7 +27,7 @@ public class PlayerAttacks : MonoBehaviour
     
     private PlayerInput playerInput;
     private Animator playerAnimator;
-    private ATTACK_STATE playerAttackState;
+    public ATTACK_STATE playerAttackState { get; private set; }
     private bool b_OnExecution;
     private Enemy ExecutionTarget;
 
@@ -141,6 +141,27 @@ public class PlayerAttacks : MonoBehaviour
         */
     }
 
+    public IEnumerator ExecuteRoutine(Enemy Target)
+    {
+        playerAttackState = ATTACK_STATE.EXECUTE;
+        equipGun.gameObject.SetActive(false);
+
+        //처형하기전에 처형상대를 바라보기
+        Vector3 targetDirection = Target.transform.position - transform.position;
+        targetDirection.y = 0f;
+        transform.rotation = Quaternion.LookRotation(targetDirection);
+
+        Target.Execution();
+        playerAnimator.SetTrigger("Execute");
+        UIManager.instance.InteractionExit();
+
+        yield return new WaitUntil(() => (playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Execute") == true && playerAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.95f));
+
+        playerAttackState = ATTACK_STATE.IDLE;
+        equipGun.gameObject.SetActive(true);
+        b_OnExecution = false;
+    }
+
     public void MeleeAttacking()
     {
         if (playerInput.attack_ButtonDown
@@ -149,20 +170,13 @@ public class PlayerAttacks : MonoBehaviour
         {
             //총을 장전중에 근접무기를 들수도 있기에 재장전 캔슬
             equipGun.ReloadCancel();
-
-            playerAttackState = ATTACK_STATE.EXECUTE;
-
+            
             if (ExecutionTarget != null)
             {
-                transform.rotation = Quaternion.LookRotation(ExecutionTarget.transform.position - transform.position);
-                ExecutionTarget.Execution();
+                StartCoroutine(ExecuteRoutine(ExecutionTarget));
             }
             else
                 Debug.Log("No Target");
-            playerAnimator.SetTrigger("Execute");
-            UIManager.instance.InteractionExit();
-            playerAttackState = ATTACK_STATE.IDLE;
-            b_OnExecution = false;
         }
         else if (playerAttackState == ATTACK_STATE.IDLE && playerInput.attack_ButtonDown)
         {
@@ -222,7 +236,6 @@ public class PlayerAttacks : MonoBehaviour
             HandAnimatorPosition();
         }
     }
-
     private void HandAnimatorPosition()//겹치는 구간 함수화
     {
         playerAnimator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1.0f);
@@ -251,9 +264,13 @@ public class PlayerAttacks : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         var obj = other.gameObject;
-        if (obj.name.Equals("ExecutionArea") && obj.activeSelf == true)
+        if (obj.name.Equals("ExecutionArea") && obj.activeSelf == true && b_OnExecution == false)
         {
             b_OnExecution = true;
+            if(ExecutionTarget == null)
+            {
+                ExecutionTarget = other.transform.parent.GetComponent<Enemy>();
+            }
         }
     }
 
