@@ -129,8 +129,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boomEffect: {fileID: 6978698770298479604}
   f_Damage: 250
-  f_ExplosionTime: 3
-  f_ExplosionRange: 3
+  f_ExplosionTime: 2
+  f_ExplosionRange: 5
 --- !u!1001 &7090423351503440864
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -98,8 +98,8 @@ public class InventoryManager : MonoBehaviour
             }
             if (playerInput.itemSelect)//선택키(F키)
             {
-                //아이템 선택키(F키)를 눌러도 인벤토리 데이터가 아무것도 없다면 함수를 실행시키지 않음
-                if (InventoryItemList.Count <= 0)
+                //아이템 선택키(F키)를 눌러도 인벤토리 데이터가 아무것도 없다면 함수를 실행시키지 않음, 플레이어가 아이템을 던지는 도중에 아이템을 변경할 수 없음
+                if (InventoryItemList.Count <= 0 || playerInput.throwing)
                 {
                     return;
                 }

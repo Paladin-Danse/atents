@@ -44,9 +44,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.instance.playerAttack.playerAttackState != PlayerAttacks.ATTACK_STATE.EXECUTE) b_move = false;
-        else b_move = true;
-
         if (b_move && !b_Dodge) Move();
         Rotate();
         Dodge();

@@ -120,7 +120,7 @@ public class Gun : MonoBehaviour
     public void Fire()
     {
         //총이 준비상태이고, 마지막 발사시간으로부터 발사속도만큼의 시간이 지났다면
-        if (e_State == STATE.STATE_READY && Time.time >= f_LastFireTime + f_TimeBetFire)
+        if (e_State == STATE.STATE_READY && Time.time >= f_LastFireTime + f_TimeBetFire && gameObject.activeSelf)
         {
             f_LastFireTime = Time.time;
             Shot();

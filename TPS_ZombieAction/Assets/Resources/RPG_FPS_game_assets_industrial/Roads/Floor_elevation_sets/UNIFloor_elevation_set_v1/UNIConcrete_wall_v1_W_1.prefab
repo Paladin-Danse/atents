@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 33000014083796318}
   - component: {fileID: 23000010656434264}
   - component: {fileID: 64000010339320256}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: UNIConcrete_wall_v1_W_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,8 +107,10 @@ GameObject:
   - component: {fileID: 4000012940694398}
   - component: {fileID: 33000014237508934}
   - component: {fileID: 23000010381090098}
-  - component: {fileID: 64000013583608200}
-  m_Layer: 0
+  - component: {fileID: 7331405499545861668}
+  - component: {fileID: 8804947430627513217}
+  - component: {fileID: 3135623770707246440}
+  m_Layer: 8
   m_Name: UNIConcrete_wall_v1_W_1f
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,8 +180,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &64000013583608200
-MeshCollider:
+--- !u!65 &7331405499545861668
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -188,10 +190,35 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300066, guid: c6d026d6367d43a438c71a59c9da8290, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 2, y: 1, z: 2.5}
+  m_Center: {x: 4, y: -0.5, z: 3.75}
+--- !u!65 &8804947430627513217
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000011104847188}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 1, z: 2.5}
+  m_Center: {x: 4, y: -0.5, z: -3.75}
+--- !u!65 &3135623770707246440
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000011104847188}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8, y: 1, z: 10}
+  m_Center: {x: -1, y: -0.5, z: 0}
 --- !u!1 &1000011518556308
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,7 +228,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4000011217924612}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: UNIConcrete_wall_v1_W_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

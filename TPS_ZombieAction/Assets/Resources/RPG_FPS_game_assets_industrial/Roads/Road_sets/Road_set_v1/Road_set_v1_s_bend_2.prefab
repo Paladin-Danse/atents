@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4000013872234864}
   - component: {fileID: 33000013039774250}
   - component: {fileID: 23000011349794528}
-  - component: {fileID: 64000013236190884}
+  - component: {fileID: 387801883264261020}
   m_Layer: 8
   m_Name: Road_set_v1_s_bend_2
   m_TagString: Untagged
@@ -82,8 +82,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &64000013236190884
-MeshCollider:
+--- !u!65 &387801883264261020
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -92,7 +92,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300076, guid: c7f7a9ec09a97d144963b6dd16448dc3, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 10.0000105, y: 1, z: 10.000002}
+  m_Center: {x: -0.0000042915344, y: -0.5, z: 0}

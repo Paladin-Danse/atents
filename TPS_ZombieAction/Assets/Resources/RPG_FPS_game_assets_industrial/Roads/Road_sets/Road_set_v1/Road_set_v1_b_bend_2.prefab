@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4000010030195824}
+  - component: {fileID: 6655136160355331333}
   m_Layer: 8
   m_Name: Road_set_v1_b_bend_2
   m_TagString: Untagged
@@ -32,6 +33,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6655136160355331333
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000010960732366}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 20, y: 1, z: 20}
+  m_Center: {x: 0, y: -0.5, z: 0}
 --- !u!1 &1000012864321938
 GameObject:
   m_ObjectHideFlags: 0
@@ -43,7 +57,6 @@ GameObject:
   - component: {fileID: 4000010613112490}
   - component: {fileID: 33000011247498782}
   - component: {fileID: 23000012961811354}
-  - component: {fileID: 64000011643444578}
   m_Layer: 8
   m_Name: Road_set_v1_b_bend_2f
   m_TagString: Untagged
@@ -114,20 +127,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &64000011643444578
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000012864321938}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300130, guid: c7f7a9ec09a97d144963b6dd16448dc3, type: 3}
 --- !u!1 &1000013938108112
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,7 +138,6 @@ GameObject:
   - component: {fileID: 4000013491695032}
   - component: {fileID: 33000011549314814}
   - component: {fileID: 23000010470827172}
-  - component: {fileID: 64000010411694968}
   m_Layer: 8
   m_Name: Road_set_v1_b_bend_2
   m_TagString: Untagged
@@ -210,17 +208,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &64000010411694968
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000013938108112}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300072, guid: c7f7a9ec09a97d144963b6dd16448dc3, type: 3}

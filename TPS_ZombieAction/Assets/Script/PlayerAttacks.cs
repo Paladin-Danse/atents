@@ -146,6 +146,10 @@ public class PlayerAttacks : MonoBehaviour
         playerAttackState = ATTACK_STATE.EXECUTE;
         equipGun.gameObject.SetActive(false);
 
+        //무적판정 + 움직임봉쇄
+        GameManager.instance.playerHealth.OnInvincibility();
+        GameManager.instance.playerMovement.OffMove();
+
         //처형하기전에 처형상대를 바라보기
         Vector3 targetDirection = Target.transform.position - transform.position;
         targetDirection.y = 0f;
@@ -159,6 +163,10 @@ public class PlayerAttacks : MonoBehaviour
 
         playerAttackState = ATTACK_STATE.IDLE;
         equipGun.gameObject.SetActive(true);
+
+        GameManager.instance.playerHealth.OffInvincibility();
+        GameManager.instance.playerMovement.OnMove();
+
         b_OnExecution = false;
     }
 

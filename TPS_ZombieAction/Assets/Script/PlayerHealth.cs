@@ -82,8 +82,6 @@ public class PlayerHealth : LivingEntity
         playerItemLooting.enabled = false;
     }
 
-
-    //이하 애니메이션 이벤트
     public void OnInvincibility()
     {
         b_Invincibility = true;
