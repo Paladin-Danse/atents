@@ -95,7 +95,7 @@ public class PlayerAttacks : MonoBehaviour
 
     public void WeaponAimShot()
     {
-        if (playerInput.aiming && playerAttackState != ATTACK_STATE.MELEE && !playerInput.onRun)
+        if (playerInput.aiming && playerAttackState != ATTACK_STATE.MELEE && playerAttackState != ATTACK_STATE.EXECUTE && !playerInput.onRun)
         {
             playerAttackState = ATTACK_STATE.AIMING;
 
@@ -176,7 +176,7 @@ public class PlayerAttacks : MonoBehaviour
                 && playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Execute") == false
                 && b_OnExecution)
         {
-            //총을 장전중에 근접무기를 들수도 있기에 재장전 캔슬
+            //총을 장전중에 처형을 할수도 있기에 재장전 캔슬
             equipGun.ReloadCancel();
             
             if (ExecutionTarget != null)

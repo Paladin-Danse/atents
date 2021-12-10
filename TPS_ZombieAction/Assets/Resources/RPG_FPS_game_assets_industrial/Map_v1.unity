@@ -15599,8 +15599,12 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5209324867101686782, guid: 3570c48d4e0b2ef4e80bafede851364a, type: 3}
+      propertyPath: f_Recoil
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 5209324867101686782, guid: 3570c48d4e0b2ef4e80bafede851364a, type: 3}
       propertyPath: f_Accuracy
-      value: 60
+      value: 80
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3570c48d4e0b2ef4e80bafede851364a, type: 3}

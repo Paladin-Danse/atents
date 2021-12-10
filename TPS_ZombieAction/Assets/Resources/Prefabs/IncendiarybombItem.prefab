@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1849200054417103801}
   - component: {fileID: -645847454117768091}
   - component: {fileID: 4381004564931816953}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: IncendiarybombItem
   m_TagString: Item
   m_Icon: {fileID: 0}

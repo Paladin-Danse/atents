@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 135053304893941300}
   - component: {fileID: 108646884597796964}
   - component: {fileID: -3912704517373919362}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: AmmoPack
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 4904092378483406}
   - component: {fileID: 33916103183844628}
   - component: {fileID: 23136999473187822}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Mesh1_Group2 Group1 Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -215,7 +215,7 @@ GameObject:
   - component: {fileID: 4099692793369874}
   - component: {fileID: 33012849187033702}
   - component: {fileID: 23631360146436444}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Mesh2_Group3 Group1 Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -294,7 +294,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4001094036461928}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ammo
   m_TagString: Untagged
   m_Icon: {fileID: 0}

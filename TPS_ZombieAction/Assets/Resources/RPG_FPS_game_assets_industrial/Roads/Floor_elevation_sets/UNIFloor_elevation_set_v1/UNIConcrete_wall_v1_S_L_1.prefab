@@ -121,8 +121,6 @@ GameObject:
   - component: {fileID: 33000012054921248}
   - component: {fileID: 23000013249320180}
   - component: {fileID: 2074449881804531295}
-  - component: {fileID: 7443237655419451124}
-  - component: {fileID: 3001227579028932454}
   m_Layer: 8
   m_Name: UNIConcrete_wall_v1_S_L_1
   m_TagString: Untagged
@@ -140,7 +138,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 5.171402, y: 5.278952, z: -0.7009616}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 8962688093678167948}
   m_Father: {fileID: 4000013750386712}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -207,32 +206,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300050, guid: c6d026d6367d43a438c71a59c9da8290, type: 3}
---- !u!65 &7443237655419451124
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000012583772764}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.8, y: 1, z: 2.5}
-  m_Center: {x: -0.07, y: -1.2, z: 1.13}
---- !u!65 &3001227579028932454
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000012583772764}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.8, y: 2.5, z: 0.5}
-  m_Center: {x: -0.07, y: -0.51, z: -0.25}
 --- !u!1 &1000013374417646
 GameObject:
   m_ObjectHideFlags: 0
@@ -361,3 +334,47 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 7.9409027, y: 1, z: 5.0000076}
   m_Center: {x: 0.0000019073486, y: -0.5, z: 0.0000009536743}
+--- !u!1 &3667923499455055782
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8962688093678167948}
+  - component: {fileID: 3604511945945187285}
+  m_Layer: 8
+  m_Name: StairCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8962688093678167948
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3667923499455055782}
+  m_LocalRotation: {x: 0.26723832, y: 0, z: 0, w: 0.9636305}
+  m_LocalPosition: {x: 0, y: 0, z: 1.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4000011481199610}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 31, y: 0, z: 0}
+--- !u!65 &3604511945945187285
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3667923499455055782}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 2, z: 2.8}
+  m_Center: {x: 0.15, y: -1, z: 0}

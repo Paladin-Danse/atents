@@ -82,7 +82,7 @@ public class GameManager : MonoBehaviour
             }
 
             item.gameObject.SetActive(true);//가져온 아이템을 활성화
-            item.transform.position = pos;//아이템 위치를 드랍되어야 할 위치로 이동
+            item.transform.position = pos + (transform.up * 0.6f);//아이템 위치를 드랍되어야 할 위치로 이동
         }
     }
 }
