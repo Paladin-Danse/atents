@@ -113,7 +113,7 @@ public class Gun : MonoBehaviour
     //반동으로 올라간 각도를 RotateTowards를 사용해 최대한 자연스럽게 원래 각도로 되돌린다.
     private void RecoilBackupRotation()
     {
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, transform.parent.parent.rotation, 0.4f);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, transform.parent.parent.rotation, 0.8f);
     }
 
     //사격입력을 받았을때 들어옴.

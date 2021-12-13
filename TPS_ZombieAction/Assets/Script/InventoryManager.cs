@@ -116,7 +116,7 @@ public class InventoryManager : MonoBehaviour
 
             if (selectItem != null && selectItem.data.quantity > 0)
             {
-                if (playerInput.throwing && b_throwCancel == false)
+                if (playerInput.throwing && b_throwCancel == false && playerAttack.playerAttackState != PlayerAttacks.ATTACK_STATE.EXECUTE)
                 {
                     if (selectItem.isThrowing)//투척아이템이 맞을경우 투척아이템의 궤적을 그린다.
                     {

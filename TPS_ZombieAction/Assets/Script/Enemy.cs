@@ -93,6 +93,8 @@ public class Enemy : LivingEntity
         enemyAnimator.SetBool("HasTarget", hasTarget);
     }
 
+    
+
     private IEnumerator UpdatePath()
     {
         //살아있는 동안
@@ -157,6 +159,21 @@ public class Enemy : LivingEntity
             enemyAudioPlayer.PlayOneShot(hitSound);
 
             OnSupDamage(damage);
+
+            if (!hasTarget)
+            {
+                Collider[] colliders = Physics.OverlapSphere(transform.position, f_SearchRange * 5f, whatIsTarget);
+                
+                for (int i = 0; i < colliders.Length; i++)
+                {
+                    LivingEntity livingEntity = colliders[i].GetComponent<LivingEntity>();
+                    if (livingEntity != null && !livingEntity.b_Dead)
+                    {
+                        targetEntity = livingEntity;
+                        break;
+                    }
+                }
+            }
         }
         base.OnDamage(damage, hitPoint, hitNormal);
     }

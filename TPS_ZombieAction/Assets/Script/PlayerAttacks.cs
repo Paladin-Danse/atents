@@ -133,12 +133,6 @@ public class PlayerAttacks : MonoBehaviour
         {
             equipGun.Reload();
         }
-
-        //gunPivot이 제멋대로 z축이 틀어지는 버그를 해결하기 위해 만듦. rigidbody를 도입할까도 생각했지만, 직접적으로 움직이는 경우는 거의 없어서 배제함.(미해결...)
-        /*
-        if (gunPivot.rotation.z != 0)
-            gunPivot.rotation = Quaternion.Euler(gunPivot.rotation.x, gunPivot.rotation.y, 0);
-        */
     }
 
     public IEnumerator ExecuteRoutine(Enemy Target)

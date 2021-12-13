@@ -174,8 +174,6 @@ public class PlayerMovement : MonoBehaviour
         return Mathf.Min(angle, to);
     }
 
-    //이하 애니메이션 이벤트
-    //꽤나 조잡하다 수정필요
     public void OnMove()
     {
         b_move = true;

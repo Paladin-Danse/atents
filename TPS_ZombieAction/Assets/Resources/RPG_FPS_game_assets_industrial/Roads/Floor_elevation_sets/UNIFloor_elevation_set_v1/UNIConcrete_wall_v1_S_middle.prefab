@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 33000011087611362}
   - component: {fileID: 23000012598871266}
   - component: {fileID: 8154969333687491241}
+  - component: {fileID: 1499762047753711900}
+  - component: {fileID: 1415766916935187873}
   m_Layer: 8
   m_Name: UNIConcrete_wall_v1_S_middle
   m_TagString: Untagged
@@ -94,8 +96,34 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.34, y: 1.6713736, z: 10.000009}
-  m_Center: {x: -0.12, y: -0.001578182, z: 0.05553247}
+  m_Size: {x: 0.34, y: 1.6713736, z: 4.1}
+  m_Center: {x: -0.12, y: 0, z: -2.9}
+--- !u!65 &1499762047753711900
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000013270310676}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.34, y: 1.6713736, z: 4.07}
+  m_Center: {x: -0.12, y: 0, z: 3.02}
+--- !u!65 &1415766916935187873
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000013270310676}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.34, y: 1.6713736, z: 1.83}
+  m_Center: {x: -0.12, y: -0.135, z: 0.065}
 --- !u!1 &1795266938343618981
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,7 +149,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1795266938343618981}
   m_LocalRotation: {x: 0, y: 0, z: -0.26723844, w: 0.9636305}
-  m_LocalPosition: {x: 1.206, y: 0.143, z: -0}
+  m_LocalPosition: {x: 1.206, y: 0.02, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4000013913137986}

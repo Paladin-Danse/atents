@@ -12,6 +12,7 @@ public class GunCrosshair : MonoBehaviour
     [SerializeField] private RectTransform CrosshairDown;
     [SerializeField] private RectTransform CrosshairLeft;
     [SerializeField] private RectTransform CrosshairRight;
+    [SerializeField] private float Recoil_ReviveValue = 3f;
     private RectTransform rect;
 
     private void Awake()
@@ -33,7 +34,7 @@ public class GunCrosshair : MonoBehaviour
     {
         if (f_MinSize < f_Size)
         {
-            f_Size -= 3f;
+            f_Size -= Recoil_ReviveValue;
             CrosshairSizeUpdate();
         }
         else
