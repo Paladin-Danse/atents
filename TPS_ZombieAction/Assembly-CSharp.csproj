@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Script\Player\PlayerAttacks.cs" />
+    <Compile Include="Assets\Script\Manager\WorkbenchManager.cs" />
     <Compile Include="Assets\Resources\True Explosions\System\Scripts\effects\exploderComponents\ExploderComponent.cs" />
     <Compile Include="Assets\Resources\True Explosions\System\Scripts\effects\exploderComponents\LightComponent.cs" />
     <Compile Include="Assets\Resources\Aligned Games\Polygonal Modern Weapons Asset Package\Scripts\Utility\FlyCameraBehaviour.cs" />
@@ -97,13 +98,15 @@
     <Compile Include="Assets\Script\Flame.cs" />
     <Compile Include="Assets\Resources\True Explosions\System\Scripts\exploders\SphereExploder.cs" />
     <Compile Include="Assets\Script\Manager\GameManager.cs" />
-    <Compile Include="Assets\Script\Manager\WorkbenchManager.cs" />
+    <Compile Include="Assets\Script\WeaponData.cs" />
+    <Compile Include="Assets\Script\Weapon.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\StylizedExplosionPack\Tips &amp; Documentations.txt" />
     <None Include="Assets\Resources\Aligned Games\Polygonal Modern Weapons Asset Package\Shaders\Diffuse.shader" />
     <None Include="Assets\Resources\StylizedExplosionPack\shader\alphaBlend_depthBlend_glow.shader" />
     <None Include="Assets\Resources\True Explosions\System\Shaders\SphereVolumetricExplosion.shader" />
+    <None Include="Assets\Resources\test.txt" />
     <None Include="Assets\Resources\StylizedExplosionPack\shader\alphaBlend_glow.shader" />
   </ItemGroup>
   <ItemGroup>
