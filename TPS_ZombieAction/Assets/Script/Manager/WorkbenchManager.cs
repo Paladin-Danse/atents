@@ -22,37 +22,33 @@ public class WorkbenchManager : MonoBehaviour
     private Weapon SubWeapon;
     private Weapon MeleeWeapon;
 
-    [SerializeField] private List<string> MainWeaponList;
-    [SerializeField] private List<string> SubWeaponList;
-    [SerializeField] private List<string> MeleeWeaponList;
-
     [SerializeField] private ScrollRect MainWeaponScrollView;
     [SerializeField] private ScrollRect SubWeaponScrollView;
 
     private void Start()
     {
-        List<Text> weaponlist = new List<Text>();
-        foreach (var i in MainWeaponList)
-        {
-            Text text;
-
-            //이런 느낌으로 코드를 짜야됨.
-            //weaponlist.Add(text);
-        }
     }
 
     public void ListOpen_Main()
     {
-        if(MainWeaponList.Count > 0)
+        if (MainWeaponScrollView)
         {
+            if (MainWeaponScrollView.gameObject.activeSelf)
+                MainWeaponScrollView.gameObject.SetActive(false);
+            else
+                MainWeaponScrollView.gameObject.SetActive(true);
             
         }
     }
 
     public void ListOpen_Sub()
     {
-        if(SubWeaponList.Count > 0)
+        if (SubWeaponScrollView)
         {
+            if (SubWeaponScrollView.gameObject.activeSelf)
+                SubWeaponScrollView.gameObject.SetActive(false);
+            else
+                SubWeaponScrollView.gameObject.SetActive(true);
 
         }
     }
