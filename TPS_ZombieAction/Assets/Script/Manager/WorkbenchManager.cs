@@ -18,16 +18,13 @@ public class WorkbenchManager : MonoBehaviour
         }
     }
 
-    private Weapon MainWeapon;
-    private Weapon SubWeapon;
-    private Weapon MeleeWeapon;
+    private string MainWeapon;
+    private string SubWeapon;
+    private string MeleeWeapon;
 
     [SerializeField] private ScrollRect MainWeaponScrollView;
     [SerializeField] private ScrollRect SubWeaponScrollView;
-
-    private void Start()
-    {
-    }
+    
 
     public void ListOpen_Main()
     {
@@ -53,12 +50,12 @@ public class WorkbenchManager : MonoBehaviour
         }
     }
 
-    public void MainWeaponSelect(Weapon weapon)
+    public void MainWeaponSelect(string weapon)
     {
         MainWeapon = weapon;
     }
 
-    public void SubWeaponSelect(Weapon weapon)
+    public void SubWeaponSelect(string weapon)
     {
         SubWeapon = weapon;
     }

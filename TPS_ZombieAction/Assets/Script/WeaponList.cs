@@ -9,6 +9,9 @@ public class WeaponList : MonoBehaviour
     [SerializeField] private string WeaponTypeName = "MainWeapon";
     [SerializeField] private List<string> weapons;
     [SerializeField] private GameObject Weapon_UI;
+    [SerializeField] private GameObject Content;
+    [SerializeField] private Image WeaponImage;
+
     private TextAsset weapon_file;
     private List<GameObject> weaponList;
     private ScrollRect Scrollview;
@@ -21,6 +24,7 @@ public class WeaponList : MonoBehaviour
         ListCreate();
 
         gameObject.SetActive(false);
+        WeaponImage.gameObject.SetActive(false);
         Scrollview = GetComponent<ScrollRect>();
     }
 
@@ -51,11 +55,47 @@ public class WeaponList : MonoBehaviour
             for(int i = 0; i < weapons.Count; i++)
             {
                 //transform.Find로 Content를 찾지 못함. 다른 방법 필요.
-                GameObject weapon = Instantiate(Weapon_UI, gameObject.transform.Find("Content"));
-                weapon.transform.Find("Text").GetComponent<Text>().text = weapons[i];//정상적으로 파일에서 가져온 텍스트값이 들어감. 다만 텍스트값만 들어갔기에 실행하면 UI Canvas밖에서 생성이 되는 바람에 보이진 않음.
+                GameObject weapon = Instantiate(Weapon_UI, Content.transform);
+                
+                Text weaponName = weapon.transform.Find("Text").GetComponent<Text>();
+                if (weaponName)
+                {
+                    weaponName.text = weapons[i];
+                }
+
+                Button weaponOnButton = weapon.GetComponent<Button>();
+                if (weaponOnButton)
+                {
+                    weaponOnButton.onClick.AddListener(() => WeaponSelect(weaponName.text));
+                }
 
                 weaponList.Add(weapon);
             }
         }
+    }
+
+    public void WeaponSelect(string WeaponName)
+    {
+        WeaponImage.sprite = Resources.Load<Sprite>(string.Format("Sprites/{0}_img", WeaponName.Trim('\r', '\n')));
+        if (WeaponImage.sprite)
+        {
+            Text text = WeaponImage.GetComponentInChildren<Text>();
+            if (text)
+            {
+                text.text = WeaponName;
+            }
+            else
+            {
+                Debug.Log("Not Found ImageText");
+            }
+        }
+        else
+        {
+            Debug.Log("Not Found WeaponSprite!");
+        }
+        WorkbenchManager.instance.MainWeaponSelect(WeaponName.Trim('\r', '\n'));
+
+        WeaponImage.gameObject.SetActive(true);
+        gameObject.SetActive(false);
     }
 }
