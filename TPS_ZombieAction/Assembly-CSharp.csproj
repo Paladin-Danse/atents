@@ -108,6 +108,7 @@
     <None Include="Assets\Resources\StylizedExplosionPack\shader\alphaBlend_depthBlend_glow.shader" />
     <None Include="Assets\Resources\TextData\WeaponList\test_SubWeapon.txt" />
     <None Include="Assets\Resources\True Explosions\System\Shaders\SphereVolumetricExplosion.shader" />
+    <None Include="Assets\Resources\TextData\WeaponList\test_MeleeWeapon.txt" />
     <None Include="Assets\Resources\TextData\WeaponList\test_MainWeapon.txt" />
     <None Include="Assets\Resources\StylizedExplosionPack\shader\alphaBlend_glow.shader" />
   </ItemGroup>

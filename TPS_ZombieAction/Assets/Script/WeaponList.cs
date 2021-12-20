@@ -28,6 +28,18 @@ public class WeaponList : MonoBehaviour
         Scrollview = GetComponent<ScrollRect>();
     }
 
+    public void ListOpen()
+    {
+        if (gameObject.activeSelf)
+        {
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            gameObject.SetActive(true);
+        }
+    }
+    //파일 불러오기
     public void WeaponFileLoad()
     {
         //weapons.Clear();
@@ -36,18 +48,18 @@ public class WeaponList : MonoBehaviour
         weapon_file = Resources.Load("TextData/WeaponList/" + CharactorName + "_" + WeaponTypeName) as TextAsset;
         if (weapon_file)
         {
-            string[] weapon = weapon_file.text.Split('\n');
+            string[] weapon = weapon_file.text.Split('\n');//무기 파일에서 무기 이름을 가져와 하나씩 배열에 저장
             for (int i = 0; i < weapon.Length; i++)
             {
-                weapons.Add(weapon[i]);
+                weapons.Add(weapon[i].Trim('\r', '\n'));//파일에서 데이터를 넘기면서 같이 넘어온 잔데이터는 Trim으로 쳐내기.
             }
         }
         else
         {
-            Debug.Log("weapon_file Not Found!!\nCharactorName : " + CharactorName + "\nWeaponTypeName : " + WeaponTypeName);
+            Debug.Log("weapon_file Not Found!!\nCharactorName : " + CharactorName + "\nWeaponTypeName : " + WeaponTypeName);//예외처리
         }
     }
-
+    //불러온 무기파일로 목록 만들기
     public void ListCreate()
     {
         if(weapons.Count > 0 && weapons != null)
@@ -56,7 +68,8 @@ public class WeaponList : MonoBehaviour
             {
                 //transform.Find로 Content를 찾지 못함. 다른 방법 필요.
                 GameObject weapon = Instantiate(Weapon_UI, Content.transform);
-                
+                weapon.transform.localScale = new Vector3(Content.transform.localScale.x, weapon.transform.localScale.y, weapon.transform.localScale.z);
+
                 Text weaponName = weapon.transform.Find("Text").GetComponent<Text>();
                 if (weaponName)
                 {
@@ -73,10 +86,10 @@ public class WeaponList : MonoBehaviour
             }
         }
     }
-
+    //목록에 뜬 무기들 중 하나를 선택했을때
     public void WeaponSelect(string WeaponName)
     {
-        WeaponImage.sprite = Resources.Load<Sprite>(string.Format("Sprites/{0}_img", WeaponName.Trim('\r', '\n')));
+        WeaponImage.sprite = Resources.Load<Sprite>(string.Format("Sprites/{0}_img", WeaponName));
         if (WeaponImage.sprite)
         {
             Text text = WeaponImage.GetComponentInChildren<Text>();
@@ -93,7 +106,7 @@ public class WeaponList : MonoBehaviour
         {
             Debug.Log("Not Found WeaponSprite!");
         }
-        WorkbenchManager.instance.MainWeaponSelect(WeaponName.Trim('\r', '\n'));
+        WorkbenchManager.instance.WeaponSelectUpdate();//선택한 무기가 바뀌었음을 알려줌
 
         WeaponImage.gameObject.SetActive(true);
         gameObject.SetActive(false);

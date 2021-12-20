@@ -18,45 +18,29 @@ public class WorkbenchManager : MonoBehaviour
         }
     }
 
-    private string MainWeapon;
-    private string SubWeapon;
-    private string MeleeWeapon;
+    [SerializeField] private Text MainWeaponText;
+    [SerializeField] private Text SubWeaponText;
+    [SerializeField] private Text MeleeWeaponText;
 
-    [SerializeField] private ScrollRect MainWeaponScrollView;
-    [SerializeField] private ScrollRect SubWeaponScrollView;
-    
+    [SerializeField] private string MainWeapon;
+    [SerializeField] private string SubWeapon;
+    [SerializeField] private string MeleeWeapon;
 
-    public void ListOpen_Main()
+    public void WeaponSelectUpdate()
     {
-        if (MainWeaponScrollView)
+        if(MainWeaponText.text != null)
         {
-            if (MainWeaponScrollView.gameObject.activeSelf)
-                MainWeaponScrollView.gameObject.SetActive(false);
-            else
-                MainWeaponScrollView.gameObject.SetActive(true);
-            
+            MainWeapon = MainWeaponText.text;
         }
-    }
 
-    public void ListOpen_Sub()
-    {
-        if (SubWeaponScrollView)
+        if(SubWeaponText.text != null)
         {
-            if (SubWeaponScrollView.gameObject.activeSelf)
-                SubWeaponScrollView.gameObject.SetActive(false);
-            else
-                SubWeaponScrollView.gameObject.SetActive(true);
-
+            SubWeapon = SubWeaponText.text;
         }
-    }
 
-    public void MainWeaponSelect(string weapon)
-    {
-        MainWeapon = weapon;
-    }
-
-    public void SubWeaponSelect(string weapon)
-    {
-        SubWeapon = weapon;
+        if(MeleeWeaponText.text != null)
+        {
+            MeleeWeapon = MeleeWeaponText.text;
+        }
     }
 }
