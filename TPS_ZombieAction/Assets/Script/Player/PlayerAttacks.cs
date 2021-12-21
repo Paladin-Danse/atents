@@ -36,10 +36,29 @@ public class PlayerAttacks : MonoBehaviour
 
     private void Awake()
     {
+        GameManager.instance.Setup();
+
         playerInput = GetComponent<PlayerInput>();
         playerAnimator = GetComponent<Animator>();
         MainWeaponCam = mainWeapon.transform.Find("MainWeapon vcam").GetComponent<CinemachineVirtualCamera>();
         SubWeaponCam = subWeapon.transform.Find("SubWeapon vcam").GetComponent<CinemachineVirtualCamera>();
+    }
+
+    public void WeaponLoad(GameObject m_MainWeapon, GameObject m_SubWeapon, GameObject m_MeleeWeapon)
+    {
+        if(!mainWeapon)
+        {
+            mainWeapon = Instantiate(m_MainWeapon, gunPivot.transform.Find("MainWeapon")).GetComponent<Gun>();
+        }
+        if(!subWeapon)
+        {
+            subWeapon = Instantiate(m_SubWeapon, gunPivot.transform.Find("SubWeapon")).GetComponent<Gun>();
+        }
+        if(!equipMelee)
+        {
+            equipMelee = Instantiate(m_MeleeWeapon, transform.Find("MeleeWeapon")).GetComponent<MeleeWeapon>();
+            meleeWeapon = equipMelee.gameObject.transform.parent;
+        }
     }
 
     private void Start()

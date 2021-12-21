@@ -63,7 +63,6 @@
     <Compile Include="Assets\Resources\Aligned Games\Polygonal Modern Weapons Asset Package\Scripts\Utility\FlyCameraBehaviour.cs" />
     <Compile Include="Assets\Script\Manager\UIManager.cs" />
     <Compile Include="Assets\Resources\True Explosions\System\Scripts\exploders\Exploder2D.cs" />
-    <Compile Include="Assets\Resources\SMC Pack 1\Demo\DemoAssets\V_Text.cs" />
     <Compile Include="Assets\Script\Gun.cs" />
     <Compile Include="Assets\Script\Grenade.cs" />
     <Compile Include="Assets\Script\MeleeWeapon.cs" />
@@ -92,11 +91,9 @@
     <Compile Include="Assets\Resources\True Explosions\System\Scripts\effects\exploderComponents\PseudoVolumetricComponent.cs" />
     <Compile Include="Assets\Script\GetItem.cs" />
     <Compile Include="Assets\Resources\StylizedExplosionPack\scripts\instantiateEffectCaller.cs" />
-    <Compile Include="Assets\Resources\SMC Pack 1\Demo\DemoAssets\V_SMC_Handler.cs" />
     <Compile Include="Assets\Script\LivingEntity.cs" />
     <Compile Include="Assets\Script\Enemy.cs" />
     <Compile Include="Assets\Script\ThrowItem.cs" />
-    <Compile Include="Assets\Resources\SMC Pack 1\Demo\DemoAssets\V_SMC_Camera.cs" />
     <Compile Include="Assets\Script\GunCrosshair.cs" />
     <Compile Include="Assets\Script\Flame.cs" />
     <Compile Include="Assets\Resources\True Explosions\System\Scripts\exploders\SphereExploder.cs" />

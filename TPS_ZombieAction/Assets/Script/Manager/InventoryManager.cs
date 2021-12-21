@@ -91,7 +91,6 @@ public class InventoryManager : MonoBehaviour
     {
         if (!playerHealth.b_Dead)
         {
-            playerInput = GameManager.instance.playerInput;
             if (playerInput.rotateY != 0)
             {
                 f_RotateY = Mathf.Clamp(f_RotateY + (playerInput.rotateY * f_ThrowYSpeed), -10f, 10f);

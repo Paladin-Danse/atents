@@ -23,6 +23,10 @@ public class GameManager : MonoBehaviour
     public PlayerItemLooting playerItemLooting { get; private set; }
     public PlayerMovement playerMovement { get; private set; }
 
+    [SerializeField] private GameObject Player_MainWeapon;
+    [SerializeField] private GameObject Player_SubWeapon;
+    [SerializeField] private GameObject Player_MeleeWeapon;
+
     [SerializeField] private GetItem[] dropItem;//드랍되는 아이템 목록
     [SerializeField] [Range(0, 1)] private float f_DropPercent = 0.25f;//드랍확률(0.25 = 25%)
 
@@ -30,21 +34,40 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        Setup();
+        DontDestroyOnLoad(gameObject);
+    }
+    public void Setup()
+    {
         GameObject player = GameObject.Find("Player");
         if (player == null) Debug.Log("player Null");
         else
         {
             playerAttack = player.GetComponent<PlayerAttacks>();
+            if (playerAttack)
+            {
+                playerAttack.WeaponLoad(Player_MainWeapon, Player_SubWeapon, Player_MeleeWeapon);
+            }
             playerHealth = player.GetComponent<PlayerHealth>();
             playerInput = player.GetComponent<PlayerInput>();
             if (playerInput == null) Debug.Log("playerInput Null");
             playerItemLooting = player.GetComponent<PlayerItemLooting>();
             playerMovement = player.GetComponent<PlayerMovement>();
         }
+        /*
         for (int i = 0; i < dropItem.Length; i++)
         {
             MakeItem(dropItem[i]);
         }
+        */
+    }
+
+    public void PlayerInfomation_Save(string m_MainWeapon, string m_SubWeapon, string m_MeleeWeapon)
+    {
+        Player_MainWeapon = Resources.Load<GameObject>(string.Format("Prefabs/{0}", m_MainWeapon));
+        Player_SubWeapon = Resources.Load<GameObject>(string.Format("Prefabs/{0}", m_SubWeapon));
+        Player_MeleeWeapon = Resources.Load<GameObject>(string.Format("Prefabs/{0}", m_MeleeWeapon));
+        if (!Player_MainWeapon || !Player_SubWeapon || !Player_MeleeWeapon) Debug.Log("GameManager Error : Not Found WeaponName");
     }
 
     public GetItem MakeItem(GetItem m_Item)
