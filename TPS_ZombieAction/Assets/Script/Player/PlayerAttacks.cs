@@ -49,10 +49,12 @@ public class PlayerAttacks : MonoBehaviour
         if(!mainWeapon)
         {
             mainWeapon = Instantiate(m_MainWeapon, gunPivot.transform.Find("MainWeapon")).GetComponent<Gun>();
+            
         }
         if(!subWeapon)
         {
             subWeapon = Instantiate(m_SubWeapon, gunPivot.transform.Find("SubWeapon")).GetComponent<Gun>();
+            
         }
         if(!equipMelee)
         {
