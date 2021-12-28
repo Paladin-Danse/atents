@@ -60,9 +60,8 @@ public class Gun : MonoBehaviour
 
     private void Start()
     {
-        
         bulletLineRenderer.positionCount = 2;//불렛 라인렌더러에 총구와 총의 사거리만큼 두개의 지점이 필요
-        bulletLineRenderer.enabled = true;//라인렌더러를 활성화
+        bulletLineRenderer.enabled = false;//라인렌더러를 비활성화
         
 
         //총의 기본수치 정의(원래 OnEnable이었으나 총을 바꿀 때마다 총이 장전이 되기에 Awake에 표현하고 Scene을 새로 부를 때 문제가 있을경우, 해당 코드를 다시 부른다.)

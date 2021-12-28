@@ -49,16 +49,17 @@ public class PlayerAttacks : MonoBehaviour
         if(!mainWeapon)
         {
             mainWeapon = Instantiate(m_MainWeapon, gunPivot.transform.Find("MainWeapon")).GetComponent<Gun>();
-            
+            mainWeapon.gameObject.SetActive(false);//각 무기의 SetActive를 꺼서 OnEnable함수가 불리는 시기를 조절함.
         }
         if(!subWeapon)
         {
             subWeapon = Instantiate(m_SubWeapon, gunPivot.transform.Find("SubWeapon")).GetComponent<Gun>();
-            
+            subWeapon.gameObject.SetActive(false);
         }
         if(!equipMelee)
         {
             equipMelee = Instantiate(m_MeleeWeapon, transform.Find("MeleeWeapon")).GetComponent<MeleeWeapon>();
+            equipMelee.gameObject.SetActive(false);
             meleeWeapon = equipMelee.gameObject.transform.parent;
         }
     }

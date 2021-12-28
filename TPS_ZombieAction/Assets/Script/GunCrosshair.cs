@@ -13,11 +13,14 @@ public class GunCrosshair : MonoBehaviour
     [SerializeField] private RectTransform CrosshairLeft;
     [SerializeField] private RectTransform CrosshairRight;
     [SerializeField] private float Recoil_ReviveValue = 3f;
+    [SerializeField] private float Recoil_Time = 0.5f;
+    private float Recoil_LastTime;
     private RectTransform rect;
 
     private void Awake()
     {
         rect = GetComponent<RectTransform>();
+        Recoil_LastTime = Time.time;
     }
 
     private void OnEnable()
@@ -27,7 +30,10 @@ public class GunCrosshair : MonoBehaviour
 
     private void FixedUpdate()
     {
-        CrosshairUpdate();
+        if (Time.time >= Recoil_LastTime + Recoil_Time)
+        {
+            CrosshairUpdate();
+        }
     }
 
     private void CrosshairUpdate()
@@ -35,6 +41,7 @@ public class GunCrosshair : MonoBehaviour
         if (f_MinSize < f_Size)
         {
             f_Size -= Recoil_ReviveValue;
+            if (f_Size > 150) f_Size -= Recoil_ReviveValue;
             CrosshairSizeUpdate();
         }
         else
@@ -59,6 +66,7 @@ public class GunCrosshair : MonoBehaviour
     {
         f_Size += AppendValue;
         if (f_MaxSize < f_Size) f_Size = f_MaxSize;
+        Recoil_LastTime = Time.time;
         CrosshairSizeUpdate();
         /*
         CrosshairUp.localPosition = new Vector3(CrosshairUp.localPosition.x, CrosshairUp.localPosition.y + AppendValue, CrosshairUp.localPosition.z);
