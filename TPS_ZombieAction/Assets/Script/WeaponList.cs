@@ -11,6 +11,7 @@ public class WeaponList : MonoBehaviour
     [SerializeField] private GameObject Weapon_UI;
     [SerializeField] private GameObject Content;
     [SerializeField] private Image WeaponImage;
+    [SerializeField] private Text TutorialText;
 
     private TextAsset weapon_file;
     private List<GameObject> weaponList;
@@ -38,6 +39,8 @@ public class WeaponList : MonoBehaviour
         {
             gameObject.SetActive(true);
         }
+
+        if (TutorialText.gameObject.activeSelf) TutorialText.gameObject.SetActive(false);
     }
     //파일 불러오기
     public void WeaponFileLoad()

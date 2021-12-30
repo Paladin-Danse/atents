@@ -43,6 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0830c271fb4c7a43b8a06b298eb13c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player_MainWeapon: {fileID: 0}
+  Player_SubWeapon: {fileID: 0}
+  Player_MeleeWeapon: {fileID: 0}
   dropItem:
   - {fileID: -3912704517373919362, guid: c90bf41c504e541b98989b07b736097c, type: 3}
   - {fileID: -2134814299029635001, guid: b4e7df10a580e4a1a88a79995b741816, type: 3}

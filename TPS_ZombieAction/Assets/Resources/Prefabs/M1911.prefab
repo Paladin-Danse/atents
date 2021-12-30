@@ -235,7 +235,7 @@ MonoBehaviour:
   f_ReloadTime: 0.9
   f_LastFireTime: 0
   f_TimeToEffect: 0.03
-  f_Accuracy: 80
+  f_Accuracy: 95
   f_Recoil: 40
 --- !u!82 &8708167299013116804
 AudioSource:

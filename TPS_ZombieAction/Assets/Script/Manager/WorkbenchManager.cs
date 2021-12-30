@@ -22,6 +22,8 @@ public class WorkbenchManager : MonoBehaviour
     [SerializeField] private Text MainWeaponText;
     [SerializeField] private Text SubWeaponText;
     [SerializeField] private Text MeleeWeaponText;
+    [SerializeField] private Text NotReadyText;
+    [SerializeField] private float TextActiveTime;
 
     [SerializeField] private string MainWeapon;
     [SerializeField] private string SubWeapon;
@@ -30,6 +32,15 @@ public class WorkbenchManager : MonoBehaviour
     private void Awake()
     {
         MainWeapon = SubWeapon = MeleeWeapon = null;
+    }
+
+    private void Update()
+    {
+        if (NotReadyText.gameObject.activeSelf)
+        {
+            NotReadyText.color = Color.Lerp(NotReadyText.color, Color.clear, 1.0f / (TextActiveTime * 60.0f));
+            if (NotReadyText.color == Color.clear) NotReadyText.gameObject.SetActive(false);
+        }
     }
 
 
@@ -56,7 +67,14 @@ public class WorkbenchManager : MonoBehaviour
         if (MainWeapon != null && SubWeapon != null && MeleeWeapon != null)
         {
             GameManager.instance.PlayerInfomation_Save(MainWeapon, SubWeapon, MeleeWeapon);
-            SceneManager.LoadScene("Map_v1");
+            GameManager.instance.LoadScene("Map_v1");
+        }
+
+        else
+        {
+            NotReadyText.text = "아직 장착하지 않은 무기가 있어 시작할 수 없습니다.";
+            NotReadyText.color = Color.black;
+            NotReadyText.gameObject.SetActive(true);
         }
     }
 }

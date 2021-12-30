@@ -40,8 +40,10 @@ public class GunCrosshair : MonoBehaviour
     {
         if (f_MinSize < f_Size)
         {
-            f_Size -= Recoil_ReviveValue;
-            if (f_Size > 150) f_Size -= Recoil_ReviveValue;
+            if (f_Size > 150)
+                f_Size -= (Recoil_ReviveValue * 3);
+            else
+                f_Size -= Recoil_ReviveValue;
             CrosshairSizeUpdate();
         }
         else

@@ -484,12 +484,12 @@ MonoBehaviour:
   i_AmmoRemain: 100
   i_MagCapacity: 25
   i_MagAmmo: 0
-  f_TimeBetFire: 0.12
-  f_ReloadTime: 1.8
+  f_TimeBetFire: 0.08
+  f_ReloadTime: 1.5
   f_LastFireTime: 0
   f_TimeToEffect: 0.03
   f_Accuracy: 80
-  f_Recoil: 55
+  f_Recoil: 15
 --- !u!82 &9068096208389889236
 AudioSource:
   m_ObjectHideFlags: 0

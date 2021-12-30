@@ -70,7 +70,7 @@ MonoBehaviour:
   i_MagCapacity: 12
   i_MagAmmo: 12
   f_TimeBetFire: 0.3
-  f_ReloadTime: 1
+  f_ReloadTime: 0.9
   f_LastFireTime: 0
   f_TimeToEffect: 0.03
   f_Accuracy: 75
