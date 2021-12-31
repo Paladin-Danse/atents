@@ -83,6 +83,7 @@
     <Compile Include="Assets\Script\Incendiarybomb.cs" />
     <Compile Include="Assets\Resources\StylizedExplosionPack\scripts\particleColorChanger.cs" />
     <Compile Include="Assets\Resources\True Explosions\System\Scripts\effects\exploderComponents\VolumetricComponent2D.cs" />
+    <Compile Include="Assets\Script\ScreenText.cs" />
     <Compile Include="Assets\Script\Weapon.cs" />
     <Compile Include="Assets\Script\Player\PlayerInput.cs" />
     <Compile Include="Assets\Script\ItemData.cs" />
@@ -98,7 +99,6 @@
     <Compile Include="Assets\Script\Flame.cs" />
     <Compile Include="Assets\Resources\True Explosions\System\Scripts\exploders\SphereExploder.cs" />
     <Compile Include="Assets\Script\Manager\GameManager.cs" />
-    <Compile Include="Assets\Script\ScreenText.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\StylizedExplosionPack\Tips &amp; Documentations.txt" />
@@ -108,6 +108,7 @@
     <None Include="Assets\Resources\True Explosions\System\Shaders\SphereVolumetricExplosion.shader" />
     <None Include="Assets\Resources\TextData\WeaponList\test_MeleeWeapon.txt" />
     <None Include="Assets\Resources\TextData\WeaponList\test_MainWeapon.txt" />
+    <None Include="Assets\Resources\Survival Tools\ReadMe\ReadMe.txt" />
     <None Include="Assets\Resources\StylizedExplosionPack\shader\alphaBlend_glow.shader" />
   </ItemGroup>
   <ItemGroup>

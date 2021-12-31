@@ -12,7 +12,8 @@ public enum ITEM_TYPE
     AMMO,
     GRENADE,
     FLASHBANG,
-    INCENDIARY_BOMB
+    INCENDIARY_BOMB,
+    KEY_ITEM
 }
 //아이템류 인터페이스
 [System.Serializable]
@@ -36,6 +37,7 @@ public class UseItem
             {
                 case ITEM_TYPE.POTION:
                 case ITEM_TYPE.AMMO:
+                case ITEM_TYPE.KEY_ITEM:
                     return false;
                 case ITEM_TYPE.GRENADE:
                 case ITEM_TYPE.FLASHBANG:

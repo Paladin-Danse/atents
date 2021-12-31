@@ -109,6 +109,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void GameClear()
+    {
+        //게임클리어 이후 연출을 작성
+        Debug.Log("GameClear!!");
+    }
+
+    //씬 이동을 처리할 함수
     public void LoadScene(string newSceneName)
     {
         SceneManager.LoadScene(newSceneName);

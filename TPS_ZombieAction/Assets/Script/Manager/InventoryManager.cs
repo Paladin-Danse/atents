@@ -218,7 +218,7 @@ public class InventoryManager : MonoBehaviour
             case ITEM_TYPE.AMMO:
                 item = InventoryItemList.Find(i => i.data.type == ITEM_TYPE.AMMO);
                 item.Use();
-                item = null;
+                item = null;//인벤토리에 저장되지 않는 아이템은 함수의 예외값으로 처리하기 위해 null값으로 비워준다.
                 break;
             case ITEM_TYPE.POTION:
                 item = InventoryItemList.Find(i => i.data.type == ITEM_TYPE.POTION);
@@ -231,6 +231,11 @@ public class InventoryManager : MonoBehaviour
                 break;
             case ITEM_TYPE.INCENDIARY_BOMB:
                 item = InventoryItemList.Find(i => i.data.type == ITEM_TYPE.INCENDIARY_BOMB);
+                break;
+            case ITEM_TYPE.KEY_ITEM:
+                item = InventoryItemList.Find(i => i.data.type == ITEM_TYPE.KEY_ITEM);
+                item.Use();
+                item = null;
                 break;
         }
         if (item != null) LootItem(item);
@@ -248,8 +253,8 @@ public class InventoryManager : MonoBehaviour
                 if (item != null)
                 {
                     playerAttack.GetAmmo(item.data.value);
+                    item = null;
                 }
-                item = null;
                 break;
             case ITEM_TYPE.POTION://회복아이템
                 item = InventoryItemList.Find(i => i.data.type == ITEM_TYPE.POTION);
@@ -290,7 +295,6 @@ public class InventoryManager : MonoBehaviour
                     UIManager.instance.UpdateInventory(selectItem.data.iconName, selectItem.data.quantity);
                 }
                 break;
-            //아래로는 아직 미구현 아이템
             case ITEM_TYPE.FLASHBANG:
                 item = InventoryItemList.Find(i => i.data.type == ITEM_TYPE.FLASHBANG);
                 if (item != null && item.data.quantity > 0)
@@ -347,6 +351,14 @@ public class InventoryManager : MonoBehaviour
                     UIManager.instance.UpdateInventory(selectItem.data.iconName, selectItem.data.quantity);
                 }
                 break;
+            case ITEM_TYPE.KEY_ITEM:
+                item = InventoryItemList.Find(i => i.data.type == ITEM_TYPE.KEY_ITEM);
+                if (item != null)
+                {
+                    UIManager.instance.UpdateGoalCount(item.data.value);
+                    item = null;
+                }
+                break;
         }
         if(item != null)
         {
@@ -356,6 +368,7 @@ public class InventoryManager : MonoBehaviour
                 UIManager.instance.UpdateInventory(null, 0);
             }
         }
+
     }
 
     public void ChoiceItem()

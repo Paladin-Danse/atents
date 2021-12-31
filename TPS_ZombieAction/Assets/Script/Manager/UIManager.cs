@@ -36,6 +36,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Text inventoryItemNum;
     [SerializeField] private GunCrosshair CrosshairUI;
 
+    //클리어UI
+    [SerializeField] private GameObject ClearGoal;//게임목표
+    private Text Clear_Text;
+    [SerializeField] private int Clear_GoalCount;//목표달성 요구값
+    private int Clear_CurrentCount = 0;//현재달성한 목표값
+
     //상호작용 키 UI
     [SerializeField] private Sprite ItemGetKey;
     [SerializeField] private Sprite ExecuteKey;
@@ -51,6 +57,20 @@ public class UIManager : MonoBehaviour
         }
         var temp = transform.Find("InteractionKeyGuide");
         if (temp) InteractionKeyImg = temp.GetComponent<Image>();
+
+        if (ClearGoal)
+        {
+            ClearGoal.SetActive(true);
+            Clear_Text = ClearGoal.GetComponentInChildren<Text>();
+            if (Clear_Text)
+            {
+                Clear_Text.text = string.Format("{0} / {1}", Clear_CurrentCount, Clear_GoalCount);
+            }
+            else
+            {
+                Debug.Log("UIManager Error : ClearGoal Text Not Found!");
+            }
+        }
 
     }
 
@@ -77,10 +97,12 @@ public class UIManager : MonoBehaviour
     {
         playerHealthBar.value = playerHealth.f_Health;
     }
+    //탄약UI갱신함수
     public void UpdateAmmoText(int magAmmo, int remainAmmo)
     {
         playerAmmoText.text = string.Format("{0} / {1}", magAmmo, remainAmmo);
     }
+    //인벤토리 UI갱신함수
     public void UpdateInventory(string spriteName, int newNum)
     {
         if (spriteName == null)
@@ -101,6 +123,18 @@ public class UIManager : MonoBehaviour
             if (!inventoryItemNum.gameObject.activeSelf)
                 inventoryItemNum.gameObject.SetActive(true);
             inventoryItemNum.text = newNum.ToString();
+        }
+    }
+    //목표 아이템을 먹을 때 갱신해주는 함수
+    public void UpdateGoalCount(int Count)
+    {
+        Clear_CurrentCount += Count;
+        Clear_Text.text = string.Format("{0} / {1}", Clear_CurrentCount, Clear_GoalCount);
+
+        //목표 요구치 이상을 획득하면 게임 클리어
+        if (Clear_CurrentCount >= Clear_GoalCount)
+        {
+            GameManager.instance.GameClear();
         }
     }
     public void InventoryDisable()
