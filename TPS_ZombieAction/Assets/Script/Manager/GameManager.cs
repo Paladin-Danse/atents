@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
@@ -16,7 +17,13 @@ public class GameManager : MonoBehaviour
             return m_instance;
         }
     }
+    //게임매니저가 사용할 UI효과
+    [SerializeField] private Canvas GameManagerUI;
+    private Image FadeImage;
+    [SerializeField] private float FadeInout_SecondTime;
+    private Color FadeColor;
 
+    private GameObject player;
     public PlayerAttacks playerAttack { get; private set; }
     public PlayerHealth playerHealth { get; private set; }
     public PlayerInput playerInput { get; private set; }
@@ -35,11 +42,14 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Setup();
+        FadeImage = GameManagerUI.transform.Find("PadeInout_Image").GetComponent<Image>();
+        FadeImage.gameObject.SetActive(false);
+
         DontDestroyOnLoad(gameObject);
     }
     public void Setup()
     {
-        GameObject player = GameObject.Find("Player");
+        player = GameObject.Find("Player");
         if (player == null) Debug.Log("player Null");
         else
         {
@@ -61,6 +71,16 @@ public class GameManager : MonoBehaviour
         }
         */
     }
+
+    private void Update()
+    {
+        if(FadeImage.gameObject.activeSelf)
+        {
+            FadeImage.color = Color.Lerp(FadeImage.color, FadeColor, 1 / (FadeInout_SecondTime * 60));
+        }
+    }
+
+
 
     public void PlayerInfomation_Save(string m_MainWeapon, string m_SubWeapon, string m_MeleeWeapon)
     {
@@ -112,13 +132,63 @@ public class GameManager : MonoBehaviour
     public void GameClear()
     {
         //게임클리어 이후 연출을 작성
-        Debug.Log("GameClear!!");
+        OnCursorVisible();
+
+        if(!playerHealth)
+        {
+            playerHealth = player.GetComponent<PlayerHealth>();
+        }
+        playerHealth.OnInvincibility();
     }
 
     //씬 이동을 처리할 함수
     public void LoadScene(string newSceneName)
     {
+        //씬이 바뀔 때 만약 플레이어가 존재하는 씬이라면 혹시 모를 경우를 대비해 플레이어에게 걸어놓은 무적 등을 해제한다.
+        if (player) player.GetComponent<PlayerHealth>().OffInvincibility();
+
+        //씬이 전환되기전에 화면에 페이드 인/페이드 아웃효과를 준다.
+        FadeImage.gameObject.SetActive(true);
+
+        StartCoroutine(FadeOut(newSceneName));
+    }
+
+    //씬이 넘어갈 때 화면 효과
+    //점점 밝아짐
+    public IEnumerator FadeIn()
+    {
+        FadeImage.color = Color.black;
+        FadeColor = Color.clear;
+
+        yield return new WaitForSeconds(FadeInout_SecondTime);
+
+        //게임씬이 시작될 때 게임 중에 마우스가 보임.
+        //OnCursorVisible();
+        FadeImage.gameObject.SetActive(false);
+    }
+    //점점 어두워짐
+    public IEnumerator FadeOut(string newSceneName)
+    {
+        FadeImage.color = Color.clear;
+        FadeColor = Color.black;
+        //씬이 전환되는 도중엔 마우스를 움직일 수 없게 만드려고 했으나 문제발생.
+        //OffCursorVisible();
+
+        yield return new WaitForSeconds(FadeInout_SecondTime);
+
         SceneManager.LoadScene(newSceneName);
+        StartCoroutine(FadeIn());
+    }
+
+    public void OnCursorVisible()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
+    public void OffCursorVisible()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void QuitGame()

@@ -47,6 +47,8 @@ public class PlayerHealth : LivingEntity
 
         playerMovement.enabled = true;
         playerShooter.enabled = true;
+        OnDeath += GameManager.instance.OnCursorVisible;
+        OnDeath += UIManager.instance.OnGameOverUI;
     }
     public override void RestoreHealth(float newHealth)
     {

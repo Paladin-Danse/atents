@@ -41,7 +41,9 @@ public class UIManager : MonoBehaviour
     private Text Clear_Text;
     [SerializeField] private int Clear_GoalCount;//목표달성 요구값
     private int Clear_CurrentCount = 0;//현재달성한 목표값
+    [SerializeField] private GameObject ClearUI;
 
+    [SerializeField] private GameObject GameOverUI;
     //상호작용 키 UI
     [SerializeField] private Sprite ItemGetKey;
     [SerializeField] private Sprite ExecuteKey;
@@ -90,6 +92,9 @@ public class UIManager : MonoBehaviour
         InteractionExit();
         InventoryDisable();
         CrosshairUI.gameObject.SetActive(false);
+
+        ClearUI.SetActive(false);
+        GameOverUI.SetActive(false);
     }
 
     //플레이어의 체력에 변동이 있을때마다 UI의 체력수치를 수정한다.
@@ -135,6 +140,7 @@ public class UIManager : MonoBehaviour
         if (Clear_CurrentCount >= Clear_GoalCount)
         {
             GameManager.instance.GameClear();
+            OnClearUI();
         }
     }
     public void InventoryDisable()
@@ -185,5 +191,24 @@ public class UIManager : MonoBehaviour
     public void SetGunAccuracy(float Accuracy)
     {
         CrosshairUI.GunAccuracyToSize(Accuracy);
+    }
+
+    public void OnClearUI()
+    {
+        ClearUI.SetActive(true);
+    }
+
+    public void OnGameOverUI()
+    {
+        GameOverUI.SetActive(true);
+    }
+
+    public void OnRestart()
+    {
+        GameManager.instance.LoadScene("Workbench");
+    }
+    public void OnExit()
+    {
+        GameManager.instance.LoadScene("StartGame");
     }
 }
