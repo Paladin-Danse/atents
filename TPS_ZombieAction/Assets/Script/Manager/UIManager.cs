@@ -205,10 +205,12 @@ public class UIManager : MonoBehaviour
 
     public void OnRestart()
     {
+        Debug.Log("Restart");
         GameManager.instance.LoadScene("Workbench");
     }
     public void OnExit()
     {
+        Debug.Log("Exit");
         GameManager.instance.LoadScene("StartGame");
     }
 }

@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
             return m_instance;
         }
     }
+
     //게임매니저가 사용할 UI효과
     [SerializeField] private Canvas GameManagerUI;
     private Image FadeImage;
@@ -77,6 +78,30 @@ public class GameManager : MonoBehaviour
         if(FadeImage.gameObject.activeSelf)
         {
             FadeImage.color = Color.Lerp(FadeImage.color, FadeColor, 1 / (FadeInout_SecondTime * 60));
+
+            if(playerMovement)
+            {
+                if (playerMovement.enabled == true) playerMovement.enabled = false;
+            }
+            if (playerAttack)
+            {
+                if (playerAttack.enabled == true) playerAttack.enabled = false;
+            }
+        }
+        else
+        {
+            if(playerMovement)
+            {
+                if (playerMovement.enabled == false) playerMovement.enabled = true;
+            }
+            if (playerAttack)
+            {
+                if (playerAttack.enabled == false)
+                {
+                    playerAttack.enabled = true;
+                    playerAttack.EquipMainWeapon();
+                }
+            }
         }
     }
 

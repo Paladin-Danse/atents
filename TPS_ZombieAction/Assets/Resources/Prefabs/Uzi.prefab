@@ -480,9 +480,9 @@ MonoBehaviour:
   f_Damage: 25
   f_SupDamage: 25
   f_FireDistance: 50
-  i_MaxAmmoRemain: 250
-  i_AmmoRemain: 100
-  i_MagCapacity: 25
+  i_MaxAmmoRemain: 320
+  i_AmmoRemain: 160
+  i_MagCapacity: 32
   i_MagAmmo: 0
   f_TimeBetFire: 0.08
   f_ReloadTime: 1.5
