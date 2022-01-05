@@ -44,8 +44,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (b_move && !b_Dodge) Move();
-        Rotate();
+        if (b_move && !b_Dodge)
+        {
+            Move();
+            Rotate();
+        }
         Dodge();
     }
 
@@ -185,6 +188,11 @@ public class PlayerMovement : MonoBehaviour
     public void OffMove()
     {
         b_move = false;
+    }
+
+    private void OnDisable()
+    {
+        playerAnimator.SetFloat("Move", 0);
     }
 
     /*

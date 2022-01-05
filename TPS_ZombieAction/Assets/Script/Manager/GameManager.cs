@@ -18,13 +18,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private bool b_GameClear = false;
+
     //게임매니저가 사용할 UI효과
     [SerializeField] private Canvas GameManagerUI;
     private Image FadeImage;
     [SerializeField] private float FadeInout_SecondTime;
     private Color FadeColor;
 
-    private GameObject player;
+    [SerializeField] private GameObject player;
     public PlayerAttacks playerAttack { get; private set; }
     public PlayerHealth playerHealth { get; private set; }
     public PlayerInput playerInput { get; private set; }
@@ -65,6 +67,11 @@ public class GameManager : MonoBehaviour
             playerItemLooting = player.GetComponent<PlayerItemLooting>();
             playerMovement = player.GetComponent<PlayerMovement>();
         }
+
+        if(SceneManager.GetActiveScene().name == "Map_v1")
+        {
+            b_GameClear = false;
+        }
         /*
         for (int i = 0; i < dropItem.Length; i++)
         {
@@ -73,7 +80,7 @@ public class GameManager : MonoBehaviour
         */
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if(FadeImage.gameObject.activeSelf)
         {
@@ -88,7 +95,7 @@ public class GameManager : MonoBehaviour
                 if (playerAttack.enabled == true) playerAttack.enabled = false;
             }
         }
-        else
+        else if(!FadeImage.gameObject.activeSelf && !b_GameClear)
         {
             if(playerMovement)
             {
@@ -156,21 +163,32 @@ public class GameManager : MonoBehaviour
 
     public void GameClear()
     {
-        //게임클리어 이후 연출을 작성
-        OnCursorVisible();
-
+        b_GameClear = true;
+        
         if(!playerHealth)
         {
             playerHealth = player.GetComponent<PlayerHealth>();
         }
         playerHealth.OnInvincibility();
+        if (!playerMovement)
+        {
+            playerMovement = player.GetComponent<PlayerMovement>();
+        }
+        playerMovement.enabled = false;
+        if (!playerAttack)
+        {
+            playerAttack = player.GetComponent<PlayerAttacks>();
+        }
+        playerAttack.enabled = false;
+
+        OnCursorVisible();
     }
 
     //씬 이동을 처리할 함수
     public void LoadScene(string newSceneName)
     {
         //씬이 바뀔 때 만약 플레이어가 존재하는 씬이라면 혹시 모를 경우를 대비해 플레이어에게 걸어놓은 무적 등을 해제한다.
-        if (player) player.GetComponent<PlayerHealth>().OffInvincibility();
+        //if (player) player.GetComponent<PlayerHealth>().OffInvincibility();
 
         //씬이 전환되기전에 화면에 페이드 인/페이드 아웃효과를 준다.
         FadeImage.gameObject.SetActive(true);

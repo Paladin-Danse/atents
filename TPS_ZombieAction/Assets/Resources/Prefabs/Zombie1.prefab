@@ -70,8 +70,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 155785495977993086}
   m_LocalRotation: {x: 0.11186638, y: 0.8730793, z: 0.4680297, w: 0.0785284}
-  m_LocalPosition: {x: 0.046, y: -0.076, z: -0.001}
-  m_LocalScale: {x: 0.12587997, y: 0.13137792, z: 0.13861002}
+  m_LocalPosition: {x: 0.176, y: -0.084, z: 0.054}
+  m_LocalScale: {x: 0.22884338, y: 0.264712, z: 0.32951182}
   m_Children: []
   m_Father: {fileID: 3660009025035086490}
   m_RootOrder: 5
@@ -645,8 +645,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1681493432429872177}
   m_LocalRotation: {x: -0.011087509, y: 0.09284102, z: 0.9822586, w: 0.16255923}
-  m_LocalPosition: {x: 0.043, y: -0.03, z: 0.035}
-  m_LocalScale: {x: 0.12588003, y: 0.13137795, z: 0.13861011}
+  m_LocalPosition: {x: 0.205, y: -0.086, z: -0.024}
+  m_LocalScale: {x: 0.22884348, y: 0.26471207, z: 0.32951203}
   m_Children: []
   m_Father: {fileID: 7849909225841866114}
   m_RootOrder: 5
@@ -2076,7 +2076,7 @@ MonoBehaviour:
   f_AttackRange: 0.8
   targetEntity: {fileID: 0}
   f_Damage: 20
-  f_Speed: 1
+  f_Speed: 2
   f_timeBetAttck: 2
   hitEffect: {fileID: 198000012165397537}
   deathSound: {fileID: 8300000, guid: b86f03005ed394911b43027aeaaedeb7, type: 3}

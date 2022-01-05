@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameManagerUI: {fileID: 7932086153968896083}
   FadeInout_SecondTime: 2
+  player: {fileID: 0}
   Player_MainWeapon: {fileID: 0}
   Player_SubWeapon: {fileID: 0}
   Player_MeleeWeapon: {fileID: 0}

@@ -195,12 +195,14 @@ public class UIManager : MonoBehaviour
 
     public void OnClearUI()
     {
-        ClearUI.SetActive(true);
+        if(!GameOverUI.activeSelf)
+            ClearUI.SetActive(true);
     }
 
     public void OnGameOverUI()
     {
-        GameOverUI.SetActive(true);
+        if(!ClearUI.activeSelf)
+            GameOverUI.SetActive(true);
     }
 
     public void OnRestart()
