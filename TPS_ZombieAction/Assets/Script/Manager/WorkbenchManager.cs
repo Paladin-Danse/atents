@@ -23,7 +23,9 @@ public class WorkbenchManager : MonoBehaviour
     [SerializeField] private Text SubWeaponText;
     [SerializeField] private Text MeleeWeaponText;
     [SerializeField] private Text NotReadyText;
-    [SerializeField] private float TextActiveTime;
+    [SerializeField] private float TextActiveTime;//NotReadyText가 켜져있을 시간
+    float ActiveLastTime;//NotReadyText의 텍스트가 켜진 순간의 시간
+    float lerpTime;
 
     [SerializeField] private string MainWeapon;
     [SerializeField] private string SubWeapon;
@@ -34,12 +36,16 @@ public class WorkbenchManager : MonoBehaviour
         MainWeapon = SubWeapon = MeleeWeapon = null;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (NotReadyText.gameObject.activeSelf)
         {
-            NotReadyText.color = Color.Lerp(NotReadyText.color, Color.clear, 1.0f / (TextActiveTime * 60.0f));
-            if (NotReadyText.color == Color.clear) NotReadyText.gameObject.SetActive(false);
+            if (Time.time >= TextActiveTime + ActiveLastTime)
+            {
+                lerpTime += Time.deltaTime / 1.0f;//1.0f = 1초
+                NotReadyText.color = Color.Lerp(Color.black, Color.clear, lerpTime);//투명해지는 효과(완전히 사라지기까지 1초의 시간이 걸림)
+                if (NotReadyText.color == Color.clear) NotReadyText.gameObject.SetActive(false);
+            }
         }
     }
 
@@ -74,6 +80,8 @@ public class WorkbenchManager : MonoBehaviour
         {
             NotReadyText.text = "아직 장착하지 않은 무기가 있어 시작할 수 없습니다.";
             NotReadyText.color = Color.black;
+            ActiveLastTime = Time.time;
+            lerpTime = 0f;
             NotReadyText.gameObject.SetActive(true);
         }
     }

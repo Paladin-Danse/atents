@@ -4,8 +4,6 @@ using UnityEngine;
 using UnityEngine.AI;
 public class Enemy : LivingEntity
 {
-    
-
     [SerializeField] private LayerMask whatIsTarget;
     [SerializeField] private float f_SearchRange = 2f;
     [SerializeField] private float f_AttackRange = 0.5f;
@@ -33,7 +31,6 @@ public class Enemy : LivingEntity
     [SerializeField] private float f_StartingSupHealth = 100f;
     [SerializeField] private Collider ExecutionArea;
     private float f_SupHealth;
-    
 
     private bool hasTarget
     {
@@ -174,8 +171,8 @@ public class Enemy : LivingEntity
                     }
                 }
             }
+            base.OnDamage(damage, hitPoint, hitNormal);
         }
-        base.OnDamage(damage, hitPoint, hitNormal);
     }
     
     public void OnSupDamage(float newSupDamage)
@@ -216,6 +213,12 @@ public class Enemy : LivingEntity
 
     private IEnumerator Suppressed()
     {
+        if(f_Health < 0)
+        {
+            Die();
+            yield break;
+        }
+
         var exeArea = ExecutionArea.gameObject;
 
         pathFinder.ResetPath();

@@ -68,10 +68,21 @@ public class GameManager : MonoBehaviour
             playerMovement = player.GetComponent<PlayerMovement>();
         }
 
-        if(SceneManager.GetActiveScene().name == "Map_v1")
+        if (playerMovement)
+        {
+            if (playerMovement.enabled == true) playerMovement.enabled = false;
+        }
+        if (playerAttack)
+        {
+            if (playerAttack.enabled == true) playerAttack.enabled = false;
+        }
+
+        if (SceneManager.GetActiveScene().name == "Map_v1")
         {
             b_GameClear = false;
         }
+
+        if(dropItemList.Count > 0) dropItemList.Clear();
         /*
         for (int i = 0; i < dropItem.Length; i++)
         {
@@ -79,40 +90,6 @@ public class GameManager : MonoBehaviour
         }
         */
     }
-
-    private void FixedUpdate()
-    {
-        if(FadeImage.gameObject.activeSelf)
-        {
-            FadeImage.color = Color.Lerp(FadeImage.color, FadeColor, 1 / (FadeInout_SecondTime * 60));
-
-            if(playerMovement)
-            {
-                if (playerMovement.enabled == true) playerMovement.enabled = false;
-            }
-            if (playerAttack)
-            {
-                if (playerAttack.enabled == true) playerAttack.enabled = false;
-            }
-        }
-        else if(!FadeImage.gameObject.activeSelf && !b_GameClear)
-        {
-            if(playerMovement)
-            {
-                if (playerMovement.enabled == false) playerMovement.enabled = true;
-            }
-            if (playerAttack)
-            {
-                if (playerAttack.enabled == false)
-                {
-                    playerAttack.enabled = true;
-                    playerAttack.EquipMainWeapon();
-                }
-            }
-        }
-    }
-
-
 
     public void PlayerInfomation_Save(string m_MainWeapon, string m_SubWeapon, string m_MeleeWeapon)
     {
@@ -203,10 +180,29 @@ public class GameManager : MonoBehaviour
         FadeImage.color = Color.black;
         FadeColor = Color.clear;
 
-        yield return new WaitForSeconds(FadeInout_SecondTime);
+        var t = 0f;
 
-        //게임씬이 시작될 때 게임 중에 마우스가 보임.
-        //OnCursorVisible();
+        while (1 >= t)
+        {
+            t += Time.deltaTime / FadeInout_SecondTime;
+            FadeImage.color = Color.Lerp(Color.black, FadeColor, t);
+
+            yield return null;
+        }
+
+        if (playerMovement)
+        {
+            if (playerMovement.enabled == false) playerMovement.enabled = true;
+        }
+        if (playerAttack)
+        {
+            if (playerAttack.enabled == false)
+            {
+                playerAttack.enabled = true;
+                playerAttack.EquipMainWeapon();
+            }
+        }
+
         FadeImage.gameObject.SetActive(false);
     }
     //점점 어두워짐
@@ -214,12 +210,20 @@ public class GameManager : MonoBehaviour
     {
         FadeImage.color = Color.clear;
         FadeColor = Color.black;
-        //씬이 전환되는 도중엔 마우스를 움직일 수 없게 만드려고 했으나 문제발생.
-        //OffCursorVisible();
 
-        yield return new WaitForSeconds(FadeInout_SecondTime);
+        var t = 0f;
+
+        while (1 >= t)
+        {
+            t += Time.deltaTime / FadeInout_SecondTime;
+            FadeImage.color = Color.Lerp(Color.clear, FadeColor, t);
+
+            yield return null;
+        }
+        //yield return new WaitForSeconds(FadeInout_SecondTime);
 
         SceneManager.LoadScene(newSceneName);
+
         StartCoroutine(FadeIn());
     }
 
