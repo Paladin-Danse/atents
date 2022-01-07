@@ -7,16 +7,16 @@ public enum SHOT_TYPE//총이 자동화기인지, 반자동화기인지 구분
         TYPE_FULLAUTO,
         TYPE_SEMIAUTO
     }
+public enum STATE//총의 현재 상태를 구분
+{
+    STATE_READY,
+    STATE_EMPTY,
+    STATE_RELOADING
+}
 
 public class Gun : MonoBehaviour
 {
-    public enum STATE//총의 현재 상태를 구분
-    {
-        STATE_READY,
-        STATE_EMPTY,
-        STATE_RELOADING
-    }
-    [SerializeField] private STATE e_State;
+    public STATE e_State { get; private set; }
     [SerializeField] private SHOT_TYPE e_Type;
 
     [SerializeField] private Transform fireTransform;//총구 발사위치
@@ -29,9 +29,9 @@ public class Gun : MonoBehaviour
     [SerializeField] private ParticleSystem shellEjectEffect;//탄피배출효과
 
     [SerializeField] private AudioSource gunAudioPlayer;//총의 AudioSource
+    [SerializeField] private Animator playerAnimator;//재장전을 위해 가져온 플레이어 애니메이터
     [SerializeField] private AudioClip shotClip;//격발클립
     [SerializeField] private AudioClip reloadClip;//장전클립
-    
     
     [SerializeField] private float f_Damage;//총의 데미지
     [SerializeField] private float f_SupDamage;//제압 데미지
@@ -46,6 +46,7 @@ public class Gun : MonoBehaviour
     [SerializeField] private float f_TimeToEffect = 0.03f;//이펙트 발생 시간
     [SerializeField] [Range(0, 100)]private float f_Accuracy;//총의 정확도
     [SerializeField] [Range(0, 100)]private float f_Recoil;//총의 반동
+    private bool b_Reload;
 
     //총의 발사궤적이지만, 노란색으로 표시되는 현재와 달리 어느정도 진행 후 필요가 없어질 무렵에 제거할 예정
     private LineRenderer bulletLineRenderer;
@@ -53,6 +54,8 @@ public class Gun : MonoBehaviour
     private void Awake()
     {
         gunAudioPlayer = GetComponent<AudioSource>();
+        playerAnimator = GetComponentInParent<Animator>();
+        if (!playerAnimator) Debug.Log("playerAnimator is Not Found");
         bulletLineRenderer = GetComponent<LineRenderer>();
 
         i_MagAmmo = i_MagCapacity;
@@ -62,7 +65,7 @@ public class Gun : MonoBehaviour
     {
         bulletLineRenderer.positionCount = 2;//불렛 라인렌더러에 총구와 총의 사거리만큼 두개의 지점이 필요
         bulletLineRenderer.enabled = false;//라인렌더러를 비활성화
-        
+        playerAnimator.SetBool("Reload", false);
 
         //총의 기본수치 정의(원래 OnEnable이었으나 총을 바꿀 때마다 총이 장전이 되기에 Awake에 표현하고 Scene을 새로 부를 때 문제가 있을경우, 해당 코드를 다시 부른다.)
 
@@ -234,6 +237,7 @@ public class Gun : MonoBehaviour
         e_State = STATE.STATE_RELOADING;
 
         gunAudioPlayer.PlayOneShot(reloadClip);
+        playerAnimator.SetBool("Reload", true);
 
         yield return new WaitForSeconds(f_ReloadTime);
 
@@ -248,6 +252,9 @@ public class Gun : MonoBehaviour
         i_AmmoRemain -= AmmoToFill;
 
         UIManager.instance.UpdateAmmoText(i_MagAmmo, i_AmmoRemain);
+        
+        playerAnimator.SetBool("Reload", false);
+
         e_State = STATE.STATE_READY;
     }
 }

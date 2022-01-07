@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,6 +28,7 @@ public class PlayerAttacks : MonoBehaviour
     
     private PlayerInput playerInput;
     private Animator playerAnimator;
+    private event Action AnimEvent;
     public ATTACK_STATE playerAttackState { get; private set; }
     private bool b_OnExecution;
     private Enemy ExecutionTarget;
@@ -214,8 +216,8 @@ public class PlayerAttacks : MonoBehaviour
             HandPositioning(equipMelee.LeftHandle, equipMelee.RightHandle);
 
             playerAnimator.SetTrigger("MeleeAttack");
-
-            equipMelee.Attack();
+            AnimEvent += OnIdle;
+            equipMelee.Attack(playerAnimator, AnimEvent);
         }
     }
 
@@ -324,5 +326,6 @@ public class PlayerAttacks : MonoBehaviour
         playerAttackState = ATTACK_STATE.IDLE;
         equipGun.gameObject.SetActive(true);
         HandPositioning(equipGun.LeftHandle, equipGun.RightHandle);
+        AnimEvent -= OnIdle;
     }
 }
