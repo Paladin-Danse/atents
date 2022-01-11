@@ -47,7 +47,8 @@ public class UIManager : MonoBehaviour
     //상호작용 키 UI
     [SerializeField] private Sprite ItemGetKey;
     [SerializeField] private Sprite ExecuteKey;
-    private Image InteractionKeyImg;
+    [SerializeField] private Image InteractionKeyImg;
+    private GameObject InteractionKeyBG;
 
     private void Awake()
     {
@@ -57,9 +58,7 @@ public class UIManager : MonoBehaviour
         {
             playerHealth = player.GetComponent<PlayerHealth>();
         }
-        var temp = transform.Find("InteractionKeyGuide");
-        if (temp) InteractionKeyImg = temp.GetComponent<Image>();
-
+        InteractionKeyBG = InteractionKeyImg.transform.parent.gameObject;
         if (ClearGoal)
         {
             ClearGoal.SetActive(true);
@@ -160,12 +159,14 @@ public class UIManager : MonoBehaviour
                 InteractionKeyImg.sprite = ItemGetKey;
                 break;
         }
-        InteractionKeyImg.gameObject.SetActive(true);
+        if (InteractionKeyBG) InteractionKeyBG.SetActive(true);
+        else InteractionKeyImg.gameObject.SetActive(true);
     }
 
     public void InteractionExit()
     {
-        InteractionKeyImg.gameObject.SetActive(false);
+        if (InteractionKeyBG) InteractionKeyBG.SetActive(false);
+        else InteractionKeyImg.gameObject.SetActive(false);
         InteractionKeyImg.sprite = null;
     }
 

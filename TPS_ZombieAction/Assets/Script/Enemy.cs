@@ -183,7 +183,6 @@ public class Enemy : LivingEntity
 
             if (f_SupHealth <= 0)
             {
-                b_Suppressed = true;
                 StartCoroutine(Suppressed());
             }
         }
@@ -191,24 +190,27 @@ public class Enemy : LivingEntity
 
     public override void Die()
     {
-        base.Die();
-
-        Collider[] enemyColliders = GetComponents<Collider>();
-        for(int i=0; i < enemyColliders.Length; i++)
+        if (!b_Dead)
         {
-            enemyColliders[i].enabled = false;
+            base.Die();
+
+            Collider[] enemyColliders = GetComponents<Collider>();
+            for (int i = 0; i < enemyColliders.Length; i++)
+            {
+                enemyColliders[i].enabled = false;
+            }
+            rigid.useGravity = false;
+            ExecutionArea.gameObject.SetActive(false);
+
+            pathFinder.enabled = true;
+            pathFinder.isStopped = true;
+            pathFinder.enabled = false;
+            rigid.isKinematic = true;//죽고나서 다른 물체와 충돌할경우 시체가 움직이는 상황방지
+
+            enemyAnimator.SetBool("Suppressed", false);
+            enemyAnimator.SetTrigger("Die");
+            enemyAudioPlayer.PlayOneShot(deathSound);
         }
-        rigid.useGravity = false;
-        ExecutionArea.gameObject.SetActive(false);
-
-        pathFinder.enabled = true;
-        pathFinder.isStopped = true;
-        pathFinder.enabled = false;
-        rigid.isKinematic = true;//죽고나서 다른 물체와 충돌할경우 시체가 움직이는 상황방지
-
-        enemyAnimator.SetBool("Suppressed", false);
-        enemyAnimator.SetTrigger("Die");
-        enemyAudioPlayer.PlayOneShot(deathSound);
     }
 
     private IEnumerator Suppressed()
@@ -218,9 +220,9 @@ public class Enemy : LivingEntity
             Die();
             yield break;
         }
-
         var exeArea = ExecutionArea.gameObject;
 
+        b_Suppressed = true;
         pathFinder.ResetPath();
         exeArea.SetActive(true);
 
