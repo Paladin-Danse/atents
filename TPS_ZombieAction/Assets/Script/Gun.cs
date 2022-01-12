@@ -196,7 +196,7 @@ public class Gun : MonoBehaviour
         //탄창의 탄약이 가득한경우에는 재장전을 실행하지 않는다.
         if (e_State == STATE.STATE_RELOADING || i_AmmoRemain <= 0 || i_MagAmmo >= i_MagCapacity) return false;
 
-        StartCoroutine(ReloadRoutine());
+        StartCoroutine("ReloadRoutine");
         return true;
     }
 
@@ -213,7 +213,9 @@ public class Gun : MonoBehaviour
             {
                 e_State = STATE.STATE_READY;
             }
-            StopCoroutine(ReloadRoutine());
+            StopCoroutine("ReloadRoutine");
+            playerAnimator.SetBool("Reload", false);
+            gunAudioPlayer.Stop();
         }
     }
 

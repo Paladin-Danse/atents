@@ -68,7 +68,7 @@ public class PlayerInput : MonoBehaviour
         offRun = Input.GetButtonUp(runMoveKeyName);
         rotateX = Input.GetAxis(rotateXKeyName);
         rotateY = Input.GetAxis(rotateYKeyName);
-
+        
         //플레이어 공격 및 조작
         attack_ButtonDown = Input.GetButtonDown(attackKeyName);
         attack_Button = Input.GetButton(attackKeyName);

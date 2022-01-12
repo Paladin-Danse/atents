@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GRP Version="2.0.0.6" Mode="0" TemplateObjectCnt="0" ChargeKey="��å~�dl#�+T��k�|�">
+<GRP Version="2.0.0.6" Mode="0" TemplateObjectCnt="0" ChargeKey="��å~�dv��Oc���&gt;��">
     <GrTxtBrushArr Size="1">
         <GrTxtBrush Type="0" GradientType="0" Color="ffffffff" GradientColor1="ff000000" GradientColor2="ff000000" KeepRate="false" Alpha="255" IgnoreBgColor="false"/>
     </GrTxtBrushArr>
@@ -11,29 +11,35 @@
     </GrTxtShadowArr>
     <GrTimelineViewMode Mode="13" output_width="1280" output_height="720"/>
     <GrEncodingPath Path="C:\Users\A-11\Downloads\해전 게임 (1)\해전 게임\"/>
-    <GrVideoArr Size="3">
+    <GrVideoArr Size="4">
         <GrVideo>
-            <GrVideoData FileName="C:\Users\A-11\Documents\Bandicam\bandicam 2022-01-10 16-14-06-128.mp4" SegStart="0" SegEnd="6197" Mute="false" Volume="1" MarketItem="0" Tempo="1"/>
+            <GrVideoData FileName="C:\Users\A-11\Documents\Bandicam\bandicam 2022-01-10 16-14-06-128.mp4" SegStart="0" SegEnd="6097" Mute="false" Volume="1" MarketItem="0" Tempo="1"/>
             <GrVideoColorAdjust/>
             <GrVideoFilter VideoColor="0" VideoColorType="0" VideoEffect="0" VideoEffectValue="20" FilterDynamicType="0"/>
             <GrVideoTextureAdjust/>
         </GrVideo>
         <GrVideo>
-            <GrVideoData FileName="C:\Users\A-11\Documents\Bandicam\bandicam 2022-01-10 16-14-06-128.mp4" SegStart="7959" SegEnd="10229" ScreenTransformType="1" SceneTransformOverlapPlayType="0" ScreenTransformTime="100" Mute="false" Volume="1" MarketItem="0" VT_splunk="VT_1" Tempo="1"/>
+            <GrVideoData FileName="C:\Users\A-11\Documents\Bandicam\bandicam 2022-01-12 16-17-53-697.mp4" SegStart="0" SegEnd="5083" ScreenTransformType="1" SceneTransformOverlapPlayType="0" ScreenTransformTime="100" Mute="false" Volume="1" MarketItem="0" VT_splunk="VT_1" Tempo="1"/>
             <GrVideoColorAdjust/>
             <GrVideoFilter VideoColor="0" VideoColorType="0" VideoEffect="0" VideoEffectValue="20" FilterDynamicType="0"/>
             <GrVideoTextureAdjust/>
         </GrVideo>
         <GrVideo>
-            <GrVideoData FileName="C:\Users\A-11\Documents\Bandicam\bandicam 2022-01-11 17-31-44-564.mp4" SegStart="0" SegEnd="4958" Mute="false" Volume="1" MarketItem="0" Tempo="1"/>
+            <GrVideoData FileName="C:\Users\A-11\Documents\Bandicam\bandicam 2022-01-10 16-14-06-128.mp4" SegStart="7959" SegEnd="10229" ScreenTransformType="10" SceneTransformOverlapPlayType="0" ScreenTransformTime="100" Mute="false" Volume="1" MarketItem="0" VT_splunk="VT_10" Tempo="1"/>
+            <GrVideoColorAdjust/>
+            <GrVideoFilter VideoColor="0" VideoColorType="0" VideoEffect="0" VideoEffectValue="20" FilterDynamicType="0"/>
+            <GrVideoTextureAdjust/>
+        </GrVideo>
+        <GrVideo>
+            <GrVideoData FileName="C:\Users\A-11\Documents\Bandicam\bandicam 2022-01-11 17-31-44-564.mp4" SegStart="0" SegEnd="4958" ScreenTransformType="10" SceneTransformOverlapPlayType="0" ScreenTransformTime="100" Mute="false" Volume="1" MarketItem="0" VT_splunk="VT_10" Tempo="1"/>
             <GrVideoColorAdjust/>
             <GrVideoFilter VideoColor="0" VideoColorType="0" VideoEffect="0" VideoEffectValue="20" FilterDynamicType="0"/>
             <GrVideoTextureAdjust/>
         </GrVideo>
     </GrVideoArr>
-    <GrObjArr Size="23">
+    <GrObjArr Size="30">
         <GrObj Type="4">
-            <GrTxtData Title="유니티3D 포트폴리오" GrEffectType="0" BackEffectType="1000" FirstEffectTime="100" BackEffectTime="50" FrontEaseType="3" BackEaseType="103" ApplyAll="0" Align="1" StartSeg="0" TotalSeg="300" VideoIndex="0" EffectListID="1" PosX="53.776043" PosY="49.884258" bTemplateObject="0" TemplateObjectID="-1" BrushType="0" GradientType="0" PlaceHolderType="0" Color="ff000000" Tempo="1"/>
+            <GrTxtData Title="유니티3D 포트폴리오" GrEffectType="1" BackEffectType="1001" FirstEffectTime="100" BackEffectTime="50" FrontEaseType="3" BackEaseType="103" ApplyAll="0" Align="1" StartSeg="60" TotalSeg="340" VideoIndex="0" EffectListID="1" PosX="53.776043" PosY="49.884258" bTemplateObject="0" TemplateObjectID="-1" BrushType="0" GradientType="0" PlaceHolderType="0" Color="ff000000" splunk="T_F1,T_B1,T_FE4,T_BE4" Tempo="1"/>
             <GrTxtAttArr Size="11">
                 <GrTxtAtt Code="50976" FontSize="72" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
                 <GrTxtAtt Code="45768" FontSize="72" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
@@ -541,7 +547,7 @@
         </GrObj>
         <GrObj Type="4">
             <GrTxtData Title="데미지가 일정 수치 이상 누적된 적은
-제압 상태가 됩니다." GrEffectType="0" BackEffectType="1000" FirstEffectTime="100" BackEffectTime="50" FrontEaseType="3" BackEaseType="103" ApplyAll="0" Align="1" StartSeg="123" TotalSeg="500" VideoIndex="1" EffectListID="14" PosX="53.320313" PosY="83.449074" bTemplateObject="0" TemplateObjectID="-1" BrushType="0" GradientType="0" PlaceHolderType="0" Color="ff000000" Tempo="1"/>
+제압 상태가 됩니다." GrEffectType="0" BackEffectType="1000" FirstEffectTime="100" BackEffectTime="50" FrontEaseType="3" BackEaseType="103" ApplyAll="0" Align="1" StartSeg="400" TotalSeg="500" VideoIndex="2" EffectListID="14" PosX="53.320313" PosY="83.449074" bTemplateObject="0" TemplateObjectID="-1" BrushType="0" GradientType="0" PlaceHolderType="0" Color="ff000000" Tempo="1"/>
             <GrTxtAttArr Size="32">
                 <GrTxtAtt Code="45936" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
                 <GrTxtAtt Code="48120" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
@@ -579,7 +585,7 @@
         </GrObj>
         <GrObj Type="4">
             <GrTxtData Title="제압된 적은 NavMeshAgent의 경로가 지워지고,
-경로의 갱신과 공격탐지 충돌이 막혀" GrEffectType="0" BackEffectType="1000" FirstEffectTime="100" BackEffectTime="50" FrontEaseType="3" BackEaseType="103" ApplyAll="0" Align="1" StartSeg="623" TotalSeg="500" VideoIndex="1" EffectListID="15" PosX="53.125" PosY="83.101852" bTemplateObject="0" TemplateObjectID="-1" BrushType="0" GradientType="0" PlaceHolderType="0" Color="ff000000" Tempo="1"/>
+경로의 갱신과 공격탐지 충돌이 막혀" GrEffectType="0" BackEffectType="1000" FirstEffectTime="100" BackEffectTime="50" FrontEaseType="3" BackEaseType="103" ApplyAll="0" Align="1" StartSeg="900" TotalSeg="500" VideoIndex="2" EffectListID="15" PosX="53.125" PosY="83.101852" bTemplateObject="0" TemplateObjectID="-1" BrushType="0" GradientType="0" PlaceHolderType="0" Color="ff000000" Tempo="1"/>
             <GrTxtAttArr Size="50">
                 <GrTxtAtt Code="51228" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
                 <GrTxtAtt Code="50517" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
@@ -635,7 +641,7 @@
         </GrObj>
         <GrObj Type="4">
             <GrTxtData Title="또한, 어느정도 근접한 상태라면 제압상태의 적을
-일격에 처형이 가능하게 됩니다." GrEffectType="0" BackEffectType="1000" FirstEffectTime="100" BackEffectTime="50" FrontEaseType="3" BackEaseType="103" ApplyAll="0" Align="1" StartSeg="1423" TotalSeg="500" VideoIndex="1" EffectListID="16" PosX="53.125" PosY="83.101852" bTemplateObject="0" TemplateObjectID="-1" BrushType="0" GradientType="0" PlaceHolderType="0" Color="ff000000" Tempo="1"/>
+일격에 처형이 가능하게 됩니다." GrEffectType="0" BackEffectType="1000" FirstEffectTime="100" BackEffectTime="50" FrontEaseType="3" BackEaseType="103" ApplyAll="0" Align="1" StartSeg="1700" TotalSeg="500" VideoIndex="2" EffectListID="16" PosX="53.125" PosY="83.101852" bTemplateObject="0" TemplateObjectID="-1" BrushType="0" GradientType="0" PlaceHolderType="0" Color="ff000000" Tempo="1"/>
             <GrTxtAttArr Size="44">
                 <GrTxtAtt Code="46608" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
                 <GrTxtAtt Code="54620" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
@@ -685,7 +691,7 @@
         </GrObj>
         <GrObj Type="4">
             <GrTxtData Title="맵에 떨어져있는 아이템을 찾거나
-적을 죽이면 아이템을 드랍합니다." GrEffectType="0" BackEffectType="1000" FirstEffectTime="100" BackEffectTime="50" FrontEaseType="3" BackEaseType="103" ApplyAll="0" Align="1" StartSeg="303" TotalSeg="500" VideoIndex="2" EffectListID="17" PosX="53.710938" PosY="82.40741" bTemplateObject="0" TemplateObjectID="-1" BrushType="0" GradientType="0" PlaceHolderType="0" Color="ff000000" Tempo="1"/>
+적을 죽이면 아이템을 드랍합니다." GrEffectType="0" BackEffectType="1000" FirstEffectTime="100" BackEffectTime="50" FrontEaseType="3" BackEaseType="103" ApplyAll="0" Align="1" StartSeg="680" TotalSeg="500" VideoIndex="3" EffectListID="17" PosX="53.710938" PosY="82.40741" bTemplateObject="0" TemplateObjectID="-1" BrushType="0" GradientType="0" PlaceHolderType="0" Color="ff000000" Tempo="1"/>
             <GrTxtAttArr Size="36">
                 <GrTxtAtt Code="47605" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
                 <GrTxtAtt Code="50640" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
@@ -727,7 +733,7 @@
         </GrObj>
         <GrObj Type="4">
             <GrTxtData Title="아이템 충돌체에 부딪히면 상호작용이
-가능하다는 것을 UI로 가이드해주고," GrEffectType="0" BackEffectType="1000" FirstEffectTime="100" BackEffectTime="50" FrontEaseType="3" BackEaseType="103" ApplyAll="0" Align="1" StartSeg="963" TotalSeg="497" VideoIndex="2" EffectListID="18" PosX="53.710938" PosY="82.40741" bTemplateObject="0" TemplateObjectID="-1" BrushType="0" GradientType="0" PlaceHolderType="0" Color="ff000000" Tempo="1"/>
+가능하다는 것을 UI로 가이드해주고," GrEffectType="0" BackEffectType="1000" FirstEffectTime="100" BackEffectTime="50" FrontEaseType="3" BackEaseType="103" ApplyAll="0" Align="1" StartSeg="1340" TotalSeg="497" VideoIndex="3" EffectListID="18" PosX="53.710938" PosY="82.40741" bTemplateObject="0" TemplateObjectID="-1" BrushType="0" GradientType="0" PlaceHolderType="0" Color="ff000000" Tempo="1"/>
             <GrTxtAttArr Size="40">
                 <GrTxtAtt Code="50500" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
                 <GrTxtAtt Code="51060" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
@@ -773,7 +779,7 @@
         </GrObj>
         <GrObj Type="4">
             <GrTxtData Title="상호작용 키를 누르면 아이템이
-인벤토리에 저장됩니다." GrEffectType="0" BackEffectType="1000" FirstEffectTime="100" BackEffectTime="50" FrontEaseType="3" BackEaseType="103" ApplyAll="0" Align="1" StartSeg="1460" TotalSeg="501" VideoIndex="2" EffectListID="19" PosX="53.710938" PosY="82.40741" bTemplateObject="0" TemplateObjectID="-1" BrushType="0" GradientType="0" PlaceHolderType="0" Color="ff000000" Tempo="1"/>
+인벤토리에 저장됩니다." GrEffectType="0" BackEffectType="1000" FirstEffectTime="100" BackEffectTime="50" FrontEaseType="3" BackEaseType="103" ApplyAll="0" Align="1" StartSeg="1840" TotalSeg="501" VideoIndex="3" EffectListID="19" PosX="53.710938" PosY="82.40741" bTemplateObject="0" TemplateObjectID="-1" BrushType="0" GradientType="0" PlaceHolderType="0" Color="ff000000" Tempo="1"/>
             <GrTxtAttArr Size="29">
                 <GrTxtAtt Code="49345" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
                 <GrTxtAtt Code="54840" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
@@ -807,13 +813,13 @@
             </GrTxtAttArr>
         </GrObj>
         <GrObj Type="5">
-            <GrImgData Path="C:\ProgramData\GOM\GOMMixPro\clipart\animate\arrow.goma" Width="9" Height="13" KeepRate="1" Position="-1" GrEffectType="0" BackEffectType="1000" FirstEffectTime="100" BackEffectTime="50" FrontEaseType="3" BackEaseType="103" StartSeg="963" TotalSeg="300" VideoIndex="2" EffectListID="20" PosX="43.098961" PosY="52.777779" ApngImg="true" bTemplateObject="0" TemplateObjectID="-1" bImgCustomColor="1" clrImgCustomColor="ffffffff" eCustomShapeType="0" nCustomShapeLineWidth="10" eCustomRectLineStartAnimationType="0" bCustomRectLineEndAnimationType="0" bCustomShapeFlipLR="0" bCustomShapeFlipTB="0" nCustomShapeSlope="36" Line_eBrushType="0" Line_clsSolidcolor="ffffffff" Line_clrGradientColor1="ffffffff" Line_clrGradientColor2="ffffbb00" Line_eGradientType="0" Fill_eBrushType="0" Fill_clsSolidcolor="00ffffff" Fill_clrGradientColor1="ffffffff" Fill_clrGradientColor2="ffffbb00" Fill_eGradientType="0" Fill_ImagePathPatten="" Fill_KeepRate="false" CropX="0" CropY="0" CropWidth="0" CropHeight="0" MarketItem="0" Tempo="1"/>
+            <GrImgData Path="C:\ProgramData\GOM\GOMMixPro\clipart\animate\arrow.goma" Width="9" Height="13" KeepRate="1" Position="-1" GrEffectType="0" BackEffectType="1000" FirstEffectTime="100" BackEffectTime="50" FrontEaseType="3" BackEaseType="103" StartSeg="1340" TotalSeg="300" VideoIndex="3" EffectListID="20" PosX="43.164063" PosY="52.777779" ApngImg="true" bTemplateObject="0" TemplateObjectID="-1" bImgCustomColor="1" clrImgCustomColor="ffffffff" eCustomShapeType="0" nCustomShapeLineWidth="10" eCustomRectLineStartAnimationType="0" bCustomRectLineEndAnimationType="0" bCustomShapeFlipLR="0" bCustomShapeFlipTB="0" nCustomShapeSlope="36" Line_eBrushType="0" Line_clsSolidcolor="ffffffff" Line_clrGradientColor1="ffffffff" Line_clrGradientColor2="ffffbb00" Line_eGradientType="0" Fill_eBrushType="0" Fill_clsSolidcolor="00ffffff" Fill_clrGradientColor1="ffffffff" Fill_clrGradientColor2="ffffbb00" Fill_eGradientType="0" Fill_ImagePathPatten="" Fill_KeepRate="false" CropX="0" CropY="0" CropWidth="0" CropHeight="0" MarketItem="0" Tempo="1"/>
         </GrObj>
         <GrObj Type="5">
-            <GrImgData Path="C:\ProgramData\GOM\GOMMixPro\clipart\animate\arrow.goma" Width="8" Height="11" KeepRate="1" Position="-1" GrEffectType="0" BackEffectType="1000" FirstEffectTime="100" BackEffectTime="50" FrontEaseType="3" BackEaseType="103" StartSeg="1460" TotalSeg="300" VideoIndex="2" EffectListID="21" PosX="85.742188" PosY="72.106483" ApngImg="true" bTemplateObject="0" TemplateObjectID="-1" bImgCustomColor="1" clrImgCustomColor="ffffffff" eCustomShapeType="0" nCustomShapeLineWidth="10" eCustomRectLineStartAnimationType="0" bCustomRectLineEndAnimationType="0" bCustomShapeFlipLR="0" bCustomShapeFlipTB="0" nCustomShapeSlope="36" Line_eBrushType="0" Line_clsSolidcolor="ffffffff" Line_clrGradientColor1="ffffffff" Line_clrGradientColor2="ffffbb00" Line_eGradientType="0" Fill_eBrushType="0" Fill_clsSolidcolor="00ffffff" Fill_clrGradientColor1="ffffffff" Fill_clrGradientColor2="ffffbb00" Fill_eGradientType="0" Fill_ImagePathPatten="" Fill_KeepRate="false" CropX="0" CropY="0" CropWidth="0" CropHeight="0" MarketItem="0" Tempo="1"/>
+            <GrImgData Path="C:\ProgramData\GOM\GOMMixPro\clipart\animate\arrow.goma" Width="8" Height="11" KeepRate="1" Position="-1" GrEffectType="0" BackEffectType="1000" FirstEffectTime="100" BackEffectTime="50" FrontEaseType="3" BackEaseType="103" StartSeg="1840" TotalSeg="300" VideoIndex="3" EffectListID="21" PosX="85.742188" PosY="72.106483" ApngImg="true" bTemplateObject="0" TemplateObjectID="-1" bImgCustomColor="1" clrImgCustomColor="ffffffff" eCustomShapeType="0" nCustomShapeLineWidth="10" eCustomRectLineStartAnimationType="0" bCustomRectLineEndAnimationType="0" bCustomShapeFlipLR="0" bCustomShapeFlipTB="0" nCustomShapeSlope="36" Line_eBrushType="0" Line_clsSolidcolor="ffffffff" Line_clrGradientColor1="ffffffff" Line_clrGradientColor2="ffffbb00" Line_eGradientType="0" Fill_eBrushType="0" Fill_clsSolidcolor="00ffffff" Fill_clrGradientColor1="ffffffff" Fill_clrGradientColor2="ffffbb00" Fill_eGradientType="0" Fill_ImagePathPatten="" Fill_KeepRate="false" CropX="0" CropY="0" CropWidth="0" CropHeight="0" MarketItem="0" Tempo="1"/>
         </GrObj>
         <GrObj Type="4">
-            <GrTxtData Title="이동과 공격이 막히게 됩니다." GrEffectType="0" BackEffectType="1000" FirstEffectTime="100" BackEffectTime="50" FrontEaseType="3" BackEaseType="103" ApplyAll="0" Align="1" StartSeg="1123" TotalSeg="300" VideoIndex="1" EffectListID="22" PosX="53.125" PosY="83.101852" bTemplateObject="0" TemplateObjectID="-1" BrushType="0" GradientType="0" PlaceHolderType="0" Color="ff000000" Tempo="1"/>
+            <GrTxtData Title="이동과 공격이 막히게 됩니다." GrEffectType="0" BackEffectType="1000" FirstEffectTime="100" BackEffectTime="50" FrontEaseType="3" BackEaseType="103" ApplyAll="0" Align="1" StartSeg="1400" TotalSeg="300" VideoIndex="2" EffectListID="22" PosX="53.125" PosY="83.101852" bTemplateObject="0" TemplateObjectID="-1" BrushType="0" GradientType="0" PlaceHolderType="0" Color="ff000000" Tempo="1"/>
             <GrTxtAttArr Size="16">
                 <GrTxtAtt Code="51060" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
                 <GrTxtAtt Code="46041" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
@@ -834,9 +840,9 @@
             </GrTxtAttArr>
         </GrObj>
         <GrObj Type="4">
-            <GrTxtData Title="인벤토리에 저장된 아이템은 가시성을 위해
-장착하고 있는 아이템만 보이도록 개발하였습니다." GrEffectType="0" BackEffectType="1000" FirstEffectTime="100" BackEffectTime="50" FrontEaseType="3" BackEaseType="103" ApplyAll="0" Align="1" StartSeg="1964" TotalSeg="500" VideoIndex="2" EffectListID="23" PosX="50.585938" PosY="84.259262" bTemplateObject="0" TemplateObjectID="-1" BrushType="0" GradientType="0" PlaceHolderType="0" Color="ff000000" Tempo="1"/>
-            <GrTxtAttArr Size="49">
+            <GrTxtData Title="인벤토리에 저장된 아이템은 아이템 선택키로
+순서대로 확인 및 장착이 가능하며" GrEffectType="0" BackEffectType="1000" FirstEffectTime="100" BackEffectTime="50" FrontEaseType="3" BackEaseType="103" ApplyAll="0" Align="1" StartSeg="2340" TotalSeg="500" VideoIndex="3" EffectListID="23" PosX="50.585938" PosY="84.259262" bTemplateObject="0" TemplateObjectID="-1" BrushType="0" GradientType="0" PlaceHolderType="0" Color="ff000000" Tempo="1"/>
+            <GrTxtAttArr Size="42">
                 <GrTxtAtt Code="51064" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
                 <GrTxtAtt Code="48292" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
                 <GrTxtAtt Code="53664" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
@@ -852,45 +858,38 @@
                 <GrTxtAtt Code="53596" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
                 <GrTxtAtt Code="51008" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
                 <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
-                <GrTxtAtt Code="44032" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
-                <GrTxtAtt Code="49884" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
-                <GrTxtAtt Code="49457" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
-                <GrTxtAtt Code="51012" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
-                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
-                <GrTxtAtt Code="50948" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
-                <GrTxtAtt Code="54644" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
-                <GrTxtAtt Code="13" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
-                <GrTxtAtt Code="51109" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
-                <GrTxtAtt Code="52265" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
-                <GrTxtAtt Code="54616" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
-                <GrTxtAtt Code="44256" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
-                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
-                <GrTxtAtt Code="51080" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
-                <GrTxtAtt Code="45716" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
-                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
                 <GrTxtAtt Code="50500" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
                 <GrTxtAtt Code="51060" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
                 <GrTxtAtt Code="53596" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
-                <GrTxtAtt Code="47564" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
                 <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
-                <GrTxtAtt Code="48372" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="49440" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="53469" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="53412" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="47196" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="13" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="49692" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="49436" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="45824" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="47196" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="54869" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="51064" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="48143" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="51109" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="52265" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
                 <GrTxtAtt Code="51060" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
-                <GrTxtAtt Code="46020" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
-                <GrTxtAtt Code="47197" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
                 <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
-                <GrTxtAtt Code="44060" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
-                <GrTxtAtt Code="48156" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="44032" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="45733" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
                 <GrTxtAtt Code="54616" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
-                <GrTxtAtt Code="50688" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
-                <GrTxtAtt Code="49845" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
-                <GrTxtAtt Code="45768" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
-                <GrTxtAtt Code="45796" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
-                <GrTxtAtt Code="46" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="47728" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
             </GrTxtAttArr>
         </GrObj>
         <GrObj Type="4">
             <GrTxtData Title="투척할 수 있는 아이템은 따로 분류되어
-사용키를 누르고 있을 시, 궤적을 그립니다." GrEffectType="0" BackEffectType="1000" FirstEffectTime="100" BackEffectTime="50" FrontEaseType="3" BackEaseType="103" ApplyAll="0" Align="1" StartSeg="2983" TotalSeg="500" VideoIndex="2" EffectListID="24" PosX="50.585938" PosY="84.259262" bTemplateObject="0" TemplateObjectID="-1" BrushType="0" GradientType="0" PlaceHolderType="0" Color="ff000000" Tempo="1"/>
+사용키를 누르고 있을 시, 궤적을 그립니다." GrEffectType="0" BackEffectType="1000" FirstEffectTime="100" BackEffectTime="50" FrontEaseType="3" BackEaseType="103" ApplyAll="0" Align="1" StartSeg="3370" TotalSeg="500" VideoIndex="3" EffectListID="24" PosX="50.585938" PosY="84.259262" bTemplateObject="0" TemplateObjectID="-1" BrushType="0" GradientType="0" PlaceHolderType="0" Color="ff000000" Tempo="1"/>
             <GrTxtAttArr Size="46">
                 <GrTxtAtt Code="53804" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
                 <GrTxtAtt Code="52377" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
@@ -942,7 +941,7 @@
         </GrObj>
         <GrObj Type="4">
             <GrTxtData Title="사용키를 놓으면 궤적을 따라
-아이템을 투척합니다." GrEffectType="0" BackEffectType="1000" FirstEffectTime="100" BackEffectTime="50" FrontEaseType="3" BackEaseType="103" ApplyAll="0" Align="1" StartSeg="3499" TotalSeg="500" VideoIndex="2" EffectListID="25" PosX="50.585938" PosY="84.259262" bTemplateObject="0" TemplateObjectID="-1" BrushType="0" GradientType="0" PlaceHolderType="0" Color="ff000000" Tempo="1"/>
+아이템을 투척합니다." GrEffectType="0" BackEffectType="1000" FirstEffectTime="100" BackEffectTime="50" FrontEaseType="3" BackEaseType="103" ApplyAll="0" Align="1" StartSeg="3880" TotalSeg="500" VideoIndex="3" EffectListID="25" PosX="50.585938" PosY="84.259262" bTemplateObject="0" TemplateObjectID="-1" BrushType="0" GradientType="0" PlaceHolderType="0" Color="ff000000" Tempo="1"/>
             <GrTxtAttArr Size="27">
                 <GrTxtAtt Code="49324" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
                 <GrTxtAtt Code="50857" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
@@ -967,6 +966,332 @@
                 <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
                 <GrTxtAtt Code="53804" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
                 <GrTxtAtt Code="52377" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="54633" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="45768" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="45796" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="46" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+            </GrTxtAttArr>
+        </GrObj>
+        <GrObj Type="4">
+            <GrTxtData Title="조작은 키보드 WASD로 움직이며,
+마우스로 카메라를 조작할 수 있습니다." GrEffectType="0" BackEffectType="1000" FirstEffectTime="100" BackEffectTime="50" FrontEaseType="3" BackEaseType="103" ApplyAll="0" Align="1" StartSeg="133" TotalSeg="680" VideoIndex="1" EffectListID="26" PosX="53.320313" PosY="83.449074" bTemplateObject="0" TemplateObjectID="-1" BrushType="0" GradientType="0" PlaceHolderType="0" Color="ff000000" Tempo="1"/>
+            <GrTxtAttArr Size="41">
+                <GrTxtAtt Code="51312" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="51089" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="51008" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="53412" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="48372" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="46300" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="87" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="65" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="83" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="68" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="47196" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="50880" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="51649" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="51060" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="47728" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="44" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="13" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="47560" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="50864" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="49828" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="47196" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="52852" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="47700" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="46972" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="47484" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="51312" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="51089" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="54624" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="49688" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="51080" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="49845" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="45768" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="45796" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="46" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+            </GrTxtAttArr>
+        </GrObj>
+        <GrObj Type="4">
+            <GrTxtData Title="SHIFT키를 눌러 전방을 향해 달릴수도 있지만,
+캐릭터는 옆이나 뒤로 달릴 수는 없습니다." GrEffectType="0" BackEffectType="1000" FirstEffectTime="100" BackEffectTime="50" FrontEaseType="3" BackEaseType="103" ApplyAll="0" Align="1" StartSeg="813" TotalSeg="571" VideoIndex="1" EffectListID="27" PosX="53.320313" PosY="83.449074" bTemplateObject="0" TemplateObjectID="-1" BrushType="0" GradientType="0" PlaceHolderType="0" Color="ff000000" Tempo="1"/>
+            <GrTxtAttArr Size="51">
+                <GrTxtAtt Code="83" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="72" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="73" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="70" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="84" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="53412" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="47484" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="45580" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="47084" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="51204" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="48169" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="51012" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="54693" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="54644" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="45804" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="47540" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="49688" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="46020" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="51080" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="51648" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="47564" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="44" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="13" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="52880" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="47533" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="53552" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="45716" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="50694" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="51060" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="45208" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="46244" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="47196" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="45804" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="47540" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="49688" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="45716" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="50630" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="49845" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="45768" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="45796" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="46" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+            </GrTxtAttArr>
+        </GrObj>
+        <GrObj Type="4">
+            <GrTxtData Title="대신 앞을 향한다면 대각선으로 달릴 수는 있습니다." GrEffectType="0" BackEffectType="1000" FirstEffectTime="100" BackEffectTime="50" FrontEaseType="3" BackEaseType="103" ApplyAll="0" Align="1" StartSeg="1385" TotalSeg="559" VideoIndex="1" EffectListID="28" PosX="52.213543" PosY="82.986107" bTemplateObject="0" TemplateObjectID="-1" BrushType="0" GradientType="0" PlaceHolderType="0" Color="ff000000" Tempo="1"/>
+            <GrTxtAttArr Size="28">
+                <GrTxtAtt Code="45824" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="49888" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="50526" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="51012" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="54693" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="54620" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="45796" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="47732" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="45824" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="44033" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="49440" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="51004" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="47196" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="45804" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="47540" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="49688" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="45716" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="51080" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="49845" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="45768" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="45796" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="46" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+            </GrTxtAttArr>
+        </GrObj>
+        <GrObj Type="4">
+            <GrTxtData Title="플레이어는 회피를 이용하여 원하는
+방향으로 빠르게 이동할 수 있습니다." GrEffectType="0" BackEffectType="1000" FirstEffectTime="100" BackEffectTime="50" FrontEaseType="3" BackEaseType="103" ApplyAll="0" Align="1" StartSeg="2623" TotalSeg="600" VideoIndex="1" EffectListID="29" PosX="52.213543" PosY="82.986107" bTemplateObject="0" TemplateObjectID="-1" BrushType="0" GradientType="0" PlaceHolderType="0" Color="ff000000" Tempo="1"/>
+            <GrTxtAttArr Size="39">
+                <GrTxtAtt Code="54540" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="47112" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="51060" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="50612" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="45716" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="54924" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="54588" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="47484" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="51060" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="50857" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="54616" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="50668" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="50896" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="54616" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="45716" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="13" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="48169" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="54693" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="51004" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="47196" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="48736" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="47476" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="44172" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="51060" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="46041" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="54624" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="49688" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="51080" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="49845" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="45768" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="45796" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="46" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+            </GrTxtAttArr>
+        </GrObj>
+        <GrObj Type="4">
+            <GrTxtData Title="회피는 방향키를 누른 방향으로 도착지점까지
+Ray를 쏘고 Ray에 부딪히거나 도착지점까지
+빠르게 이동합니다." GrEffectType="0" BackEffectType="1000" FirstEffectTime="100" BackEffectTime="50" FrontEaseType="3" BackEaseType="103" ApplyAll="0" Align="1" StartSeg="3226" TotalSeg="900" VideoIndex="1" EffectListID="30" PosX="52.01823" PosY="82.754631" bTemplateObject="0" TemplateObjectID="-1" BrushType="0" GradientType="0" PlaceHolderType="0" Color="ff000000" Tempo="1"/>
+            <GrTxtAttArr Size="60">
+                <GrTxtAtt Code="54924" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="54588" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="45716" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="48169" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="54693" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="53412" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="47484" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="45572" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="47480" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="48169" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="54693" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="51004" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="47196" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="46020" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="52265" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="51648" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="51216" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="44620" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="51648" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="13" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="82" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="97" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="121" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="47484" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="50136" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="44256" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="82" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="97" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="121" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="50640" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="48512" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="46378" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="55176" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="44144" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="45208" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="46020" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="52265" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="51648" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="51216" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="44620" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="51648" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="13" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="48736" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="47476" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="44172" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="51060" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="46041" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="54633" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="45768" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="45796" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="46" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+            </GrTxtAttArr>
+        </GrObj>
+        <GrObj Type="4">
+            <GrTxtData Title="회피를 사용하면 조준이나 재장전 등
+기존 행동이 취소됩니다." GrEffectType="0" BackEffectType="1000" FirstEffectTime="100" BackEffectTime="50" FrontEaseType="3" BackEaseType="103" ApplyAll="0" Align="1" StartSeg="4128" TotalSeg="600" VideoIndex="1" EffectListID="31" PosX="52.01823" PosY="82.754631" bTemplateObject="0" TemplateObjectID="-1" BrushType="0" GradientType="0" PlaceHolderType="0" Color="ff000000" Tempo="1"/>
+            <GrTxtAttArr Size="33">
+                <GrTxtAtt Code="54924" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="54588" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="47484" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="49324" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="50857" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="54616" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="47732" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="51312" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="51456" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="51060" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="45208" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="51116" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="51109" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="51204" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="46321" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="13" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="44592" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="51316" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="54665" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="46041" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="51060" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="52712" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="49548" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="46121" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="45768" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="45796" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="46" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+            </GrTxtAttArr>
+        </GrObj>
+        <GrObj Type="4">
+            <GrTxtData Title="아이템 사용키로 인벤토리UI에 표시된
+아이템을 사용합니다." GrEffectType="0" BackEffectType="1000" FirstEffectTime="100" BackEffectTime="50" FrontEaseType="3" BackEaseType="103" ApplyAll="0" Align="1" StartSeg="2842" TotalSeg="450" VideoIndex="3" EffectListID="32" PosX="50.585938" PosY="84.259262" bTemplateObject="0" TemplateObjectID="-1" BrushType="0" GradientType="0" PlaceHolderType="0" Color="ff000000" Tempo="1"/>
+            <GrTxtAttArr Size="32">
+                <GrTxtAtt Code="50500" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="51060" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="53596" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="49324" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="50857" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="53412" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="47196" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="51064" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="48292" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="53664" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="47532" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="85" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="73" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="50640" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="54364" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="49884" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="46108" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="13" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="50500" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="51060" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="53596" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="51012" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="32" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="49324" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
+                <GrTxtAtt Code="50857" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
                 <GrTxtAtt Code="54633" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
                 <GrTxtAtt Code="45768" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>
                 <GrTxtAtt Code="45796" FontSize="48" FontStyle="1" FaceName="굴림" MarketItem="0" BrushID="0" ShadowID="0" OutlineID="0"/>

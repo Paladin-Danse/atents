@@ -79,7 +79,8 @@ public class PlayerAttacks : MonoBehaviour
     {
         WeaponSwap();
         WeaponAimShot();
-        MeleeAttacking();
+        if(GameManager.instance.playerMovement.b_Dodge == false)
+            MeleeAttacking();
     }
     public void EquipMainWeapon()
     {
@@ -119,7 +120,7 @@ public class PlayerAttacks : MonoBehaviour
 
     public void WeaponAimShot()
     {
-        if (playerInput.aiming && playerAttackState != ATTACK_STATE.MELEE && playerAttackState != ATTACK_STATE.EXECUTE && !playerInput.onRun)
+        if (playerInput.aiming && playerAttackState != ATTACK_STATE.MELEE && playerAttackState != ATTACK_STATE.EXECUTE && !playerInput.onRun && GameManager.instance.playerMovement.b_Dodge == false)
         {
             playerAttackState = ATTACK_STATE.AIMING;
 
@@ -143,7 +144,7 @@ public class PlayerAttacks : MonoBehaviour
             }
         }
         
-        if((playerInput.Not_aiming && playerAttackState == ATTACK_STATE.AIMING) || playerInput.onRun)
+        if((playerInput.Not_aiming && playerAttackState == ATTACK_STATE.AIMING) || playerInput.onRun || GameManager.instance.playerMovement.b_Dodge == true)
         {
             playerAttackState = ATTACK_STATE.IDLE;
 

@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private bool b_move;
 
     //회피
-    private bool b_Dodge;
+    public bool b_Dodge { get; private set; }
     private Vector3 DodgeVector;
     [SerializeField] private float f_DodgeDistance = 5f;
 
@@ -163,6 +163,10 @@ public class PlayerMovement : MonoBehaviour
     {
         //회피하는 동안은 무적
         GameManager.instance.playerHealth.OnInvincibility();
+        if(GameManager.instance.playerAttack.equipGun.gameObject.activeSelf)
+        {
+            GameManager.instance.playerAttack.equipGun.ReloadCancel();
+        }
         b_Dodge = true;
 
         yield return new WaitForSeconds(1f);
