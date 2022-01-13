@@ -124,12 +124,12 @@ public class InventoryManager : MonoBehaviour
                         RaycastHit hit;
 
                         var player = playerAttack.gameObject;
+                        var mainCam = Camera.main;
 
                         parabolaRenderer.enabled = true;
                         parabolaRenderer.positionCount = ((int)(maxTime / timeResolution));
 
-                        Vector3 veloVector3 = player.transform.forward * f_ThrowPower;
-                        veloVector3.y += f_RotateY;
+                        Vector3 veloVector3 = mainCam.transform.forward * f_ThrowPower;
                         ThrowVector = veloVector3;
 
                         Vector3 currentPosition = player.transform.position;
@@ -140,7 +140,7 @@ public class InventoryManager : MonoBehaviour
                         for (float t = 0.0f; t < maxTime; t += timeResolution)
                         {
                             //부딪히는 위치까지만 라인렌더러를 그리게 수정하기
-                            if (Physics.Raycast(currentPosition, player.transform.forward, out hit, f_ThrowPower * timeResolution))
+                            if (Physics.Raycast(currentPosition, mainCam.transform.forward, out hit, f_ThrowPower * timeResolution))
                             {
                                 parabolaRenderer.SetPosition(index, hit.point);
                                 parabolaRenderer.positionCount = index + 1;

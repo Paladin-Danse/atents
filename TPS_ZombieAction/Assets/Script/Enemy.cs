@@ -114,7 +114,7 @@ public class Enemy : LivingEntity
                         if (livingEntity != null && !livingEntity.b_Dead)
                         {
                             rigid.rotation = Quaternion.LookRotation(livingEntity.transform.position - transform.position);
-                            //livingEntity.OnDamage(f_Damage, transform.position, transform.position - livingEntity.transform.position);
+                            //livingEntity.OnDamage(f_Damage, transform.position, transform.position - livingEntity.transform.position);//원래 직접 대미지를 주던 방식에서 공격충돌체를 만들어서 부딪히면 데미지를 주는 방식으로 변경. 차후 롤백 될수있음.
                             enemyAnimator.SetTrigger("Attack");
                             f_LastAttackTime = Time.time;
                             break;
