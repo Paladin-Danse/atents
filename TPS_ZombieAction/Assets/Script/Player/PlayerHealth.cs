@@ -69,7 +69,13 @@ public class PlayerHealth : LivingEntity
 
     public override void OnDotDamage(float m_damage, float m_dotTime)
     {
-        base.OnDotDamage(m_damage, m_dotTime);
+        if (Time.time >= f_LastDotDamageTime + m_dotTime)
+        {
+            f_Health -= (m_damage / 3);
+            if (f_Health <= 0 && !b_Dead) Die();
+            f_LastDotDamageTime = Time.time;
+        }
+
         UIManager.instance.UpdateplayerHealthBar();
     }
 
