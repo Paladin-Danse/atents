@@ -8,21 +8,20 @@ public class PlayerInput : MonoBehaviour
     private string VerticalMoveKeyName = "Vertical";
     private string RotateXKeyName = "Mouse X";
     private string RotateYKeyName = "Mouse Y";
+    private string InteractionKeyName = "Fire1";
 
     public float HorizontalMoveKey { get; private set; }
     public float VerticalMoveKey { get; private set; }
     public float RotateXKey { get; private set; }
     public float RotateYKey { get; private set; }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public bool InteractionKey { get; private set; }
+
     private void Update()
     {
         HorizontalMoveKey = Input.GetAxis(HorizontalMoveKeyName);
         VerticalMoveKey = Input.GetAxis(VerticalMoveKeyName);
         RotateXKey = Input.GetAxis(RotateXKeyName);
         RotateYKey = Input.GetAxis(RotateYKeyName);
+        InteractionKey = Input.GetButtonDown(InteractionKeyName);
     }
 }
