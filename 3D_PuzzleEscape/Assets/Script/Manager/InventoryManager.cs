@@ -28,10 +28,10 @@ public class InventoryManager : MonoBehaviour
     public void GetItem(ItemData item)
     {
         InventoryItem invenitem = new InventoryItem();
-
         invenitem.data = item;
-
         InventoryList.Add(invenitem);
+
+        UIManager.instance.ItemUIUpdate(InventoryList);
     }
 
     public void SelectItem()
