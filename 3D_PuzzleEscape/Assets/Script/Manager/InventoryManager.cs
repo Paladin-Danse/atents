@@ -16,22 +16,30 @@ public class InventoryManager : MonoBehaviour
             return m_instance;
         }
     }
-
-    private List<InventoryItem> InventoryList;
+    [SerializeField] private List<ItemData> itemDatas;
+    [SerializeField] private List<InventoryItem> InventoryList;
     private InventoryItem SelectedItem;
 
     private void Start()
     {
         InventoryList = new List<InventoryItem>();
+
+        foreach(var data in itemDatas)
+        {
+            InventoryItem invenitem = new InventoryItem();
+            invenitem.data = data.Data;
+            invenitem.data.Quantity = 0;
+
+            InventoryList.Add(invenitem);
+        }
     }
 
     public void GetItem(ItemData item)
     {
-        InventoryItem invenitem = new InventoryItem();
-        invenitem.data = item;
-        InventoryList.Add(invenitem);
+        InventoryItem getitem = InventoryList.Find(i => i.data.name == item.Data.name);
+        getitem.data.Quantity += item.Data.Quantity;
 
-        UIManager.instance.ItemUIUpdate(InventoryList);
+        UIManager.instance.ItemUIEnable(getitem);
     }
 
     public void SelectItem()

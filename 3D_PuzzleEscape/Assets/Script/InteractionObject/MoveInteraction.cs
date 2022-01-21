@@ -36,4 +36,16 @@ public class MoveInteraction : InteractionObject
 
         MoveAnimation.Play();
     }
+
+    public void MovePause()
+    {
+        if (MoveAnimation[MoveAnimation.clip.name].time >= 1.0f)
+        {
+            MoveAnimation[MoveAnimation.clip.name].time = 1.0f;
+        }
+        else if(MoveAnimation[MoveAnimation.clip.name].time <= 0.0f)
+        {
+            MoveAnimation[MoveAnimation.clip.name].time = 0.0f;
+        }
+    }
 }

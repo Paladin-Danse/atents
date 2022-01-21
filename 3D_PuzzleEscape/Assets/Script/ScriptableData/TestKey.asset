@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: TestKey
   m_EditorClassIdentifier: 
   data:
-    name: TestKey
+    name: "\uD14C\uC2A4\uD2B8 \uC5F4\uC1E0"
     Quantity: 1
     ItemSprite: {fileID: 21300000, guid: 1ab685aa90daff5429f454d2e9925865, type: 3}
+    Durability: 1
+    Description: "\uD14C\uC2A4\uD2B8\uB97C \uC704\uD55C \uC5F4\uC1E0. \uD14C\uC2A4\uD2B8
+      \uBB38\uC744 \uC5F4 \uC218 \uC788\uB2E4."
