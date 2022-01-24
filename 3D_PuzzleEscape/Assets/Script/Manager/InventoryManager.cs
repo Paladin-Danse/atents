@@ -19,7 +19,11 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private List<ItemData> itemDatas;
     [SerializeField] private List<InventoryItem> InventoryList;
     private InventoryItem SelectedItem;
-
+    private PlayerInput playerInput;
+    private void Awake()
+    {
+        playerInput = GameObject.Find("Player").GetComponent<PlayerInput>();
+    }
     private void Start()
     {
         InventoryList = new List<InventoryItem>();
@@ -33,6 +37,14 @@ public class InventoryManager : MonoBehaviour
             InventoryList.Add(invenitem);
         }
     }
+    private void Update()
+    {
+        if(playerInput.ItemSelectKey != 0)
+        {
+            SelectItem(playerInput.ItemSelectKey);
+        }
+    }
+
 
     public void GetItem(ItemData item)
     {
@@ -42,9 +54,17 @@ public class InventoryManager : MonoBehaviour
         UIManager.instance.ItemUIEnable(getitem);
     }
 
-    public void SelectItem()
+    public void SelectItem(float selectKey)
     {
+        if(selectKey > 0)
+        {
+            
+            InventoryList.Find(i => i.data.Quantity > 0);
+        }
+        else
+        {
 
+        }
     }
 
     public void UseItem()

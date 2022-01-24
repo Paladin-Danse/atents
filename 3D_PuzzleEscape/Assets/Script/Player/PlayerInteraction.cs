@@ -8,7 +8,7 @@ public class PlayerInteraction : MonoBehaviour
 
     //아이템 스크립트를 만들면 플레이어가 현재 들고 있는 아이템값을 가짐.
     //private Item InteractionItem;
-    [SerializeField] private float f_InteractionRayDistance = 5f;
+    [SerializeField] private float f_InteractionRayDistance;
     private Ray InteractionRay;
     private RaycastHit hit;
     private int InteractableLayer;
@@ -32,7 +32,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             InteractionRay = Camera.main.ScreenPointToRay(new Vector3(Screen.width * 0.5f, Screen.height * 0.5f, f_InteractionRayDistance));
 
-            if (Physics.Raycast(InteractionRay, out hit, InteractableLayer))
+            if (Physics.Raycast(InteractionRay, out hit, f_InteractionRayDistance, InteractableLayer))
             {
                 //UIManager를 만들고 상호작용키 가이드UI를 만들경우 추가
                 //UIManager.instance.OnInteractionUI();
