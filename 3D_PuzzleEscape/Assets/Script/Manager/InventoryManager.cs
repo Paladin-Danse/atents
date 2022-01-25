@@ -19,6 +19,7 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private List<ItemData> itemDatas;
     [SerializeField] private List<InventoryItem> InventoryList;
     private InventoryItem SelectedItem;
+    private int SelectNum;
     private PlayerInput playerInput;
     private void Awake()
     {
@@ -27,12 +28,16 @@ public class InventoryManager : MonoBehaviour
     private void Start()
     {
         InventoryList = new List<InventoryItem>();
+        SelectNum = 0;
 
+        int i = 0;
         foreach(var data in itemDatas)
         {
             InventoryItem invenitem = new InventoryItem();
+            invenitem.itemNum = i;
             invenitem.data = data.Data;
             invenitem.data.Quantity = 0;
+            UIManager.instance.ItemUICreate(invenitem);
 
             InventoryList.Add(invenitem);
         }
@@ -49,22 +54,26 @@ public class InventoryManager : MonoBehaviour
     public void GetItem(ItemData item)
     {
         InventoryItem getitem = InventoryList.Find(i => i.data.name == item.Data.name);
-        getitem.data.Quantity += item.Data.Quantity;
-
-        UIManager.instance.ItemUIEnable(getitem);
+        if (getitem != null)
+        {
+            getitem.data.Quantity += item.Data.Quantity;
+            UIManager.instance.ItemUIEnable(getitem);
+        }
+        else
+            Debug.Log("getitem is Not Found!");
     }
 
     public void SelectItem(float selectKey)
     {
-        if(selectKey > 0)
+        InventoryItem invenItem = null;
+        invenItem = InventoryList.Find(i => i.data.Quantity > 0 && selectKey > 0 ? i.itemNum < SelectNum : i.itemNum > SelectNum);
+        
+        if (invenItem != null)
         {
-            
-            InventoryList.Find(i => i.data.Quantity > 0);
+            SelectedItem = invenItem;
+            SelectNum = Mathf.Clamp(invenItem.itemNum, 0, itemDatas.Count);
         }
-        else
-        {
-
-        }
+        UIManager.instance.SelectItemUI(SelectedItem);
     }
 
     public void UseItem()

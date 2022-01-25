@@ -21,41 +21,32 @@ public class UIManager : MonoBehaviour
     private GameObject Content;
     [SerializeField] private GameObject ItemUI;
     private List<ItemUI> itemUIList;
-    private int i_Actived_ItemNum;//활성화된 아이템UI의 갯수이자 생성된 아이템UI의 UI_Num을 결정짓는 값.
-    private int i_Selected_ItemNum;//선택된 아이템UI의 넘버
 
     private void Awake()
     {
         Content = Inventory_Scroll.transform.Find("Viewport/Content").gameObject;
+        itemUIList = new List<ItemUI>();
     }
 
-    private void Start()
+    public void ItemUICreate(InventoryItem m_item)
     {
-        itemUIList = new List<ItemUI>();
+        var UIObject = Instantiate(ItemUI, Content.transform);
+        var UIScript = UIObject.GetComponent<ItemUI>();
+        UIScript.item_img.sprite = m_item.data.ItemSprite;
+        UIScript.item_name.text = m_item.data.name;
 
-        for(int i = 0; i < 3; i++)
-        {
-            var UIObject = Instantiate(ItemUI, Content.transform);
-            UIObject.SetActive(false);
-            itemUIList.Add(UIObject.GetComponent<ItemUI>());
-        }
-        i_Actived_ItemNum = 0;
-        i_Selected_ItemNum = 0;
+        itemUIList.Add(UIScript);
+        UIObject.SetActive(false);
     }
 
     public void ItemUIEnable(InventoryItem m_item)
     {
         if (m_item.data.Quantity > 0)
         {
-            if(itemUIList.Find(i => i.item_name.text == m_item.data.name))
-            {
-                return;
-            }
-            
-            var itemUI = itemUIList.Find(i => i.gameObject.activeSelf == false);
+            var itemUI = itemUIList.Find(i => i.gameObject.activeSelf == false && i.item_name.text == m_item.data.name);
             if (itemUI)
             {
-                itemUI.UIUpdate(m_item.data.ItemSprite, m_item.data.name, ++i_Actived_ItemNum);
+                itemUI.UIUpdate(m_item.data.ItemSprite, m_item.data.name);
                 itemUI.gameObject.SetActive(true);
             }
         }
@@ -64,38 +55,27 @@ public class UIManager : MonoBehaviour
     {
         if(m_item.data.Quantity <= 0)
         {
-            int DisItemUINum = 0;//Disable된 아이템UI의 UI_Num
             foreach(var itemUI in itemUIList)
             {
                 if(itemUI.item_name.text == m_item.data.name)
                 {
-                    DisItemUINum = itemUI.UI_Num;
                     itemUI.gameObject.SetActive(false);
-                    i_Actived_ItemNum--;
                     break;
-                }
-            }
-            if (DisItemUINum != 0)
-            {
-                foreach (var itemUI in itemUIList)
-                {
-                    itemUI.Pull_Num(DisItemUINum);
                 }
             }
         }
     }
 
-    public string SelectItemUI(float selectKey)
+    public void SelectItemUI(InventoryItem m_item)
     {
-        //여기서부터 이어서 하면 됨.
-        if(selectKey > 0)
+        foreach(var itemUI in itemUIList)
         {
-            
+            if (itemUI.item_name.text == m_item.data.name)
+            {
+                //여기에 선택된 UI의 효과연출 입력
+                
+                break;
+            }
         }
-        else
-        {
-
-        }
-        return null;
     }
 }
