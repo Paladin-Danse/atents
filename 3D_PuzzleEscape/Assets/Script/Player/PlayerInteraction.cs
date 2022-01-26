@@ -42,7 +42,23 @@ public class PlayerInteraction : MonoBehaviour
                     InteractionObject interObj = hit.collider.GetComponent<InteractionObject>();
                     if(interObj)
                     {
-                        interObj.Interaction();
+                        if (interObj.NeedItemCheck() != null && InventoryManager.instance.SelectedItem != null)
+                        {
+                            if(InventoryManager.instance.SelectedItem.data.name == interObj.NeedItemCheck().Data.name)
+                            {
+                                InventoryManager.instance.UseItem();
+                                interObj.Interaction();
+                            }
+                            else
+                            {
+                                //메세지 UI를 Active시켜서 "이 아이템은 여기에 사용할 수 없다."라고 띄워주기.
+                            }
+                        }
+                        else if (interObj.NeedItemCheck() == null)
+                        {
+                            interObj.Interaction();
+                        }
+                        
                     }
                 }
             }

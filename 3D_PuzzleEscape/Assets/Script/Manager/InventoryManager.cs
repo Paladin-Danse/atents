@@ -18,7 +18,7 @@ public class InventoryManager : MonoBehaviour
     }
     [SerializeField] private List<ItemData> itemDatas;
     [SerializeField] private List<InventoryItem> InventoryList;
-    private InventoryItem SelectedItem;
+    public InventoryItem SelectedItem { get; private set; }
     private int SelectNum;
     private PlayerInput playerInput;
     private void Awake()
@@ -66,18 +66,54 @@ public class InventoryManager : MonoBehaviour
     public void SelectItem(float selectKey)
     {
         InventoryItem invenItem = null;
-        invenItem = InventoryList.Find(i => i.data.Quantity > 0 && selectKey > 0 ? i.itemNum < SelectNum : i.itemNum > SelectNum);
-        
+
+        if (InventoryList.FindAll(i => i.data.Quantity > 0).Count >= 2)
+        {
+            invenItem = InventoryList.Find(i => i.data.Quantity > 0 && selectKey > 0 ? i.itemNum < SelectNum : i.itemNum > SelectNum);
+        }
+        else if (InventoryList.FindAll(i => i.data.Quantity > 0).Count == 1)
+        {
+            invenItem = InventoryList.Find(i => i.data.Quantity > 0);
+        }
+        else
+        {
+            return;
+        }
+
         if (invenItem != null)
         {
             SelectedItem = invenItem;
             SelectNum = Mathf.Clamp(invenItem.itemNum, 0, itemDatas.Count);
         }
-        UIManager.instance.SelectItemUI(SelectedItem);
+
+        if (SelectedItem != null)
+        {
+            UIManager.instance.SelectItemUI(SelectedItem);
+        }
+        else
+        {
+            Debug.Log("'SelectItem(float selectKey)' In Error!!");
+        }
     }
 
     public void UseItem()
     {
+        if (SelectedItem.data.Durability_Max != 0)
+        {
+            SelectedItem.data.Durability--;
+            if (SelectedItem.data.Durability <= 0)
+            {
+                SelectedItem.data.Quantity--;
+                SelectedItem.data.Durability = SelectedItem.data.Durability_Max;
+            }
+        }
+        if (SelectedItem.data.Quantity <= 0)
+        {
+            SelectNum = 0;
+            UIManager.instance.SelectUIDisable();
+            UIManager.instance.ItemUIDisable(SelectedItem);
 
+            SelectedItem = null;
+        }
     }
 }

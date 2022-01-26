@@ -20,10 +20,11 @@ public class MoveInteraction : InteractionObject
         InteractionEvent += InteractiontoMove;
         b_OnMove = false;
     }
-
     private void InteractiontoMove()
     {
-        if(b_OnMove)
+        if (NeedItem) NeedItem = null;
+
+        if (b_OnMove)
         {
             MoveAnimation[MoveAnimation.clip.name].speed = -1.0f;
             b_OnMove = false;
@@ -33,7 +34,6 @@ public class MoveInteraction : InteractionObject
             MoveAnimation[MoveAnimation.clip.name].speed = 1.0f;
             b_OnMove = true;
         }
-
         MoveAnimation.Play();
     }
 

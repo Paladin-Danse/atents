@@ -13,11 +13,16 @@ public enum OBJ_TYPE
 
 public class InteractionObject : MonoBehaviour
 {
-    public event Action InteractionEvent;
+    [SerializeField] protected ItemData NeedItem;
+    protected event Action InteractionEvent;
     public OBJ_TYPE e_ObjectType { get; protected set; }
 
     public void Interaction()
     {
         if (InteractionEvent != null) InteractionEvent();
+    }
+    public ItemData NeedItemCheck()
+    {
+        return NeedItem;
     }
 }

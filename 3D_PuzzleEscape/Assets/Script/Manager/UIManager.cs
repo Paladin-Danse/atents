@@ -20,6 +20,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private ScrollRect Inventory_Scroll;
     private GameObject Content;
     [SerializeField] private GameObject ItemUI;
+    [SerializeField] private GameObject SelectedUI;
+    private RectTransform Select;
     private List<ItemUI> itemUIList;
 
     private void Awake()
@@ -27,6 +29,19 @@ public class UIManager : MonoBehaviour
         Content = Inventory_Scroll.transform.Find("Viewport/Content").gameObject;
         itemUIList = new List<ItemUI>();
     }
+    private void Start()
+    {
+        if(SelectedUI)
+        {
+            Select = Instantiate(SelectedUI, Content.transform).GetComponent<RectTransform>();
+            Select.gameObject.SetActive(false);
+        }
+        else
+        {
+            Debug.Log("SelectedUI is Not Found!");
+        }
+    }
+
 
     public void ItemUICreate(InventoryItem m_item)
     {
@@ -53,29 +68,38 @@ public class UIManager : MonoBehaviour
     }
     public void ItemUIDisable(InventoryItem m_item)
     {
-        if(m_item.data.Quantity <= 0)
+        var itemUI = itemUIList.Find(i => i.item_name.text == m_item.data.name);
+        if (itemUI)
         {
-            foreach(var itemUI in itemUIList)
-            {
-                if(itemUI.item_name.text == m_item.data.name)
-                {
-                    itemUI.gameObject.SetActive(false);
-                    break;
-                }
-            }
+            itemUI.gameObject.SetActive(false);
+        }
+        else
+        {
+            Debug.Log("itemUI is Not Found!");
         }
     }
 
     public void SelectItemUI(InventoryItem m_item)
     {
-        foreach(var itemUI in itemUIList)
+        var itemUI = itemUIList.Find(i => i.item_name.text == m_item.data.name);
+
+        if (itemUI)
         {
-            if (itemUI.item_name.text == m_item.data.name)
-            {
-                //여기에 선택된 UI의 효과연출 입력
-                
-                break;
-            }
+            //여기에 선택된 UI의 효과연출 입력
+            Select.transform.SetParent(itemUI.transform);
+            Select.transform.SetAsFirstSibling();
+
+            Select.offsetMin = new Vector2(0, 0);
+            Select.offsetMax = new Vector2(0, 0);
+            Select.gameObject.SetActive(true);
         }
+        else
+        {
+            Debug.Log("itemUI is Not Found!");
+        }
+    }
+    public void SelectUIDisable()
+    {
+        Select.gameObject.SetActive(false);
     }
 }
