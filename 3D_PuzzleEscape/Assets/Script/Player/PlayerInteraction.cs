@@ -34,8 +34,7 @@ public class PlayerInteraction : MonoBehaviour
 
             if (Physics.Raycast(InteractionRay, out hit, f_InteractionRayDistance, InteractableLayer))
             {
-                //UIManager를 만들고 상호작용키 가이드UI를 만들경우 추가
-                //UIManager.instance.OnInteractionUI();
+                UIManager.instance.OnInteractionUI();
                 
                 if(playerInput.InteractionKey)
                 {
@@ -61,6 +60,10 @@ public class PlayerInteraction : MonoBehaviour
                         
                     }
                 }
+            }
+            else
+            {
+                UIManager.instance.OffInteractionUI();
             }
         }
     }

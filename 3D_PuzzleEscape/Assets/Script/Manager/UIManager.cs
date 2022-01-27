@@ -17,6 +17,7 @@ public class UIManager : MonoBehaviour
             return m_instance;
         }
     }
+    [SerializeField] private Image InteractUI;
     [SerializeField] private ScrollRect Inventory_Scroll;
     private GameObject Content;
     [SerializeField] private GameObject ItemUI;
@@ -101,5 +102,15 @@ public class UIManager : MonoBehaviour
     public void SelectUIDisable()
     {
         Select.gameObject.SetActive(false);
+    }
+
+    public void OnInteractionUI()
+    {
+        InteractUI.color = Color.white;
+    }
+
+    public void OffInteractionUI()
+    {
+        InteractUI.color = new Color(1.0f, 1.0f, 1.0f, 100f / 255f);
     }
 }

@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Assets\Script\InteractionObject\ItemInteraction.cs" />
     <Compile Include="Assets\Script\Item.cs" />
+    <Compile Include="Assets\Script\ItemUI.cs" />
     <Compile Include="Assets\Script\InteractionObject\InteractionObject.cs" />
     <Compile Include="Assets\Script\InteractionObject\MoveInteraction.cs" />
     <Compile Include="Assets\Script\Manager\InventoryManager.cs" />
@@ -67,7 +68,9 @@
     <Compile Include="Assets\Script\Player\PlayerInput.cs" />
     <Compile Include="Assets\Script\Player\PlayerInteraction.cs" />
     <Compile Include="Assets\Script\Player\PlayerMovement.cs" />
-    <Compile Include="Assets\Script\ItemUI.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Morgue Room PBR\info_morgueroom.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
