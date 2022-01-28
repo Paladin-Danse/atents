@@ -16,17 +16,29 @@ public class GameManager : MonoBehaviour
             return m_instance;
         }
     }
+    public GameObject Player { get; private set; }
+    public PlayerInput playerInput { get; private set; }
+    public PlayerMovement playerMovement { get; private set; }
+    public PlayerInteraction playerInteraction { get; private set; }
+    private void Awake()
+    {
+        Player = GameObject.Find("Player");
+        if(!Player)
+        {
+            Debug.Log("Player is Not Found!");
+        }
+        else
+        {
+            playerInput = Player.GetComponent<PlayerInput>();
+            playerMovement = Player.GetComponent<PlayerMovement>();
+            playerInteraction = Player.GetComponent<PlayerInteraction>();
+        }
+        
+    }
 
-    // Start is called before the first frame update
     void Start()
     {
         OffCursorVisible();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void OnCursorVisible()

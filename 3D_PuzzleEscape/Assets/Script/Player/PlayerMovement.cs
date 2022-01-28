@@ -9,16 +9,25 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private float f_MoveSpeed;
     [SerializeField] private float f_RotateSpeed;
+
+    public bool b_OnMove;
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
         playerRigid = GetComponent<Rigidbody>();
     }
+    private void Start()
+    {
+        b_OnMove = true;
+    }
 
     private void Update()
     {
-        Move();
-        Rotate();
+        if (b_OnMove)
+        {
+            Move();
+            Rotate();
+        }
     }
 
     public void Move()
@@ -58,5 +67,14 @@ public class PlayerMovement : MonoBehaviour
         if (angle < 0f) angle += 360;
         if (angle > 180f) return Mathf.Max(angle, 360 + from);
         return Mathf.Min(angle, to);
+    }
+
+    public void LockMove()
+    {
+        b_OnMove = true;
+    }
+    public void UnlockMove()
+    {
+        b_OnMove = false;
     }
 }

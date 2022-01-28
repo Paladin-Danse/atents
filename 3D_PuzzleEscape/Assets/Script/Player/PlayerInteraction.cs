@@ -57,7 +57,6 @@ public class PlayerInteraction : MonoBehaviour
                         {
                             interObj.Interaction();
                         }
-                        
                     }
                 }
             }
@@ -68,8 +67,12 @@ public class PlayerInteraction : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
+    public void LockInteraction()
     {
-        Gizmos.DrawRay(InteractionRay);
+        b_OnInteraction = false;
+    }
+    public void UnlockInteraction()
+    {
+        b_OnInteraction = true;
     }
 }

@@ -10,13 +10,14 @@ public class PlayerInput : MonoBehaviour
     private string RotateYKeyName = "Mouse Y";
     private string InteractionKeyName = "Fire1";
     private string ItemSelectKeyName = "Mouse ScrollWheel";
+    private string ActionCancelKeyName = "Cancel";
     public float HorizontalMoveKey { get; private set; }
     public float VerticalMoveKey { get; private set; }
     public float RotateXKey { get; private set; }
     public float RotateYKey { get; private set; }
     public bool InteractionKey { get; private set; }
     public float ItemSelectKey { get; private set; }
-
+    public bool ActionCancelKey { get; private set; }
     private void Update()
     {
         HorizontalMoveKey = Input.GetAxis(HorizontalMoveKeyName);
@@ -25,5 +26,6 @@ public class PlayerInput : MonoBehaviour
         RotateYKey = Input.GetAxis(RotateYKeyName);
         InteractionKey = Input.GetButtonDown(InteractionKeyName);
         ItemSelectKey = Input.GetAxisRaw(ItemSelectKeyName);
+        ActionCancelKey = Input.GetButtonDown(ActionCancelKeyName);
     }
 }
