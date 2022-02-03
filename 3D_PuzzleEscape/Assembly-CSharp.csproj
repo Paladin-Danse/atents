@@ -53,10 +53,11 @@
     <UnityVersion>2020.3.15f2</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Script\InteractionObject\ItemInteraction.cs" />
+    <Compile Include="Assets\Script\InteractionObject\Safe.cs" />
     <Compile Include="Assets\Script\Item.cs" />
     <Compile Include="Assets\Script\ItemUI.cs" />
     <Compile Include="Assets\Script\InteractionObject\InteractionObject.cs" />
@@ -69,7 +70,6 @@
     <Compile Include="Assets\Script\Player\PlayerInteraction.cs" />
     <Compile Include="Assets\Script\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Script\InteractionObject\MiniGameInteraction.cs" />
-    <Compile Include="Assets\Script\InteractionObject\Safe.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Morgue Room PBR\info_morgueroom.txt" />
