@@ -32,12 +32,14 @@ public class MiniGameInteraction : InteractionObject
             GameManager.instance.playerMovement.LockMove();
 
             Mini_Cam.gameObject.SetActive(true);
+            UIManager.instance.UIDisable();
         }
     }
 
     protected void MiniGameClear()
     {
-
+        Mini_Cam.gameObject.SetActive(false);
+        UIManager.instance.UIEnable();
     }
 
     protected void MiniGameCancel()
@@ -49,6 +51,7 @@ public class MiniGameInteraction : InteractionObject
 
             b_OnMiniGame = false;
             Mini_Cam.gameObject.SetActive(false);
+            UIManager.instance.UIEnable();
         }
     }
 }

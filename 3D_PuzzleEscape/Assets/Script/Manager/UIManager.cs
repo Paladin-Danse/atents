@@ -113,4 +113,16 @@ public class UIManager : MonoBehaviour
     {
         InteractUI.color = new Color(1.0f, 1.0f, 1.0f, 100f / 255f);
     }
+
+    public void UIDisable()
+    {
+        InteractUI.gameObject.SetActive(false);
+        Inventory_Scroll.gameObject.SetActive(false);
+    }
+
+    public void UIEnable()
+    {
+        InteractUI.gameObject.SetActive(true);
+        Inventory_Scroll.gameObject.SetActive(true);
+    }
 }
