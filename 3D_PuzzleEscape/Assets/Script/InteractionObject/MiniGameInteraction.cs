@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,19 +8,21 @@ public class MiniGameInteraction : InteractionObject
 {
     [SerializeField] protected CinemachineVirtualCamera Mini_Cam;
     public bool b_OnMiniGame { get; protected set; }
+    protected event Action MiniGameCancel;
 
-    void Start()
+    protected void Start()
     {
         e_ObjectType = OBJ_TYPE.OBJ_MINIGAME;
         InteractionEvent += MiniGameStart;
+        MiniGameCancel += DefaultCancel;
         b_OnMiniGame = false;
         Mini_Cam.gameObject.SetActive(false);
     }
-    private void Update()
+    protected void Update()
     {
-        if (b_OnMiniGame)
+        if (b_OnMiniGame && GameManager.instance.playerInput.ActionCancelKey)
         {
-            MiniGameCancel();
+            if (MiniGameCancel != null) MiniGameCancel();
         }
     }
 
@@ -27,31 +30,36 @@ public class MiniGameInteraction : InteractionObject
     {
         if (Mini_Cam && !b_OnMiniGame)
         {
-            b_OnMiniGame = true;
             GameManager.instance.playerInteraction.LockInteraction();
             GameManager.instance.playerMovement.LockMove();
-
-            Mini_Cam.gameObject.SetActive(true);
             UIManager.instance.UIDisable();
+
+            b_OnMiniGame = true;
+            Mini_Cam.gameObject.SetActive(true);
         }
     }
 
     protected void MiniGameClear()
     {
-        Mini_Cam.gameObject.SetActive(false);
+        Debug.Log("Clear!!");
+
+        GameManager.instance.playerInteraction.UnlockInteraction();
+        GameManager.instance.playerMovement.UnlockMove();
         UIManager.instance.UIEnable();
+
+        b_OnMiniGame = false;
+        InteractionEvent -= MiniGameStart;
+        gameObject.layer = 0;
+        Mini_Cam.gameObject.SetActive(false);
     }
 
-    protected void MiniGameCancel()
+    protected void DefaultCancel()
     {
-        if (GameManager.instance.playerInput.ActionCancelKey)
-        {
-            GameManager.instance.playerInteraction.UnlockInteraction();
-            GameManager.instance.playerMovement.UnlockMove();
+        GameManager.instance.playerInteraction.UnlockInteraction();
+        GameManager.instance.playerMovement.UnlockMove();
+        UIManager.instance.UIEnable();
 
-            b_OnMiniGame = false;
-            Mini_Cam.gameObject.SetActive(false);
-            UIManager.instance.UIEnable();
-        }
+        b_OnMiniGame = false;
+        Mini_Cam.gameObject.SetActive(false);
     }
 }

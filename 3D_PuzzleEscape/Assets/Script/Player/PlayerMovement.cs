@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class PlayerMovement : MonoBehaviour
 {
     private PlayerInput playerInput;
     private Rigidbody playerRigid;
 
+    [SerializeField] private CinemachineVirtualCamera Vcam;
     [SerializeField] private float f_MoveSpeed;
     [SerializeField] private float f_RotateSpeed;
 
@@ -50,13 +52,13 @@ public class PlayerMovement : MonoBehaviour
         {
             float MouseMove = -playerInput.RotateYKey * f_RotateSpeed * Time.deltaTime;
 
-            var rot = Camera.main.transform.rotation;
+            var rot = Vcam.transform.rotation;
             rot *= Quaternion.Euler(MouseMove, 0f, 0f);
 
             float ClampAngleX = ClampAngle(rot.eulerAngles.x, -60f, 60f);
             rot = Quaternion.Euler(ClampAngleX, rot.eulerAngles.y, 0f);
 
-            Camera.main.transform.rotation = rot;
+            Vcam.transform.rotation = rot;
             
         }
     }
@@ -71,10 +73,10 @@ public class PlayerMovement : MonoBehaviour
 
     public void LockMove()
     {
-        b_OnMove = true;
+        b_OnMove = false;
     }
     public void UnlockMove()
     {
-        b_OnMove = false;
+        b_OnMove = true;
     }
 }
