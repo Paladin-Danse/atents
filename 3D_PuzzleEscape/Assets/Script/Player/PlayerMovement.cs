@@ -6,21 +6,25 @@ using Cinemachine;
 public class PlayerMovement : MonoBehaviour
 {
     private PlayerInput playerInput;
+    private Animator playerAnim;
     private Rigidbody playerRigid;
 
     [SerializeField] private CinemachineVirtualCamera Vcam;
     [SerializeField] private float f_MoveSpeed;
     [SerializeField] private float f_RotateSpeed;
 
-    public bool b_OnMove;
+    private bool b_OnCrouch;
+    private bool b_OnMove;
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
+        playerAnim = GetComponent<Animator>();
         playerRigid = GetComponent<Rigidbody>();
     }
     private void Start()
     {
         b_OnMove = true;
+        b_OnCrouch = false;
     }
 
     private void Update()
@@ -29,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Move();
             Rotate();
+            Crouch();
         }
     }
 
@@ -59,7 +64,28 @@ public class PlayerMovement : MonoBehaviour
             rot = Quaternion.Euler(ClampAngleX, rot.eulerAngles.y, 0f);
 
             Vcam.transform.rotation = rot;
-            
+        }
+    }
+    //앉기 함수(구현 중...)
+    public void Crouch()
+    {
+        if(playerInput.CrouchKey)
+        {
+            if (!b_OnCrouch)
+            {
+                transform.localScale = new Vector3(1f, 2f, 1f);
+                b_OnCrouch = true;
+            }
+            else
+            {
+                transform.localScale = new Vector3(1f, 3f, 1f);
+                b_OnCrouch = false;
+            }
+            //애니메이션 처리
+            /*
+            b_OnCrouch = !b_OnCrouch;
+            playerAnim.SetBool("b_Crouch", b_OnCrouch);
+            */
         }
     }
 

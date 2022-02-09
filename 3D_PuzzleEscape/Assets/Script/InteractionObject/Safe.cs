@@ -14,18 +14,14 @@ public class Safe : MiniGameInteraction
     private Quaternion Dial_Default_Rotation;
     private bool b_OnDialMove;
     private int Dial_Iter;
-    private int Dial_LeftMoveCnt = 0;
-    private int Dial_RightMoveCnt = 0;
+    private Vector3 Direction = Vector3.zero;
+    
+    private int Dial_MoveCnt = 0;
+    //private int Dial_RightMoveCnt = 0;
 
-    protected PlayerInput playerInput;
+
     [SerializeField] protected float f_MoveSpeed;
-    private void Awake()
-    {
-        if(GameManager.instance.playerInput) playerInput = GameManager.instance.playerInput;
-        b_OnDialMove = false;
-        DialCurNum = new int[DialNum.Length];
-        Dial_Iter = 0;
-    }
+    
     private new void Start()
     {
         base.Start();
@@ -51,39 +47,62 @@ public class Safe : MiniGameInteraction
         {
             if (playerInput.Mini_LeftKey || playerInput.Mini_RightKey)
             {
-                Vector3 Direction = Vector3.zero;//기본값이 없으면 에러나서 제로값을 줌.
-
                 //금고 다이얼을 움직이지만 좌우의 기준값은 금고를 기준으로 좌우 방향값을 정한다. 그렇지 않으면 다이얼이 움직이면서 좌우값이 조금씩 틀어지기 때문.
-                if (playerInput.Mini_RightKey)
+                if (Direction == Vector3.zero)
                 {
-                    Direction = transform.right;
-                    if (Dial_LeftMoveCnt != 0)
-                    {
-                        DialCurNum[Dial_Iter++] = Dial_LeftMoveCnt;
-                        Dial_LeftMoveCnt = 0;
-                        if (Dial_Iter >= DialNum.Length)
-                        {
-                            DialWrong();
-                            return;
-                        }
-                    }
-                    Dial_RightMoveCnt++;
+                    if (playerInput.Mini_RightKey)
+                        Direction = transform.right;
+                    else
+                        Direction = -transform.right;
                 }
+                else if (playerInput.Mini_RightKey)
+                {
+                    if (Direction != transform.right)
+                    {
+                        Direction = transform.right;
+                        //여기서부터 아래 코드랑 겹치는 코드가 있기에 압축할 수 있을 때 압축 필요.
+                        DialCurNum[Dial_Iter++] = Dial_MoveCnt;
+                        Dial_MoveCnt = 0;
+                    }
+                }
+                else if (playerInput.Mini_LeftKey)
+                {
+                    if (Direction != -transform.right)
+                    {
+                        Direction = -transform.right;
+                        DialCurNum[Dial_Iter++] = Dial_MoveCnt;
+                        Dial_MoveCnt = 0;
+                    }
+                }
+
+                if (Dial_Iter >= DialNum.Length)
+                {
+                    DialWrong();
+                    return;
+                }
+
+                Dial_MoveCnt++;
+
+                /*
                 else if (playerInput.Mini_LeftKey)
                 {
                     Direction = -transform.right;
                     if (Dial_RightMoveCnt != 0)
                     {
-                        DialCurNum[Dial_Iter++] = Dial_RightMoveCnt;
+                        DialCurNum[Dial_Iter] = Dial_RightMoveCnt;
                         Dial_RightMoveCnt = 0;
-                        if (Dial_Iter >= DialNum.Length)
-                        {
-                            DialWrong();
-                            return;
-                        }
                     }
-                    Dial_LeftMoveCnt++;
+                    Dial_MoveCnt++;
                 }
+                Dial_Iter++;
+                if (Dial_Iter >= DialNum.Length)
+                {
+                    DialWrong();
+                    return;
+                }
+                DialCurNum[Dial_Iter] = Dial_MoveCnt;
+                Dial_MoveCnt = 0;
+                */
 
                 Vector3 RotateScale = f_DialNum_Default_Rotation * Direction;//한번에 움직일 크기와 방향값을 구해서
                 Quaternion MoveDistance = SafeDial.transform.rotation * Quaternion.Euler(RotateScale);//금고 다이얼이 도달할 위치목표값을 구한다.
@@ -92,13 +111,14 @@ public class Safe : MiniGameInteraction
             }
             if(playerInput.InteractionKey)
             {
-                DialCurNum[Dial_Iter] = Dial_LeftMoveCnt > Dial_RightMoveCnt ? Dial_LeftMoveCnt : Dial_RightMoveCnt;
+                DialCurNum[Dial_Iter] = Dial_MoveCnt;
 
                 for(int i=0; i<DialNum.Length; i++)
                 {
                     if(DialNum[i] != DialCurNum[i])
                     {
                         DialWrong();
+                        return;
                     }
                 }
                 DialGuess();
@@ -144,8 +164,9 @@ public class Safe : MiniGameInteraction
         }
 
         Dial_Iter = 0;
-        Dial_LeftMoveCnt = 0;
-        Dial_RightMoveCnt = 0;
+        Direction = Vector3.zero;
+        Dial_MoveCnt = 0;
+        DialCurNum = new int[DialNum.Length];
         StartCoroutine("DialMoving", Dial_Default_Rotation);
     }
 }

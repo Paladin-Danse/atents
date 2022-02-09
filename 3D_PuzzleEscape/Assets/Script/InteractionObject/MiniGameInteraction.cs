@@ -9,6 +9,7 @@ public class MiniGameInteraction : InteractionObject
     [SerializeField] protected CinemachineVirtualCamera Mini_Cam;
     public bool b_OnMiniGame { get; protected set; }
     protected event Action MiniGameCancel;
+    protected PlayerInput playerInput;
 
     protected void Start()
     {
@@ -30,6 +31,7 @@ public class MiniGameInteraction : InteractionObject
     {
         if (Mini_Cam && !b_OnMiniGame)
         {
+            if (GameManager.instance.playerInput && playerInput == null) playerInput = GameManager.instance.playerInput;
             GameManager.instance.playerInteraction.LockInteraction();
             GameManager.instance.playerMovement.LockMove();
             UIManager.instance.UIDisable();
