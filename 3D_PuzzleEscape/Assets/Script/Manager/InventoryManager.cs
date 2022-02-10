@@ -29,12 +29,13 @@ public class InventoryManager : MonoBehaviour
     {
         InventoryList = new List<InventoryItem>();
         SelectNum = 0;
+        SelectedItem = null;
 
         int i = 0;
         foreach(var data in itemDatas)
         {
             InventoryItem invenitem = new InventoryItem();
-            invenitem.itemNum = i;
+            invenitem.itemNum = i++;
             invenitem.data = data.Data;
             invenitem.data.Quantity = 0;
             UIManager.instance.ItemUICreate(invenitem);
@@ -69,7 +70,14 @@ public class InventoryManager : MonoBehaviour
 
         if (InventoryList.FindAll(i => i.data.Quantity > 0).Count >= 2)
         {
-            invenItem = InventoryList.Find(i => i.data.Quantity > 0 && selectKey > 0 ? i.itemNum < SelectNum : i.itemNum > SelectNum);
+            if (SelectedItem != null)
+            {
+                invenItem = InventoryList.Find(i => i.data.Quantity > 0 && selectKey > 0 ? i.itemNum < SelectNum : i.itemNum > SelectNum);
+            }
+            else
+            {
+                invenItem = InventoryList.Find(i => i.data.Quantity > 0 && i.itemNum >= SelectNum);
+            }
         }
         else if (InventoryList.FindAll(i => i.data.Quantity > 0).Count == 1)
         {
