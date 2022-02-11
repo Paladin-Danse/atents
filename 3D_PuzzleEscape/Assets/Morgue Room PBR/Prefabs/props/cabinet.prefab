@@ -11,7 +11,10 @@ GameObject:
   - component: {fileID: 494224}
   - component: {fileID: 3385768}
   - component: {fileID: 2337302}
-  m_Layer: 0
+  - component: {fileID: 1065184075847534565}
+  - component: {fileID: 1998920224977070210}
+  - component: {fileID: 9092618146615193507}
+  m_Layer: 3
   m_Name: lp_cabinet_door2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81,6 +84,50 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1065184075847534565
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110172}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 58.573063, y: 45.7597, z: 1.1774251}
+  m_Center: {x: 0.00024414062, y: 0, z: -0.00000011920927}
+--- !u!111 &1998920224977070210
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110172}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 40b12a645b20f10468482fa6322818da, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 40b12a645b20f10468482fa6322818da, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!114 &9092618146615193507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 038a3d4cd15c8ba4aa32be9aab37b4c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NeedItem: {fileID: 0}
+  MoveClip: {fileID: 7400000, guid: 40b12a645b20f10468482fa6322818da, type: 2}
+  f_MoveTime: 1
 --- !u!1 &143536
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,7 +137,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 490622}
-  - component: {fileID: 6548244}
   m_Layer: 0
   m_Name: cabinet
   m_TagString: Untagged
@@ -115,19 +161,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &6548244
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 143536}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.2079338, y: 0.50822544, z: 0.320901}
-  m_Center: {x: 0.0018866648, y: 0.24588764, z: 0.0077972407}
 --- !u!1 &154138
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,7 +172,10 @@ GameObject:
   - component: {fileID: 425210}
   - component: {fileID: 3334830}
   - component: {fileID: 2308142}
-  m_Layer: 0
+  - component: {fileID: 7404763155422474133}
+  - component: {fileID: 8403760720658829056}
+  - component: {fileID: 3447035819331790949}
+  m_Layer: 3
   m_Name: lp_cabinet_door3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,6 +245,50 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7404763155422474133
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 154138}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 58.57306, y: 45.7597, z: 1.1774251}
+  m_Center: {x: 0.0000019073483, y: 0, z: 0.0000003576278}
+--- !u!111 &8403760720658829056
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 154138}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 4c30f8322f34a314ca4df4e00e7312ca, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 4c30f8322f34a314ca4df4e00e7312ca, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!114 &3447035819331790949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 154138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 038a3d4cd15c8ba4aa32be9aab37b4c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NeedItem: {fileID: 0}
+  MoveClip: {fileID: 7400000, guid: 4c30f8322f34a314ca4df4e00e7312ca, type: 2}
+  f_MoveTime: 1
 --- !u!1 &196512
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,6 +300,7 @@ GameObject:
   - component: {fileID: 468322}
   - component: {fileID: 3362172}
   - component: {fileID: 2334204}
+  - component: {fileID: 5508021735213552344}
   m_Layer: 0
   m_Name: lp_cabinet_shelf1
   m_TagString: Untagged
@@ -290,3 +371,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5508021735213552344
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196512}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 119.999985, y: 60, z: 28}
+  m_Center: {x: 0.00024414062, y: 0, z: -1}

@@ -72,7 +72,14 @@ public class InventoryManager : MonoBehaviour
         {
             if (SelectedItem != null)
             {
-                invenItem = InventoryList.Find(i => i.data.Quantity > 0 && selectKey > 0 ? i.itemNum < SelectNum : i.itemNum > SelectNum);
+                if (selectKey > 0)
+                {
+                    invenItem = InventoryList.FindLast(i => i.data.Quantity > 0 && i.itemNum < SelectNum);
+                }
+                else
+                {
+                    invenItem = InventoryList.Find(i => i.data.Quantity > 0 && i.itemNum > SelectNum); 
+                }
             }
             else
             {
