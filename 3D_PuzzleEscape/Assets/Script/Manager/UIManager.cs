@@ -83,7 +83,7 @@ public class UIManager : MonoBehaviour
     public void SelectItemUI(InventoryItem m_item)
     {
         var itemUI = itemUIList.Find(i => i.item_name.text == m_item.data.name);
-
+        
         if (itemUI)
         {
             //여기에 선택된 UI의 효과연출 입력
@@ -97,6 +97,12 @@ public class UIManager : MonoBehaviour
         else
         {
             Debug.Log("itemUI is Not Found!");
+        }
+        if (Inventory_Scroll.verticalScrollbar.IsActive())
+        {
+            List<ItemUI> items = itemUIList.FindAll(i => i.gameObject.activeSelf == true);
+            float itemScrollValue = 1.0f - ((float)items.FindIndex(i => i == itemUI) / (float)(items.Count - 1));
+            Inventory_Scroll.verticalScrollbar.value = itemScrollValue;
         }
     }
     public void SelectUIDisable()

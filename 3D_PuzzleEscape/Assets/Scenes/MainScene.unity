@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44248325, g: 0.4915592, b: 0.5714029, a: 1}
+  m_IndirectSpecularColor: {r: 0.4424826, g: 0.49155885, b: 0.57140243, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -919,6 +919,46 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3224581768406260231, guid: 666cc1ae39485ce49a9aab79b1e1728b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.00014031344
+      objectReference: {fileID: 0}
+    - target: {fileID: 3224581768585850568, guid: 666cc1ae39485ce49a9aab79b1e1728b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3224581768585850568, guid: 666cc1ae39485ce49a9aab79b1e1728b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3224581768585850568, guid: 666cc1ae39485ce49a9aab79b1e1728b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3224581768714254762, guid: 666cc1ae39485ce49a9aab79b1e1728b, type: 3}
+      propertyPath: m_Size
+      value: 0.72727275
+      objectReference: {fileID: 0}
+    - target: {fileID: 3224581768714254762, guid: 666cc1ae39485ce49a9aab79b1e1728b, type: 3}
+      propertyPath: m_Value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3224581768714254762, guid: 666cc1ae39485ce49a9aab79b1e1728b, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3224581768714254762, guid: 666cc1ae39485ce49a9aab79b1e1728b, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3224581768714254762, guid: 666cc1ae39485ce49a9aab79b1e1728b, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3224581768714254763, guid: 666cc1ae39485ce49a9aab79b1e1728b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3224581769422266772, guid: 666cc1ae39485ce49a9aab79b1e1728b, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1033,6 +1073,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3224581769728530515, guid: 666cc1ae39485ce49a9aab79b1e1728b, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3224581769728530515, guid: 666cc1ae39485ce49a9aab79b1e1728b, type: 3}
+      propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

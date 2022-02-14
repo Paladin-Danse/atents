@@ -20,6 +20,8 @@ public class Safe : MiniGameInteraction
     //private int Dial_RightMoveCnt = 0;
 
 
+
+
     [SerializeField] protected float f_MoveSpeed;
     
     private new void Start()
