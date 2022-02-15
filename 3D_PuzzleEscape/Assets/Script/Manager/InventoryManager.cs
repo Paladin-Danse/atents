@@ -17,8 +17,10 @@ public class InventoryManager : MonoBehaviour
         }
     }
     [SerializeField] private List<ItemData> itemDatas;
+    [SerializeField] private List<MixItemData> MixRecipe;
     [SerializeField] private List<InventoryItem> InventoryList;
     public InventoryItem SelectedItem { get; private set; }
+    public InventoryItem SelectedMixItem { get; private set; }//조합하기 위해 선택된 아이템
     private int SelectNum;
     private PlayerInput playerInput;
     private void Awake()
@@ -30,6 +32,7 @@ public class InventoryManager : MonoBehaviour
         InventoryList = new List<InventoryItem>();
         SelectNum = 0;
         SelectedItem = null;
+        SelectedMixItem = null;
 
         int i = 0;
         foreach(var data in itemDatas)
@@ -48,6 +51,10 @@ public class InventoryManager : MonoBehaviour
         if(playerInput.ItemSelectKey != 0)
         {
             SelectItem(playerInput.ItemSelectKey);
+        }
+        if(playerInput.MixKey)
+        {
+            ItemMixing();
         }
     }
 
@@ -111,24 +118,47 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public void UseItem()
+    public void ItemMixing()
     {
-        if (SelectedItem.data.Durability_Max != 0)
+        if (SelectedMixItem != null)
         {
-            SelectedItem.data.Durability--;
-            if (SelectedItem.data.Durability <= 0)
+            var mixitem = MixRecipe.Find(i => (i.Data.item1.Data.name == SelectedMixItem.data.name || i.Data.item2.Data.name == SelectedMixItem.data.name) &&
+                                              (i.Data.item1.Data.name == SelectedItem.data.name || i.Data.item2.Data.name == SelectedItem.data.name));
+            if(mixitem)
             {
-                SelectedItem.data.Quantity--;
-                SelectedItem.data.Durability = SelectedItem.data.Durability_Max;
+
+                UseItem(SelectedItem);
+                UseItem(SelectedMixItem);
+                GetItem(mixitem.Data.Mixeditem);
             }
         }
-        if (SelectedItem.data.Quantity <= 0)
+        else
+        {
+            if (SelectedItem != null)
+            {
+                SelectedMixItem = SelectedItem;
+                UIManager.instance.SelectMixUI();
+            }
+        }
+    }
+    public void UseItem(InventoryItem item)
+    {
+        if (item.data.Durability_Max != 0)
+        {
+            item.data.Durability--;
+            if (item.data.Durability <= 0)
+            {
+                item.data.Quantity--;
+                item.data.Durability = item.data.Durability_Max;
+            }
+        }
+        if (item.data.Quantity <= 0)
         {
             SelectNum = 0;
             UIManager.instance.SelectUIDisable();
-            UIManager.instance.ItemUIDisable(SelectedItem);
+            UIManager.instance.ItemUIDisable(item);
 
-            SelectedItem = null;
+            item = null;
         }
     }
 }

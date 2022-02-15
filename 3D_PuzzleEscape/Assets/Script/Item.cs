@@ -11,7 +11,14 @@ public struct Item
     public int Durability;
     public int Durability_Max;
     public string Description;
-    public Collider Interaction_Enable_Collider;
+}
+
+[System.Serializable]
+public struct MixItem
+{
+    public ItemData item1;
+    public ItemData item2;
+    public ItemData Mixeditem;
 }
 
 public class InventoryItem

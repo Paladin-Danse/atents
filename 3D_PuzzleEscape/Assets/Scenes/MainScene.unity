@@ -597,7 +597,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 9c022a3fa7b2d184c99ca191279a0003, type: 2}
     - target: {fileID: 6794260236654283220, guid: 04d4b1b9f75afb549a59eb6f0cbb8fc0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6794260236654303024, guid: 04d4b1b9f75afb549a59eb6f0cbb8fc0, type: 3}
       propertyPath: m_Layer
@@ -979,6 +979,10 @@ PrefabInstance:
       propertyPath: InteractUI
       value: 
       objectReference: {fileID: 89586734}
+    - target: {fileID: 3224581769585673843, guid: 666cc1ae39485ce49a9aab79b1e1728b, type: 3}
+      propertyPath: SelectedMixUI
+      value: 
+      objectReference: {fileID: 5254319696585992821, guid: 6da49efee6ce6c5419a39c5914e99902, type: 3}
     - target: {fileID: 3224581769585673847, guid: 666cc1ae39485ce49a9aab79b1e1728b, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1983,6 +1987,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2385751861475456173, guid: 5d24661852ef41744a531e541f06625c, type: 3}
+      propertyPath: MixRecipe.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2385751861475456173, guid: 5d24661852ef41744a531e541f06625c, type: 3}
+      propertyPath: MixRecipe.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: e161963ce465fd4408ee9704e562c090, type: 2}
+    - target: {fileID: 2385751861475456173, guid: 5d24661852ef41744a531e541f06625c, type: 3}
+      propertyPath: MixRecipe.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: e161963ce465fd4408ee9704e562c090, type: 2}
     - target: {fileID: 2385751861475456174, guid: 5d24661852ef41744a531e541f06625c, type: 3}
       propertyPath: m_Name
       value: InventoryManager

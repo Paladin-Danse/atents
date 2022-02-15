@@ -22,7 +22,7 @@ public class PlayerInteraction : MonoBehaviour
 
     void Start()
     {
-        InteractableLayer = 1 << LayerMask.NameToLayer("Interactable");
+        InteractableLayer = (1 << LayerMask.NameToLayer("Interactable")) + (1 << LayerMask.NameToLayer("Default"));
         b_OnInteraction = true;
     }
 
@@ -34,6 +34,12 @@ public class PlayerInteraction : MonoBehaviour
 
             if (Physics.Raycast(InteractionRay, out hit, f_InteractionRayDistance, InteractableLayer))
             {
+                if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Default"))
+                {
+                    UIManager.instance.OffInteractionUI();
+                    return;
+                }
+
                 UIManager.instance.OnInteractionUI();
                 
                 if(playerInput.InteractionKey)
@@ -45,7 +51,7 @@ public class PlayerInteraction : MonoBehaviour
                         {
                             if(InventoryManager.instance.SelectedItem.data.name == interObj.NeedItemCheck().Data.name)
                             {
-                                InventoryManager.instance.UseItem();
+                                InventoryManager.instance.UseItem(InventoryManager.instance.SelectedItem);
                                 interObj.Interaction();
                             }
                             else

@@ -16,8 +16,7 @@ MonoBehaviour:
     name: "\uADF8\uB9BC\uC885\uC774"
     Quantity: 1
     ItemSprite: {fileID: 21300000, guid: 710b807b0267f6d4984dee7bc39821a5, type: 3}
-    Durability: 0
-    Durability_Max: 0
+    Durability: 1
+    Durability_Max: 1
     Description: "\uC870\uC7A1\uD55C \uADF8\uB9BC. \uBB34\uC5B8\uAC00\uB97C \uC554\uC2DC\uD558\uB294
       \uB4EF \uD558\uC9C0\uB9CC, \uC54C\uC544\uBCF4\uAE30\uAC00 \uD798\uB4E4\uB2E4."
-    Interaction_Enable_Collider: {fileID: 0}

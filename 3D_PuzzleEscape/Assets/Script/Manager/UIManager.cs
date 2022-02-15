@@ -22,7 +22,9 @@ public class UIManager : MonoBehaviour
     private GameObject Content;
     [SerializeField] private GameObject ItemUI;
     [SerializeField] private GameObject SelectedUI;
+    [SerializeField] private GameObject SelectedMixUI;
     private RectTransform Select;
+    private RectTransform SelectMix;
     private List<ItemUI> itemUIList;
 
     private void Awake()
@@ -40,6 +42,16 @@ public class UIManager : MonoBehaviour
         else
         {
             Debug.Log("SelectedUI is Not Found!");
+        }
+
+        if (SelectedMixUI)
+        {
+            SelectMix = Instantiate(SelectedMixUI, Content.transform).GetComponent<RectTransform>();
+            SelectMix.gameObject.SetActive(false);
+        }
+        else
+        {
+            Debug.Log("SelectedMixUI is Not Found!");
         }
     }
 
@@ -86,9 +98,8 @@ public class UIManager : MonoBehaviour
         
         if (itemUI)
         {
-            //여기에 선택된 UI의 효과연출 입력
-            Select.transform.SetParent(itemUI.transform);
-            Select.transform.SetAsFirstSibling();
+            Select.SetParent(itemUI.transform);
+            Select.SetAsFirstSibling();
 
             Select.offsetMin = new Vector2(0, 0);
             Select.offsetMax = new Vector2(0, 0);
@@ -98,11 +109,29 @@ public class UIManager : MonoBehaviour
         {
             Debug.Log("itemUI is Not Found!");
         }
+        //아이템창의 스크롤바를 조작하는 코드. 스크롤바가 나타날 정도로 많은 아이템이 들어왔을 때만 작동.
         if (Inventory_Scroll.verticalScrollbar.IsActive())
         {
             List<ItemUI> items = itemUIList.FindAll(i => i.gameObject.activeSelf == true);
             float itemScrollValue = 1.0f - ((float)items.FindIndex(i => i == itemUI) / (float)(items.Count - 1));
             Inventory_Scroll.verticalScrollbar.value = itemScrollValue;
+        }
+    }
+    public void SelectMixUI()
+    {
+        if(Select.gameObject.activeSelf)
+        {
+            Debug.Log(Select.parent);
+            SelectMix.SetParent(Select.parent);
+            SelectMix.SetAsFirstSibling();
+
+            SelectMix.offsetMin = new Vector2(0, 0);
+            SelectMix.offsetMax = new Vector2(0, 0);
+            SelectMix.gameObject.SetActive(true);
+        }
+        else
+        {
+            Debug.Log("Select(RactTransfrom) is Not Active!!");
         }
     }
     public void SelectUIDisable()
