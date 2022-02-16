@@ -16,6 +16,11 @@ public struct Item
 [System.Serializable]
 public struct MixItem
 {
+    /*
+    public Item item1;
+    public Item item2;
+    public Item Mixeditem;
+    */
     public ItemData item1;
     public ItemData item2;
     public ItemData Mixeditem;

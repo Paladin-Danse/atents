@@ -17,7 +17,7 @@ public class InventoryManager : MonoBehaviour
         }
     }
     [SerializeField] private List<ItemData> itemDatas;
-    [SerializeField] private List<MixItemData> MixRecipe;
+    [SerializeField] private List<MixData> MixRecipe;
     [SerializeField] private List<InventoryItem> InventoryList;
     public InventoryItem SelectedItem { get; private set; }
     public InventoryItem SelectedMixItem { get; private set; }//조합하기 위해 선택된 아이템
@@ -56,6 +56,11 @@ public class InventoryManager : MonoBehaviour
         {
             ItemMixing();
         }
+        if(playerInput.ItemDescriptionKey)
+        {
+            Show_ItemDescription();
+        }
+        
     }
 
 
@@ -124,12 +129,16 @@ public class InventoryManager : MonoBehaviour
         {
             var mixitem = MixRecipe.Find(i => (i.Data.item1.Data.name == SelectedMixItem.data.name || i.Data.item2.Data.name == SelectedMixItem.data.name) &&
                                               (i.Data.item1.Data.name == SelectedItem.data.name || i.Data.item2.Data.name == SelectedItem.data.name));
-            if(mixitem)
+            if(mixitem && SelectedMixItem != SelectedItem)
             {
-
                 UseItem(SelectedItem);
                 UseItem(SelectedMixItem);
                 GetItem(mixitem.Data.Mixeditem);
+            }
+            else
+            {
+                SelectedMixItem = null;
+                UIManager.instance.SelectMixUIDisable();
             }
         }
         else
@@ -159,6 +168,13 @@ public class InventoryManager : MonoBehaviour
             UIManager.instance.ItemUIDisable(item);
 
             item = null;
+        }
+    }
+    public void Show_ItemDescription()
+    {
+        if(SelectedItem != null)
+        {
+            Debug.Log(SelectedItem.data.Description);
         }
     }
 }

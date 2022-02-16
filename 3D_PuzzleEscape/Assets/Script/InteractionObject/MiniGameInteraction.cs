@@ -51,7 +51,7 @@ public class MiniGameInteraction : InteractionObject
 
         b_OnMiniGame = false;
         InteractionEvent -= MiniGameStart;
-        gameObject.layer = 0;
+        gameObject.layer = 2;
         Mini_Cam.gameObject.SetActive(false);
     }
 

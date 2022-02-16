@@ -8,9 +8,4 @@ public class ItemData : ScriptableObject
     [SerializeField] Item data;
     public Item Data { get { return data; } }
 }
-[CreateAssetMenu(fileName = "MixData", menuName = "ScriptableObjects/MixItemData", order = 2)]
-public class MixItemData : ScriptableObject
-{
-    [SerializeField] MixItem data;
-    public MixItem Data { get { return data; } }
-}
+

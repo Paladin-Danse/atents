@@ -117,11 +117,14 @@ public class UIManager : MonoBehaviour
             Inventory_Scroll.verticalScrollbar.value = itemScrollValue;
         }
     }
+    public void SelectUIDisable()
+    {
+        Select.gameObject.SetActive(false);
+    }
     public void SelectMixUI()
     {
         if(Select.gameObject.activeSelf)
         {
-            Debug.Log(Select.parent);
             SelectMix.SetParent(Select.parent);
             SelectMix.SetAsFirstSibling();
 
@@ -134,9 +137,9 @@ public class UIManager : MonoBehaviour
             Debug.Log("Select(RactTransfrom) is Not Active!!");
         }
     }
-    public void SelectUIDisable()
+    public void SelectMixUIDisable()
     {
-        Select.gameObject.SetActive(false);
+        SelectMix.gameObject.SetActive(false);
     }
 
     public void OnInteractionUI()

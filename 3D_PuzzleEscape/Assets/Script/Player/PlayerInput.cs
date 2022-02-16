@@ -15,6 +15,7 @@ public class PlayerInput : MonoBehaviour
     private string InteractionKeyName = "Fire1";
     private string MixKeyName = "Mix";
     private string ItemSelectKeyName = "Mouse ScrollWheel";
+    private string ItemDescriptionKeyName = "Description";
     private string ActionCancelKeyName = "Cancel";
     private string CrouchKeyName = "Crouch";
     public float HorizontalMoveKey { get; private set; }
@@ -28,6 +29,7 @@ public class PlayerInput : MonoBehaviour
     public bool InteractionKey { get; private set; }
     public bool MixKey { get; private set; }
     public float ItemSelectKey { get; private set; }
+    public bool ItemDescriptionKey { get; private set; }
     public bool ActionCancelKey { get; private set; }
     public bool CrouchKey { get; private set; }
     private void Update()
@@ -43,6 +45,7 @@ public class PlayerInput : MonoBehaviour
         InteractionKey = Input.GetButtonDown(InteractionKeyName);
         MixKey = Input.GetButtonDown(MixKeyName);
         ItemSelectKey = Input.GetAxisRaw(ItemSelectKeyName);
+        ItemDescriptionKey = Input.GetButtonDown(ItemDescriptionKeyName);
         ActionCancelKey = Input.GetButtonDown(ActionCancelKeyName);
         CrouchKey = Input.GetButtonDown(CrouchKeyName);
     }
