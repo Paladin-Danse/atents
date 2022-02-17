@@ -16,6 +16,7 @@ public class InventoryManager : MonoBehaviour
             return m_instance;
         }
     }
+
     [SerializeField] private List<ItemData> itemDatas;
     [SerializeField] private List<MixData> MixRecipe;
     [SerializeField] private List<InventoryItem> InventoryList;
@@ -23,6 +24,7 @@ public class InventoryManager : MonoBehaviour
     public InventoryItem SelectedMixItem { get; private set; }//조합하기 위해 선택된 아이템
     private int SelectNum;
     private PlayerInput playerInput;
+    private bool b_OnInventoryInput;
     private void Awake()
     {
         playerInput = GameObject.Find("Player").GetComponent<PlayerInput>();
@@ -33,6 +35,7 @@ public class InventoryManager : MonoBehaviour
         SelectNum = 0;
         SelectedItem = null;
         SelectedMixItem = null;
+        b_OnInventoryInput = false;
 
         int i = 0;
         foreach(var data in itemDatas)
@@ -48,21 +51,26 @@ public class InventoryManager : MonoBehaviour
     }
     private void Update()
     {
-        if(playerInput.ItemSelectKey != 0)
+        if (b_OnInventoryInput)
+        {
+            InventoryInput();
+        }
+    }
+    private void InventoryInput()
+    {
+        if (playerInput.ItemSelectKey != 0)
         {
             SelectItem(playerInput.ItemSelectKey);
         }
-        if(playerInput.MixKey)
+        if (playerInput.MixKey)
         {
             ItemMixing();
         }
-        if(playerInput.ItemDescriptionKey)
+        if (playerInput.ItemDescriptionKey)
         {
             Show_ItemDescription();
         }
-        
     }
-
 
     public void GetItem(ItemData item)
     {
@@ -176,5 +184,20 @@ public class InventoryManager : MonoBehaviour
         {
             Debug.Log(SelectedItem.data.Description);
         }
+    }
+
+    public void LockInventory()
+    {
+        b_OnInventoryInput = true;
+    }
+    public void UnlockInventory()
+    {
+        b_OnInventoryInput = false;
+    }
+
+    public bool InventoryitemCheck(ItemData data)
+    {
+        var item = InventoryList.Find(i => i.data.Quantity > 0 && i.data.name == data.name);
+        return item != null ? true : false;
     }
 }

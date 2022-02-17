@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Script\InteractionObject\ItemInteraction.cs" />
+    <Compile Include="Assets\Script\MixData.cs" />
     <Compile Include="Assets\Script\InteractionObject\Safe.cs" />
     <Compile Include="Assets\Script\Item.cs" />
     <Compile Include="Assets\Script\ItemUI.cs" />
@@ -70,7 +71,9 @@
     <Compile Include="Assets\Script\Player\PlayerInteraction.cs" />
     <Compile Include="Assets\Script\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Script\InteractionObject\MiniGameInteraction.cs" />
-    <Compile Include="Assets\Script\MixData.cs" />
+    <Compile Include="Assets\Script\InteractionObject\MixPotion.cs" />
+    <Compile Include="Assets\Script\Flask.cs" />
+    <Compile Include="Assets\Script\Mini_Flask.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Morgue Room PBR\info_morgueroom.txt" />

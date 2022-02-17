@@ -34,6 +34,7 @@ public class MiniGameInteraction : InteractionObject
             if (GameManager.instance.playerInput && playerInput == null) playerInput = GameManager.instance.playerInput;
             GameManager.instance.playerInteraction.LockInteraction();
             GameManager.instance.playerMovement.LockMove();
+            InventoryManager.instance.LockInventory();
             UIManager.instance.UIDisable();
 
             b_OnMiniGame = true;
@@ -47,6 +48,7 @@ public class MiniGameInteraction : InteractionObject
 
         GameManager.instance.playerInteraction.UnlockInteraction();
         GameManager.instance.playerMovement.UnlockMove();
+        InventoryManager.instance.UnlockInventory();
         UIManager.instance.UIEnable();
 
         b_OnMiniGame = false;
@@ -59,6 +61,7 @@ public class MiniGameInteraction : InteractionObject
     {
         GameManager.instance.playerInteraction.UnlockInteraction();
         GameManager.instance.playerMovement.UnlockMove();
+        InventoryManager.instance.UnlockInventory();
         UIManager.instance.UIEnable();
 
         b_OnMiniGame = false;

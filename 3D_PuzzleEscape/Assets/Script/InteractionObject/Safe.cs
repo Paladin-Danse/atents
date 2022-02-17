@@ -15,12 +15,7 @@ public class Safe : MiniGameInteraction
     private bool b_OnDialMove;
     private int Dial_Iter;
     private Vector3 Direction = Vector3.zero;
-    
     private int Dial_MoveCnt = 0;
-    //private int Dial_RightMoveCnt = 0;
-
-
-
 
     [SerializeField] protected float f_MoveSpeed;
     
