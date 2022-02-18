@@ -293,6 +293,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1324397217865496, guid: 63bc87997658c4bcc8bc204d70a7ffd1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1842033224559982, guid: 63bc87997658c4bcc8bc204d70a7ffd1, type: 3}
       propertyPath: m_Name
       value: Flask_03_A
@@ -359,9 +363,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4382071207951264, guid: 63bc87997658c4bcc8bc204d70a7ffd1, type: 3}
       propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 23636698125847310, guid: 63bc87997658c4bcc8bc204d70a7ffd1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0fd2e98eeb2ffb546a0e7438ef1d6458, type: 2}
+    - target: {fileID: 821820567444226630, guid: 63bc87997658c4bcc8bc204d70a7ffd1, type: 3}
+      propertyPath: m_Range
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 821820567444226630, guid: 63bc87997658c4bcc8bc204d70a7ffd1, type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 821820567444226630, guid: 63bc87997658c4bcc8bc204d70a7ffd1, type: 3}
+      propertyPath: m_Intensity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 821820567444226630, guid: 63bc87997658c4bcc8bc204d70a7ffd1, type: 3}
+      propertyPath: m_BounceIntensity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4828084241533399680, guid: 63bc87997658c4bcc8bc204d70a7ffd1, type: 3}
+      propertyPath: m_Size
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4828084241533399680, guid: 63bc87997658c4bcc8bc204d70a7ffd1, type: 3}
+      propertyPath: m_Color.rgba
+      value: 4278255615
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6513649832835553731, guid: 63bc87997658c4bcc8bc204d70a7ffd1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 63bc87997658c4bcc8bc204d70a7ffd1, type: 3}
 --- !u!1 &646948704 stripped
 GameObject:
@@ -629,12 +662,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bc440d7abbf55949831a72491587d42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NeedItem: {fileID: 0}
-  Mini_Cam: {fileID: 0}
-  Flasks: []
-  GreenPotion_Requid_Mat: {fileID: 0}
-  RedPotion_Requid_Mat: {fileID: 0}
-  BluePotion_Requid_Mat: {fileID: 0}
+  NeedItem: {fileID: 11400000, guid: 80093fa0ab7724f459a7d7d9b546e555, type: 2}
+  Mini_Cam: {fileID: 2063708096}
+  Flasks:
+  - {fileID: 646948705}
+  - {fileID: 1064202517}
+  - {fileID: 1491727484}
+  SelectHalo: {fileID: 8204601612718569675, guid: 700bbe17783fbdd429e836c6d2e45495, type: 3}
+  SelectMixHalo: {fileID: 6036505634373639381, guid: d1e9ce2b3c3d01e4dbe289e88e96e332, type: 3}
+  GreenPotion_Requid_Mat: {fileID: 2100000, guid: 8c8d5f7a2bc3c4622a9aa9d96a6df9f1, type: 2}
+  RedPotion_Requid_Mat: {fileID: 2100000, guid: 0e9e5635881a92c428513bf03ae0e4fe, type: 2}
+  BluePotion_Requid_Mat: {fileID: 2100000, guid: a44088fee36e52b41b82cf20d61c6c39, type: 2}
 --- !u!1001 &762182575
 PrefabInstance:
   m_ObjectHideFlags: 0

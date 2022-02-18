@@ -8,6 +8,10 @@ public class MixPotion : MiniGameInteraction
     [SerializeField] private List<Mini_Flask> Flasks;
     private Mini_Flask SelectedMixFlask;
     private int SelectFlask_Num;
+    [SerializeField] private GameObject SelectHalo;
+    [SerializeField] private GameObject SelectMixHalo;
+    private GameObject halo;
+    private GameObject mixhalo;
 
     private ItemData GreenPotion;
     [SerializeField] private Material GreenPotion_Requid_Mat;
@@ -24,31 +28,31 @@ public class MixPotion : MiniGameInteraction
 
         SelectFlask_Num = 0;
         SelectedMixFlask = null;
+        halo = Instantiate(SelectHalo, transform);
+        halo.SetActive(false);
+        mixhalo = Instantiate(SelectMixHalo, transform);
+        mixhalo.SetActive(false);
+
+        MiniGameCancel += MixPotion_Cancel;
     }
 
     private new void Update()
     {
         base.Update();
-        int Num = 0;
 
-        if(playerInput.Mini_LeftKey)
+        if (b_OnMiniGame)
         {
-            Num--;
-        }
-        if(playerInput.Mini_RightKey)
-        {
-            Num++;
-        }
-        
-        if(playerInput.Mini_LeftKey || playerInput.Mini_RightKey)
-        {
-            SelectFlask_Num = (Mathf.Clamp(SelectFlask_Num + Num, 0, Flasks.Count - 1));
-            SelectFlask();
-        }
+            if (playerInput.Mini_LeftKey || playerInput.Mini_RightKey)
+            {
+                int Num = playerInput.Mini_LeftKey ? -1 : playerInput.Mini_RightKey ? 1 : 0;//왼쪽키를 누른거면 -1을 오른쪽키를 누른거면 +1값을 준다. 이도저도 아닌 값인데 들어온 혹시 모를 상황이면 0을 준다.
+                SelectFlask_Num = (Mathf.Clamp(SelectFlask_Num + Num, 0, Flasks.Count - 1));
+                SelectFlask();
+            }
 
-        if(playerInput.MixKey)
-        {
-            SelectMixFlask();
+            if (playerInput.MixKey)
+            {
+                SelectMixFlask();
+            }
         }
     }
 
@@ -72,17 +76,21 @@ public class MixPotion : MiniGameInteraction
 
     private void SelectFlask()
     {
-        
+        Active_halo(halo);
     }
     private void SelectMixFlask()
     {
         if(SelectedMixFlask != null)
         {
-
+            mixhalo.SetActive(false);
+            Mix();
+            SelectedMixFlask = null;
         }
         else
         {
+            SelectedMixFlask = Flasks[SelectFlask_Num];
 
+            Active_halo(mixhalo);
         }
     }
 
@@ -112,5 +120,20 @@ public class MixPotion : MiniGameInteraction
     private void Mini_OffUI()
     {
 
+    }
+    private void Active_halo(GameObject halo)
+    {
+        halo.transform.SetParent(Flasks[SelectFlask_Num].gameObject.transform);
+        halo.transform.SetAsFirstSibling();
+        halo.transform.localPosition = new Vector3(0.0f, 0.25f, 0.0f);
+        halo.transform.localRotation = Quaternion.identity;
+
+        halo.SetActive(true);
+    }
+
+    private void MixPotion_Cancel()
+    {
+        halo.SetActive(false);
+        mixhalo.SetActive(false);
     }
 }

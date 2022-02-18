@@ -35,7 +35,7 @@ public class InventoryManager : MonoBehaviour
         SelectNum = 0;
         SelectedItem = null;
         SelectedMixItem = null;
-        b_OnInventoryInput = false;
+        b_OnInventoryInput = true;
 
         int i = 0;
         foreach(var data in itemDatas)
@@ -188,11 +188,11 @@ public class InventoryManager : MonoBehaviour
 
     public void LockInventory()
     {
-        b_OnInventoryInput = true;
+        b_OnInventoryInput = false;
     }
     public void UnlockInventory()
     {
-        b_OnInventoryInput = false;
+        b_OnInventoryInput = true;
     }
 
     public bool InventoryitemCheck(ItemData data)
