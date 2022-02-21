@@ -195,9 +195,14 @@ public class InventoryManager : MonoBehaviour
         b_OnInventoryInput = true;
     }
 
-    public bool InventoryitemCheck(ItemData data)
+    public InventoryItem InventoryitemCheck(ItemData data)
     {
-        var item = InventoryList.Find(i => i.data.Quantity > 0 && i.data.name == data.name);
-        return item != null ? true : false;
+        if (data != null)
+        {
+            var item = InventoryList.Find(i => i.data.Quantity > 0 && i.data.name == data.Data.name);
+            return item;
+        }
+        else
+            return null;
     }
 }

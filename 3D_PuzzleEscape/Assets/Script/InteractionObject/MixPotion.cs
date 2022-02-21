@@ -13,14 +13,14 @@ public class MixPotion : MiniGameInteraction
     private GameObject halo;
     private GameObject mixhalo;
 
-    private ItemData GreenPotion;
+    [SerializeField] private ItemData GreenPotion;
     [SerializeField] private Material GreenPotion_Requid_Mat;
-    private ItemData RedPotion;
+    [SerializeField] private ItemData RedPotion;
     [SerializeField] private Material RedPotion_Requid_Mat;
-    private ItemData BluePotion;
+    [SerializeField] private ItemData BluePotion;
     [SerializeField] private Material BluePotion_Requid_Mat;
 
-    [SerializeField] private Dictionary<InventoryItem, int> PotionRecipe;
+    [SerializeField] private Dictionary<InventoryItem, int>[] PotionRecipe;
 
     private new void Start()
     {
@@ -34,6 +34,7 @@ public class MixPotion : MiniGameInteraction
         mixhalo.SetActive(false);
 
         MiniGameCancel += MixPotion_Cancel;
+        InteractionEvent += MiniGameStart;
     }
 
     private new void Update()
@@ -60,17 +61,18 @@ public class MixPotion : MiniGameInteraction
     {
         base.MiniGameStart();
 
-        if (InventoryManager.instance.InventoryitemCheck(GreenPotion))
-        {
+        UIManager.instance.On_MiniUI();
+        
+        PotionUICheck(InventoryManager.instance.InventoryitemCheck(GreenPotion));
+        PotionUICheck(InventoryManager.instance.InventoryitemCheck(RedPotion));
+        PotionUICheck(InventoryManager.instance.InventoryitemCheck(BluePotion));
+    }
 
-        }
-        if (InventoryManager.instance.InventoryitemCheck(RedPotion))
+    private void PotionUICheck(InventoryItem item)
+    {
+        if (item != null)
         {
-
-        }
-        if (InventoryManager.instance.InventoryitemCheck(BluePotion))
-        {
-
+            UIManager.instance.MixPotionUICheck(item.data.name);
         }
     }
 
@@ -115,11 +117,11 @@ public class MixPotion : MiniGameInteraction
 
     private void Mini_OnUI()
     {
-
+        
     }
     private void Mini_OffUI()
     {
-
+        UIManager.instance.Off_MiniUI();
     }
     private void Active_halo(GameObject halo)
     {
@@ -135,5 +137,6 @@ public class MixPotion : MiniGameInteraction
     {
         halo.SetActive(false);
         mixhalo.SetActive(false);
+        Mini_OffUI();
     }
 }

@@ -19,6 +19,7 @@ public class UIManager : MonoBehaviour
     }
     [SerializeField] private Image InteractUI;
     [SerializeField] private ScrollRect Inventory_Scroll;
+    [SerializeField] private GameObject MiniGameUI;
     private GameObject Content;
     [SerializeField] private GameObject ItemUI;
     [SerializeField] private GameObject SelectedUI;
@@ -27,10 +28,18 @@ public class UIManager : MonoBehaviour
     private RectTransform SelectMix;
     private List<ItemUI> itemUIList;
 
+    private Image GreenPotion_Chk;
+    private Image RedPotion_Chk;
+    private Image BluePotion_Chk;
+
     private void Awake()
     {
         Content = Inventory_Scroll.transform.Find("Viewport/Content").gameObject;
         itemUIList = new List<ItemUI>();
+
+        GreenPotion_Chk = MiniGameUI.transform.Find("MixPotionUI").Find("GreenPotion").Find("Empty").GetComponent<Image>();
+        RedPotion_Chk = MiniGameUI.transform.Find("MixPotionUI").Find("RedPotion").Find("Empty").GetComponent<Image>();
+        BluePotion_Chk = MiniGameUI.transform.Find("MixPotionUI").Find("BluePotion").Find("Empty").GetComponent<Image>();
     }
     private void Start()
     {
@@ -53,6 +62,9 @@ public class UIManager : MonoBehaviour
         {
             Debug.Log("SelectedMixUI is Not Found!");
         }
+
+        UIEnable();
+        Off_MiniUI();
     }
 
 
@@ -162,5 +174,36 @@ public class UIManager : MonoBehaviour
     {
         InteractUI.gameObject.SetActive(true);
         Inventory_Scroll.gameObject.SetActive(true);
+    }
+
+    public void On_MiniUI()
+    {
+        MiniGameUI.SetActive(true);
+    }
+    public void Off_MiniUI()
+    {
+        MiniGameUI.SetActive(false);
+    }
+
+    public void MixPotionUICheck(string name)
+    {
+        if(name == "녹색물약")
+        {
+            GreenPotion_Chk.gameObject.SetActive(false);
+        }
+        else if(name == "빨간물약")
+        {
+            RedPotion_Chk.gameObject.SetActive(false);
+        }
+        else if (name == "파란물약")
+        {
+            BluePotion_Chk.gameObject.SetActive(false);
+        }
+        else
+        {
+#if UNITY_EDITOR
+            Debug.Log("Error(UIManager.MixPotionUICheck) : The name of that UI could not be found.");
+#endif
+        }
     }
 }
