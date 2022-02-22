@@ -7,7 +7,6 @@ public struct FlaskData
 {
     public int Flask_Size;
     public int Liquid_Amount;
-    public Material Liquid;
 }
 
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/Flask", order = 1)]

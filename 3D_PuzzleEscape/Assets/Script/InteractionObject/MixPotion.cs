@@ -14,11 +14,11 @@ public class MixPotion : MiniGameInteraction
     private GameObject mixhalo;
 
     [SerializeField] private ItemData GreenPotion;
-    [SerializeField] private Material GreenPotion_Requid_Mat;
+    [SerializeField] private Material GreenPotion_Liquid_Mat;
     [SerializeField] private ItemData RedPotion;
-    [SerializeField] private Material RedPotion_Requid_Mat;
+    [SerializeField] private Material RedPotion_Liquid_Mat;
     [SerializeField] private ItemData BluePotion;
-    [SerializeField] private Material BluePotion_Requid_Mat;
+    [SerializeField] private Material BluePotion_Liquid_Mat;
 
     [SerializeField] private Dictionary<InventoryItem, int>[] PotionRecipe;
 
@@ -54,6 +54,23 @@ public class MixPotion : MiniGameInteraction
             {
                 SelectMixFlask();
             }
+            if(playerInput.Mini_Num1Key || playerInput.Mini_Num2Key || playerInput.Mini_Num3Key)
+            {
+                Material liquid = null;
+                if(playerInput.Mini_Num1Key)
+                {
+                    liquid = GreenPotion_Liquid_Mat;
+                }
+                else if(playerInput.Mini_Num2Key)
+                {
+                    liquid = RedPotion_Liquid_Mat;
+                }
+                else if(playerInput.Mini_Num3Key)
+                {
+                    liquid = BluePotion_Liquid_Mat;
+                }
+                if(liquid != null) Put_the_Potion(liquid);
+            }
         }
     }
 
@@ -62,7 +79,8 @@ public class MixPotion : MiniGameInteraction
         base.MiniGameStart();
 
         UIManager.instance.On_MiniUI();
-        
+        Active_halo(halo);
+
         PotionUICheck(InventoryManager.instance.InventoryitemCheck(GreenPotion));
         PotionUICheck(InventoryManager.instance.InventoryitemCheck(RedPotion));
         PotionUICheck(InventoryManager.instance.InventoryitemCheck(BluePotion));
@@ -96,9 +114,11 @@ public class MixPotion : MiniGameInteraction
         }
     }
 
-    private void Put_the_Potion()
+    private void Put_the_Potion(Material liquid)
     {
-
+        int emptySize = Flasks[SelectFlask_Num].EmptyAmountCheck();
+        
+        Flasks[SelectFlask_Num].Liquid_Change(liquid, emptySize);
     }
     private void Mix()
     {
