@@ -206,4 +206,26 @@ public class UIManager : MonoBehaviour
 #endif
         }
     }
+    public bool MixPotionUIOnOffCheck(string name)
+    {
+        if(name == "녹색물약")
+        {
+            return !GreenPotion_Chk.gameObject.activeSelf;
+        }
+        else if (name == "빨간물약")
+        {
+            return !RedPotion_Chk.gameObject.activeSelf;
+        }
+        else if (name == "파란물약")
+        {
+            return !BluePotion_Chk.gameObject.activeSelf;
+        }
+        else
+        {
+#if UNITY_EDITOR
+            Debug.Log("Error(UIManager.MixPotionUIOnOffCheck) : The name of that UI could not be found.");
+#endif
+            return false;
+        }
+    }
 }

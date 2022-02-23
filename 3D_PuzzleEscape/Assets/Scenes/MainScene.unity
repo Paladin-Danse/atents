@@ -870,6 +870,8 @@ MonoBehaviour:
   RedPotion_Liquid_Mat: {fileID: 2100000, guid: 0e9e5635881a92c428513bf03ae0e4fe, type: 2}
   BluePotion: {fileID: 11400000, guid: 2a07386f56604ef4f8de744372993ad8, type: 2}
   BluePotion_Liquid_Mat: {fileID: 2100000, guid: a44088fee36e52b41b82cf20d61c6c39, type: 2}
+  Potion_Fail_Mat: {fileID: 2100000, guid: 326d1c77178e5c1469565856f95efb11, type: 2}
+  Potion_Success_Mat: {fileID: 2100000, guid: 0fd2e98eeb2ffb546a0e7438ef1d6458, type: 2}
 --- !u!1001 &762182575
 PrefabInstance:
   m_ObjectHideFlags: 0

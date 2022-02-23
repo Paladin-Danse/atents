@@ -19,6 +19,8 @@ public class MixPotion : MiniGameInteraction
     [SerializeField] private Material RedPotion_Liquid_Mat;
     [SerializeField] private ItemData BluePotion;
     [SerializeField] private Material BluePotion_Liquid_Mat;
+    [SerializeField] private Material Potion_Fail_Mat;
+    [SerializeField] private Material Potion_Success_Mat;
 
     [SerializeField] private Dictionary<InventoryItem, int>[] PotionRecipe;
 
@@ -57,19 +59,23 @@ public class MixPotion : MiniGameInteraction
             if(playerInput.Mini_Num1Key || playerInput.Mini_Num2Key || playerInput.Mini_Num3Key)
             {
                 Material liquid = null;
+                bool On_PotionUI = false;
                 if(playerInput.Mini_Num1Key)
                 {
                     liquid = GreenPotion_Liquid_Mat;
+                    On_PotionUI = UIManager.instance.MixPotionUIOnOffCheck("녹색물약");
                 }
                 else if(playerInput.Mini_Num2Key)
                 {
                     liquid = RedPotion_Liquid_Mat;
+                    On_PotionUI = UIManager.instance.MixPotionUIOnOffCheck("빨간물약");
                 }
                 else if(playerInput.Mini_Num3Key)
                 {
                     liquid = BluePotion_Liquid_Mat;
+                    On_PotionUI = UIManager.instance.MixPotionUIOnOffCheck("파란물약");
                 }
-                if(liquid != null) Put_the_Potion(liquid);
+                if(liquid != null && On_PotionUI) Put_the_Potion(liquid);
             }
         }
     }
@@ -109,7 +115,6 @@ public class MixPotion : MiniGameInteraction
         else
         {
             SelectedMixFlask = Flasks[SelectFlask_Num];
-
             Active_halo(mixhalo);
         }
     }
@@ -122,9 +127,19 @@ public class MixPotion : MiniGameInteraction
     }
     private void Mix()
     {
+        if(SelectedMixFlask != null && Flasks[SelectFlask_Num].EmptyAmountCheck() != 0)
+        {
+            if(SelectedMixFlask.EmptyAmountCheck() != SelectedMixFlask.GetSize())
+            {
+                //옮길 물약의 량 = (담고 싶은 플라스크의 빈 공간) > (선택된 플라스크의 물약의 량) 일 때, 작은 쪽이 옮길 물약의 량이 됨.
+                int newAmount = Flasks[SelectFlask_Num].EmptyAmountCheck() > (SelectedMixFlask.GetSize() - SelectedMixFlask.EmptyAmountCheck()) ?
+                    (SelectedMixFlask.GetSize() - SelectedMixFlask.EmptyAmountCheck()) : Flasks[SelectFlask_Num].EmptyAmountCheck();
 
+                Flasks[SelectFlask_Num].Liquid_Change(Potion_Fail_Mat, newAmount);//현재 옮길 물약의 Material은 Potion_Fail_Mat으로 고정됨. 나중에 레시피가 추가되면 수정필요.
+                SelectedMixFlask.Liquid_Drain(newAmount);
+            }
+        }
     }
-
     private void MixSuccess()
     {
 
@@ -135,21 +150,12 @@ public class MixPotion : MiniGameInteraction
 
     }
 
-    private void Mini_OnUI()
-    {
-        
-    }
-    private void Mini_OffUI()
-    {
-        UIManager.instance.Off_MiniUI();
-    }
     private void Active_halo(GameObject halo)
     {
         halo.transform.SetParent(Flasks[SelectFlask_Num].gameObject.transform);
         halo.transform.SetAsFirstSibling();
-        halo.transform.localPosition = new Vector3(0.0f, 0.25f, 0.0f);
+        halo.transform.localPosition = new Vector3(0.1f, 0.25f, 0.0f);
         halo.transform.localRotation = Quaternion.identity;
-
         halo.SetActive(true);
     }
 
@@ -157,6 +163,6 @@ public class MixPotion : MiniGameInteraction
     {
         halo.SetActive(false);
         mixhalo.SetActive(false);
-        Mini_OffUI();
+        UIManager.instance.Off_MiniUI();
     }
 }
