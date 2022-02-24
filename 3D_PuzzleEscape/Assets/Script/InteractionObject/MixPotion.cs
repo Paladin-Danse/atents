@@ -22,7 +22,9 @@ public class MixPotion : MiniGameInteraction
     [SerializeField] private Material Potion_Fail_Mat;
     [SerializeField] private Material Potion_Success_Mat;
 
-    [SerializeField] private Dictionary<InventoryItem, int>[] PotionRecipe;
+    private Dictionary<Material, int> PotionRecipe = new Dictionary<Material, int>();
+    [SerializeField] private Material[] PotionRecipe_liquid;
+    [SerializeField] private int[] PotionRecipe_Amount;
 
     private new void Start()
     {
@@ -37,6 +39,11 @@ public class MixPotion : MiniGameInteraction
 
         MiniGameCancel += MixPotion_Cancel;
         InteractionEvent += MiniGameStart;
+
+        for (int i = 0; i < PotionRecipe_liquid.Length; i++)
+        {
+            PotionRecipe.Add(PotionRecipe_liquid[i], PotionRecipe_Amount[i]);
+        }
     }
 
     private new void Update()
@@ -121,24 +128,53 @@ public class MixPotion : MiniGameInteraction
 
     private void Put_the_Potion(Material liquid)
     {
-        int emptySize = Flasks[SelectFlask_Num].EmptyAmountCheck();
-        
-        Flasks[SelectFlask_Num].Liquid_Change(liquid, emptySize);
+        int emptySize = Flasks[SelectFlask_Num].EmptyAmount();
+
+        Dictionary<Material, int> plusLiquid = new Dictionary<Material, int>();
+        plusLiquid.Add(liquid, emptySize);
+        Flasks[SelectFlask_Num].Liquid_FillUp(emptySize, plusLiquid);
+
+        if (Flasks[SelectFlask_Num].GetSize() == emptySize || Flasks[SelectFlask_Num].GetLiquid() == liquid)
+            Flasks[SelectFlask_Num].Liquid_Change(liquid);
+        else
+            Flasks[SelectFlask_Num].Liquid_Change(Get_MixCheck(Flasks[SelectFlask_Num]));
     }
     private void Mix()
     {
-        if(SelectedMixFlask != null && Flasks[SelectFlask_Num].EmptyAmountCheck() != 0)
+        if(SelectedMixFlask != null && Flasks[SelectFlask_Num].EmptyAmount() != 0)
         {
-            if(SelectedMixFlask.EmptyAmountCheck() != SelectedMixFlask.GetSize())
+            if(SelectedMixFlask.EmptyAmount() != SelectedMixFlask.GetSize())
             {
                 //옮길 물약의 량 = (담고 싶은 플라스크의 빈 공간) > (선택된 플라스크의 물약의 량) 일 때, 작은 쪽이 옮길 물약의 량이 됨.
-                int newAmount = Flasks[SelectFlask_Num].EmptyAmountCheck() > (SelectedMixFlask.GetSize() - SelectedMixFlask.EmptyAmountCheck()) ?
-                    (SelectedMixFlask.GetSize() - SelectedMixFlask.EmptyAmountCheck()) : Flasks[SelectFlask_Num].EmptyAmountCheck();
+                int newAmount = Flasks[SelectFlask_Num].EmptyAmount() > (SelectedMixFlask.GetSize() - SelectedMixFlask.EmptyAmount()) ?
+                    (SelectedMixFlask.GetSize() - SelectedMixFlask.EmptyAmount()) : Flasks[SelectFlask_Num].EmptyAmount();
 
-                Flasks[SelectFlask_Num].Liquid_Change(Potion_Fail_Mat, newAmount);//현재 옮길 물약의 Material은 Potion_Fail_Mat으로 고정됨. 나중에 레시피가 추가되면 수정필요.
+                Flasks[SelectFlask_Num].Liquid_FillUp(newAmount, SelectedMixFlask.Get_Potion_Mixture());
                 SelectedMixFlask.Liquid_Drain(newAmount);
+
+                if (Flasks[SelectFlask_Num].GetSize() == Flasks[SelectFlask_Num].EmptyAmount() || Flasks[SelectFlask_Num].GetLiquid() == SelectedMixFlask.GetLiquid())
+                    Flasks[SelectFlask_Num].Liquid_Change(SelectedMixFlask.GetLiquid());
+                else
+                    Flasks[SelectFlask_Num].Liquid_Change(Get_MixCheck(Flasks[SelectFlask_Num]));
+
+                //Flasks[SelectFlask_Num].Liquid_Change(Potion_Fail_Mat, newAmount);//현재 옮길 물약의 Material은 Potion_Fail_Mat으로 고정됨. 나중에 레시피가 추가되면 수정필요.
             }
         }
+    }
+
+    private Material Get_MixCheck(Mini_Flask flask)
+    {
+        var mixture = flask.Get_Potion_Mixture();
+
+        foreach(Material Key in mixture.Keys)
+        {
+            if(mixture[Key] != PotionRecipe[Key])
+            {
+                return Potion_Fail_Mat;
+            }
+        }
+
+        return Potion_Success_Mat;
     }
     private void MixSuccess()
     {
