@@ -7,6 +7,7 @@ public class Mini_Flask : MonoBehaviour
     [SerializeField] private Flask ScrObjdata;
     private GameObject LiquidObj;
     private Renderer Liquid_Renderer;
+    private Material Liquid_Type;
     private Dictionary<Material, float> Mixed_Liquid = new Dictionary<Material, float>();
     private int Size;
     private float Amount;
@@ -17,6 +18,7 @@ public class Mini_Flask : MonoBehaviour
     {
         LiquidObj = transform.Find("F_Liquid_03").gameObject;
         Liquid_Renderer = LiquidObj.GetComponent<Renderer>();
+        Liquid_Type = null;
         Size = ScrObjdata.Data.Flask_Size;
         Amount = ScrObjdata.Data.Liquid_Amount;
     }
@@ -30,26 +32,24 @@ public class Mini_Flask : MonoBehaviour
 
         Amount = Mathf.Clamp(Amount - newAmount, 0, Size);
 
-        if(Amount > 0)
+        List<Material> keys = new List<Material>(Mixed_Liquid.Keys);
+
+        foreach(Material iter in keys)
         {
-            List<Material> keys = new List<Material>(Mixed_Liquid.Keys);
+            float tempAmount = Mixed_Liquid[iter] * temp;
+            float DrainAmount = Mixed_Liquid[iter] * (1 - temp);
 
-            foreach(Material iter in keys)
-            {
-                float tempAmount = Mixed_Liquid[iter] * temp;
-                float DrainAmount = Mixed_Liquid[iter] * (1 - temp);
-
-                Mixed_Liquid[iter] = tempAmount;
-                DrainLiquid.Add(iter, DrainAmount);
-                Debug.Log(gameObject.name + " : (" + iter + ", " + Mixed_Liquid[iter] + ")");
-            }
+            Mixed_Liquid[iter] = tempAmount;
+            DrainLiquid.Add(iter, DrainAmount);
+            //Debug.Log(gameObject.name + " : (" + iter + ", " + Mixed_Liquid[iter] + ")");
         }
+        /*
         else
         {
             DrainLiquid = Mixed_Liquid;
             Mixed_Liquid.Clear();
         }
-
+        */
         if (Get_Amount_Court == null)
         {
             Get_Amount_Court = Getting_Liquid();
@@ -59,7 +59,7 @@ public class Mini_Flask : MonoBehaviour
     }
     public void Liquid_FillUp(float newAmount, Dictionary<Material, float> mixture)
     {
-        if (Amount >= 1) return;
+        if (Amount >= Size) return;
 
         if(Amount <= 0)
         {
@@ -78,8 +78,7 @@ public class Mini_Flask : MonoBehaviour
             {
                 Mixed_Liquid[key] += mixture[key];
             }
-
-            Debug.Log(gameObject.name + " : (" + key + ", " + Mixed_Liquid[key] + ")");
+            //Debug.Log(gameObject.name + " : (" + key + ", " + Mixed_Liquid[key] + ")");
         }
 
         if (Get_Amount_Court == null)
@@ -91,6 +90,7 @@ public class Mini_Flask : MonoBehaviour
 
     public void Liquid_Change(Material newLiquid)
     {
+        Liquid_Type = newLiquid;
         if (Get_Liquid_Court == null)
         {
             Get_Liquid_Court = Getting_Liquid(newLiquid);
@@ -112,7 +112,6 @@ public class Mini_Flask : MonoBehaviour
         }
         Get_Liquid_Court = null;
     }
-
     private IEnumerator Getting_Liquid()
     {
         float t = 0;
@@ -143,6 +142,6 @@ public class Mini_Flask : MonoBehaviour
     }
     public Material GetLiquid()
     {
-        return Liquid_Renderer.material;
+        return Liquid_Type;
     }
 }

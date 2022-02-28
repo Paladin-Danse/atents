@@ -161,14 +161,17 @@ public class MixPotion : MiniGameInteraction
                 //옮길 물약의 량 = (담고 싶은 플라스크의 빈 공간) > (선택된 플라스크의 물약의 량) 일 때, 작은 쪽이 옮길 물약의 량이 됨.
                 float newAmount = flask.EmptyAmount() > (SelectedMixFlask.GetSize() - SelectedMixFlask.EmptyAmount()) ?
                     (SelectedMixFlask.GetSize() - SelectedMixFlask.EmptyAmount()) : flask.EmptyAmount();
+                float flaskEptAmount = flask.EmptyAmount();
 
                 var DrainLiquid = SelectedMixFlask.Liquid_Drain(newAmount);
                 flask.Liquid_FillUp(newAmount, DrainLiquid);
-                
-                if (flask.GetSize() == flask.EmptyAmount() || flask.GetLiquid() == SelectedMixFlask.GetLiquid())
+
+                if (flask.GetSize() == flaskEptAmount || flask.GetLiquid() == SelectedMixFlask.GetLiquid())
                     flask.Liquid_Change(SelectedMixFlask.GetLiquid());
                 else
+                {
                     flask.Liquid_Change(Get_MixCheck(flask.Get_Potion_Mixture()));
+                }
 
                 //Flasks[SelectFlask_Num].Liquid_Change(Potion_Fail_Mat, newAmount);//현재 옮길 물약의 Material은 Potion_Fail_Mat으로 고정됨. 나중에 레시피가 추가되면 수정필요.
             }
@@ -177,15 +180,39 @@ public class MixPotion : MiniGameInteraction
 
     private Material Get_MixCheck(Dictionary<Material, float> mixture)
     {
-        foreach(Material Key in mixture.Keys)
+        if (mixture.Count <= 0) return Potion_Fail_Mat;
+        var tempRecipe = new Dictionary<Material, float>(PotionRecipe);
+
+        //디버깅 코드 버그 해결시 삭제
+        Debug.Log("플라스크의 포션조합 : ");
+        foreach (Material Key in mixture.Keys)
         {
-            if(mixture[Key] != PotionRecipe[Key])
+            Debug.Log(Key + ", " + mixture[Key]);
+        }
+        Debug.Log("금속용해액(복사본)의 포션조합 : ");
+        foreach (Material Key in tempRecipe.Keys)
+        {
+            Debug.Log(Key + ", " + tempRecipe[Key]);
+        }
+
+        foreach (Material Key in mixture.Keys)
+        {
+            if(!tempRecipe.ContainsKey(Key))
             {
                 return Potion_Fail_Mat;
             }
+
+            if (!mixture[Key].Equals(tempRecipe[Key]))
+            {
+                return Potion_Fail_Mat;
+            }
+            tempRecipe.Remove(Key);
         }
 
-        return Potion_Success_Mat;
+        if (tempRecipe.Count <= 0)
+            return Potion_Success_Mat;
+        else
+            return Potion_Fail_Mat;
     }
     private void MixSuccess()
     {
