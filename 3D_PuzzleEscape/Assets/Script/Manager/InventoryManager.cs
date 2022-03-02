@@ -178,11 +178,39 @@ public class InventoryManager : MonoBehaviour
             item = null;
         }
     }
+    public void LostItem(string itemname)
+    {
+        var item = InventoryList.Find(i => i.data.name == itemname);
+
+        if (item != null)
+        {
+            if (item.data.Quantity >= 0)
+            {
+                item.data.Quantity = 0;
+                item.data.Durability = item.data.Durability_Max;
+
+                SelectNum = 0;
+                UIManager.instance.SelectUIDisable();
+                UIManager.instance.ItemUIDisable(item);
+
+                item = null;
+            }
+        }
+        else
+        {
+#if UNITY_EDITOR
+            Debug.Log("'LostItem(string itemname)' In Error : Not Found item!");
+#endif
+        }
+    }
+
     public void Show_ItemDescription()
     {
         if(SelectedItem != null)
         {
+#if UNITY_EDITOR
             Debug.Log(SelectedItem.data.Description);
+#endif
         }
     }
 

@@ -13,12 +13,15 @@ public class Mini_Flask : MonoBehaviour
     private float Amount;
     private IEnumerator Get_Liquid_Court = null;
     private IEnumerator Get_Amount_Court = null;
-    
+
+    public bool b_OnGettingLiquid { get; private set; }
     private void Awake()
     {
         LiquidObj = transform.Find("F_Liquid_03").gameObject;
         Liquid_Renderer = LiquidObj.GetComponent<Renderer>();
         Liquid_Type = null;
+        b_OnGettingLiquid = false;
+
         Size = ScrObjdata.Data.Flask_Size;
         Amount = ScrObjdata.Data.Liquid_Amount;
     }
@@ -100,6 +103,8 @@ public class Mini_Flask : MonoBehaviour
 
     private IEnumerator Getting_Liquid(Material newLiquid)
     {
+        
+
         float t = 0;
         var oldLiquid = Liquid_Renderer.material;
 
@@ -114,6 +119,8 @@ public class Mini_Flask : MonoBehaviour
     }
     private IEnumerator Getting_Liquid()
     {
+        b_OnGettingLiquid = true;
+
         float t = 0;
         var oldScale = LiquidObj.transform.localScale;
         var newScale = new Vector3(LiquidObj.transform.localScale.x, ((float)Amount / (float)Size), LiquidObj.transform.localScale.z);
@@ -127,6 +134,7 @@ public class Mini_Flask : MonoBehaviour
         }
         if (Amount <= 0) LiquidObj.SetActive(false);
         Get_Amount_Court = null;
+        b_OnGettingLiquid = false;
     }
     public float EmptyAmount()
     {

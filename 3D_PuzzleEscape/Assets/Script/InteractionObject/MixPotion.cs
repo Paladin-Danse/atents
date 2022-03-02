@@ -58,36 +58,38 @@ public class MixPotion : MiniGameInteraction
                 SelectFlask_Num = (Mathf.Clamp(SelectFlask_Num + Num, 0, Flasks.Count - 1));
                 SelectFlask();
             }
+            if (Flasks[SelectFlask_Num].b_OnGettingLiquid == false)
+            {
+                if (playerInput.MixKey)
+                {
+                    SelectMixFlask();
+                }
+                if (playerInput.ItemDescriptionKey)
+                {
+                    DestroyPotion();
+                }
 
-            if (playerInput.MixKey)
-            {
-                SelectMixFlask();
-            }
-            if (playerInput.ItemDescriptionKey)
-            {
-                DestroyPotion();
-            }
-
-            if(playerInput.Mini_Num1Key || playerInput.Mini_Num2Key || playerInput.Mini_Num3Key)
-            {
-                Material liquid = null;
-                bool On_PotionUI = false;
-                if(playerInput.Mini_Num1Key)
+                if (playerInput.Mini_Num1Key || playerInput.Mini_Num2Key || playerInput.Mini_Num3Key)
                 {
-                    liquid = GreenPotion_Liquid_Mat;
-                    On_PotionUI = UIManager.instance.MixPotionUIOnOffCheck("녹색물약");
+                    Material liquid = null;
+                    bool On_PotionUI = false;
+                    if (playerInput.Mini_Num1Key)
+                    {
+                        liquid = GreenPotion_Liquid_Mat;
+                        On_PotionUI = UIManager.instance.MixPotionUIOnOffCheck("녹색물약");
+                    }
+                    else if (playerInput.Mini_Num2Key)
+                    {
+                        liquid = RedPotion_Liquid_Mat;
+                        On_PotionUI = UIManager.instance.MixPotionUIOnOffCheck("빨간물약");
+                    }
+                    else if (playerInput.Mini_Num3Key)
+                    {
+                        liquid = BluePotion_Liquid_Mat;
+                        On_PotionUI = UIManager.instance.MixPotionUIOnOffCheck("파란물약");
+                    }
+                    if (liquid != null && On_PotionUI) Put_the_Potion(liquid);
                 }
-                else if(playerInput.Mini_Num2Key)
-                {
-                    liquid = RedPotion_Liquid_Mat;
-                    On_PotionUI = UIManager.instance.MixPotionUIOnOffCheck("빨간물약");
-                }
-                else if(playerInput.Mini_Num3Key)
-                {
-                    liquid = BluePotion_Liquid_Mat;
-                    On_PotionUI = UIManager.instance.MixPotionUIOnOffCheck("파란물약");
-                }
-                if(liquid != null && On_PotionUI) Put_the_Potion(liquid);
             }
         }
     }
@@ -118,7 +120,7 @@ public class MixPotion : MiniGameInteraction
     }
     private void SelectMixFlask()
     {
-        if(SelectedMixFlask != null)
+        if(SelectedMixFlask != null && SelectedMixFlask != Flasks[SelectFlask_Num])
         {
             mixhalo.SetActive(false);
             Mix();
@@ -167,12 +169,13 @@ public class MixPotion : MiniGameInteraction
                 flask.Liquid_FillUp(newAmount, DrainLiquid);
 
                 if (flask.GetSize() == flaskEptAmount || flask.GetLiquid() == SelectedMixFlask.GetLiquid())
+                {
                     flask.Liquid_Change(SelectedMixFlask.GetLiquid());
+                }
                 else
                 {
                     flask.Liquid_Change(Get_MixCheck(flask.Get_Potion_Mixture()));
                 }
-
                 //Flasks[SelectFlask_Num].Liquid_Change(Potion_Fail_Mat, newAmount);//현재 옮길 물약의 Material은 Potion_Fail_Mat으로 고정됨. 나중에 레시피가 추가되면 수정필요.
             }
         }
@@ -183,18 +186,6 @@ public class MixPotion : MiniGameInteraction
         if (mixture.Count <= 0) return Potion_Fail_Mat;
         var tempRecipe = new Dictionary<Material, float>(PotionRecipe);
 
-        //디버깅 코드 버그 해결시 삭제
-        Debug.Log("플라스크의 포션조합 : ");
-        foreach (Material Key in mixture.Keys)
-        {
-            Debug.Log(Key + ", " + mixture[Key]);
-        }
-        Debug.Log("금속용해액(복사본)의 포션조합 : ");
-        foreach (Material Key in tempRecipe.Keys)
-        {
-            Debug.Log(Key + ", " + tempRecipe[Key]);
-        }
-
         foreach (Material Key in mixture.Keys)
         {
             if(!tempRecipe.ContainsKey(Key))
@@ -202,7 +193,7 @@ public class MixPotion : MiniGameInteraction
                 return Potion_Fail_Mat;
             }
 
-            if (!mixture[Key].Equals(tempRecipe[Key]))
+            if (Mathf.Abs(tempRecipe[Key] - mixture[Key]) >= 0.01f)
             {
                 return Potion_Fail_Mat;
             }
@@ -210,18 +201,24 @@ public class MixPotion : MiniGameInteraction
         }
 
         if (tempRecipe.Count <= 0)
+        {
+            MixSuccess();
             return Potion_Success_Mat;
+        }
         else
+        {
             return Potion_Fail_Mat;
+        }
     }
     private void MixSuccess()
     {
-
-    }
-
-    private void MixFail()
-    {
-
+        MixPotion_Cancel();
+        MiniGameClear();
+        Flasks[SelectFlask_Num].GetComponentInChildren<ItemInteraction>().enabled = true;
+        InventoryManager.instance.LostItem("피펫");
+        InventoryManager.instance.LostItem("녹색물약");
+        InventoryManager.instance.LostItem("빨간물약");
+        InventoryManager.instance.LostItem("파란물약");
     }
 
     private void Active_halo(GameObject halo)
