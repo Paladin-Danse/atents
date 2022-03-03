@@ -11,8 +11,9 @@ public class MiniGameInteraction : InteractionObject
     protected event Action MiniGameCancel;
     protected PlayerInput playerInput;
 
-    protected void Start()
+    protected new void Start()
     {
+        base.Start();
         e_ObjectType = OBJ_TYPE.OBJ_MINIGAME;
         InteractionEvent += MiniGameStart;
         MiniGameCancel += DefaultCancel;

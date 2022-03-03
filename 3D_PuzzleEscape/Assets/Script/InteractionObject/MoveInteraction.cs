@@ -5,13 +5,14 @@ using UnityEngine;
 public class MoveInteraction : InteractionObject
 {
     // Start is called before the first frame update
-    private Animation MoveAnimation;
-    [SerializeField] private AnimationClip MoveClip;
-    private bool b_OnMove;
-    [SerializeField] private float f_MoveTime;
+    protected Animation MoveAnimation;
+    [SerializeField] protected AnimationClip MoveClip;
+    protected bool b_OnMove;
+    [SerializeField] protected float f_MoveTime;
 
-    void Start()
+    protected new void Start()
     {
+        base.Start();
         MoveAnimation = GetComponent<Animation>();
         if (!MoveAnimation) Debug.Log("MoveAnimation is Not Found!!");
         else MoveAnimation.clip = MoveClip;
@@ -20,7 +21,7 @@ public class MoveInteraction : InteractionObject
         InteractionEvent += InteractiontoMove;
         b_OnMove = false;
     }
-    private void InteractiontoMove()
+    protected void InteractiontoMove()
     {
         if (NeedItem) NeedItem = null;
 

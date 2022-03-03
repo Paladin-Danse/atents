@@ -17,6 +17,11 @@ public class InteractionObject : MonoBehaviour
     protected event Action InteractionEvent;
     public OBJ_TYPE e_ObjectType { get; protected set; }
 
+    protected void Start()
+    {
+        if (gameObject.layer != LayerMask.NameToLayer("Interactable")) gameObject.layer = LayerMask.NameToLayer("Interactable");
+    }
+
     public void Interaction()
     {
         if (InteractionEvent != null) InteractionEvent();

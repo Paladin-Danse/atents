@@ -6,8 +6,9 @@ public class ItemInteraction : InteractionObject
 {
     [SerializeField] private ItemData item;
     // Start is called before the first frame update
-    void Start()
+    protected new void Start()
     {
+        base.Start();
         e_ObjectType = OBJ_TYPE.OBJ_ITEM;
         InteractionEvent += Interaction_to_GetItem;
     }

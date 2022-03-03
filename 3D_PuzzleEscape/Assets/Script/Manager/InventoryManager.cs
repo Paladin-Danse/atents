@@ -48,6 +48,8 @@ public class InventoryManager : MonoBehaviour
 
             InventoryList.Add(invenitem);
         }
+        //디버그용 아이템 획득 코드
+        //GetItem(itemDatas.Find(i => i.Data.name == "금속용매"));
     }
     private void Update()
     {
