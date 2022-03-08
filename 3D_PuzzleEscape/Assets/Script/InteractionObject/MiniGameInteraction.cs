@@ -22,9 +22,12 @@ public class MiniGameInteraction : InteractionObject
     }
     protected void Update()
     {
-        if (b_OnMiniGame && GameManager.instance.playerInput.ActionCancelKey)
+        if (playerInput)
         {
-            if (MiniGameCancel != null) MiniGameCancel();
+            if (b_OnMiniGame && playerInput.ActionCancelKey)
+            {
+                if (MiniGameCancel != null) MiniGameCancel();
+            }
         }
     }
 
