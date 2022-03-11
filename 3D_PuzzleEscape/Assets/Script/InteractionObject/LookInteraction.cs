@@ -23,7 +23,7 @@ public class LookInteraction : InteractionObject
 
         LookCam.gameObject.SetActive(true);
         b_Lookobj = true;
-        UIManager.instance.UIDisable();
+        UIManager.instance.SetUI(false);
         GameManager.instance.playerInteraction.LockInteraction();
         GameManager.instance.playerMovement.LockMove();
 
@@ -35,7 +35,7 @@ public class LookInteraction : InteractionObject
         {
             if(b_Lookobj && playerInput.ActionCancelKey)
             {
-                UIManager.instance.UIEnable();
+                UIManager.instance.SetUI(true);
                 GameManager.instance.playerInteraction.UnlockInteraction();
                 GameManager.instance.playerMovement.UnlockMove();
 

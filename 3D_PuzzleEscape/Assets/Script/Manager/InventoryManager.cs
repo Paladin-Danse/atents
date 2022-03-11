@@ -210,6 +210,8 @@ public class InventoryManager : MonoBehaviour
     {
         if(SelectedItem != null)
         {
+            
+
 #if UNITY_EDITOR
             Debug.Log(SelectedItem.data.Description);
 #endif

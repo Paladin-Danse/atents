@@ -39,7 +39,7 @@ public class MiniGameInteraction : InteractionObject
             GameManager.instance.playerInteraction.LockInteraction();
             GameManager.instance.playerMovement.LockMove();
             InventoryManager.instance.LockInventory();
-            UIManager.instance.UIDisable();
+            UIManager.instance.SetUI(false);
 
             b_OnMiniGame = true;
             Mini_Cam.gameObject.SetActive(true);
@@ -53,7 +53,7 @@ public class MiniGameInteraction : InteractionObject
         GameManager.instance.playerInteraction.UnlockInteraction();
         GameManager.instance.playerMovement.UnlockMove();
         InventoryManager.instance.UnlockInventory();
-        UIManager.instance.UIEnable();
+        UIManager.instance.SetUI(true);
 
         b_OnMiniGame = false;
         InteractionEvent -= MiniGameStart;
@@ -66,7 +66,7 @@ public class MiniGameInteraction : InteractionObject
         GameManager.instance.playerInteraction.UnlockInteraction();
         GameManager.instance.playerMovement.UnlockMove();
         InventoryManager.instance.UnlockInventory();
-        UIManager.instance.UIEnable();
+        UIManager.instance.SetUI(true);
 
         b_OnMiniGame = false;
         Mini_Cam.gameObject.SetActive(false);

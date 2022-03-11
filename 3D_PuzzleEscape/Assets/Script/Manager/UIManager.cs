@@ -63,7 +63,7 @@ public class UIManager : MonoBehaviour
             Debug.Log("SelectedMixUI is Not Found!");
         }
 
-        UIEnable();
+        SetUI(false);
         Off_MiniUI();
     }
 
@@ -74,6 +74,7 @@ public class UIManager : MonoBehaviour
         var UIScript = UIObject.GetComponent<ItemUI>();
         UIScript.item_img.sprite = m_item.data.ItemSprite;
         UIScript.item_name.text = m_item.data.name;
+        UIScript.item_description.text = m_item.data.Description;
 
         itemUIList.Add(UIScript);
         UIObject.SetActive(false);
@@ -86,7 +87,7 @@ public class UIManager : MonoBehaviour
             var itemUI = itemUIList.Find(i => i.gameObject.activeSelf == false && i.item_name.text == m_item.data.name);
             if (itemUI)
             {
-                itemUI.UIUpdate(m_item.data.ItemSprite, m_item.data.name);
+                itemUI.UIUpdate(m_item.data.ItemSprite, m_item.data.name, m_item.data.Description);
                 itemUI.gameObject.SetActive(true);
             }
         }
@@ -129,6 +130,15 @@ public class UIManager : MonoBehaviour
             Inventory_Scroll.verticalScrollbar.value = itemScrollValue;
         }
     }
+    public void SelectItemDescriptionUI(InventoryItem m_item)
+    {
+        var itemUI = itemUIList.Find(i => i.item_name.text == m_item.data.name);
+
+        if(itemUI)
+        {
+            itemUI.SetDescription(true);
+        }
+    }
     public void SelectUIDisable()
     {
         Select.gameObject.SetActive(false);
@@ -164,16 +174,10 @@ public class UIManager : MonoBehaviour
         InteractUI.color = new Color(1.0f, 1.0f, 1.0f, 100f / 255f);
     }
 
-    public void UIDisable()
+    public void SetUI(bool setbool)
     {
-        InteractUI.gameObject.SetActive(false);
-        Inventory_Scroll.gameObject.SetActive(false);
-    }
-
-    public void UIEnable()
-    {
-        InteractUI.gameObject.SetActive(true);
-        Inventory_Scroll.gameObject.SetActive(true);
+        InteractUI.gameObject.SetActive(setbool);
+        Inventory_Scroll.gameObject.SetActive(setbool);
     }
 
     public void On_MiniUI()
