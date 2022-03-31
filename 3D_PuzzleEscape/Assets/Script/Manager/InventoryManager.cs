@@ -68,10 +68,12 @@ public class InventoryManager : MonoBehaviour
         {
             ItemMixing();
         }
+        /*
         if (playerInput.ItemDescriptionKey)
         {
             Show_ItemDescription();
         }
+        */
     }
 
     public void GetItem(ItemData item)
@@ -205,19 +207,18 @@ public class InventoryManager : MonoBehaviour
 #endif
         }
     }
-
+    /*
     public void Show_ItemDescription()
     {
         if(SelectedItem != null)
         {
-            
-
+            UIManager.instance.SelectItemDescriptionUI(SelectedItem);
 #if UNITY_EDITOR
             Debug.Log(SelectedItem.data.Description);
 #endif
         }
     }
-
+    */
     public void LockInventory()
     {
         b_OnInventoryInput = false;

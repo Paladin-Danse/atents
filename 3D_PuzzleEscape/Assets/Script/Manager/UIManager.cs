@@ -27,6 +27,8 @@ public class UIManager : MonoBehaviour
     private RectTransform Select;
     private RectTransform SelectMix;
     private List<ItemUI> itemUIList;
+    private GameObject Description;
+    private Text itemdes_text;
 
     private Image GreenPotion_Chk;
     private Image RedPotion_Chk;
@@ -36,6 +38,8 @@ public class UIManager : MonoBehaviour
     {
         Content = Inventory_Scroll.transform.Find("Viewport/Content").gameObject;
         itemUIList = new List<ItemUI>();
+        Description = transform.Find("Inventory_Scroll").Find("Description").gameObject;
+        itemdes_text = Description.transform.Find("Text").GetComponent<Text>();
 
         GreenPotion_Chk = MiniGameUI.transform.Find("MixPotionUI").Find("GreenPotion").Find("Empty").GetComponent<Image>();
         RedPotion_Chk = MiniGameUI.transform.Find("MixPotionUI").Find("RedPotion").Find("Empty").GetComponent<Image>();
@@ -63,7 +67,7 @@ public class UIManager : MonoBehaviour
             Debug.Log("SelectedMixUI is Not Found!");
         }
 
-        SetUI(false);
+        SetUI(true);
         Off_MiniUI();
     }
 
@@ -74,7 +78,6 @@ public class UIManager : MonoBehaviour
         var UIScript = UIObject.GetComponent<ItemUI>();
         UIScript.item_img.sprite = m_item.data.ItemSprite;
         UIScript.item_name.text = m_item.data.name;
-        UIScript.item_description.text = m_item.data.Description;
 
         itemUIList.Add(UIScript);
         UIObject.SetActive(false);
@@ -87,7 +90,7 @@ public class UIManager : MonoBehaviour
             var itemUI = itemUIList.Find(i => i.gameObject.activeSelf == false && i.item_name.text == m_item.data.name);
             if (itemUI)
             {
-                itemUI.UIUpdate(m_item.data.ItemSprite, m_item.data.name, m_item.data.Description);
+                itemUI.UIUpdate(m_item.data.ItemSprite, m_item.data.name);
                 itemUI.gameObject.SetActive(true);
             }
         }
@@ -117,6 +120,8 @@ public class UIManager : MonoBehaviour
             Select.offsetMin = new Vector2(0, 0);
             Select.offsetMax = new Vector2(0, 0);
             Select.gameObject.SetActive(true);
+
+            SelectItemDescriptionUI(m_item);
         }
         else
         {
@@ -132,16 +137,19 @@ public class UIManager : MonoBehaviour
     }
     public void SelectItemDescriptionUI(InventoryItem m_item)
     {
-        var itemUI = itemUIList.Find(i => i.item_name.text == m_item.data.name);
-
-        if(itemUI)
-        {
-            itemUI.SetDescription(true);
-        }
+        itemdes_text.gameObject.SetActive(true);
+        itemdes_text.text = m_item.data.Description;
+    }
+    public void SetDescriptionUI(bool setbool)
+    {
+        itemdes_text.gameObject.SetActive(false);//false로 값이 고정된것은 실수가 아님. 설명은 무조건 아이템이 선택될 때만 활성화가 되기 때문.
+        Description.SetActive(setbool);
+        
     }
     public void SelectUIDisable()
     {
         Select.gameObject.SetActive(false);
+        SetDescriptionUI(true);
     }
     public void SelectMixUI()
     {

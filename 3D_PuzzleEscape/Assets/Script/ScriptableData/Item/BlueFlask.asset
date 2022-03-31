@@ -18,6 +18,6 @@ MonoBehaviour:
     ItemSprite: {fileID: 21300000, guid: f037206d1ec5ab844a2edafef38e8b71, type: 3}
     Durability: 1
     Durability_Max: 1
-    Description: "\uC5B4\uB461\uACE0 \uD30C\uB780 \uBE5B\uC744 \uB744\uB294 \uBB3C\uC57D.\\n\uB3C4\uB300\uCCB4
-      \uC774\uB7F0 \uBB3C\uC57D\uC740 \uC5B4\uB5A4 \uC6A9\uB3C4\uB85C \uB9CC\uB4E4\uC5B4\uC9C4\uAC70\uC9C0?"
-    Interaction_Enable_Collider: {fileID: 0}
+    Description: "\uC5B4\uB461\uACE0 \uD30C\uB780 \uBE5B\uC744 \uB744\uB294 \uBB3C\uC57D.
+      \uB3C4\uB300\uCCB4 \uC774\uB7F0 \uBB3C\uC57D\uC740 \uC5B4\uB5A4 \uC6A9\uB3C4\uB85C
+      \uB9CC\uB4E4\uC5B4\uC9C4\uAC70\uC9C0?"
