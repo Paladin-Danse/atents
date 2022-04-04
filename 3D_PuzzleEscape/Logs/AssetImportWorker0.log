@@ -15,11 +15,11 @@ C:/Users/admin/Documents/GitHub/atents/3D_PuzzleEscape
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-10389
+9144
 Successfully changed project path to: C:/Users/admin/Documents/GitHub/atents/3D_PuzzleEscape
 C:/Users/admin/Documents/GitHub/atents/3D_PuzzleEscape
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 40.60 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 119.28 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.15f2 (6cf78cb77498)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.15f2/Editor/Data/Resources/UnitySubsystems
@@ -35,73 +35,73 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.15f2/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.15f2/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.15f2/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56364
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56444
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.15f2/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.004211 seconds.
+Registered in 0.042738 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 37.63 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 37.32 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  2.284 seconds
+- Completed reload, in  2.372 seconds
 Domain Reload Profiling:
-	ReloadAssembly (2284ms)
+	ReloadAssembly (2373ms)
 		BeginReloadAssembly (74ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (370ms)
+		EndReloadAssembly (410ms)
 			LoadAssemblies (71ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (131ms)
+			SetupTypeCache (125ms)
 			ReleaseScriptCaches (0ms)
 			RebuildScriptCaches (26ms)
-			SetupLoadedEditorAssemblies (137ms)
+			SetupLoadedEditorAssemblies (152ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (3ms)
+				InitializePlatformSupportModulesInManaged (4ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (38ms)
-				BeforeProcessingInitializeOnLoad (10ms)
+				RefreshPlugins (37ms)
+				BeforeProcessingInitializeOnLoad (17ms)
 				ProcessInitializeOnLoadAttributes (64ms)
-				ProcessInitializeOnLoadMethodAttributes (22ms)
+				ProcessInitializeOnLoadMethodAttributes (30ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.007114 seconds.
+Registered in 0.147776 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.50 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 0.55 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.063 seconds
+- Completed reload, in  1.625 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1064ms)
-		BeginReloadAssembly (158ms)
+	ReloadAssembly (1626ms)
+		BeginReloadAssembly (153ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (4ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (17ms)
-		EndReloadAssembly (840ms)
-			LoadAssemblies (107ms)
+		EndReloadAssembly (1408ms)
+			LoadAssemblies (574ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (232ms)
+			SetupTypeCache (236ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (39ms)
-			SetupLoadedEditorAssemblies (406ms)
+			RebuildScriptCaches (40ms)
+			SetupLoadedEditorAssemblies (501ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (5ms)
-				SetLoadedEditorAssemblies (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (1ms)
 				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (93ms)
-				ProcessInitializeOnLoadAttributes (290ms)
-				ProcessInitializeOnLoadMethodAttributes (4ms)
+				BeforeProcessingInitializeOnLoad (88ms)
+				ProcessInitializeOnLoadAttributes (391ms)
+				ProcessInitializeOnLoadMethodAttributes (3ms)
 				AfterProcessingInitializeOnLoad (13ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
@@ -109,15 +109,15 @@ Domain Reload Profiling:
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.03 seconds
-Refreshing native plugins compatible for Editor in 0.46 ms, found 2 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 0.50 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1567 Unused Serialized files (Serialized files now loaded: 0)
 System memory in use before: 73.9 MB.
 System memory in use after: 74.0 MB.
 
 Unloading 19 unused Assets to reduce memory usage. Loaded Objects now: 2006.
-Total: 2.316200 ms (FindLiveObjects: 0.176200 ms CreateObjectMapping: 0.035600 ms MarkObjects: 2.037600 ms  DeleteObjects: 0.065900 ms)
+Total: 1.932300 ms (FindLiveObjects: 0.159600 ms CreateObjectMapping: 0.035000 ms MarkObjects: 1.678100 ms  DeleteObjects: 0.058900 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -132,545 +132,73 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Glass Dirty.png
-  artifactKey: Guid(1a543e2af890de1479fb4c4e47b454b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Glass Dirty.png using Guid(1a543e2af890de1479fb4c4e47b454b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9a0c3446daac37315a4fe7b7ed86be68') in 0.214013 seconds 
-  Import took 0.216709 seconds .
+  path: Assets
+  artifactKey: Guid(00000000000000001000000000000000) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets using Guid(00000000000000001000000000000000) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '42d402b061de3733987d63b9cc3b64de') in 0.005722 seconds 
+  Import took 0.008231 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000231 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Tile 3.bmp
-  artifactKey: Guid(a308cebd623553d49bb42d90437675b4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Tile 3.bmp using Guid(a308cebd623553d49bb42d90437675b4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c3b9386a9d8d37c6f121ee7206535303') in 0.074056 seconds 
-  Import took 0.076277 seconds .
+  Time since last request: 18.125508 seconds.
+  path: Assets/Resource/CharFBX
+  artifactKey: Guid(31e93da51658a8642b782f3f4472014a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resource/CharFBX using Guid(31e93da51658a8642b782f3f4472014a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e4cd91b5e12c215668550799254eee36') in 0.003939 seconds 
+  Import took 0.030981 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000243 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Rock 3.bmp
-  artifactKey: Guid(f2e8bdfdab141fa48b509463e9b0f604) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Rock 3.bmp using Guid(f2e8bdfdab141fa48b509463e9b0f604) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '90a5fa514de3e333dab49e7849648733') in 0.116274 seconds 
-  Import took 0.118850 seconds .
+  Time since last request: 0.026589 seconds.
+  path: Assets/Resource/CharFBX/character.fbx
+  artifactKey: Guid(d09d8af27727c0540804aac6d30583b5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resource/CharFBX/character.fbx using Guid(d09d8af27727c0540804aac6d30583b5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b402c748b912af970bbd34916499aff7') in 0.308996 seconds 
+  Import took 0.331509 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000251 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Wire Type 3.bmp
-  artifactKey: Guid(bbe1321bc1972c845a5f029a1c24aee0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Wire Type 3.bmp using Guid(bbe1321bc1972c845a5f029a1c24aee0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7c405d5c22387e41ec2ec2f4138297fe') in 0.075647 seconds 
-  Import took 0.077903 seconds .
+  Time since last request: 944.190244 seconds.
+  path: Assets/Resource/CharFBX/Ch36_nonPBR@Male Standing Pose.fbx
+  artifactKey: Guid(1d0083cc7bd0e654f984183c6c11342f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resource/CharFBX/Ch36_nonPBR@Male Standing Pose.fbx using Guid(1d0083cc7bd0e654f984183c6c11342f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4213bec968add86a41916712e4b1e622') in 0.036490 seconds 
+  Import took 0.056925 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000219 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Brick Single.bmp
-  artifactKey: Guid(1f5bfb96102438846b9e8ad369a8ba07) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Brick Single.bmp using Guid(1f5bfb96102438846b9e8ad369a8ba07) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3443c46de9105a5433dba986167a0088') in 0.090046 seconds 
-  Import took 0.092426 seconds .
+  Time since last request: 567.279374 seconds.
+  path: Assets/Resource/CharFBX/Male Standing Pose.fbx
+  artifactKey: Guid(1831c82066c82fc43bf0096bcd4fd70d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resource/CharFBX/Male Standing Pose.fbx using Guid(1831c82066c82fc43bf0096bcd4fd70d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4809e3531710f656faf9d6d09d1ad864') in 0.087322 seconds 
+  Import took 0.104879 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000207 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Corrugated Iron Light Damage.png
-  artifactKey: Guid(7befef02108b9da4b82addbd9bd4fb56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Corrugated Iron Light Damage.png using Guid(7befef02108b9da4b82addbd9bd4fb56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '89ca27451b0fc1f803b3e82bf120e1ee') in 0.201790 seconds 
-  Import took 0.205389 seconds .
+  Time since last request: 120.996662 seconds.
+  path: Assets/Resource/CharFBX/Male Standing Pose.fbx
+  artifactKey: Guid(1831c82066c82fc43bf0096bcd4fd70d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resource/CharFBX/Male Standing Pose.fbx using Guid(1831c82066c82fc43bf0096bcd4fd70d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '95262c886933b0be38d75870a631fda0') in 0.053858 seconds 
+  Import took 0.059904 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000260 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Concrete 1.bmp
-  artifactKey: Guid(95f0a739414c5d845bd22b1a45474dc1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Concrete 1.bmp using Guid(95f0a739414c5d845bd22b1a45474dc1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '51db3c0fa81b2bfa850e81a559b5f320') in 0.142939 seconds 
-  Import took 0.146203 seconds .
+  Time since last request: 26.016463 seconds.
+  path: Assets/Resource/CharFBX/Male Standing Pose.fbx
+  artifactKey: Guid(1831c82066c82fc43bf0096bcd4fd70d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resource/CharFBX/Male Standing Pose.fbx using Guid(1831c82066c82fc43bf0096bcd4fd70d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4a85834739d6bfab5112dce60ded8e35') in 0.051540 seconds 
+  Import took 0.065242 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000218 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Tile 4.bmp
-  artifactKey: Guid(72248137fea1893458b23546d4d56c23) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Tile 4.bmp using Guid(72248137fea1893458b23546d4d56c23) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '04697f8f745ce250aa3d99217f2c0cd3') in 0.080215 seconds 
-  Import took 0.082632 seconds .
+  Time since last request: 29.609616 seconds.
+  path: Assets/Resource/CharFBX/Ch36_nonPBR@Male Standing Pose.fbx
+  artifactKey: Guid(1d0083cc7bd0e654f984183c6c11342f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resource/CharFBX/Ch36_nonPBR@Male Standing Pose.fbx using Guid(1d0083cc7bd0e654f984183c6c11342f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '90ae212fde6479494f905372c401bd6f') in 0.051212 seconds 
+  Import took 0.075910 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000208 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Plywood.bmp
-  artifactKey: Guid(086e46919b455314480e512ab8b69ff3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Plywood.bmp using Guid(086e46919b455314480e512ab8b69ff3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2a3a552b57a807d7aa1424c4e94be9d0') in 0.150479 seconds 
-  Import took 0.153546 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000246 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Rock 2.bmp
-  artifactKey: Guid(3570b2614f58583469b19044a2e4bb2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Rock 2.bmp using Guid(3570b2614f58583469b19044a2e4bb2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e29ff7d3afeedb1d713c61c08e1674b9') in 0.055426 seconds 
-  Import took 0.058022 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000244 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Timber Stud.bmp
-  artifactKey: Guid(881bc3fca0518174f9420564a3cff308) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Timber Stud.bmp using Guid(881bc3fca0518174f9420564a3cff308) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4f835549fb7e456eda78f53de2f0cd29') in 0.120438 seconds 
-  Import took 0.123653 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000226 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Chainlink Fence.png
-  artifactKey: Guid(6c9254bd9342b38408f9d2e8e76b3836) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Chainlink Fence.png using Guid(6c9254bd9342b38408f9d2e8e76b3836) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '966572f001fa8a584bed521acaed4d4c') in 0.096793 seconds 
-  Import took 0.099181 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000209 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Concrete 2.bmp
-  artifactKey: Guid(10c1af5a2b950e84389770c28da5fb8a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Concrete 2.bmp using Guid(10c1af5a2b950e84389770c28da5fb8a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '730ef400c9363755b84e56af9e4c6836') in 0.146371 seconds 
-  Import took 0.149331 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000219 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo
-  artifactKey: Guid(ec6c65c62e4637944b6eea85d2e96708) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo using Guid(ec6c65c62e4637944b6eea85d2e96708) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ac27d2f1f2ffdb9b33d05cfa562f5dce') in 0.002968 seconds 
-  Import took 0.005084 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000131 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/PVC.bmp
-  artifactKey: Guid(f81e51af03b5e2546bb17682fc0caa1a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/PVC.bmp using Guid(f81e51af03b5e2546bb17682fc0caa1a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ee59723cebcfe2fdcde4be24a03ba53d') in 0.212016 seconds 
-  Import took 0.214854 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000209 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Steel 1.bmp
-  artifactKey: Guid(d76f05bc32ab07443804b0cba26babb3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Steel 1.bmp using Guid(d76f05bc32ab07443804b0cba26babb3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dac4744e4068eafef86e60a11fdb2afb') in 0.146657 seconds 
-  Import took 0.149675 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000221 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Concrete 3.bmp
-  artifactKey: Guid(24b5155d322907f44a5e27ba5a43b5f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Concrete 3.bmp using Guid(24b5155d322907f44a5e27ba5a43b5f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2ca4b8f074cce81a08c44236bfd9b091') in 0.151812 seconds 
-  Import took 0.154846 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000268 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Concrete 4.bmp
-  artifactKey: Guid(ccff078c3a84ce7498109578a992af41) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Concrete 4.bmp using Guid(ccff078c3a84ce7498109578a992af41) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b7a1aa84a84effad354fe20b847d71a9') in 0.016073 seconds 
-  Import took 0.019323 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000250 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Corrugated Iron 3 Medium Damage.png
-  artifactKey: Guid(db36576f4c3cfd34bbdf047966dd85f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Corrugated Iron 3 Medium Damage.png using Guid(db36576f4c3cfd34bbdf047966dd85f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ada56c709e1b37757ad8e1fb560be707') in 0.242935 seconds 
-  Import took 0.246609 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000223 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Tile 2.bmp
-  artifactKey: Guid(b94cff4b1004f3e4c82783075b5c8f0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Tile 2.bmp using Guid(b94cff4b1004f3e4c82783075b5c8f0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd44f2192a4512d360edf601b43fa6a3f') in 0.071719 seconds 
-  Import took 0.074483 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000239 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Insulation Type 2 Albedo.png
-  artifactKey: Guid(d4d42e654bda6fe48ae2ffed943c3647) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Insulation Type 2 Albedo.png using Guid(d4d42e654bda6fe48ae2ffed943c3647) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9f7a3260a49c9d5f95a237082c9f57f3') in 0.113307 seconds 
-  Import took 0.115728 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000232 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Corrugated Iron Medium Damage 1.png
-  artifactKey: Guid(69e370d917ed4524da0086ef3e0f4805) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Corrugated Iron Medium Damage 1.png using Guid(69e370d917ed4524da0086ef3e0f4805) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'be8cc7b23ca10e4656db907574b5e417') in 0.255011 seconds 
-  Import took 0.258666 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000215 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Aluminum.bmp
-  artifactKey: Guid(8e4c31b468b273e4e821e670f8821aa8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Aluminum.bmp using Guid(8e4c31b468b273e4e821e670f8821aa8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4ab49c95d5e213daee58b066fb524f49') in 0.575782 seconds 
-  Import took 0.578728 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000207 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Corrugated Iron 2 Light Damage.png
-  artifactKey: Guid(6e4855caf6995f246a3499fc181ee558) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Corrugated Iron 2 Light Damage.png using Guid(6e4855caf6995f246a3499fc181ee558) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e6cc2b0405beda393bab45d5c17d9a2a') in 0.242175 seconds 
-  Import took 0.245808 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000277 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Corrugated Iron 3 Light Damage.png
-  artifactKey: Guid(3ecb7c4c2f47c2140b2f78cea60407c2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Corrugated Iron 3 Light Damage.png using Guid(3ecb7c4c2f47c2140b2f78cea60407c2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '356e0731975300fc05e03ca94fd5e3c6') in 0.251779 seconds 
-  Import took 0.255471 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000218 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Corrugated Iron 2 Medium Damage.png
-  artifactKey: Guid(7c37bf17e57cafa499d227f68dfe48b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Corrugated Iron 2 Medium Damage.png using Guid(7c37bf17e57cafa499d227f68dfe48b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bf89a3c41cbf8e620bf981c44fbef848') in 0.224621 seconds 
-  Import took 0.228128 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000217 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Ashphalt.bmp
-  artifactKey: Guid(7ef0e884cee8bb44f810e71f8c6f826e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Ashphalt.bmp using Guid(7ef0e884cee8bb44f810e71f8c6f826e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd2f79e203ea9614846cebf2ccf8beb32') in 0.149092 seconds 
-  Import took 0.152061 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000243 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Steel 2.bmp
-  artifactKey: Guid(c55e35ddeeb674847839f38ad66c0c66) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Steel 2.bmp using Guid(c55e35ddeeb674847839f38ad66c0c66) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c611e6a5f2aadadc29ac8ba5af317d1a') in 0.121661 seconds 
-  Import took 0.124887 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000214 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Rock 1.bmp
-  artifactKey: Guid(ecac2a9693de0b348a9ff20fb28fee57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Rock 1.bmp using Guid(ecac2a9693de0b348a9ff20fb28fee57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3bb4b76e31caed7f77805678e9cbafa3') in 0.050204 seconds 
-  Import took 0.052663 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000212 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Plasterboard Type 2 Albedo.bmp
-  artifactKey: Guid(7465c142a625aac4ebf69dd6a59b6fa5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Plasterboard Type 2 Albedo.bmp using Guid(7465c142a625aac4ebf69dd6a59b6fa5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd1bfe028c232801de4efcb243d0ed127') in 0.046711 seconds 
-  Import took 0.051545 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000232 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Copper.bmp
-  artifactKey: Guid(589970bb6f4a81048b6efb9b6a80ec4f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Copper.bmp using Guid(589970bb6f4a81048b6efb9b6a80ec4f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eac521d7eaedf5acb93854327bb9457c') in 0.061289 seconds 
-  Import took 0.063790 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000202 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Concrete Steel Mesh.bmp
-  artifactKey: Guid(ff20d628cb89e0f4fadcf0a1db40cb77) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Concrete Steel Mesh.bmp using Guid(ff20d628cb89e0f4fadcf0a1db40cb77) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2fb502afb639ec439b29f04a8b737866') in 0.016263 seconds 
-  Import took 0.019278 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000205 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Rock 4.bmp
-  artifactKey: Guid(9b8d01971f502fa46bfd38ec809aface) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Rock 4.bmp using Guid(9b8d01971f502fa46bfd38ec809aface) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ece5e579e8492b65c97dd7729a65559d') in 0.010737 seconds 
-  Import took 0.013090 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000228 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Plasterboard Type 1 Albedo.bmp
-  artifactKey: Guid(3fb918fb348b2704fb31b930743834d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Plasterboard Type 1 Albedo.bmp using Guid(3fb918fb348b2704fb31b930743834d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2e6072467b992a576dd168d3f93d4019') in 0.050150 seconds 
-  Import took 0.055474 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000225 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures
-  artifactKey: Guid(d99cc3505ed593142a59377d249e693e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures using Guid(d99cc3505ed593142a59377d249e693e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cae5a6a05fad1d11cd70992571574692') in 0.016287 seconds 
-  Import took 0.029738 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000235 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Wire Type 4.bmp
-  artifactKey: Guid(da752cd873c263148a12c0b635919ab5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Wire Type 4.bmp using Guid(da752cd873c263148a12c0b635919ab5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd306dad96fde2fde3d134d660b7bf93c') in 0.062152 seconds 
-  Import took 0.064398 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000222 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Mortar Albedo.bmp
-  artifactKey: Guid(f9cd3e2757d10964e920dea6cb24cdf4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Mortar Albedo.bmp using Guid(f9cd3e2757d10964e920dea6cb24cdf4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd7d1152e61d5d92b72e001a12ddfe22e') in 0.028699 seconds 
-  Import took 0.031908 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000194 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Wire Type 1.bmp
-  artifactKey: Guid(3d925a82e6df9fa4a89152d411a34024) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Wire Type 1.bmp using Guid(3d925a82e6df9fa4a89152d411a34024) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4ebf4a70d9101ec9bba5d800c67943bd') in 0.065470 seconds 
-  Import took 0.067859 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000240 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Wire Type 2.bmp
-  artifactKey: Guid(f846ec024930d5945bd47001a4955028) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Wire Type 2.bmp using Guid(f846ec024930d5945bd47001a4955028) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd1439a3bb0bb779156ed4029c1539725') in 0.061615 seconds 
-  Import took 0.064074 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000231 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Timber Stud and Stud Joiner Albedo.bmp
-  artifactKey: Guid(86b99fb360404344c919a87d716abd32) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Timber Stud and Stud Joiner Albedo.bmp using Guid(86b99fb360404344c919a87d716abd32) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4252b3cf9233b78be384f840b2a64feb') in 0.113101 seconds 
-  Import took 0.116336 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000236 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Bricks Albedo.bmp
-  artifactKey: Guid(b61ea07da192d4c4282e5806aa5c02f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Bricks Albedo.bmp using Guid(b61ea07da192d4c4282e5806aa5c02f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bc0af31b814326779f96c7885cc087a9') in 0.068673 seconds 
-  Import took 0.071198 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000227 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Insulation Type 1 Albedo.png
-  artifactKey: Guid(3603fe928e7d48f4c96a1f4d9a7941d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Insulation Type 1 Albedo.png using Guid(3603fe928e7d48f4c96a1f4d9a7941d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '16e1c28b736a50b846c2b04aa40a79fd') in 0.094296 seconds 
-  Import took 0.096878 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000227 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Tile 1.bmp
-  artifactKey: Guid(ef2235ea4ec3aa742b66ef597dd33d86) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Albedo/Tile 1.bmp using Guid(ef2235ea4ec3aa742b66ef597dd33d86) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '803096b1bbebdf8c56741a84f301e2d5') in 0.069028 seconds 
-  Import took 0.071617 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 8.346101 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Metal/Steel 2 Metal.bmp
-  artifactKey: Guid(5bde0b635270a49439d10194a38731e2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Metal/Steel 2 Metal.bmp using Guid(5bde0b635270a49439d10194a38731e2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3ff10638f0977ca7b1fb917c551291ca') in 0.059598 seconds 
-  Import took 0.062285 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000207 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Metal/Timber Stud and Stud Joiner Metal.bmp
-  artifactKey: Guid(3221bee8259dc08448a9d7f67292712f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Metal/Timber Stud and Stud Joiner Metal.bmp using Guid(3221bee8259dc08448a9d7f67292712f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0e445f882837f55c188b3b9d52c7d731') in 0.149148 seconds 
-  Import took 0.152265 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000211 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Metal/Wire Metal.bmp
-  artifactKey: Guid(4582518a7e877a44dba383e005290a18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Metal/Wire Metal.bmp using Guid(4582518a7e877a44dba383e005290a18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c051bb97ddbb42008e0a6a74f7a4ff7f') in 0.061812 seconds 
-  Import took 0.064282 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.593007 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Nromal/Ashphalt Normal.bmp
-  artifactKey: Guid(899168df77240e048afd6ec70ab00951) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Nromal/Ashphalt Normal.bmp using Guid(899168df77240e048afd6ec70ab00951) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3fc95d0fc28d4920fce0bf5e3567d2c7') in 0.241202 seconds 
-  Import took 0.245177 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000205 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Nromal/Concrete 2 Normal.bmp
-  artifactKey: Guid(dbf5d9984a096ee4eb8bfdf3bb2d4194) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Nromal/Concrete 2 Normal.bmp using Guid(dbf5d9984a096ee4eb8bfdf3bb2d4194) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a8e588e0ee7c57b5f06a628a7cd9610f') in 0.197482 seconds 
-  Import took 0.209685 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000224 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Nromal/Mortar Normal.bmp
-  artifactKey: Guid(d9ead9521ba37db4eabcf6cb0f645e91) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Nromal/Mortar Normal.bmp using Guid(d9ead9521ba37db4eabcf6cb0f645e91) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '50f61e038b9966601cafa1120c4649c8') in 0.228259 seconds 
-  Import took 0.232076 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000209 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Nromal/Tile Normal.bmp
-  artifactKey: Guid(62fec8b6fd973024eaff5529002c2474) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Nromal/Tile Normal.bmp using Guid(62fec8b6fd973024eaff5529002c2474) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '49757bfca8b00d6dc683de1ece7ccf8f') in 0.119045 seconds 
-  Import took 0.121336 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000244 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Nromal/Rock 1 Normal.bmp
-  artifactKey: Guid(46b80af8860d8834b940cd5e946e0db8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Nromal/Rock 1 Normal.bmp using Guid(46b80af8860d8834b940cd5e946e0db8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '70136ddcb03bead157d25a9851d48633') in 0.054233 seconds 
-  Import took 0.056648 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000226 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Nromal/Rock 2 Normal.bmp
-  artifactKey: Guid(9075815a6349eb24d867b4448a16bf9d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Nromal/Rock 2 Normal.bmp using Guid(9075815a6349eb24d867b4448a16bf9d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4a267e4f12d0ee5bbcf0c9d70ed92560') in 0.043791 seconds 
-  Import took 0.046009 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000233 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Nromal/Timber Stud and Stud Joiner Normal.bmp
-  artifactKey: Guid(6ec3853ec0788c748a4b3292ba5b3cad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Nromal/Timber Stud and Stud Joiner Normal.bmp using Guid(6ec3853ec0788c748a4b3292ba5b3cad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ddd3e59833480bef8be7f2ff46b25cc9') in 0.224536 seconds 
-  Import took 0.228101 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000222 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Nromal/Rock 4 Normal.bmp
-  artifactKey: Guid(0800ffc2e298aef46b06bad686d369a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Nromal/Rock 4 Normal.bmp using Guid(0800ffc2e298aef46b06bad686d369a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '987d45dc2794d818e58b31db70ac2ccc') in 0.009685 seconds 
-  Import took 0.012249 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000237 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Nromal/Steel 2 Normal.bmp
-  artifactKey: Guid(351a1c43ae2f96444b481f5fb6a06438) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Nromal/Steel 2 Normal.bmp using Guid(351a1c43ae2f96444b481f5fb6a06438) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '29a4c7465f5db9e91eb0fc5abdd9633a') in 0.241224 seconds 
-  Import took 0.244797 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000242 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Nromal/Timber Stud Normal.bmp
-  artifactKey: Guid(a1cb6ce438005604f9df25bf8def086a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Nromal/Timber Stud Normal.bmp using Guid(a1cb6ce438005604f9df25bf8def086a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '316f186c2de67803269a8a3e86862e57') in 0.225603 seconds 
-  Import took 0.229326 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000214 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Nromal/Steel 1 Normal.bmp
-  artifactKey: Guid(4c79539d6b64e974e83a753189938f76) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Nromal/Steel 1 Normal.bmp using Guid(4c79539d6b64e974e83a753189938f76) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8823a9fbcde980c355795565c1b431e3') in 0.219483 seconds 
-  Import took 0.223178 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000274 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Nromal/Brick Single Normal.bmp
-  artifactKey: Guid(84e61b0b55e5e7f4aa297adb3f0a2317) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Nromal/Brick Single Normal.bmp using Guid(84e61b0b55e5e7f4aa297adb3f0a2317) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0638062d6d06f667ddf68f3878ea2c68') in 0.100951 seconds 
-  Import took 0.103564 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000296 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Nromal/Bricks Normal.bmp
-  artifactKey: Guid(05e61095c32addc4386bd4d228974f79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Nromal/Bricks Normal.bmp using Guid(05e61095c32addc4386bd4d228974f79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5f51e9f37d44d660905c67c5b70086e6') in 0.104519 seconds 
-  Import took 0.107187 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000244 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Nromal/Concrete 3 Normal.bmp
-  artifactKey: Guid(9fae49c795634c34bac5f6dfc40c3c1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Nromal/Concrete 3 Normal.bmp using Guid(9fae49c795634c34bac5f6dfc40c3c1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f1f5e02c966457b8870a71c82151e6f0') in 0.281622 seconds 
-  Import took 0.285294 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000247 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Nromal/Plywood Normal.bmp
-  artifactKey: Guid(969eb123ea9189a4db90900608491ee5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Nromal/Plywood Normal.bmp using Guid(969eb123ea9189a4db90900608491ee5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '79a77dd72229e6e487be6f5396df1276') in 0.209809 seconds 
-  Import took 0.213310 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000221 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Nromal/Insulation Type 1 Normal.bmp
-  artifactKey: Guid(e907fc0e3feae1346a640c718a871d96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Nromal/Insulation Type 1 Normal.bmp using Guid(e907fc0e3feae1346a640c718a871d96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3a38ddcaf4b5ab6002ac04c680be255e') in 0.094350 seconds 
-  Import took 0.096932 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000229 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Nromal/Plasterboard Type 2 Normal.bmp
-  artifactKey: Guid(a95a5bcc8150b0f43adfaaa19e015f81) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Nromal/Plasterboard Type 2 Normal.bmp using Guid(a95a5bcc8150b0f43adfaaa19e015f81) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4f8e91cc02b82252906d3b84c601f7e1') in 0.088463 seconds 
-  Import took 0.096230 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000257 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Nromal/Rock 3 Normal.bmp
-  artifactKey: Guid(c5f9b15ff5e72814dba4946ff5082920) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Nromal/Rock 3 Normal.bmp using Guid(c5f9b15ff5e72814dba4946ff5082920) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e71f3e3d9a14b3c8ac4790e3ca494597') in 0.047543 seconds 
-  Import took 0.064217 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000237 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Nromal/Concrete 4 Normal.bmp
-  artifactKey: Guid(223a4414a436b72428ab2646cf696e21) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Nromal/Concrete 4 Normal.bmp using Guid(223a4414a436b72428ab2646cf696e21) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f8f74c5360cde82c93f4d18ad45dd4a9') in 0.025400 seconds 
-  Import took 0.029310 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000198 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Nromal/Insulation Type 2 Normal.bmp
-  artifactKey: Guid(cf7e06a0dc45ecd418dacb57db46cecb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Nromal/Insulation Type 2 Normal.bmp using Guid(cf7e06a0dc45ecd418dacb57db46cecb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6b3280f23e3e6f01ae59ebb04be6fc08') in 0.091864 seconds 
-  Import took 0.094132 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000205 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Nromal/Concrete 1 Normal.bmp
-  artifactKey: Guid(346d20b2575466348a815ce83b8a22a3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Nromal/Concrete 1 Normal.bmp using Guid(346d20b2575466348a815ce83b8a22a3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '90647a3ee04a29222e168d9e343e0574') in 0.238254 seconds 
-  Import took 0.241738 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000208 seconds.
-  path: Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Nromal/Plasterboard Type 1 Normal.bmp
-  artifactKey: Guid(94e9cbef4c8e5ef4da446851b01eca67) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Rubble Pieces Detailed Package 1.1/Textures/Nromal/Plasterboard Type 1 Normal.bmp using Guid(94e9cbef4c8e5ef4da446851b01eca67) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0769a8fc20819d6fbce2de8c3dc977ad') in 0.732142 seconds 
-  Import took 0.739108 seconds .
+  Time since last request: 306.405201 seconds.
+  path: Assets/Resource/CharFBX/Ch36_nonPBR@Male Standing Pose.fbx
+  artifactKey: Guid(1d0083cc7bd0e654f984183c6c11342f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resource/CharFBX/Ch36_nonPBR@Male Standing Pose.fbx using Guid(1d0083cc7bd0e654f984183c6c11342f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e89792a18ebd2700c7b6f601b30daa05') in 0.059329 seconds 
+  Import took 0.062685 seconds .
 
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file
