@@ -1,139 +1,122 @@
 Using pre-set license
 Built from '2020.3/release' branch; Version is '2020.3.15f2 (6cf78cb77498) revision 7141260'; Using compiler version '192528614'; Build Type 'Release'
-OS: 'Windows 10 Pro; OS build 19041.1415; Version 2004; 64bit' Language: 'ko' Physical Memory: 24524 MB
+OS: 'Windows 10 Home; OS build 17763.1577; Version 1809; 64bit' Language: 'ko' Physical Memory: 15791 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
 
  COMMAND LINE ARGUMENTS:
-C:\Program Files\Unity\Hub\Editor\2020.3.15f2\Editor\Unity.exe
+C:\Program Files\2020.3.15f2\Editor\Unity.exe
 -adb2
 -batchMode
 -noUpm
 -name
 AssetImportWorker0
 -projectPath
-C:/Users/admin/Documents/GitHub/atents/3D_PuzzleEscape
+C:/Users/이승준/Documents/GitHub/atents/3D_PuzzleEscape
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-8439
-Successfully changed project path to: C:/Users/admin/Documents/GitHub/atents/3D_PuzzleEscape
-C:/Users/admin/Documents/GitHub/atents/3D_PuzzleEscape
+61179
+Successfully changed project path to: C:/Users/이승준/Documents/GitHub/atents/3D_PuzzleEscape
+C:/Users/이승준/Documents/GitHub/atents/3D_PuzzleEscape
 Using Asset Import Pipeline V2.
-Assets/Resource/Prefab/PaintBucket_C4D/PaintBucket.c4d: Unity no longer supports importing Cinema 4D files directly, but we're working with Maxon to make the experience better. To import Cinema 4D files, install Maxon's external importer. You can find more information on the Unity Forum: https://on.unity.com/c4d.
-
-Please note that FBX files exported from Cinema4D are still supported.
-
-Refreshing native plugins compatible for Editor in 44.44 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 35.20 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.15f2 (6cf78cb77498)
-[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.15f2/Editor/Data/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path C:/Users/admin/Documents/GitHub/atents/3D_PuzzleEscape/Assets
+[Subsystems] Discovering subsystems at path C:/Program Files/2020.3.15f2/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/이승준/Documents/GitHub/atents/3D_PuzzleEscape/Assets
 GfxDevice: creating device client; threaded=0
 Direct3D:
     Version:  Direct3D 11.0 [level 11.1]
-    Renderer: NVIDIA GeForce RTX 3070 (ID=0x2484)
+    Renderer: Microsoft Basic Render Driver (ID=0x8c)
     Vendor:   
-    VRAM:     8043 MB
-    Driver:   30.0.15.1123
+    VRAM:     7895 MB
 Initialize mono
-Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.15f2/Editor/Data/Managed'
-Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.15f2/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
-Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.15f2/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56812
+Mono path[0] = 'C:/Program Files/2020.3.15f2/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/2020.3.15f2/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Program Files/2020.3.15f2/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56488
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
-Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.15f2/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.003927 seconds.
+Register platform support module: C:/Program Files/2020.3.15f2/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.001093 seconds.
 Native extension for WindowsStandalone target not found
-Assets/Resource/Prefab/PaintBucket_C4D/PaintBucket.c4d: Unity no longer supports importing Cinema 4D files directly, but we're working with Maxon to make the experience better. To import Cinema 4D files, install Maxon's external importer. You can find more information on the Unity Forum: https://on.unity.com/c4d.
-
-Please note that FBX files exported from Cinema4D are still supported.
-
-Refreshing native plugins compatible for Editor in 38.08 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 36.19 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  2.319 seconds
+- Completed reload, in  1.439 seconds
 Domain Reload Profiling:
-	ReloadAssembly (2320ms)
-		BeginReloadAssembly (75ms)
+	ReloadAssembly (1439ms)
+		BeginReloadAssembly (38ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (360ms)
-			LoadAssemblies (71ms)
+		EndReloadAssembly (333ms)
+			LoadAssemblies (37ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (124ms)
+			SetupTypeCache (116ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (26ms)
-			SetupLoadedEditorAssemblies (138ms)
+			RebuildScriptCaches (27ms)
+			SetupLoadedEditorAssemblies (136ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (4ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (38ms)
-				BeforeProcessingInitializeOnLoad (10ms)
+				RefreshPlugins (36ms)
+				BeforeProcessingInitializeOnLoad (11ms)
 				ProcessInitializeOnLoadAttributes (63ms)
-				ProcessInitializeOnLoadMethodAttributes (23ms)
+				ProcessInitializeOnLoadMethodAttributes (22ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.007785 seconds.
+Registered in 0.002836 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.50 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 0.44 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.071 seconds
+- Completed reload, in  0.914 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1072ms)
-		BeginReloadAssembly (157ms)
+	ReloadAssembly (915ms)
+		BeginReloadAssembly (114ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (4ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (17ms)
-		EndReloadAssembly (847ms)
-			LoadAssemblies (111ms)
+		EndReloadAssembly (751ms)
+			LoadAssemblies (64ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (237ms)
+			SetupTypeCache (251ms)
 			ReleaseScriptCaches (0ms)
 			RebuildScriptCaches (40ms)
-			SetupLoadedEditorAssemblies (400ms)
+			SetupLoadedEditorAssemblies (321ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (5ms)
+				InitializePlatformSupportModulesInManaged (4ms)
 				SetLoadedEditorAssemblies (1ms)
 				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (88ms)
-				ProcessInitializeOnLoadAttributes (289ms)
+				BeforeProcessingInitializeOnLoad (60ms)
+				ProcessInitializeOnLoadAttributes (248ms)
 				ProcessInitializeOnLoadMethodAttributes (4ms)
-				AfterProcessingInitializeOnLoad (13ms)
+				AfterProcessingInitializeOnLoad (4ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (5ms)
 Platform modules already initialized, skipping
-Assets/Resource/Prefab/PaintBucket_C4D/PaintBucket.c4d: Unity no longer supports importing Cinema 4D files directly, but we're working with Maxon to make the experience better. To import Cinema 4D files, install Maxon's external importer. You can find more information on the Unity Forum: https://on.unity.com/c4d.
-
-Please note that FBX files exported from Cinema4D are still supported.
-
 ========================================================================
 Worker process is ready to serve import requests
-Assets/Resource/Prefab/PaintBucket_C4D/PaintBucket.c4d: Unity no longer supports importing Cinema 4D files directly, but we're working with Maxon to make the experience better. To import Cinema 4D files, install Maxon's external importer. You can find more information on the Unity Forum: https://on.unity.com/c4d.
-
-Please note that FBX files exported from Cinema4D are still supported.
-
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
-Refreshing native plugins compatible for Editor in 0.49 ms, found 2 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
+Refreshing native plugins compatible for Editor in 0.44 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1567 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 74.1 MB.
-System memory in use after: 74.2 MB.
+Unloading 1568 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 75.6 MB.
+System memory in use after: 75.7 MB.
 
 Unloading 19 unused Assets to reduce memory usage. Loaded Objects now: 2006.
-Total: 2.143900 ms (FindLiveObjects: 0.173900 ms CreateObjectMapping: 0.035200 ms MarkObjects: 1.865500 ms  DeleteObjects: 0.068500 ms)
+Total: 2.415300 ms (FindLiveObjects: 0.281100 ms CreateObjectMapping: 0.097000 ms MarkObjects: 1.970100 ms  DeleteObjects: 0.065600 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -142,83 +125,158 @@ AssetImportParameters requested are different than current active one (requested
   custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
   custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
   custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  path: Assets/Resource/Green.mat
-  artifactKey: Guid(eb48fcd6db335614988b21eccec76425) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Green.mat using Guid(eb48fcd6db335614988b21eccec76425) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '575d40da669e0a6c8c8193b926d697cf') in 0.131618 seconds 
-  Import took 0.134264 seconds .
+  path: Assets/Script/InteractionObject/Note_Interaction.cs
+  artifactKey: Guid(3f9257f7b007b2c43b2358d48a495bcf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Script/InteractionObject/Note_Interaction.cs using Guid(3f9257f7b007b2c43b2358d48a495bcf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f3e2aaf68abf80d52be4b045c1efd19b') in 0.025019 seconds 
+  Import took 0.028338 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 76.408223 seconds.
-  path: Assets/Resource/Prefab/PaintBucket_C4D
-  artifactKey: Guid(115dc7a0da8631b4faf940cac1ea9b27) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Prefab/PaintBucket_C4D using Guid(115dc7a0da8631b4faf940cac1ea9b27) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ec3033efa4a53b4660dda374950866ac') in 0.022518 seconds 
-  Import took 0.025419 seconds .
+  Time since last request: 0.000232 seconds.
+  path: Assets/Script/InteractionObject/Safe.cs
+  artifactKey: Guid(89c531f9c36b48f4fb7bc74d76eaad7d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Script/InteractionObject/Safe.cs using Guid(89c531f9c36b48f4fb7bc74d76eaad7d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f8c5208d38d8a0a03c35d4261f7a6fc5') in 0.013772 seconds 
+  Import took 0.032854 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.862187 seconds.
-  path: Assets/Resource/Prefab/PaintBucket_C4D/PaintBucket.c4d
-  artifactKey: Guid(4f3eb2f3b766de74380959ddfd4dcdf1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Prefab/PaintBucket_C4D/PaintBucket.c4d using Guid(4f3eb2f3b766de74380959ddfd4dcdf1) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Assets/Resource/Prefab/PaintBucket_C4D/PaintBucket.c4d: Unity no longer supports importing Cinema 4D files directly, but we're working with Maxon to make the experience better. To import Cinema 4D files, install Maxon's external importer. You can find more information on the Unity Forum: https://on.unity.com/c4d.
-
-Please note that FBX files exported from Cinema4D are still supported.
-
- -> (artifact id: 'b6c4e5abfe30ea93120364ea465bdf48') in 0.035544 seconds 
-  Import took 0.038180 seconds .
+  Time since last request: 0.906351 seconds.
+  path: Assets/Script/InteractionObject/MoveInteraction.cs
+  artifactKey: Guid(038a3d4cd15c8ba4aa32be9aab37b4c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Script/InteractionObject/MoveInteraction.cs using Guid(038a3d4cd15c8ba4aa32be9aab37b4c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8edd4b67b315b35054320dc4b6e99ada') in 0.008223 seconds 
+  Import took 0.011630 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 7.249045 seconds.
-  path: Assets/Resource/Prefab/PaintBucket_C4D.rar
-  artifactKey: Guid(315e3845f4b992a47ab39591ae553d1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Prefab/PaintBucket_C4D.rar using Guid(315e3845f4b992a47ab39591ae553d1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '47d47c9884a9a92acadc808230f42db0') in 0.031776 seconds 
-  Import took 0.034509 seconds .
+  Time since last request: 0.339373 seconds.
+  path: Assets/Script/InteractionObject/MixPotion.cs
+  artifactKey: Guid(6bc440d7abbf55949831a72491587d42) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Script/InteractionObject/MixPotion.cs using Guid(6bc440d7abbf55949831a72491587d42) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e0c4179a410484c7340335c0e8fef921') in 0.021596 seconds 
+  Import took 0.025678 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 54.628216 seconds.
-  path: Assets/Resource/Prefab/PaintBucket.obj
-  artifactKey: Guid(74e3cc432632a36439aea9d9ce2f30d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Prefab/PaintBucket.obj using Guid(74e3cc432632a36439aea9d9ce2f30d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fe0d44cf0bdedeb63943a4e6387ce4dc') in 0.111445 seconds 
-  Import took 0.114395 seconds .
+  Time since last request: 0.260387 seconds.
+  path: Assets/Script/InteractionObject/MiniGameInteraction.cs
+  artifactKey: Guid(f23547d1905784c469562906ab806a24) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Script/InteractionObject/MiniGameInteraction.cs using Guid(f23547d1905784c469562906ab806a24) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8f4e86022098a0e973bf2a6a9f63be15') in 0.007511 seconds 
+  Import took 0.010836 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 5947.440685 seconds.
-  path: Assets/Resource/Prefab/dummy_left_leg.prefab
-  artifactKey: Guid(fb0c5cac3faca3940b69de997d2a2831) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Prefab/dummy_left_leg.prefab using Guid(fb0c5cac3faca3940b69de997d2a2831) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4f6c42be2dafe6fe75e8da73b64ec5ac') in 0.029107 seconds 
-  Import took 0.032111 seconds .
+  Time since last request: 2.232792 seconds.
+  path: Assets/Script/InteractionObject/LookInteraction.cs
+  artifactKey: Guid(af450706ee6b29846a6020bc9ac58364) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Script/InteractionObject/LookInteraction.cs using Guid(af450706ee6b29846a6020bc9ac58364) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ea817dde14c9a257597183ea2d0b9fe0') in 0.006587 seconds 
+  Import took 0.022097 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000234 seconds.
-  path: Assets/Resource/Prefab/dummy_obj.prefab
-  artifactKey: Guid(f20b4545f6b59b64e99c4b7cd471b654) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Prefab/dummy_obj.prefab using Guid(f20b4545f6b59b64e99c4b7cd471b654) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9e67bc41c1c60db8af597b9f1eece5a6') in 0.039123 seconds 
-  Import took 0.041704 seconds .
+  Time since last request: 0.219894 seconds.
+  path: Assets/Script/InteractionObject/ItemInteraction.cs
+  artifactKey: Guid(f546edb2b2d45824e831cc741ba0520b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Script/InteractionObject/ItemInteraction.cs using Guid(f546edb2b2d45824e831cc741ba0520b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'af6013b9c36a92fd0dbe833af2d6f6b3') in 0.014918 seconds 
+  Import took 0.017622 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 8.026211 seconds.
-  path: Assets/Resource/Prefab/dummy_obj.prefab
-  artifactKey: Guid(f20b4545f6b59b64e99c4b7cd471b654) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Prefab/dummy_obj.prefab using Guid(f20b4545f6b59b64e99c4b7cd471b654) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '16fa6dddfd95286d9e6767637637dd46') in 0.016106 seconds 
-  Import took 0.019322 seconds .
+  Time since last request: 0.168914 seconds.
+  path: Assets/Script/InteractionObject/InteractionObject.cs
+  artifactKey: Guid(0d599206266056e40b38d63dd1707e78) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Script/InteractionObject/InteractionObject.cs using Guid(0d599206266056e40b38d63dd1707e78) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6c941dae1ac54f033e1bf958145396a9') in 0.007129 seconds 
+  Import took 0.022863 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000193 seconds.
-  path: Assets/Resource/Prefab/dummy_right_arm.prefab
-  artifactKey: Guid(3b5746fb9abc98b45bc3e217991a4590) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resource/Prefab/dummy_right_arm.prefab using Guid(3b5746fb9abc98b45bc3e217991a4590) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dbf24f55217e59489fc2fae1fba5fb9f') in 0.013295 seconds 
-  Import took 0.015727 seconds .
+  Time since last request: 1.340675 seconds.
+  path: Assets/Script/InteractionObject/DoorBreak.cs
+  artifactKey: Guid(9ab07ea17ebb97b41a366721d2411875) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Script/InteractionObject/DoorBreak.cs using Guid(9ab07ea17ebb97b41a366721d2411875) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '18647fa0cc2d72f6fc7a0d36fdc3dfe6') in 0.006664 seconds 
+  Import took 0.022288 seconds .
 
+========================================================================
+Received Import Request.
+  Time since last request: 36.965803 seconds.
+  path: Assets/Script/InteractionObject
+  artifactKey: Guid(7e23d655e3d659b43b782660e60cb5d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Script/InteractionObject using Guid(7e23d655e3d659b43b782660e60cb5d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '06c37d587e4bb2295645841d25086f2e') in 0.002281 seconds 
+  Import took 0.006346 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.011307 seconds.
+  path: Assets/Script/InteractionObject
+  artifactKey: Guid(7e23d655e3d659b43b782660e60cb5d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Script/InteractionObject using Guid(7e23d655e3d659b43b782660e60cb5d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '06c37d587e4bb2295645841d25086f2e') in 0.005045 seconds 
+  Import took 0.007909 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 14.696714 seconds.
+  path: Assets/Script/InteractionObject/Corpse_drawer_Event.cs
+  artifactKey: Guid(fc8b5651effc402499ef258349923a1f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Script/InteractionObject/Corpse_drawer_Event.cs using Guid(fc8b5651effc402499ef258349923a1f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '044d4893945e4b8d363ec3e9998b2353') in 0.012531 seconds 
+  Import took 0.016223 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002800 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.44 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.911 seconds
+Domain Reload Profiling:
+	ReloadAssembly (912ms)
+		BeginReloadAssembly (86ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (3ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (29ms)
+		EndReloadAssembly (753ms)
+			LoadAssemblies (68ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (287ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (32ms)
+			SetupLoadedEditorAssemblies (288ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (56ms)
+				ProcessInitializeOnLoadAttributes (220ms)
+				ProcessInitializeOnLoadMethodAttributes (3ms)
+				AfterProcessingInitializeOnLoad (4ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (5ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.45 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1560 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 75.2 MB.
+System memory in use after: 75.3 MB.
+
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 2009.
+Total: 1.897900 ms (FindLiveObjects: 0.158400 ms CreateObjectMapping: 0.032500 ms MarkObjects: 1.686000 ms  DeleteObjects: 0.020200 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file
