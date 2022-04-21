@@ -44,7 +44,16 @@ public class PlayerInteraction : MonoBehaviour
                 
                 if(playerInput.InteractionKey)
                 {
-                    InteractionObject interObj = hit.collider.GetComponent<InteractionObject>();
+                    InteractionObject[] interObjs = hit.collider.GetComponents<InteractionObject>();
+                    InteractionObject interObj = null;
+
+                    foreach(InteractionObject iter in interObjs)
+                    {
+                        if (iter.enabled == true) interObj = iter;
+                    }
+
+                    if (interObj == null) return;
+
                     if(interObj)
                     {
                         if (interObj.NeedItemCheck() != null && InventoryManager.instance.SelectedItem != null)

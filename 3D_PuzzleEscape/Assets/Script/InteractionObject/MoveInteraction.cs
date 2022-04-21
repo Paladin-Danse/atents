@@ -10,12 +10,17 @@ public class MoveInteraction : InteractionObject
     protected bool b_OnMove;
     [SerializeField] protected float f_MoveTime;
 
+    private void Awake()
+    {
+        MoveAnimation = GetComponent<Animation>();
+    }
+
     protected new void Start()
     {
         base.Start();
-        MoveAnimation = GetComponent<Animation>();
+
         if (!MoveAnimation) Debug.Log("MoveAnimation is Not Found!!");
-        else MoveAnimation.clip = MoveClip;
+        else SetAnim(MoveClip);
 
         e_ObjectType = OBJ_TYPE.OBJ_INTERACT;
         InteractionEvent += InteractiontoMove;
@@ -48,5 +53,17 @@ public class MoveInteraction : InteractionObject
         {
             MoveAnimation[MoveAnimation.clip.name].time = 0.0f;
         }
+    }
+
+    public void SetAnim(AnimationClip clip)
+    {
+        MoveAnimation.clip = clip;
+    }
+
+    public void AnimationReverse()
+    {
+        MoveAnimation[MoveAnimation.clip.name].time = 1.0f;
+        MoveAnimation[MoveAnimation.clip.name].speed = 1.0f;
+        b_OnMove = true;
     }
 }
