@@ -54,7 +54,12 @@ public class MoveInteraction : InteractionObject
             MoveAnimation[MoveAnimation.clip.name].time = 0.0f;
         }
     }
-
+    public void OneTime_Anim()
+    {
+        InteractionEvent -= InteractiontoMove;
+        gameObject.layer = gameObject.layer = LayerMask.NameToLayer("Default");
+    }
+    
     public void SetAnim(AnimationClip clip)
     {
         MoveAnimation.clip = clip;

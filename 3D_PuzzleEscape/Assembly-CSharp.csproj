@@ -65,6 +65,7 @@
     <Compile Include="Assets\Script\ItemUI.cs" />
     <Compile Include="Assets\Script\InteractionObject\InteractionObject.cs" />
     <Compile Include="Assets\Script\InteractionObject\MoveInteraction.cs" />
+    <Compile Include="Assets\Script\InteractionObject\Mannequin_Example.cs" />
     <Compile Include="Assets\Script\InteractionObject\Corpse_drawer_Event.cs" />
     <Compile Include="Assets\Script\Manager\InventoryManager.cs" />
     <Compile Include="Assets\Script\Manager\GameManager.cs" />
@@ -76,6 +77,7 @@
     <Compile Include="Assets\Script\InteractionObject\Note_Interaction.cs" />
     <Compile Include="Assets\Script\Manager\UIManager.cs" />
     <Compile Include="Assets\Script\Player\PlayerInput.cs" />
+    <Compile Include="Assets\Script\InteractionObject\Mannequin_Interactable.cs" />
     <Compile Include="Assets\Script\Player\PlayerInteraction.cs" />
     <Compile Include="Assets\Script\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Script\InteractionObject\MiniGameInteraction.cs" />

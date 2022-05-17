@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7b61b2f89bde8844785ec3264f54db45, type: 3}
-  m_Name: MixData
+  m_Name: Puppet_Head_Red
   m_EditorClassIdentifier: 
   data:
-    item1: {fileID: 11400000, guid: 8885c8cd9782820498ac63e6a92d9b67, type: 2}
-    item2: {fileID: 11400000, guid: 9c022a3fa7b2d184c99ca191279a0003, type: 2}
-    Mixeditem: {fileID: 11400000, guid: 2a07386f56604ef4f8de744372993ad8, type: 2}
+    item1: {fileID: 11400000, guid: be3ae52045a77484d9808c613bca2c64, type: 2}
+    item2: {fileID: 11400000, guid: a3bef2c6f4ac05849b2a457bd7c8b974, type: 2}
+    Mixeditem: {fileID: 11400000, guid: 166e04aa72e97d54aa8bfa78da24ae9c, type: 2}

@@ -139,13 +139,22 @@ public class InventoryManager : MonoBehaviour
     {
         if (SelectedMixItem != null)
         {
+            Debug.Log(SelectedMixItem.data.name);
+
             var mixitem = MixRecipe.Find(i => (i.Data.item1.Data.name == SelectedMixItem.data.name || i.Data.item2.Data.name == SelectedMixItem.data.name) &&
                                               (i.Data.item1.Data.name == SelectedItem.data.name || i.Data.item2.Data.name == SelectedItem.data.name));
             if(mixitem && SelectedMixItem != SelectedItem)
             {
+                SelectNum = 0;
+                
                 UseItem(SelectedItem);
                 UseItem(SelectedMixItem);
                 GetItem(mixitem.Data.Mixeditem);
+
+                SelectedMixItem = null;
+                UIManager.instance.SelectMixUIDisable();
+
+                Debug.Log(mixitem.Data.Mixeditem.name);
             }
             else
             {
@@ -177,6 +186,7 @@ public class InventoryManager : MonoBehaviour
         {
             SelectNum = 0;
             UIManager.instance.SelectUIDisable();
+            UIManager.instance.SelectMixUIDisable();
             UIManager.instance.ItemUIDisable(item);
 
             item = null;
