@@ -7,5 +7,9 @@ public class ItemData : ScriptableObject
 {
     [SerializeField] Item data;
     public Item Data { get { return data; } }
+    public void InputData(Item m_data)
+    {
+        data = m_data;
+    }
 }
 

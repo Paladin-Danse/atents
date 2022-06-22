@@ -81,6 +81,7 @@
     <Compile Include="Assets\Script\Player\PlayerInteraction.cs" />
     <Compile Include="Assets\Script\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Script\InteractionObject\MiniGameInteraction.cs" />
+    <Compile Include="Assets\Script\InteractionObject\WashItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Morgue Room PBR\info_morgueroom.txt" />

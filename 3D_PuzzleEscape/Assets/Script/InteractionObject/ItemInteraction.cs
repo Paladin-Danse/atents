@@ -19,4 +19,9 @@ public class ItemInteraction : InteractionObject
 
         gameObject.SetActive(false);
     }
+
+    public void SetItem(ItemData m_item)
+    {
+        item = m_item;
+    }
 }
