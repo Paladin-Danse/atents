@@ -38,29 +38,40 @@ public class Mannequin_Interactable : InteractionObject
         {
             if(name == i.Data.name)
             {
+                GameObject Parts;
+
                 //마네킹 부품이 맞다면 어디 부품인지 다시 체크
-                if(name.Contains("인형머리"))
+                switch (name)
                 {
-                    Mannequin_fit(Mannequin_Head, item.data, name);
-                }
-                else if (name.Contains("왼쪽 팔"))
-                {
-                    Mannequin_fit(Mannequin_ArmL, item.data, name);
-                }
-                else if (name.Contains("오른쪽 팔"))
-                {
-                    Mannequin_fit(Mannequin_ArmR, item.data, name);
-                }
-                else if (name.Contains("왼쪽 다리"))
-                {
-                    Mannequin_fit(Mannequin_LegL, item.data, name);
-                }
-                else if (name.Contains("오른쪽 다리"))
-                {
-                    Mannequin_fit(Mannequin_LegR, item.data, name);
+                    case string key when name.Contains("인형머리"):
+                        Parts = Mannequin_Head;
+                        break;
+                    case string key when name.Contains("왼쪽 팔"):
+                        Parts = Mannequin_ArmL;
+                        break;
+                    case string key when name.Contains("오른쪽 팔"):
+                        Parts = Mannequin_ArmR;
+                        break;
+                    case string key when name.Contains("왼쪽 다리"):
+                        Parts = Mannequin_LegL;
+                        break;
+                    case string key when name.Contains("오른쪽 다리"):
+                        Parts = Mannequin_LegR;
+                        break;
+                    default:
+                        Parts = null;
+                        break;
                 }
 
-                InventoryManager.instance.UseItem(item);
+                if (Parts)
+                {
+                    Mannequin_fit(Parts, item.data, name);
+                    InventoryManager.instance.UseItem(item);
+                }
+                else
+                {
+                    Debug.Log("Error(Mannequin_Interactable) : Not Found Parts Object!");
+                }
             }
         }
     }

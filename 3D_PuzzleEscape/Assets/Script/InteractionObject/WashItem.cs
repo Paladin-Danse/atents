@@ -5,16 +5,28 @@ using UnityEngine;
 public class WashItem : InteractionObject
 {
     [SerializeField] private ItemData[] Mannequin_Data;//마네킹부품이 될 수 있는 모든 아이템 데이터값.
-    [SerializeField] private ItemData Mannequin_Head_data;
-    [SerializeField] private ItemData Mannequin_ArmL_data;
-    [SerializeField] private ItemData Mannequin_ArmR_data;
-    [SerializeField] private ItemData Mannequin_LegL_data;
-    [SerializeField] private ItemData Mannequin_LegR_data;
+    [SerializeField] private ItemData Default_Head_data;
+    [SerializeField] private ItemData Default_ArmL_data;
+    [SerializeField] private ItemData Default_ArmR_data;
+    [SerializeField] private ItemData Default_LegL_data;
+    [SerializeField] private ItemData Default_LegR_data;
 
     // Start is called before the first frame update
-    void Start()
+    private new void Start()
     {
-        
+        base.Start();
+        InteractionEvent += Mannequin_PartCheck;
+
+        if (!Default_Head_data)
+            Default_Head_data = Resources.Load<ItemData>("Assets/Script/ScriptableData/Item/Puppet_Head");
+        if (!Default_ArmL_data)
+            Default_ArmL_data = Resources.Load<ItemData>("Assets/Script/ScriptableData/Item/Puppet_left_arm");
+        if (!Default_ArmR_data)
+            Default_ArmR_data = Resources.Load<ItemData>("Assets/Script/ScriptableData/Item/Puppet_right_arm");
+        if (!Default_LegL_data)
+            Default_LegL_data = Resources.Load<ItemData>("Assets/Script/ScriptableData/Item/Puppet_left_leg");
+        if (!Default_LegR_data)
+            Default_LegR_data = Resources.Load<ItemData>("Assets/Script/ScriptableData/Item/Puppet_right_leg");
     }
 
     //마네킹의 부품인지 체크하고 마네킹의 부품이 맞다면 어디 부위에 속하는지 확인하는 함수.
@@ -28,34 +40,76 @@ public class WashItem : InteractionObject
         {
             if (name == i.Data.name)
             {
-                //마네킹 부품이 맞다면 어디 부품인지 다시 체크(스위치문으로 변경가능할듯?)
+
+                //마네킹 부품이 맞다면 어디 부품인지 다시 체크
+                //여기서 사용한 when은 케이스가드(추가 조건문으로 기본 패턴을 포함해 해당 조건"까지" 충족해야 하는 추가 조건. bool식만 가능)
+                data = name switch
+                {
+                    string key when key.Contains("인형머리") => Default_Head_data,
+                    string key when key.Contains("왼쪽 팔") => Default_ArmL_data,
+                    string key when key.Contains("오른쪽 팔") => Default_ArmR_data,
+                    string key when key.Contains("왼쪽 다리") => Default_LegL_data,
+                    string key when key.Contains("오른쪽 다리") => Default_LegR_data,
+                    _ => null
+                };
+                /*
+                switch(name)
+                {
+                    case string key when name.Contains("인형머리"):
+                        data = Default_Head_data;
+                        break;
+                    case string key when name.Contains("왼쪽 팔"):
+                        data = Default_ArmL_data;
+                        break;
+                    case string key when name.Contains("오른쪽 팔"):
+                        data = Default_ArmR_data;
+                        break;
+                    case string key when name.Contains("왼쪽 다리"):
+                        data = Default_LegL_data;
+                        break;
+                    case string key when name.Contains("오른쪽 다리"):
+                        data = Default_LegR_data;
+                        break;
+                    default:
+                        data = null;
+                        break;
+                }
+                */
+                /*
                 if (name.Contains("인형머리"))
                 {
-                    data = Mannequin_Head_data;
+                    data = Default_Head_data;
                 }
                 else if (name.Contains("왼쪽 팔"))
                 {
-                    data = Mannequin_ArmL_data;
+                    data = Default_ArmL_data;
                 }
                 else if (name.Contains("오른쪽 팔"))
                 {
-                    data = Mannequin_ArmR_data;
+                    data = Default_ArmR_data;
                 }
                 else if (name.Contains("왼쪽 다리"))
                 {
-                    data = Mannequin_LegL_data;
+                    data = Default_LegL_data;
                 }
                 else if (name.Contains("오른쪽 다리"))
                 {
-                    data = Mannequin_LegR_data;
+                    data = Default_LegR_data;
                 }
                 else
                 {
                     data = null;
                 }
-
-                InventoryManager.instance.GetItem(data);
-                InventoryManager.instance.UseItem(item);
+                */
+                if (data)
+                {
+                    InventoryManager.instance.GetItem(data);
+                    InventoryManager.instance.UseItem(item);
+                }
+                else
+                {
+                    Debug.Log("Error(WashItem) : Not Found data!");
+                }
             }
         }
     }

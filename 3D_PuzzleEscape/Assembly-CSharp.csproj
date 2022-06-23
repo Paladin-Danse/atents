@@ -69,6 +69,7 @@
     <Compile Include="Assets\Script\InteractionObject\Corpse_drawer_Event.cs" />
     <Compile Include="Assets\Script\Manager\InventoryManager.cs" />
     <Compile Include="Assets\Script\Manager\GameManager.cs" />
+    <Compile Include="Assets\Script\InteractionObject\WashItem.cs" />
     <Compile Include="Assets\Script\ItemData.cs" />
     <Compile Include="Assets\Script\Mini_PotionRecipeData.cs" />
     <Compile Include="Assets\Script\InteractionObject\DoorBreak.cs" />
@@ -81,7 +82,6 @@
     <Compile Include="Assets\Script\Player\PlayerInteraction.cs" />
     <Compile Include="Assets\Script\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Script\InteractionObject\MiniGameInteraction.cs" />
-    <Compile Include="Assets\Script\InteractionObject\WashItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Morgue Room PBR\info_morgueroom.txt" />
