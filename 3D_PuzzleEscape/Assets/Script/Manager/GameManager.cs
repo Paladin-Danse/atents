@@ -20,6 +20,9 @@ public class GameManager : MonoBehaviour
     public PlayerInput playerInput { get; private set; }
     public PlayerMovement playerMovement { get; private set; }
     public PlayerInteraction playerInteraction { get; private set; }
+    
+    Mannequin_Example M_Example;
+
     private void Awake()
     {
         Player = GameObject.Find("Player");
@@ -33,7 +36,6 @@ public class GameManager : MonoBehaviour
             playerMovement = Player.GetComponent<PlayerMovement>();
             playerInteraction = Player.GetComponent<PlayerInteraction>();
         }
-        
     }
 
     void Start()

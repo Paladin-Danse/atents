@@ -16,17 +16,18 @@ public class WashItem : InteractionObject
     {
         base.Start();
         InteractionEvent += Mannequin_PartCheck;
-
+        //Resources에 없는 파일들이라 다른 함수를 쓰거나 리소스 폴더에 넣고 다시 경로 변경 해줘야함.(방법을 찾으면 수정 필요)
+        //그전까진 직접 아이템 데이터들을 컴포넌트에 끌어다 넣는 식으로 운영.
         if (!Default_Head_data)
-            Default_Head_data = Resources.Load<ItemData>("Assets/Script/ScriptableData/Item/Puppet_Head");
+            Default_Head_data = Resources.Load<ItemData>("Assets/Script/ScriptableData/Item/Puppet_Head.asset");
         if (!Default_ArmL_data)
-            Default_ArmL_data = Resources.Load<ItemData>("Assets/Script/ScriptableData/Item/Puppet_left_arm");
+            Default_ArmL_data = Resources.Load<ItemData>("Assets/Script/ScriptableData/Item/Puppet_left_arm.asset");
         if (!Default_ArmR_data)
-            Default_ArmR_data = Resources.Load<ItemData>("Assets/Script/ScriptableData/Item/Puppet_right_arm");
+            Default_ArmR_data = Resources.Load<ItemData>("Assets/Script/ScriptableData/Item/Puppet_right_arm.asset");
         if (!Default_LegL_data)
-            Default_LegL_data = Resources.Load<ItemData>("Assets/Script/ScriptableData/Item/Puppet_left_leg");
+            Default_LegL_data = Resources.Load<ItemData>("Assets/Script/ScriptableData/Item/Puppet_left_leg.asset");
         if (!Default_LegR_data)
-            Default_LegR_data = Resources.Load<ItemData>("Assets/Script/ScriptableData/Item/Puppet_right_leg");
+            Default_LegR_data = Resources.Load<ItemData>("Assets/Script/ScriptableData/Item/Puppet_right_leg.asset");
     }
 
     //마네킹의 부품인지 체크하고 마네킹의 부품이 맞다면 어디 부위에 속하는지 확인하는 함수.
@@ -108,7 +109,7 @@ public class WashItem : InteractionObject
                 }
                 else
                 {
-                    Debug.Log("Error(WashItem) : Not Found data!");
+                    Debug.Log("Error(WashItem) : Not Found data!\n해당 스크립트 컴포넌트에 데이터가 잘 들어가있는지 확인하십시오.");
                 }
             }
         }
