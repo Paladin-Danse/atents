@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     public PlayerMovement playerMovement { get; private set; }
     public PlayerInteraction playerInteraction { get; private set; }
     
-    Mannequin_Example M_Example;
+    ItemData[] M_Example;
 
     private void Awake()
     {
@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
             playerMovement = Player.GetComponent<PlayerMovement>();
             playerInteraction = Player.GetComponent<PlayerInteraction>();
         }
+        M_Example = new ItemData[5];
     }
 
     void Start()
@@ -52,5 +53,9 @@ public class GameManager : MonoBehaviour
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+    }
+    public void M_Example_RandData_Read()
+    {
+
     }
 }

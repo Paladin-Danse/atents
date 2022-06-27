@@ -1152,7 +1152,27 @@ MonoBehaviour:
   Blue_Mat: {fileID: 2100000, guid: 04c5e7bea56f04b4e8b9d8c76766636a, type: 2}
   Green_Mat: {fileID: 2100000, guid: eb48fcd6db335614988b21eccec76425, type: 2}
   Default_Mat: {fileID: -8078617138743364992, guid: 96c6046c127c0f84fb510a9239e72b56, type: 3}
-  Mannequin_PartsData: []
+  Mannequin_PartsData:
+  - {fileID: 11400000, guid: a3bef2c6f4ac05849b2a457bd7c8b974, type: 2}
+  - {fileID: 11400000, guid: 026211a74e4485043bf6e866cc2c2535, type: 2}
+  - {fileID: 11400000, guid: 516d056eac0a4554ba3f8c4cb400e7cc, type: 2}
+  - {fileID: 11400000, guid: 166e04aa72e97d54aa8bfa78da24ae9c, type: 2}
+  - {fileID: 11400000, guid: 32f01a41d48db6241b642a0eb629f968, type: 2}
+  - {fileID: 11400000, guid: 9167209f964027847993f253d212f60a, type: 2}
+  - {fileID: 11400000, guid: 64d33ff71685ccd4090cb5f38db7529b, type: 2}
+  - {fileID: 11400000, guid: 4519ac83ed295f241bc4bd840230d8e7, type: 2}
+  - {fileID: 11400000, guid: dedac13edf4230049ba11087726d155b, type: 2}
+  - {fileID: 11400000, guid: c769b327eaf891b4a998845d8aa10fa8, type: 2}
+  - {fileID: 11400000, guid: 17e5957bd4160824f93e88811a3e6783, type: 2}
+  - {fileID: 11400000, guid: 297e742edf9d5e641ab4372d4af34eec, type: 2}
+  - {fileID: 11400000, guid: dae2c1b3aeb12534ab3aa0d0d6558062, type: 2}
+  - {fileID: 11400000, guid: 1008df14821d1d9418547ee0f9a569d2, type: 2}
+  - {fileID: 11400000, guid: ace5215aa331cdf4e82596c90014c84a, type: 2}
+  - {fileID: 11400000, guid: 4cffc26bee95fb74ea4653d9dad6158a, type: 2}
+  - {fileID: 11400000, guid: 21210bc9a231372458d8b1986f9b74d0, type: 2}
+  - {fileID: 11400000, guid: e772b68f48239dd47916a715d1029e5e, type: 2}
+  - {fileID: 11400000, guid: e1def1f528c50b844990d2a55493b316, type: 2}
+  - {fileID: 11400000, guid: 97a13ea389686524e9ac6b6ff70a5373, type: 2}
 --- !u!1 &275637119
 GameObject:
   m_ObjectHideFlags: 0
