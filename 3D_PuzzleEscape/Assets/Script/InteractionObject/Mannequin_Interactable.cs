@@ -67,11 +67,19 @@ public class Mannequin_Interactable : InteractionObject
                 {
                     Mannequin_fit(Parts, item.data, name);
                     InventoryManager.instance.UseItem(item);
+
+                    if (Mannequin_Head.activeSelf &&
+                        Mannequin_ArmL.activeSelf &&
+                        Mannequin_ArmR.activeSelf &&
+                        Mannequin_LegL.activeSelf &&
+                        Mannequin_LegR.activeSelf)
+                        GameManager.instance.M_Example_Compare_Data();
                 }
                 else
                 {
                     Debug.Log("Error(Mannequin_Interactable) : Not Found Parts Object!");
                 }
+                break;
             }
         }
     }
@@ -93,11 +101,14 @@ public class Mannequin_Interactable : InteractionObject
             mat = Default_Mat;
 
         //만약 틀린 색을 끼워맞췄을 경우 부품을 다시 뽑을 수 있게 해당 부품을 주울 수 있는 아이템으로 생성한다.
-        if (Part.GetComponent<ItemInteraction>())
+        if (Part.GetComponent<Mannequin_GetParts>())
         {
             ItemData itemData = new ItemData();
             itemData.InputData(data);
-            Part.GetComponent<ItemInteraction>().SetItem(itemData);
+            Part.GetComponent<Mannequin_GetParts>().SetItem(itemData);
+
+            //GameManager에 ItemData로 치환한 값 itemData를 M_PartsData에 입력한다.(인벤토리 내에 있는 아이템은 InventoryItem타입이라 ItemData와 호환불가).
+            GameManager.instance.M_InteractableData_Read(itemData);
         }
         //Material 씌우기.
         if (mat)

@@ -21,7 +21,8 @@ public class GameManager : MonoBehaviour
     public PlayerMovement playerMovement { get; private set; }
     public PlayerInteraction playerInteraction { get; private set; }
     
-    ItemData[] M_Example;
+    List<ItemData> Ex_PartsData;
+    List<ItemData> M_PartsData;
 
     private void Awake()
     {
@@ -36,7 +37,8 @@ public class GameManager : MonoBehaviour
             playerMovement = Player.GetComponent<PlayerMovement>();
             playerInteraction = Player.GetComponent<PlayerInteraction>();
         }
-        M_Example = new ItemData[5];
+        Ex_PartsData = new List<ItemData>();
+        M_PartsData = new List<ItemData>();
     }
 
     void Start()
@@ -54,7 +56,25 @@ public class GameManager : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
-    public void M_Example_RandData_Read()
+    public void M_Example_RandData_Read(Mannequin_Example M_example)
+    {
+        Ex_PartsData.Add(M_example.Mannequin_Head);
+        Ex_PartsData.Add(M_example.Mannequin_ArmL);
+        Ex_PartsData.Add(M_example.Mannequin_ArmR);
+        Ex_PartsData.Add(M_example.Mannequin_LegL);
+        Ex_PartsData.Add(M_example.Mannequin_LegR);
+    }
+    public void M_InteractableData_Read(ItemData m_itemData)
+    {
+        M_PartsData.Add(m_itemData);
+    }
+
+    public void M_InteractableData_Delete(ItemData m_itemData)
+    {
+        M_PartsData.Remove(m_itemData);
+    }
+
+    public void M_Example_Compare_Data()
     {
 
     }

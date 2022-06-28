@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemInteraction : InteractionObject
 {
-    [SerializeField] private ItemData item;
+    [SerializeField] protected ItemData item;
     // Start is called before the first frame update
     protected new void Start()
     {

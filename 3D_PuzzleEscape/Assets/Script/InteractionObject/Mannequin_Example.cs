@@ -6,11 +6,11 @@ using System;
 public class Mannequin_Example : MonoBehaviour
 {
     [SerializeField] private GameObject[] Mannequin_Parts;
-    [SerializeField] private ItemData Mannequin_Head;
-    [SerializeField] private ItemData Mannequin_ArmL;
-    [SerializeField] private ItemData Mannequin_ArmR;
-    [SerializeField] private ItemData Mannequin_LegL;
-    [SerializeField] private ItemData Mannequin_LegR;
+    public ItemData Mannequin_Head { get; private set; }
+    public ItemData Mannequin_ArmL { get; private set; }
+    public ItemData Mannequin_ArmR { get; private set; }
+    public ItemData Mannequin_LegL { get; private set; }
+    public ItemData Mannequin_LegR { get; private set; }
 
     [SerializeField] private Material Red_Mat;
     [SerializeField] private Material Blue_Mat;
@@ -30,7 +30,7 @@ public class Mannequin_Example : MonoBehaviour
 
             switch(iter.name)
             {
-                case "dummy_head":
+                case "dummy_Head":
                     Mannequin_Head = data;
                     break;
                 case "dummy_left_arm":
@@ -61,12 +61,9 @@ public class Mannequin_Example : MonoBehaviour
             };
             */
         }
+        GameManager.instance.M_Example_RandData_Read(this);
     }
 
-    public void GetMannequinData()
-    {
-
-    }
     public void RandomMaterial_output(GameObject Parts, ref ItemData PartsData)
     {
         //전체적으로 수정필요
@@ -76,6 +73,7 @@ public class Mannequin_Example : MonoBehaviour
         //오히려 마네킹에 부품 끼울 때처럼 아이템 데이터를 한 배열변수에 전부 저장.
         //ex)머리데이터만 뽑아서 임시배열변수에 넣고 거기서 랜덤값을 산출, 스위치문에서 ItemData와 material입히기까지 하면?
 
+        /*
         Material mat = UnityEngine.Random.Range(0, 4) switch
         {
             int i when i == 0 => Red_Mat,
@@ -83,21 +81,31 @@ public class Mannequin_Example : MonoBehaviour
             int i when i == 2 => Green_Mat,
             _ => Default_Mat
         };
+        */
+
+        Material mat;
+        string Partsname = Parts.name;
         
         switch(UnityEngine.Random.Range(0, 4))
         {
             case 0:
                 mat = Red_Mat;
-                //PartsData = Mannequin_PartsData.Find()
+                //Mannequin_PartsData의 이름에 Red를 포함하고 dummy_뒤에 붙는 부품의 이름이 Parts의 이름을 포함할 경우 PartsData에 그 ItemData를 담는다.
+                //ex)Parts의 이름이 dummy_Head이면 Mannequin_PartsData에서 이름에 Red가 포함되고, Head가 포함된 Puppet_Head_Red를 가져옴.
+                PartsData = Mannequin_PartsData.Find(i => i.name.Contains("Red") && i.name.Contains(Partsname.Substring(Partsname.IndexOf("_") + 1)));
                 break;
             case 1:
                 mat = Blue_Mat;
+                PartsData = Mannequin_PartsData.Find(i => i.name.Contains("Blue") && i.name.Contains(Partsname.Substring(Partsname.IndexOf("_") + 1)));
                 break;
             case 2:
                 mat = Green_Mat;
+                PartsData = Mannequin_PartsData.Find(i => i.name.Contains("Green") && i.name.Contains(Partsname.Substring(Partsname.IndexOf("_") + 1)));
                 break;
             default:
+                //아무 색도 없는 경우 반대로 이름에 Red나 Blue나 Green이 포함되지 않은 경우 그리고 해당 부품의 이름이 Parts의 이름을 포함할 경우 PartsData에 그 ItemData를 담는다.
                 mat = Default_Mat;
+                PartsData = Mannequin_PartsData.Find(i => !(i.name.Contains("Red") || i.name.Contains("Blue") || i.name.Contains("Green")) && i.name.Contains(Partsname.Substring(Partsname.IndexOf("_") + 1)));
                 break;
         }
         
@@ -107,6 +115,10 @@ public class Mannequin_Example : MonoBehaviour
             {
                 iter.material = mat;
             }
+        }
+        if(!PartsData)
+        {
+            Debug.Log("Error(Mannequin_Example) : Not Found PartsData!");
         }
         
     }
