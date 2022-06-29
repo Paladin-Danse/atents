@@ -81,7 +81,7 @@ public class InventoryManager : MonoBehaviour
         InventoryItem getitem = InventoryList.Find(i => i.data.name == item.Data.name);
         if (getitem != null)
         {
-            getitem.data.Quantity += item.Data.Quantity;
+            getitem.data.Quantity += 1;
             UIManager.instance.ItemUIEnable(getitem);
         }
         else
@@ -178,12 +178,13 @@ public class InventoryManager : MonoBehaviour
             item.data.Durability--;
             if (item.data.Durability <= 0)
             {
-                item.data.Quantity--;
+                if(item.data.Quantity > 0) item.data.Quantity--;
                 item.data.Durability = item.data.Durability_Max;
             }
         }
         if (item.data.Quantity <= 0)
         {
+            item.data.Quantity = 0;
             SelectNum = 0;
             UIManager.instance.SelectUIDisable();
             UIManager.instance.SelectMixUIDisable();

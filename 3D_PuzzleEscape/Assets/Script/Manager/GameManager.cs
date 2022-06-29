@@ -21,8 +21,10 @@ public class GameManager : MonoBehaviour
     public PlayerMovement playerMovement { get; private set; }
     public PlayerInteraction playerInteraction { get; private set; }
     
-    List<ItemData> Ex_PartsData;
-    List<ItemData> M_PartsData;
+    [SerializeField] List<ItemData> Ex_PartsData;
+    [SerializeField] List<ItemData> M_PartsData;
+    private GameObject portal;
+    private GameObject hint_Obj;
 
     private void Awake()
     {
@@ -71,11 +73,26 @@ public class GameManager : MonoBehaviour
 
     public void M_InteractableData_Delete(ItemData m_itemData)
     {
-        M_PartsData.Remove(m_itemData);
+        M_PartsData.RemoveAll(i => i.Data.name == m_itemData.Data.name);
     }
 
     public void M_Example_Compare_Data()
     {
+        foreach(ItemData iter in Ex_PartsData)
+        {
+            ItemData Contain = M_PartsData.Find(i => i.Data.name == iter.Data.name);
+            if (!Contain)
+            {
+                return;
+            }
+        }
+        if(hint_Obj) hint_Obj.SetActive(false);
 
+        On_Portal();
+    }
+
+    public void On_Portal()
+    {
+        Debug.Log("On_Portal");
     }
 }

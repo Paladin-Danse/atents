@@ -68,6 +68,7 @@
     <Compile Include="Assets\Script\InteractionObject\Mannequin_Example.cs" />
     <Compile Include="Assets\Script\InteractionObject\Corpse_drawer_Event.cs" />
     <Compile Include="Assets\Script\Manager\InventoryManager.cs" />
+    <Compile Include="Assets\Script\InteractionObject\Mannequin_GetParts.cs" />
     <Compile Include="Assets\Script\Manager\GameManager.cs" />
     <Compile Include="Assets\Script\InteractionObject\WashItem.cs" />
     <Compile Include="Assets\Script\ItemData.cs" />
@@ -82,7 +83,6 @@
     <Compile Include="Assets\Script\Player\PlayerInteraction.cs" />
     <Compile Include="Assets\Script\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Script\InteractionObject\MiniGameInteraction.cs" />
-    <Compile Include="Assets\Script\InteractionObject\Mannequin_GetParts.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Morgue Room PBR\info_morgueroom.txt" />

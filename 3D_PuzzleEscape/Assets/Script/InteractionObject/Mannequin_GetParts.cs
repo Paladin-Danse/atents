@@ -15,5 +15,4 @@ public class Mannequin_GetParts : ItemInteraction
     {
         GameManager.instance.M_InteractableData_Delete(item);
     }
-
 }
