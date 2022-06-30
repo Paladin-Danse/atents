@@ -66,13 +66,6 @@ public class Mannequin_Example : MonoBehaviour
 
     public void RandomMaterial_output(GameObject Parts, ref ItemData PartsData)
     {
-        //전체적으로 수정필요
-        //마네킹 랜덤 색 지정 하는 순서
-        //부품 지정 -> 랜덤색 지정 -> 지정된 색의 ItemData불러와야 됨.(복잡함)
-
-        //오히려 마네킹에 부품 끼울 때처럼 아이템 데이터를 한 배열변수에 전부 저장.
-        //ex)머리데이터만 뽑아서 임시배열변수에 넣고 거기서 랜덤값을 산출, 스위치문에서 ItemData와 material입히기까지 하면?
-
         /*
         Material mat = UnityEngine.Random.Range(0, 4) switch
         {

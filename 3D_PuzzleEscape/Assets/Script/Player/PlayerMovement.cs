@@ -60,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
             var rot = Vcam.transform.rotation;
             rot *= Quaternion.Euler(MouseMove, 0f, 0f);
 
-            float ClampAngleX = ClampAngle(rot.eulerAngles.x, -60f, 60f);
+            float ClampAngleX = ClampAngle(rot.eulerAngles.x, -80f, 80f);
             rot = Quaternion.Euler(ClampAngleX, rot.eulerAngles.y, 0f);
 
             Vcam.transform.rotation = rot;

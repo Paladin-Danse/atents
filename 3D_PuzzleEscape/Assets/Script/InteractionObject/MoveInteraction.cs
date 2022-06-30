@@ -56,8 +56,8 @@ public class MoveInteraction : InteractionObject
     }
     public void OneTime_Anim()
     {
-        InteractionEvent -= InteractiontoMove;
         gameObject.layer = gameObject.layer = LayerMask.NameToLayer("Default");
+        InteractionEvent -= InteractiontoMove;
     }
     
     public void SetAnim(AnimationClip clip)

@@ -2934,15 +2934,15 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1
-    functionName: MovePause
+  - time: 0.98333335
+    functionName: OneTime_Anim
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 1
-    functionName: OneTime_Anim
+    functionName: MovePause
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

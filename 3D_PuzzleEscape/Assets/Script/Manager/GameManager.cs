@@ -21,10 +21,10 @@ public class GameManager : MonoBehaviour
     public PlayerMovement playerMovement { get; private set; }
     public PlayerInteraction playerInteraction { get; private set; }
     
-    [SerializeField] List<ItemData> Ex_PartsData;
-    [SerializeField] List<ItemData> M_PartsData;
-    private GameObject portal;
-    private GameObject hint_Obj;
+    List<ItemData> Ex_PartsData;
+    List<ItemData> M_PartsData;
+    [SerializeField] private GameObject portal;
+    [SerializeField] private GameObject hint_Obj;
 
     private void Awake()
     {
@@ -46,6 +46,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         OffCursorVisible();
+        portal.SetActive(false);
+        hint_Obj.SetActive(true);
     }
 
     public void OnCursorVisible()
@@ -93,6 +95,7 @@ public class GameManager : MonoBehaviour
 
     public void On_Portal()
     {
+        portal.SetActive(true);
         Debug.Log("On_Portal");
     }
 }
