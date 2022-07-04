@@ -32,6 +32,7 @@ public class Mannequin_Interactable : InteractionObject
     public void Mannequin_PartCheck()
     {
         InventoryItem item = InventoryManager.instance.SelectedItem;
+        if (item == null) return;
         string name = item.data.name;
 
         foreach (ItemData i in Mannequin_Data)

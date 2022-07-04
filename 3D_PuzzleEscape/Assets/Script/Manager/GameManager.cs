@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -28,8 +29,15 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        Ex_PartsData = new List<ItemData>();
+        M_PartsData = new List<ItemData>();
+        DontDestroyOnLoad(gameObject);
+    }
+
+    public void GameStart()
+    {
         Player = GameObject.Find("Player");
-        if(!Player)
+        if (!Player)
         {
             Debug.Log("Player is Not Found!");
         }
@@ -39,12 +47,10 @@ public class GameManager : MonoBehaviour
             playerMovement = Player.GetComponent<PlayerMovement>();
             playerInteraction = Player.GetComponent<PlayerInteraction>();
         }
-        Ex_PartsData = new List<ItemData>();
-        M_PartsData = new List<ItemData>();
-    }
 
-    void Start()
-    {
+        portal = GameObject.Find("Portal");
+        hint_Obj = GameObject.Find("Asphalt Moveable");
+
         OffCursorVisible();
         portal.SetActive(false);
         hint_Obj.SetActive(true);
@@ -97,5 +103,10 @@ public class GameManager : MonoBehaviour
     {
         portal.SetActive(true);
         Debug.Log("On_Portal");
+    }
+
+    public void SceneMove(string SceneName)
+    {
+        SceneManager.LoadScene(SceneName);
     }
 }

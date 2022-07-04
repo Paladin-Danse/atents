@@ -34,6 +34,7 @@ public class WashItem : InteractionObject
     public void Mannequin_PartCheck()
     {
         InventoryItem item = InventoryManager.instance.SelectedItem;
+        if (item == null) return;
         string name = item.data.name;
         ItemData data;
 
@@ -41,7 +42,6 @@ public class WashItem : InteractionObject
         {
             if (name == i.Data.name)
             {
-
                 //마네킹 부품이 맞다면 어디 부품인지 다시 체크
                 //여기서 사용한 when은 케이스가드(추가 조건문으로 기본 패턴을 포함해 해당 조건"까지" 충족해야 하는 추가 조건. bool식만 가능)
                 data = name switch
@@ -111,6 +111,7 @@ public class WashItem : InteractionObject
                 {
                     Debug.Log("Error(WashItem) : Not Found data!\n해당 스크립트 컴포넌트에 데이터가 잘 들어가있는지 확인하십시오.");
                 }
+                break;
             }
         }
     }

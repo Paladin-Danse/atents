@@ -12,10 +12,12 @@ public class Into_the_Portal : InteractionObject
     {
         base.Start();
         GameEndingUI.SetActive(false);
+        InteractionEvent += Ending;
     }
 
     public void Ending()
     {
         GameEndingUI.SetActive(true);
+        GameManager.instance.playerMovement.LockMove();
     }
 }

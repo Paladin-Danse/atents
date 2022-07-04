@@ -102,7 +102,7 @@ public class InventoryManager : MonoBehaviour
                 }
                 else
                 {
-                    invenItem = InventoryList.Find(i => i.data.Quantity > 0 && i.itemNum > SelectNum); 
+                    invenItem = InventoryList.Find(i => i.data.Quantity > 0 && i.itemNum > SelectNum);
                 }
             }
             else
@@ -186,6 +186,7 @@ public class InventoryManager : MonoBehaviour
         {
             item.data.Quantity = 0;
             SelectNum = 0;
+            SelectedItem = null;
             UIManager.instance.SelectUIDisable();
             UIManager.instance.SelectMixUIDisable();
             UIManager.instance.ItemUIDisable(item);
