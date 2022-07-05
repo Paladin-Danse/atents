@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     public PlayerInput playerInput { get; private set; }
     public PlayerMovement playerMovement { get; private set; }
     public PlayerInteraction playerInteraction { get; private set; }
-    
+
     List<ItemData> Ex_PartsData;
     List<ItemData> M_PartsData;
     [SerializeField] private GameObject portal;

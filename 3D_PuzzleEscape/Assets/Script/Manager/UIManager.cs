@@ -24,11 +24,18 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject ItemUI;
     [SerializeField] private GameObject SelectedUI;
     [SerializeField] private GameObject SelectedMixUI;
+    //엔딩UI
+    [SerializeField] private GameObject Ending_RestartButtonUI;
+    [SerializeField] private GameObject Ending_HomeButtonUI;
+
     private RectTransform Select;
     private RectTransform SelectMix;
     private List<ItemUI> itemUIList;
     private GameObject Description;
     private Text itemdes_text;
+    //엔딩UI 컴퍼넌트
+    private Button Restart;
+    private Button Home;
 
     private Image GreenPotion_Chk;
     private Image RedPotion_Chk;
@@ -40,7 +47,10 @@ public class UIManager : MonoBehaviour
         itemUIList = new List<ItemUI>();
         Description = transform.Find("Inventory_Scroll").Find("Description").gameObject;
         itemdes_text = Description.transform.Find("Text").GetComponent<Text>();
+        Restart = Ending_RestartButtonUI.GetComponent<Button>();
+        Home = Ending_HomeButtonUI.GetComponent<Button>();
 
+        //인벤토리에 포션이 있는지 없는지 체크하는 코드. 이게 있어야 없는 아이템을 사용하는 불상사가 일어나지 않는다.
         GreenPotion_Chk = MiniGameUI.transform.Find("MixPotionUI").Find("GreenPotion").Find("Empty").GetComponent<Image>();
         RedPotion_Chk = MiniGameUI.transform.Find("MixPotionUI").Find("RedPotion").Find("Empty").GetComponent<Image>();
         BluePotion_Chk = MiniGameUI.transform.Find("MixPotionUI").Find("BluePotion").Find("Empty").GetComponent<Image>();
@@ -54,7 +64,9 @@ public class UIManager : MonoBehaviour
         }
         else
         {
+#if UNITY_EDITOR
             Debug.Log("SelectedUI is Not Found!");
+#endif
         }
 
         if (SelectedMixUI)
@@ -64,11 +76,17 @@ public class UIManager : MonoBehaviour
         }
         else
         {
+#if UNITY_EDITOR
             Debug.Log("SelectedMixUI is Not Found!");
+#endif
         }
 
         SetUI(true);
         Off_MiniUI();
+        //게임매니저가 IntroScene에서 생성되어 Editor에선 오브젝트를 직접 넣을 수가 없다.
+        //고로 UI매니저가 생성되는 순간에 게임매니저를 찾아 버튼 컴퍼넌트를 가져와 onClick에 Event를 집어넣는다.
+        Restart.onClick.AddListener(() => GameManager.instance.SceneMove("MainScene"));
+        Home.onClick.AddListener(() => GameManager.instance.SceneMove("IntroScene"));
     }
 
 
@@ -104,7 +122,9 @@ public class UIManager : MonoBehaviour
         }
         else
         {
+#if UNITY_EDITOR
             Debug.Log("itemUI is Not Found!");
+#endif
         }
     }
 
@@ -125,7 +145,9 @@ public class UIManager : MonoBehaviour
         }
         else
         {
+#if UNITY_EDITOR
             Debug.Log("itemUI is Not Found!");
+#endif
         }
         //아이템창의 스크롤바를 조작하는 코드. 스크롤바가 나타날 정도로 많은 아이템이 들어왔을 때만 작동.
         if (Inventory_Scroll.verticalScrollbar.IsActive())
@@ -164,7 +186,9 @@ public class UIManager : MonoBehaviour
         }
         else
         {
+#if UNITY_EDITOR
             Debug.Log("Select(RactTransfrom) is Not Active!!");
+#endif
         }
     }
     public void SelectMixUIDisable()

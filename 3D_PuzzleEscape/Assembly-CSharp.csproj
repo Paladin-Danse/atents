@@ -86,6 +86,7 @@
     <Compile Include="Assets\Script\Flask.cs" />
     <Compile Include="Assets\Resource\Standard Assets\Utility\SmoothFollow.cs" />
     <Compile Include="Assets\Resource\Standard Assets\Cameras\Scripts\FreeLookCam.cs" />
+    <Compile Include="Assets\Script\Portal_Animation.cs" />
     <Compile Include="Assets\Script\Item.cs" />
     <Compile Include="Assets\Resource\Standard Assets\ParticleSystems\Scripts\AfterburnerPhysicsForce.cs" />
     <Compile Include="Assets\Resource\Standard Assets\Vehicles\Aircraft\Scripts\AeroplaneController.cs" />
@@ -155,6 +156,7 @@
     <Compile Include="Assets\Resource\Standard Assets\Utility\AutoMoveAndRotate.cs" />
     <Compile Include="Assets\Resource\Standard Assets\Utility\FOVKick.cs" />
     <Compile Include="Assets\Script\ItemData.cs" />
+    <Compile Include="Assets\Script\MainSceneEvent.cs" />
     <Compile Include="Assets\Resource\Standard Assets\2D\Scripts\Restarter.cs" />
     <Compile Include="Assets\Script\Mini_PotionRecipeData.cs" />
     <Compile Include="Assets\Script\InteractionObject\DoorBreak.cs" />
@@ -187,8 +189,6 @@
     <Compile Include="Assets\Resource\Standard Assets\2D\Scripts\PlatformerCharacter2D.cs" />
     <Compile Include="Assets\Resource\Standard Assets\Utility\FPSCounter.cs" />
     <Compile Include="Assets\Resource\Standard Assets\Utility\SimpleActivatorMenu.cs" />
-    <Compile Include="Assets\Script\Portal_Animation.cs" />
-    <Compile Include="Assets\Script\MainSceneEvent.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resource\Standard Assets\Prototyping\Shaders\WorldCoordDiffuse.shader" />
