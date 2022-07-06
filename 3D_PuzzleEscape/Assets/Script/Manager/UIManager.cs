@@ -20,6 +20,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image InteractUI;
     [SerializeField] private ScrollRect Inventory_Scroll;
     [SerializeField] private GameObject MiniGameUI;
+    //아이템 목록
     private GameObject Content;
     [SerializeField] private GameObject ItemUI;
     [SerializeField] private GameObject SelectedUI;
@@ -37,6 +38,7 @@ public class UIManager : MonoBehaviour
     private Button Restart;
     private Button Home;
 
+    //인벤토리에 포션이 있는지 없는지 체크하고 해당 포션의 유무를 플레이어에게 직접적으로 보여주는 이미지UI(실제로 체크하는 변수가 아니다.)
     private Image GreenPotion_Chk;
     private Image RedPotion_Chk;
     private Image BluePotion_Chk;
@@ -50,7 +52,6 @@ public class UIManager : MonoBehaviour
         Restart = Ending_RestartButtonUI.GetComponent<Button>();
         Home = Ending_HomeButtonUI.GetComponent<Button>();
 
-        //인벤토리에 포션이 있는지 없는지 체크하는 코드. 이게 있어야 없는 아이템을 사용하는 불상사가 일어나지 않는다.
         GreenPotion_Chk = MiniGameUI.transform.Find("MixPotionUI").Find("GreenPotion").Find("Empty").GetComponent<Image>();
         RedPotion_Chk = MiniGameUI.transform.Find("MixPotionUI").Find("RedPotion").Find("Empty").GetComponent<Image>();
         BluePotion_Chk = MiniGameUI.transform.Find("MixPotionUI").Find("BluePotion").Find("Empty").GetComponent<Image>();
