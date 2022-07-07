@@ -19,5 +19,6 @@ public class Into_the_Portal : InteractionObject
     {
         GameEndingUI.SetActive(true);
         GameManager.instance.playerMovement.LockMove();
+        GameManager.instance.OnCursorVisible();
     }
 }

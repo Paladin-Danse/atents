@@ -2,9 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class UIManager : MonoBehaviour
 {
+    /*
+    [Serializable]
+    public struct helpInfo
+    {
+        public Image PressButton_img;
+        public Text Info_txt;
+    }
+    */
     private static UIManager m_instance;
     public static UIManager instance
     {
@@ -20,20 +29,29 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image InteractUI;
     [SerializeField] private ScrollRect Inventory_Scroll;
     [SerializeField] private GameObject MiniGameUI;
+
     //아이템 목록
     private GameObject Content;
     [SerializeField] private GameObject ItemUI;
     [SerializeField] private GameObject SelectedUI;
     [SerializeField] private GameObject SelectedMixUI;
+
     //엔딩UI
     [SerializeField] private GameObject Ending_RestartButtonUI;
     [SerializeField] private GameObject Ending_HomeButtonUI;
 
+    /*
+    //HelpInfo
+    [SerializeField] private GameObject HelpInfoUI;
+    private helpInfo Default_Info;
+    */
+    //인벤토리 UI
     private RectTransform Select;
     private RectTransform SelectMix;
     private List<ItemUI> itemUIList;
     private GameObject Description;
     private Text itemdes_text;
+
     //엔딩UI 컴퍼넌트
     private Button Restart;
     private Button Home;
@@ -89,7 +107,6 @@ public class UIManager : MonoBehaviour
         Restart.onClick.AddListener(() => GameManager.instance.SceneMove("MainScene"));
         Home.onClick.AddListener(() => GameManager.instance.SceneMove("IntroScene"));
     }
-
 
     public void ItemUICreate(InventoryItem m_item)
     {
@@ -199,12 +216,12 @@ public class UIManager : MonoBehaviour
 
     public void OnInteractionUI()
     {
-        InteractUI.color = Color.white;
+        InteractUI.color = Color.black;
     }
 
     public void OffInteractionUI()
     {
-        InteractUI.color = new Color(1.0f, 1.0f, 1.0f, 100f / 255f);
+        InteractUI.color = new Color(1.0f, 1.0f, 1.0f, 30f / 255f);
     }
 
     public void SetUI(bool setbool)
@@ -265,4 +282,12 @@ public class UIManager : MonoBehaviour
             return false;
         }
     }
+    /*
+    public void Set_HelpInfo(Image image, Text txt)
+    {
+        helpInfo newinfo = new helpInfo();
+        newinfo.PressButton_img = image;
+        newinfo.Info_txt = txt;
+    }
+    */
 }
