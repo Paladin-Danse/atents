@@ -26,8 +26,9 @@ public class UIManager : MonoBehaviour
             return m_instance;
         }
     }
+    //상호작용UI
     [SerializeField] private Image InteractUI;
-    [SerializeField] private ScrollRect Inventory_Scroll;
+    //미니게임UI
     [SerializeField] private GameObject MiniGameUI;
 
     //아이템 목록
@@ -46,6 +47,7 @@ public class UIManager : MonoBehaviour
     private helpInfo Default_Info;
     */
     //인벤토리 UI
+    [SerializeField] private ScrollRect Inventory_Scroll;
     private RectTransform Select;
     private RectTransform SelectMix;
     private List<ItemUI> itemUIList;
@@ -60,6 +62,11 @@ public class UIManager : MonoBehaviour
     private Image GreenPotion_Chk;
     private Image RedPotion_Chk;
     private Image BluePotion_Chk;
+
+    //설정UI
+    //Intro, Main 어느 씬에서든 값이 똑같이 유지되어야하며 이는 설정UI에 다른 값이 추가되어도 똑같이 적용되어야 하는 사항임.
+    //그러므로 어느 씬에서 컴포넌트에 직접 오브젝트를 끌어넣는 방식으로 변수를 채워넣는 건 불가능하며 옵션UI를 열 때 DataManager에 저장된 값과 변수를 불러와 채워넣는 방식을 써야할 듯 하다.
+    public Slider AudioSlider { get; private set; }//Intro, Main 어느 씬에서든 값이 똑같이 유지되어야하며 이는 설정UI에 다른 값이 추가되어도 똑같이 적용되어야 하는 사항임.
 
     private void Awake()
     {
