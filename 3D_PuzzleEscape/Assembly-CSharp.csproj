@@ -123,6 +123,7 @@
     <Compile Include="Assets\Resource\Standard Assets\Utility\DragRigidbody.cs" />
     <Compile Include="Assets\Resource\Standard Assets\CrossPlatformInput\Scripts\PlatformSpecific\StandaloneInput.cs" />
     <Compile Include="Assets\Resource\Standard Assets\Vehicles\Aircraft\Scripts\AeroplaneAudio.cs" />
+    <Compile Include="Assets\Script\Manager\AudioManager.cs" />
     <Compile Include="Assets\Resource\Standard Assets\ParticleSystems\Scripts\FireLight.cs" />
     <Compile Include="Assets\Script\InteractionObject\Corpse_drawer_Event.cs" />
     <Compile Include="Assets\Resource\Standard Assets\Vehicles\Car\Scripts\SkidTrail.cs" />
@@ -189,7 +190,7 @@
     <Compile Include="Assets\Resource\Standard Assets\2D\Scripts\PlatformerCharacter2D.cs" />
     <Compile Include="Assets\Resource\Standard Assets\Utility\FPSCounter.cs" />
     <Compile Include="Assets\Resource\Standard Assets\Utility\SimpleActivatorMenu.cs" />
-    <Compile Include="Assets\Script\Manager\AudioManager.cs" />
+    <Compile Include="Assets\Script\Manager\IntroUIManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resource\Standard Assets\Prototyping\Shaders\WorldCoordDiffuse.shader" />

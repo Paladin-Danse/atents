@@ -109,4 +109,9 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneName);
     }
+
+    public Scene GetActiveScene()
+    {
+        return SceneManager.GetActiveScene();
+    }
 }

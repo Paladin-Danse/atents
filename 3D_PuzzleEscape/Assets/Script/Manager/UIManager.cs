@@ -30,6 +30,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image InteractUI;
     //미니게임UI
     [SerializeField] private GameObject MiniGameUI;
+    [SerializeField] private Button B_GameStart;
+    [SerializeField] private Button B_GameOption;
 
     //아이템 목록
     private GameObject Content;
@@ -55,8 +57,8 @@ public class UIManager : MonoBehaviour
     private Text itemdes_text;
 
     //엔딩UI 컴퍼넌트
-    private Button Restart;
-    private Button Home;
+    private Button B_Restart;
+    private Button B_Home;
 
     //인벤토리에 포션이 있는지 없는지 체크하고 해당 포션의 유무를 플레이어에게 직접적으로 보여주는 이미지UI(실제로 체크하는 변수가 아니다.)
     private Image GreenPotion_Chk;
@@ -66,7 +68,9 @@ public class UIManager : MonoBehaviour
     //설정UI
     //Intro, Main 어느 씬에서든 값이 똑같이 유지되어야하며 이는 설정UI에 다른 값이 추가되어도 똑같이 적용되어야 하는 사항임.
     //그러므로 어느 씬에서 컴포넌트에 직접 오브젝트를 끌어넣는 방식으로 변수를 채워넣는 건 불가능하며 옵션UI를 열 때 DataManager에 저장된 값과 변수를 불러와 채워넣는 방식을 써야할 듯 하다.
+    private GameObject GameOptionUI;
     public Slider AudioSlider { get; private set; }//Intro, Main 어느 씬에서든 값이 똑같이 유지되어야하며 이는 설정UI에 다른 값이 추가되어도 똑같이 적용되어야 하는 사항임.
+    private Text AudioVolume;
 
     private void Awake()
     {
@@ -74,12 +78,19 @@ public class UIManager : MonoBehaviour
         itemUIList = new List<ItemUI>();
         Description = transform.Find("Inventory_Scroll").Find("Description").gameObject;
         itemdes_text = Description.transform.Find("Text").GetComponent<Text>();
-        Restart = Ending_RestartButtonUI.GetComponent<Button>();
-        Home = Ending_HomeButtonUI.GetComponent<Button>();
+        B_Restart = Ending_RestartButtonUI.GetComponent<Button>();
+        B_Home = Ending_HomeButtonUI.GetComponent<Button>();
+        B_GameStart = transform.Find("GameStart").gameObject.GetComponent<Button>();
+        B_GameOption = transform.Find("GameOption").gameObject.GetComponent<Button>();
+        GameOptionUI = transform.Find("OptionUI").gameObject;
+        AudioSlider = GameOptionUI.transform.Find("Audio").Find("AudioSlider").GetComponent<Slider>();
+        AudioVolume = GameOptionUI.transform.Find("Audio").Find("VolumeValue").GetComponent<Text>();
 
         GreenPotion_Chk = MiniGameUI.transform.Find("MixPotionUI").Find("GreenPotion").Find("Empty").GetComponent<Image>();
         RedPotion_Chk = MiniGameUI.transform.Find("MixPotionUI").Find("RedPotion").Find("Empty").GetComponent<Image>();
         BluePotion_Chk = MiniGameUI.transform.Find("MixPotionUI").Find("BluePotion").Find("Empty").GetComponent<Image>();
+
+        DontDestroyOnLoad(gameObject);
     }
     private void Start()
     {
@@ -108,11 +119,17 @@ public class UIManager : MonoBehaviour
         }
 
         SetUI(true);
+        GameOptionUI.SetActive(false);
         Off_MiniUI();
         //게임매니저가 IntroScene에서 생성되어 Editor에선 오브젝트를 직접 넣을 수가 없다.
         //고로 UI매니저가 생성되는 순간에 게임매니저를 찾아 버튼 컴퍼넌트를 가져와 onClick에 Event를 집어넣는다.
-        Restart.onClick.AddListener(() => GameManager.instance.SceneMove("MainScene"));
-        Home.onClick.AddListener(() => GameManager.instance.SceneMove("IntroScene"));
+        B_Restart.onClick.AddListener(() => GameManager.instance.SceneMove("MainScene"));
+        B_Home.onClick.AddListener(() => GameManager.instance.SceneMove("IntroScene"));
+        if (GameManager.instance.GetActiveScene().name == "IntroScene")
+            SetIntroUI(true);
+        else
+            SetIntroUI(false);
+        SetVolumeText(AudioManager.instance.GetVolume().ToString());
     }
 
     public void ItemUICreate(InventoryItem m_item)
@@ -230,13 +247,24 @@ public class UIManager : MonoBehaviour
     {
         InteractUI.color = new Color(1.0f, 1.0f, 1.0f, 30f / 255f);
     }
-
+    //MainScene 플레이어 UI 관련 함수
     public void SetUI(bool setbool)
     {
         InteractUI.gameObject.SetActive(setbool);
         Inventory_Scroll.gameObject.SetActive(setbool);
     }
-
+    //IntroScene UI 관련 함수
+    public void SetIntroUI(bool setbool)
+    {
+        B_GameStart.gameObject.SetActive(setbool);
+        B_GameOption.gameObject.SetActive(setbool);
+    }
+    //설정 관련 함수
+    //사운드의 볼륨 텍스트
+    public void SetVolumeText(string value)
+    {
+        AudioVolume.text = value;
+    }
     public void On_MiniUI()
     {
         MiniGameUI.SetActive(true);
@@ -246,6 +274,7 @@ public class UIManager : MonoBehaviour
         MiniGameUI.SetActive(false);
     }
 
+    //미니게임 물약조합 UI관련 함수
     public void MixPotionUICheck(string name)
     {
         if(name == "녹색물약")
