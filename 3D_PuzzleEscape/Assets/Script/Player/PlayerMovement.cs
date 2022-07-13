@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool b_OnCrouch;
     private bool b_OnMove;
+    private bool b_OnOption;
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
@@ -25,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     {
         b_OnMove = true;
         b_OnCrouch = false;
+        b_OnOption = true;
     }
 
     private void Update()
@@ -34,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
             Move();
             Rotate();
             Crouch();
+            if(playerInput.ActionCancelKey) Option();
         }
     }
 
@@ -87,6 +90,27 @@ public class PlayerMovement : MonoBehaviour
             playerAnim.SetBool("b_Crouch", b_OnCrouch);
             */
         }
+    }
+    public void Option()
+    {
+        //옵션bool이 true일 때, 옵션창을 키고 옵션bool을 false로 바꾼다.
+        //옵션bool이 false일 때, 옵션창을 끄고 옵션bool을 true로 바꾼다.
+        UIManager.instance.SetGameOptionUI(b_OnOption);
+
+        if (b_OnOption)
+        {
+            LockMove();
+            GameManager.instance.playerInteraction.LockInteraction();
+            GameManager.instance.OnCursorVisible();
+        }
+        else
+        {
+            UnlockMove();
+            GameManager.instance.playerInteraction.UnlockInteraction();
+            GameManager.instance.OffCursorVisible();
+        }
+
+        b_OnOption = !b_OnOption;
     }
 
     //eulerAnles가 360을 넘어가는 수치를 0으로 되돌리고 0아래로 넘어가는 수치를 360으로 되돌리는 문제가 있기에 일반적인 Mathf.Clamp를 사용할 수가 없어 해당 문제를 해결할 새 함수를 만듦.

@@ -7,7 +7,7 @@ public class LookInteraction : InteractionObject
 {
     [SerializeField] protected CinemachineVirtualCamera LookCam;
     protected PlayerInput playerInput;
-    protected bool b_Lookobj;
+    protected bool b_Lookobj{ get; private set; }
 
     protected new void Start()
     {
@@ -33,7 +33,7 @@ public class LookInteraction : InteractionObject
     {
         if(playerInput)
         {
-            if(b_Lookobj && playerInput.ActionCancelKey)
+            if(b_Lookobj && (playerInput.ActionCancelKey || playerInput.InteractionKey))
             {
                 UIManager.instance.SetUI(true);
                 GameManager.instance.playerInteraction.UnlockInteraction();

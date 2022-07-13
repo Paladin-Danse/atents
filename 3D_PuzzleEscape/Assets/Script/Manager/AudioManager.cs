@@ -34,10 +34,10 @@ public class AudioManager : MonoBehaviour
     public void AudioControl()
     {
         float sound;
-        if (UIManager.instance.AudioSlider)
+        if (UIManager.instance.Slider_Audio)
         {
-            sound = UIManager.instance.AudioSlider.value;
-            Volume = (int)((sound - UIManager.instance.AudioSlider.minValue) / (UIManager.instance.AudioSlider.maxValue - UIManager.instance.AudioSlider.minValue) * 100.0f);
+            sound = UIManager.instance.Slider_Audio.value;
+            Volume = (int)((sound - UIManager.instance.Slider_Audio.minValue) / (UIManager.instance.Slider_Audio.maxValue - UIManager.instance.Slider_Audio.minValue) * 100.0f);
         }
         else
         {

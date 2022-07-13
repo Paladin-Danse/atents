@@ -32,6 +32,15 @@ public class GameManager : MonoBehaviour
         Ex_PartsData = new List<ItemData>();
         M_PartsData = new List<ItemData>();
         DontDestroyOnLoad(gameObject);
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+    //유니티 스크립팅API에서 가져온 정보
+    //sceneLoaded<Scene, LoadSceneMode>가 씬이 전환될 때마다 실행이 되고 아래 함수를 해당 델리게이터에 대입함으로써 씬이 실행될때마다 아래 함수를 실행시킨다.
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "MainScene")
+            GameStart();
+        UIManager.instance.OnScene(SceneManager.GetActiveScene().name);
     }
 
     public void GameStart()
@@ -95,7 +104,6 @@ public class GameManager : MonoBehaviour
             }
         }
         if(hint_Obj) hint_Obj.SetActive(false);
-
         On_Portal();
     }
 

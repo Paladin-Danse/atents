@@ -7,7 +7,7 @@ using Cinemachine;
 public class MiniGameInteraction : InteractionObject
 {
     [SerializeField] protected CinemachineVirtualCamera Mini_Cam;
-    public bool b_OnMiniGame { get; protected set; }
+    public bool b_OnMiniGame { get; private set; }
     protected event Action MiniGameCancel;
     protected PlayerInput playerInput;
 

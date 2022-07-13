@@ -6,6 +6,6 @@ public class MainSceneEvent : MonoBehaviour
 {
     void Start()
     {
-        GameManager.instance.GameStart();
+        //GameManager.instance.GameStart();
     }
 }
