@@ -1243,7 +1243,7 @@ MonoBehaviour:
   m_MinValue: -40
   m_MaxValue: 0
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: -20
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -3004,7 +3004,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 100
+  m_Text: 50
 --- !u!1 &5742585844292571294
 GameObject:
   m_ObjectHideFlags: 0

@@ -426,6 +426,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MasterMixer: {fileID: 24100000, guid: 6a66526591cfe4b4c9044a9cba3e0b24, type: 2}
+  BGM: {fileID: 0}
 --- !u!4 &1815691240
 Transform:
   m_ObjectHideFlags: 0
@@ -450,8 +451,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 6a66526591cfe4b4c9044a9cba3e0b24, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 78542e76d4c24a745bc1bb599adb55df, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 7c601e21b7bc1404fa0ffa29deae1140, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
@@ -608,6 +609,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2013898103070720502, guid: 666cc1ae39485ce49a9aab79b1e1728b, type: 3}
+      propertyPath: m_WholeNumbers
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2013898103070720502, guid: 666cc1ae39485ce49a9aab79b1e1728b, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
