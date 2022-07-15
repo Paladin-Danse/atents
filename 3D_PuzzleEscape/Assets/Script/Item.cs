@@ -8,6 +8,7 @@ public struct Item
     public string name;
     public int Quantity;
     public Sprite ItemSprite;
+    public string SpriteName;
     public int Durability;
     public int Durability_Max;
     public string Description;
@@ -26,6 +27,7 @@ public struct MixItem
     public ItemData Mixeditem;
 }
 
+[System.Serializable]
 public class InventoryItem
 {
     public int itemNum;//아이템이 정렬되는 순서.

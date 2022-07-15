@@ -191,6 +191,8 @@
     <Compile Include="Assets\Resource\Standard Assets\2D\Scripts\PlatformerCharacter2D.cs" />
     <Compile Include="Assets\Resource\Standard Assets\Utility\FPSCounter.cs" />
     <Compile Include="Assets\Resource\Standard Assets\Utility\SimpleActivatorMenu.cs" />
+    <Compile Include="Assets\Script\SaveData.cs" />
+    <Compile Include="Assets\Script\Json.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resource\Standard Assets\Prototyping\Shaders\WorldCoordDiffuse.shader" />

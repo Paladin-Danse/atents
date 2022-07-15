@@ -142,8 +142,9 @@ public class UIManager : MonoBehaviour
             Button_Restart.onClick.AddListener(() => GameManager.instance.SceneMove("MainScene"));
             Button_Home.onClick.AddListener(() => GameManager.instance.SceneMove("IntroScene"));
             if (GameManager.instance.playerMovement)
+            {
                 Button_OptionExit.onClick.AddListener(() => GameManager.instance.playerMovement.Option());
-
+            }
             SetIntroUI(false);
         }
     }
@@ -153,6 +154,9 @@ public class UIManager : MonoBehaviour
         var UIObject = Instantiate(ItemUI, Content.transform);
         var UIScript = UIObject.GetComponent<ItemUI>();
         UIScript.item_img.sprite = m_item.data.ItemSprite;
+        //ItemSprite는 Sprite타입의 변수라서 Json에 저장할 수가 없음. 그런 이유로 현재는 세이브 전용 구조체를 하나 새로 만들어서 옮겨담고
+        //그게 안된다면 Sprite의 이름을 사용해서 Sprite데이터를 가져와야한다.
+        //UIScript.item_img.sprite = Resources.Load<Sprite>("Sprite/" + m_item.data.SpriteName);
         UIScript.item_name.text = m_item.data.name;
 
         itemUIList.Add(UIScript);
