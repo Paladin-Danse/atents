@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: fc6efcafb38f3bc4284d8e3fe2751e6d
+timeCreated: 1502787193
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - Gauge: {instanceID: 0}
+  - BackGround: {fileID: 21300000, guid: 0113195d0a346de4e909dc8f38bf1f12, type: 3}
+  - Fill: {fileID: 21300000, guid: b4c3d0cedf1f075439bc54a65d90c591, type: 3}
+  - Handle: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
