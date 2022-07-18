@@ -8,7 +8,7 @@ public struct Item
     public string name;
     public int Quantity;
     public Sprite ItemSprite;
-    public string SpriteName;
+    //public string SpriteName;
     public int Durability;
     public int Durability_Max;
     public string Description;

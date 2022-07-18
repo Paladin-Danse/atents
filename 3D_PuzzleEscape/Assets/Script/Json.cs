@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using Newtonsoft.Json;
+using System.IO;
 
 /// <summary>
 /// Newtonsoft JSON Library가 없다면 https://github.com/JamesNK/Newtonsoft.Json/releases 에서 다운받아서 추가.<br/>
@@ -8,6 +9,23 @@ using Newtonsoft.Json;
 /// </summary>
 public class Json
 {
+    [SerializeField] private SaveData savedata;
+    [SerializeField] private SaveData loaddata;
+    private string Json_Data;
+    private string savePath = "/Resources/Save/SaveData.json";
+
+    public void SaveFile()
+    {
+        Json_Data = SerializeObject(savedata);
+        if(Json_Data != null) File.WriteAllText(Application.dataPath + savePath, Json_Data);
+    }
+
+    public void LoadFile()
+    {
+        Json_Data = File.ReadAllText(Application.dataPath + savePath);
+        if(Json_Data != null) loaddata = DeserializeObject<SaveData>(Json_Data);
+    }
+
     /// <summary>
     /// T는 반드시 직열화([SerializeField] or [System.Serializable]) 되어야 한다.<br/>
     /// ex) [SerializeField] class A{} T=A or T=ListA... OK<br/>

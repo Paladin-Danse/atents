@@ -116,6 +116,7 @@
     <Compile Include="Assets\Script\InteractionObject\Mannequin_Example.cs" />
     <Compile Include="Assets\SampleScenes\Menu\Scripts\PauseMenu.cs" />
     <Compile Include="Assets\Resource\Standard Assets\2D\Scripts\Platformer2DUserControl.cs" />
+    <Compile Include="Assets\Script\SaveData.cs" />
     <Compile Include="Assets\Resource\Standard Assets\Cameras\Scripts\AutoCam.cs" />
     <Compile Include="Assets\Resource\Standard Assets\Vehicles\Car\Scripts\CarAIControl.cs" />
     <Compile Include="Assets\Resource\Standard Assets\Utility\WaypointProgressTracker.cs" />
@@ -129,6 +130,7 @@
     <Compile Include="Assets\Resource\Standard Assets\Vehicles\Car\Scripts\SkidTrail.cs" />
     <Compile Include="Assets\SampleScenes\Scripts\CameraSwitch.cs" />
     <Compile Include="Assets\Resource\Standard Assets\Environment\Water\Water\Scripts\WaterBase.cs" />
+    <Compile Include="Assets\Script\Json.cs" />
     <Compile Include="Assets\Resource\Standard Assets\Environment\Water\Water\Scripts\MeshContainer.cs" />
     <Compile Include="Assets\Script\Manager\InventoryManager.cs" />
     <Compile Include="Assets\Resource\Standard Assets\Utility\CurveControlledBob.cs" />
@@ -191,8 +193,7 @@
     <Compile Include="Assets\Resource\Standard Assets\2D\Scripts\PlatformerCharacter2D.cs" />
     <Compile Include="Assets\Resource\Standard Assets\Utility\FPSCounter.cs" />
     <Compile Include="Assets\Resource\Standard Assets\Utility\SimpleActivatorMenu.cs" />
-    <Compile Include="Assets\Script\SaveData.cs" />
-    <Compile Include="Assets\Script\Json.cs" />
+    <Compile Include="Assets\Script\Manager\TestManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resource\Standard Assets\Prototyping\Shaders\WorldCoordDiffuse.shader" />
