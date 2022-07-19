@@ -23,14 +23,16 @@ public class AudioManager : MonoBehaviour
     private float maxVolume;
     private float minVolume;
     private int SliderValue;
-    private int Volume;
 
+    private string VolumeKey = "Volume";
+    private int Volume = 0;
+    
     private void Awake()
     {
-        
         //원래 세이브데이터에서 가져와야 할 값을 상수값으로 대체하였다. 이후 세이브기능이 구현되면 다시 손볼 것!
-        Volume = 50;
+        //Volume = 50;
         BGM = GetComponent<AudioSource>();
+        Volume = PlayerPrefs.GetInt(VolumeKey, 50);
     }
     private void Start()
     {
@@ -64,5 +66,10 @@ public class AudioManager : MonoBehaviour
     public int GetVolume()
     {
         return Volume;
+    }
+
+    public void SaveAudioOption()
+    {
+        PlayerPrefs.SetInt(VolumeKey, Volume);
     }
 }

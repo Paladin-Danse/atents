@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
     List<ItemData> M_PartsData;
     [SerializeField] private GameObject portal;
     [SerializeField] private GameObject hint_Obj;
+    private Json json_save;
+    private SaveData mySavedata;
 
     private void Awake()
     {
@@ -33,6 +35,8 @@ public class GameManager : MonoBehaviour
         M_PartsData = new List<ItemData>();
         DontDestroyOnLoad(gameObject);
         SceneManager.sceneLoaded += OnSceneLoaded;
+        json_save = GetComponent<Json>();
+        if (!json_save) Debug.LogError("GameManager Error : Json is Not Found!");
     }
     //유니티 스크립팅API에서 가져온 정보
     //sceneLoaded<Scene, LoadSceneMode>가 씬이 전환될 때마다 실행이 되고 아래 함수를 해당 델리게이터에 대입함으로써 씬이 실행될때마다 아래 함수를 실행시킨다.
@@ -63,6 +67,8 @@ public class GameManager : MonoBehaviour
         OffCursorVisible();
         portal.SetActive(false);
         hint_Obj.SetActive(true);
+        mySavedata = new SaveData();
+        GameSave(mySavedata);
     }
 
     public void OnCursorVisible()
@@ -121,5 +127,28 @@ public class GameManager : MonoBehaviour
     public Scene GetActiveScene()
     {
         return SceneManager.GetActiveScene();
+    }
+
+    public void GameSave(SaveData newSave)
+    {
+        if(!json_save.SaveFile(newSave))
+        {
+            Debug.LogError("Save Failed!");
+        }
+    }
+
+    public void GameLoad()
+    {
+        if(!json_save.LoadFile())
+        {
+            Debug.LogError("Load Failed!");
+        }
+    }
+
+    //스테이지 클리어를 기점으로 저장.
+    //현재 작업 진행 중.
+    public void StageClear()
+    {
+        
     }
 }

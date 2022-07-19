@@ -61,6 +61,7 @@
     <Compile Include="Assets\Script\MixData.cs" />
     <Compile Include="Assets\Resource\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs" />
     <Compile Include="Assets\Resource\Standard Assets\Vehicles\Car\Scripts\WheelEffects.cs" />
+    <Compile Include="Assets\Script\Manager\TestManager.cs" />
     <Compile Include="Assets\Resource\Standard Assets\Vehicles\Car\Scripts\CarSelfRighting.cs" />
     <Compile Include="Assets\Resource\Standard Assets\Vehicles\Car\Scripts\Mudguard.cs" />
     <Compile Include="Assets\Resource\Standard Assets\ParticleSystems\Scripts\Explosive.cs" />
@@ -193,7 +194,6 @@
     <Compile Include="Assets\Resource\Standard Assets\2D\Scripts\PlatformerCharacter2D.cs" />
     <Compile Include="Assets\Resource\Standard Assets\Utility\FPSCounter.cs" />
     <Compile Include="Assets\Resource\Standard Assets\Utility\SimpleActivatorMenu.cs" />
-    <Compile Include="Assets\Script\Manager\TestManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resource\Standard Assets\Prototyping\Shaders\WorldCoordDiffuse.shader" />

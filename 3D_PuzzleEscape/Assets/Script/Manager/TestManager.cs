@@ -5,35 +5,21 @@ using System.IO;
 
 public class TestManager : MonoBehaviour
 {
-    [SerializeField] private SaveData savedata;
-    [SerializeField] private SaveData loaddata;
-    private string Json_Data;
-    // Start is called before the first frame update
+    [SerializeField] private Json json_Save;
+
     void Start()
     {
-        Json_Data = ObjectToJson(savedata);
-        Debug.Log(Json_Data);
     }
 
-    public void SaveFile()
+    public void SaveButton()
     {
-        string path = Path.Combine(Application.dataPath + "/SaveData.json");
-        File.WriteAllText(path, Json_Data);
+        //json_Save.SaveFile();
+        json_Save.Debug_JsonData();
     }
 
-    public void LoadFile()
+    public void LoadButton()
     {
-        string GetJson = File.ReadAllText(Application.dataPath + "/Save/SaveData.json");
-        loaddata = JsonToObject<SaveData>(GetJson);
-    }
-
-    string ObjectToJson(object obj)
-    {
-        return JsonUtility.ToJson(obj, true);
-    }
-
-    T JsonToObject<T>(string JsonData) where T : class
-    {
-        return JsonUtility.FromJson<T>(JsonData);
+        json_Save.LoadFile();
+        json_Save.Debug_JsonData();
     }
 }

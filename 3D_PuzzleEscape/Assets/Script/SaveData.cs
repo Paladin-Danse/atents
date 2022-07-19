@@ -15,10 +15,18 @@ public struct Save_ItemData
 }
 
 [System.Serializable]
+public enum STAGE
+{
+    START = 1,
+    STAGE_1 = 1,
+    STAGE_2,
+    STAGE_3,
+    END
+}
+
+[System.Serializable]
 public class SaveData
 {
-    /*private string SaveFile_path;
-    private string LoadFile_path;*/
     public List<Save_ItemData> itemdata;
-    public int Volume;
+    public STAGE Stage = STAGE.STAGE_1;
 }

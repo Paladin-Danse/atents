@@ -307,9 +307,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1054144505}
         m_TargetAssemblyTypeName: TestManager, Assembly-CSharp
-        m_MethodName: SaveFile
+        m_MethodName: SaveButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -450,6 +450,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1054144506}
   - component: {fileID: 1054144505}
+  - component: {fileID: 1054144507}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -469,19 +470,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5663631da0ca03e45b26f4ad32dd6b79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  savedata:
-    itemdata:
-    - name: "\uC648\uB784\uB784\uB8E8"
-      Quantity: 1
-      SpriteName: OK_UI
-      Durability: 1
-      Durability_Max: 1
-      Description: "\uC65C \uCF54\uB4DC\uB294 \uC9E4 \uB54C\uB9C8\uB2E4 \uC5C9\uD0A4\uB294\uAC00\uC5D0
-        \uB300\uD558\uC5EC..."
-    Volume: 0
-  loaddata:
-    itemdata: []
-    Volume: 0
+  json_Save: {fileID: 1054144507}
 --- !u!4 &1054144506
 Transform:
   m_ObjectHideFlags: 0
@@ -496,6 +485,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1054144507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1054144504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac2f6757da1d395489b782da4efabd1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  savedata:
+    itemdata:
+    - name: "\uC648\uB784\uB784\uB8E8"
+      Quantity: 1
+      SpriteName: OK_UI
+      Durability: 1
+      Durability_Max: 1
+      Description: "\uBB50\uB77C\uACE0 \uC801\uC73C\uBA74 \uC88B\uC744\uAE4C?"
+    Volume: 50
+  loaddata:
+    itemdata: []
+    Volume: 0
 --- !u!1 &1304216041
 GameObject:
   m_ObjectHideFlags: 0
@@ -658,9 +671,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1054144505}
         m_TargetAssemblyTypeName: TestManager, Assembly-CSharp
-        m_MethodName: LoadFile
+        m_MethodName: LoadButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

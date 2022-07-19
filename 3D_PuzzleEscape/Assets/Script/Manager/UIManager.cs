@@ -30,8 +30,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image InteractUI;
     //미니게임UI
     [SerializeField] private GameObject MiniGameUI;
+    
+    //시작화면 버튼UI
     [SerializeField] private Button Button_GameStart;
     [SerializeField] private Button Button_GameOption;
+    [SerializeField] private Button Button_Continue;
 
     //아이템 목록
     private GameObject Content;
@@ -83,6 +86,7 @@ public class UIManager : MonoBehaviour
         Button_Home = Ending_HomeButtonUI.GetComponent<Button>();
         Button_GameStart = transform.Find("GameStart").gameObject.GetComponent<Button>();
         Button_GameOption = transform.Find("GameOption").gameObject.GetComponent<Button>();
+        Button_Continue = transform.Find("Continue").gameObject.GetComponent<Button>();
         GameOptionUI = transform.Find("OptionUI").gameObject;
         Button_OptionExit = GameOptionUI.transform.Find("ExitButton").GetComponent<Button>();
         Slider_Audio = GameOptionUI.transform.Find("Audio").Find("AudioSlider").GetComponent<Slider>();
@@ -122,6 +126,7 @@ public class UIManager : MonoBehaviour
         GameOptionUI.SetActive(false);
         Off_MiniUI();
         SetVolumeText(AudioManager.instance.GetVolume().ToString());
+        Button_OptionExit.onClick.AddListener(() => AudioManager.instance.SaveAudioOption());
     }
 
     public void OnScene(string sceneName)
@@ -277,6 +282,7 @@ public class UIManager : MonoBehaviour
     {
         Button_GameStart.gameObject.SetActive(setbool);
         Button_GameOption.gameObject.SetActive(setbool);
+        Button_Continue.gameObject.SetActive(setbool);
     }
     //설정 관련 함수
     //설정UI관련
