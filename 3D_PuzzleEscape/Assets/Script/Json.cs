@@ -9,33 +9,34 @@ using System.IO;
 /// </summary>
 public class Json : MonoBehaviour
 {
-    [SerializeField] private SaveData savedata;
-    [SerializeField] private SaveData loaddata;
+    //[SerializeField] private SaveData savedata;
+    //[SerializeField] private SaveData loaddata;
     private string Json_Data;
     private string savePath = "/Resource/Save/SaveData.json";
 
     public bool SaveFile(SaveData newSave)
     {
-        Json_Data = SerializeObject(savedata);
+        Json_Data = SerializeObject(newSave);
         if(Json_Data != null) File.WriteAllText(Application.dataPath + savePath, Json_Data);
         else
         {
-            Debug.LogError("Json Error : Json_Data is Not Found");
+            Debug.LogError("Json(SaveFile) Error : Json_Data is Not Found");
             return false;
         }
         return true;
     }
 
-    public bool LoadFile()
+    public SaveData LoadFile()
     {
+        SaveData loaddata;
         Json_Data = File.ReadAllText(Application.dataPath + savePath);
         if(Json_Data != null) loaddata = DeserializeObject<SaveData>(Json_Data);
         else
         {
-            Debug.LogError("Json Error : Json_Data is Not Found");
-            return false;
+            Debug.LogError("Json(LoadFile) Error : Json_Data is Not Found");
+            return null;
         }
-        return true;
+        return loaddata;
     }
 
     public void Debug_JsonData()

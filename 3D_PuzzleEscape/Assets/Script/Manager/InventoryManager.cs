@@ -49,7 +49,7 @@ public class InventoryManager : MonoBehaviour
             InventoryList.Add(invenitem);
         }
         //디버그용 아이템 획득 코드
-        //GetItem(itemDatas.Find(i => i.Data.name == "금속용매"));
+        GetItem(itemDatas.Find(i => i.Data.name == "인형머리"));
     }
     private void Update()
     {
@@ -249,5 +249,23 @@ public class InventoryManager : MonoBehaviour
         }
         else
             return null;
+    }
+
+    public List<Save_ItemData> InventorySave(List<Save_ItemData> itemdata)
+    {
+        if(itemdata != null) itemdata.Clear();
+
+        foreach (InventoryItem iter in InventoryList.FindAll(i => i.data.Quantity >= 1))
+        {
+            Save_ItemData newItemData;
+            newItemData.name = iter.data.name;
+            newItemData.Quantity = iter.data.Quantity;
+            newItemData.Durability = iter.data.Durability;
+            newItemData.Durability_Max = iter.data.Durability_Max;
+            newItemData.SpriteName = iter.data.ItemSprite.name;
+            newItemData.Description = iter.data.Description;
+            itemdata.Add(newItemData);
+        }
+        return itemdata;
     }
 }

@@ -131,7 +131,7 @@ public class GameManager : MonoBehaviour
 
     public void GameSave(SaveData newSave)
     {
-        if(!json_save.SaveFile(newSave))
+        if (!json_save.SaveFile(newSave))
         {
             Debug.LogError("Save Failed!");
         }
@@ -139,7 +139,8 @@ public class GameManager : MonoBehaviour
 
     public void GameLoad()
     {
-        if(!json_save.LoadFile())
+        mySavedata = json_save.LoadFile();
+        if (mySavedata == null)
         {
             Debug.LogError("Load Failed!");
         }
@@ -149,6 +150,9 @@ public class GameManager : MonoBehaviour
     //현재 작업 진행 중.
     public void StageClear()
     {
-        
+        mySavedata.Stage += 1;
+        mySavedata.itemdata = InventoryManager.instance.InventorySave(mySavedata.itemdata);
+
+        GameSave(mySavedata);
     }
 }

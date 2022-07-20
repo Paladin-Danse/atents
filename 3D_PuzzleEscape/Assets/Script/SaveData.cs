@@ -27,6 +27,6 @@ public enum STAGE
 [System.Serializable]
 public class SaveData
 {
-    public List<Save_ItemData> itemdata;
+    public List<Save_ItemData> itemdata = new List<Save_ItemData>();
     public STAGE Stage = STAGE.STAGE_1;
 }
