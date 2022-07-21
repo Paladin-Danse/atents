@@ -49,7 +49,7 @@ public class InventoryManager : MonoBehaviour
             InventoryList.Add(invenitem);
         }
         //디버그용 아이템 획득 코드
-        GetItem(itemDatas.Find(i => i.Data.name == "인형머리"));
+        //GetItem("인형머리"));
     }
     private void Update()
     {
@@ -76,9 +76,9 @@ public class InventoryManager : MonoBehaviour
         */
     }
 
-    public void GetItem(ItemData item)
+    public void GetItem(string item)
     {
-        InventoryItem getitem = InventoryList.Find(i => i.data.name == item.Data.name);
+        InventoryItem getitem = InventoryList.Find(i => i.data.name == item);
         if (getitem != null)
         {
             getitem.data.Quantity += 1;
@@ -149,7 +149,7 @@ public class InventoryManager : MonoBehaviour
                 
                 UseItem(SelectedItem);
                 UseItem(SelectedMixItem);
-                GetItem(mixitem.Data.Mixeditem);
+                GetItem(mixitem.Data.Mixeditem.Data.name);
 
                 SelectedMixItem = null;
                 UIManager.instance.SelectMixUIDisable();

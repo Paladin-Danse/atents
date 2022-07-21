@@ -15,7 +15,7 @@ public class ItemInteraction : InteractionObject
 
     private void Interaction_to_GetItem()
     {
-        InventoryManager.instance.GetItem(item);
+        InventoryManager.instance.GetItem(item.Data.name);
 
         gameObject.SetActive(false);
     }

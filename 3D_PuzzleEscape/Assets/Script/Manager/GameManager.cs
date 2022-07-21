@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
     private Json json_save;
     private SaveData mySavedata;
 
+    [SerializeField] private Vector3 StagetoPlayerPosition;
+
     private void Awake()
     {
         Ex_PartsData = new List<ItemData>();
@@ -37,6 +39,7 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded;
         json_save = GetComponent<Json>();
         if (!json_save) Debug.LogError("GameManager Error : Json is Not Found!");
+        mySavedata = new SaveData();
     }
     //유니티 스크립팅API에서 가져온 정보
     //sceneLoaded<Scene, LoadSceneMode>가 씬이 전환될 때마다 실행이 되고 아래 함수를 해당 델리게이터에 대입함으로써 씬이 실행될때마다 아래 함수를 실행시킨다.
@@ -67,8 +70,38 @@ public class GameManager : MonoBehaviour
         OffCursorVisible();
         portal.SetActive(false);
         hint_Obj.SetActive(true);
-        mySavedata = new SaveData();
+
+        //현재 막힌 부분
+        //아이템이 세이브파일에 저장은 되는데, 반대로 불러오지는 못하고 있다.
+        //현재 추측하기론 GetItem함수를 실행할때 InventoryManager스크립트는 아직 Awake나 Start를 실행하지 못했기 때문에 GetItem함수를 실행하지 못하는 것으로 추측됨.
+        if (mySavedata.itemdata != null)
+        {
+            foreach (Save_ItemData iter in mySavedata.itemdata)
+            {
+                InventoryManager.instance.GetItem(iter.name);
+            }
+        }
+        Transform Stage_transform = mySavedata.Stage switch
+        {
+            STAGE Stage when Stage == STAGE.STAGE_1 => Stage_transform = GameObject.Find("Stage1_Pos").transform,
+            STAGE Stage when Stage == STAGE.STAGE_2 => Stage_transform = GameObject.Find("Stage2_Pos").transform,
+            STAGE Stage when Stage == STAGE.STAGE_3 => Stage_transform = GameObject.Find("Stage3_Pos").transform,
+            _ => null
+        };
+        if (Stage_transform)
+        {
+            Player.transform.position = Stage_transform.position;
+            Player.transform.rotation = Stage_transform.rotation;
+        }
+    }
+
+    public void FirstGame()
+    {
         GameSave(mySavedata);
+    }
+    public void Continue()
+    {
+        GameLoad();
     }
 
     public void OnCursorVisible()
@@ -148,9 +181,9 @@ public class GameManager : MonoBehaviour
 
     //스테이지 클리어를 기점으로 저장.
     //현재 작업 진행 중.
-    public void StageClear()
+    public void StageClear(STAGE currentStage)
     {
-        mySavedata.Stage += 1;
+        mySavedata.Stage = currentStage + 1;
         mySavedata.itemdata = InventoryManager.instance.InventorySave(mySavedata.itemdata);
 
         GameSave(mySavedata);

@@ -104,7 +104,7 @@ public class WashItem : InteractionObject
                 */
                 if (data)
                 {
-                    InventoryManager.instance.GetItem(data);
+                    InventoryManager.instance.GetItem(data.Data.name);
                     InventoryManager.instance.UseItem(item);
                 }
                 else

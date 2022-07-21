@@ -59,8 +59,6 @@ public class MiniGameInteraction : InteractionObject
         InteractionEvent -= MiniGameStart;
         gameObject.layer = 2;
         Mini_Cam.gameObject.SetActive(false);
-
-        GameManager.instance.StageClear();
     }
 
     protected void DefaultCancel()

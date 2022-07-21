@@ -15,6 +15,7 @@ public class MoveInteraction : InteractionObject
     [SerializeField] protected AudioClip additional_Clip;
     AudioSource Interaction_Sound;
 
+
     private void Awake()
     {
         MoveAnimation = GetComponent<Animation>();

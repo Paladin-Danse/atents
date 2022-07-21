@@ -15,16 +15,22 @@ public class InteractionObject : MonoBehaviour
 {
     [SerializeField] protected ItemData NeedItem;
     protected event Action InteractionEvent;
+    private StageClearEvent SC_Event;
     public OBJ_TYPE e_ObjectType { get; protected set; }
 
     protected void Start()
     {
+        SC_Event = GetComponent<StageClearEvent>();
         if (gameObject.layer != LayerMask.NameToLayer("Interactable")) gameObject.layer = LayerMask.NameToLayer("Interactable");
     }
 
     public void Interaction()
     {
-        if (InteractionEvent != null) InteractionEvent();
+        if (InteractionEvent != null)
+        {
+            if (SC_Event) InteractionEvent += SC_Event.StageClear;
+            InteractionEvent();
+        }
     }
     public ItemData NeedItemCheck()
     {
