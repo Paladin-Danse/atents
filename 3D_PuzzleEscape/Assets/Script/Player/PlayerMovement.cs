@@ -93,6 +93,8 @@ public class PlayerMovement : MonoBehaviour
     }
     public void Option()
     {
+        if (!GameManager.instance.playerMovement) return;
+
         //옵션bool이 true일 때, 옵션창을 키고 옵션bool을 false로 바꾼다.
         //옵션bool이 false일 때, 옵션창을 끄고 옵션bool을 true로 바꾼다.
         UIManager.instance.SetGameOptionUI(b_OnOption);

@@ -10,7 +10,6 @@ public class Portal_Animation : MonoBehaviour
     private void Start()
     {
         portal_mat = GetComponent<Renderer>().material;
-        if (portal_mat) Debug.Log("a");
     }
     // Update is called once per frame
     void Update()

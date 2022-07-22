@@ -20,6 +20,7 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private List<ItemData> itemDatas;
     [SerializeField] private List<MixData> MixRecipe;
     [SerializeField] private List<InventoryItem> InventoryList;
+    private List<Save_ItemData> save_itemList;
     public InventoryItem SelectedItem { get; private set; }
     public InventoryItem SelectedMixItem { get; private set; }//조합하기 위해 선택된 아이템
     private int SelectNum;
@@ -31,14 +32,14 @@ public class InventoryManager : MonoBehaviour
     }
     private void Start()
     {
-        InventoryList = new List<InventoryItem>();
         SelectNum = 0;
         SelectedItem = null;
         SelectedMixItem = null;
         b_OnInventoryInput = true;
 
+        InventoryList = new List<InventoryItem>();
         int i = 0;
-        foreach(var data in itemDatas)
+        foreach (var data in itemDatas)
         {
             InventoryItem invenitem = new InventoryItem();
             invenitem.itemNum = i++;
@@ -48,6 +49,15 @@ public class InventoryManager : MonoBehaviour
 
             InventoryList.Add(invenitem);
         }
+
+        if(save_itemList.Count >= 1)
+        {
+            foreach(Save_ItemData iter in save_itemList)
+            {
+                GetItem(iter.name);
+            }
+        }
+
         //디버그용 아이템 획득 코드
         //GetItem("인형머리"));
     }
@@ -74,6 +84,19 @@ public class InventoryManager : MonoBehaviour
             Show_ItemDescription();
         }
         */
+    }
+
+    /*public string name;
+    public int Quantity;
+    public Sprite ItemSprite;
+    //public string SpriteName;
+    public int Durability;
+    public int Durability_Max;
+    public string Description;*/
+
+    public void LoadItem(SaveData savefile)
+    {
+        save_itemList = savefile.itemdata;
     }
 
     public void GetItem(string item)

@@ -43,8 +43,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject SelectedMixUI;
 
     //엔딩UI
-    [SerializeField] private GameObject Ending_RestartButtonUI;
-    [SerializeField] private GameObject Ending_HomeButtonUI;
+    [SerializeField] private GameObject EndingUI;
 
     /*
     //HelpInfo
@@ -78,12 +77,14 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
+        if (gameObject != UIManager.instance.gameObject) Destroy(gameObject);
+
         Content = Inventory_Scroll.transform.Find("Viewport/Content").gameObject;
         itemUIList = new List<ItemUI>();
         Description = transform.Find("Inventory_Scroll").Find("Description").gameObject;
         Text_itemdes = Description.transform.Find("Text").GetComponent<Text>();
-        Button_Restart = Ending_RestartButtonUI.GetComponent<Button>();
-        Button_Home = Ending_HomeButtonUI.GetComponent<Button>();
+        Button_Restart = EndingUI.transform.Find("RestartButton").GetComponent<Button>();
+        Button_Home = EndingUI.transform.Find("HomeButton").GetComponent<Button>();
         Button_GameStart = transform.Find("GameStart").gameObject.GetComponent<Button>();
         Button_GameOption = transform.Find("GameOption").gameObject.GetComponent<Button>();
         Button_Continue = transform.Find("Continue").gameObject.GetComponent<Button>();
@@ -135,6 +136,7 @@ public class UIManager : MonoBehaviour
         {
             SetUI(false);
             SetIntroUI(true);
+            Button_OptionExit.onClick.RemoveListener(() => GameManager.instance.playerMovement.Option());
         }
         else if(sceneName == "MainScene")
         {
@@ -144,8 +146,11 @@ public class UIManager : MonoBehaviour
             //게임매니저가 IntroScene에서 생성되어 Editor에선 오브젝트를 직접 넣을 수가 없다.
             //고로 UI매니저가 생성되는 순간에 게임매니저를 찾아 버튼 컴퍼넌트를 가져와 onClick에 Event를 집어넣는다.
             //이외에 다른 버튼도 동일한 이유
+            Button_Restart.onClick.AddListener(() => GameManager.instance.FirstGame());
             Button_Restart.onClick.AddListener(() => GameManager.instance.SceneMove("MainScene"));
+            Button_Restart.onClick.AddListener(() => EndingUI.SetActive(false));
             Button_Home.onClick.AddListener(() => GameManager.instance.SceneMove("IntroScene"));
+            Button_Home.onClick.AddListener(() => EndingUI.SetActive(false));
             if (GameManager.instance.playerMovement)
             {
                 Button_OptionExit.onClick.AddListener(() => GameManager.instance.playerMovement.Option());
@@ -192,6 +197,14 @@ public class UIManager : MonoBehaviour
 #if UNITY_EDITOR
             Debug.Log("itemUI is Not Found!");
 #endif
+        }
+    }
+
+    public void ItemUIAllDisable()
+    {
+        foreach(var itemUI in itemUIList)
+        {
+            itemUI.gameObject.SetActive(false);
         }
     }
 
@@ -276,6 +289,7 @@ public class UIManager : MonoBehaviour
     {
         InteractUI.gameObject.SetActive(setbool);
         Inventory_Scroll.gameObject.SetActive(setbool);
+
     }
     //IntroScene UI 관련 함수
     public void SetIntroUI(bool setbool)

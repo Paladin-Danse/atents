@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        if (GameManager.instance.gameObject != gameObject) Destroy(gameObject);
+
         Ex_PartsData = new List<ItemData>();
         M_PartsData = new List<ItemData>();
         DontDestroyOnLoad(gameObject);
@@ -71,15 +73,9 @@ public class GameManager : MonoBehaviour
         portal.SetActive(false);
         hint_Obj.SetActive(true);
 
-        //현재 막힌 부분
-        //아이템이 세이브파일에 저장은 되는데, 반대로 불러오지는 못하고 있다.
-        //현재 추측하기론 GetItem함수를 실행할때 InventoryManager스크립트는 아직 Awake나 Start를 실행하지 못했기 때문에 GetItem함수를 실행하지 못하는 것으로 추측됨.
         if (mySavedata.itemdata != null)
         {
-            foreach (Save_ItemData iter in mySavedata.itemdata)
-            {
-                InventoryManager.instance.GetItem(iter.name);
-            }
+            InventoryManager.instance.LoadItem(mySavedata);
         }
         Transform Stage_transform = mySavedata.Stage switch
         {
@@ -97,6 +93,7 @@ public class GameManager : MonoBehaviour
 
     public void FirstGame()
     {
+        mySavedata = new SaveData();
         GameSave(mySavedata);
     }
     public void Continue()
@@ -154,6 +151,7 @@ public class GameManager : MonoBehaviour
 
     public void SceneMove(string SceneName)
     {
+        UIManager.instance.ItemUIAllDisable();
         SceneManager.LoadScene(SceneName);
     }
 
