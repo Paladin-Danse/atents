@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject hint_Obj;
     private Json json_save;
     private SaveData mySavedata;
+    private bool b_Option;
 
     [SerializeField] private Vector3 StagetoPlayerPosition;
 
@@ -42,7 +43,9 @@ public class GameManager : MonoBehaviour
         json_save = GetComponent<Json>();
         if (!json_save) Debug.LogError("GameManager Error : Json is Not Found!");
         mySavedata = new SaveData();
+        b_Option = false;
     }
+
     //유니티 스크립팅API에서 가져온 정보
     //sceneLoaded<Scene, LoadSceneMode>가 씬이 전환될 때마다 실행이 되고 아래 함수를 해당 델리게이터에 대입함으로써 씬이 실행될때마다 아래 함수를 실행시킨다.
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -72,6 +75,7 @@ public class GameManager : MonoBehaviour
         OffCursorVisible();
         portal.SetActive(false);
         hint_Obj.SetActive(true);
+        b_Option = true;
 
         if (mySavedata.itemdata != null)
         {
@@ -111,6 +115,12 @@ public class GameManager : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
+    public void SetActivePlayer(bool setbool)
+    {
+        playerMovement.LockMove(setbool);
+        playerInteraction.LockInteraction(setbool);
+    }
+
     public void M_Example_RandData_Read(Mannequin_Example M_example)
     {
         Ex_PartsData.Add(M_example.Mannequin_Head);
@@ -158,6 +168,16 @@ public class GameManager : MonoBehaviour
     public Scene GetActiveScene()
     {
         return SceneManager.GetActiveScene();
+    }
+    //옵션을 킬 수 있는 상태(b_Option)를 키고 끄는 함수
+    //현재 의미가 없는 함수. 함수에 들어오는 순서때문에 b_Option의 값으로 인해 빠져나와야 할 함수가 그대로 진입하게 됨.
+    public void SetBoolOption(bool setbool)
+    {
+        b_Option = setbool;
+    }
+    public bool GetBoolOption()
+    {
+        return b_Option;
     }
 
     public void GameSave(SaveData newSave)

@@ -29,6 +29,7 @@ public class AudioManager : MonoBehaviour
     
     private void Awake()
     {
+        if (AudioManager.instance.gameObject != gameObject) Destroy(gameObject);
         //원래 세이브데이터에서 가져와야 할 값을 상수값으로 대체하였다. 이후 세이브기능이 구현되면 다시 손볼 것!
         //Volume = 50;
         BGM = GetComponent<AudioSource>();

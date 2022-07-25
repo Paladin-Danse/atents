@@ -23,7 +23,7 @@ public class Into_the_Portal : InteractionObject
     public void Ending()
     {
         GameEndingUI.SetActive(true);
-        GameManager.instance.playerMovement.LockMove();
+        GameManager.instance.SetActivePlayer(false);
         GameManager.instance.OnCursorVisible();
     }
 }

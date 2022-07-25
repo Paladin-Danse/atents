@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
             Move();
             Rotate();
             Crouch();
-            if(playerInput.ActionCancelKey) Option();
+            if (playerInput.ActionCancelKey) Option();
         }
     }
 
@@ -93,7 +93,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void Option()
     {
-        if (!GameManager.instance.playerMovement) return;
+        if (!GameManager.instance.playerMovement && GameManager.instance.GetBoolOption() == false) return;
 
         //옵션bool이 true일 때, 옵션창을 키고 옵션bool을 false로 바꾼다.
         //옵션bool이 false일 때, 옵션창을 끄고 옵션bool을 true로 바꾼다.
@@ -101,14 +101,12 @@ public class PlayerMovement : MonoBehaviour
 
         if (b_OnOption)
         {
-            LockMove();
-            GameManager.instance.playerInteraction.LockInteraction();
+            GameManager.instance.SetActivePlayer(false);
             GameManager.instance.OnCursorVisible();
         }
         else
         {
-            UnlockMove();
-            GameManager.instance.playerInteraction.UnlockInteraction();
+            GameManager.instance.SetActivePlayer(true);
             GameManager.instance.OffCursorVisible();
         }
 
@@ -123,6 +121,11 @@ public class PlayerMovement : MonoBehaviour
         return Mathf.Min(angle, to);
     }
 
+    public void LockMove(bool setbool)
+    {
+        b_OnMove = setbool;
+    }
+/*
     public void LockMove()
     {
         b_OnMove = false;
@@ -131,4 +134,5 @@ public class PlayerMovement : MonoBehaviour
     {
         b_OnMove = true;
     }
+*/
 }

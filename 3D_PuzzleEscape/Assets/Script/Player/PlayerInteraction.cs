@@ -82,6 +82,11 @@ public class PlayerInteraction : MonoBehaviour
         }
     }
 
+    public void LockInteraction(bool setbool)
+    {
+        b_OnInteraction = setbool;
+    }
+/*
     public void LockInteraction()
     {
         b_OnInteraction = false;
@@ -90,4 +95,5 @@ public class PlayerInteraction : MonoBehaviour
     {
         b_OnInteraction = true;
     }
+*/
 }
