@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     public PlayerInput playerInput { get; private set; }
     public PlayerMovement playerMovement { get; private set; }
     public PlayerInteraction playerInteraction { get; private set; }
-
+    
     List<ItemData> Ex_PartsData;
     List<ItemData> M_PartsData;
     [SerializeField] private GameObject portal;
@@ -36,8 +36,6 @@ public class GameManager : MonoBehaviour
     {
         if (GameManager.instance.gameObject != gameObject) Destroy(gameObject);
 
-        Ex_PartsData = new List<ItemData>();
-        M_PartsData = new List<ItemData>();
         DontDestroyOnLoad(gameObject);
         SceneManager.sceneLoaded += OnSceneLoaded;
         json_save = GetComponent<Json>();
@@ -53,6 +51,7 @@ public class GameManager : MonoBehaviour
         if (scene.name == "MainScene")
             GameStart();
         UIManager.instance.OnScene(SceneManager.GetActiveScene().name);
+        AudioManager.instance.OnScene(SceneManager.GetActiveScene().name);
     }
 
     public void GameStart()
@@ -69,8 +68,13 @@ public class GameManager : MonoBehaviour
             playerInteraction = Player.GetComponent<PlayerInteraction>();
         }
 
-        portal = GameObject.Find("Portal");
-        hint_Obj = GameObject.Find("Asphalt Moveable");
+        Ex_PartsData = new List<ItemData>();
+        M_PartsData = new List<ItemData>();
+
+        GameObject asphalt;
+        asphalt = GameObject.Find("Hint&Portal");
+        portal = asphalt.transform.Find("Portal").gameObject;
+        hint_Obj = asphalt.transform.Find("Asphalt Moveable").gameObject;
 
         OffCursorVisible();
         portal.SetActive(false);
@@ -119,6 +123,12 @@ public class GameManager : MonoBehaviour
     {
         playerMovement.LockMove(setbool);
         playerInteraction.LockInteraction(setbool);
+    }
+    //해당 함수는 원래라면 위의 SetActivePlayer에 포함되어도 크게 상관없을 함수이나,
+    //PlayerMovement의 Option함수에서 사용할 때, 아래 함수가 작동되면 Option함수가 제대로 작동되지 못하는 문제점이 생기는 관계로 따로 분리함.
+    public void SetActiveOption(bool setbool)
+    {
+        b_Option = setbool;
     }
 
     public void M_Example_RandData_Read(Mannequin_Example M_example)
@@ -169,12 +179,7 @@ public class GameManager : MonoBehaviour
     {
         return SceneManager.GetActiveScene();
     }
-    //옵션을 킬 수 있는 상태(b_Option)를 키고 끄는 함수
-    //현재 의미가 없는 함수. 함수에 들어오는 순서때문에 b_Option의 값으로 인해 빠져나와야 할 함수가 그대로 진입하게 됨.
-    public void SetBoolOption(bool setbool)
-    {
-        b_Option = setbool;
-    }
+
     public bool GetBoolOption()
     {
         return b_Option;

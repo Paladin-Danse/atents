@@ -20,6 +20,8 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] private AudioMixer MasterMixer;
     private AudioSource BGM;
+    [SerializeField] private AudioClip bgm_Intro;
+    [SerializeField] private AudioClip bgm_Game;
     private float maxVolume;
     private float minVolume;
     private int SliderValue;
@@ -43,9 +45,41 @@ public class AudioManager : MonoBehaviour
         SliderValue = (int)-((maxVolume - minVolume) - (maxVolume - minVolume) * Volume / 100);
         MasterMixer.SetFloat("Master", SliderValue);
         UIManager.instance.Slider_Audio.value = SliderValue;
-        BGM.Play();
+        
         DontDestroyOnLoad(gameObject);
     }
+    public void OnScene(string sceneName)
+    {
+        if(sceneName == "IntroScene")
+        {
+            BGM.clip = bgm_Intro;
+            if (BGM.clip)
+            {
+                BGM.Play();
+            }
+            else
+            {
+#if UNITY_EDITOR
+                Debug.Log("Error(AudioManager) : bgm_Intro is Not Found");
+#endif
+            }
+        }
+        else if(sceneName == "MainScene")
+        {
+            BGM.clip = bgm_Game;
+            if (BGM.clip)
+            {
+                BGM.Play();
+            }
+            else
+            {
+#if UNITY_EDITOR
+                Debug.Log("Error(AudioManager) : bgm_Game is Not Found");
+#endif
+            }
+        }
+    }
+
     //볼륨의 슬라이더를 움직이면 불려오는 함수
     public void AudioControl()
     {
@@ -56,7 +90,9 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
+#if UNITY_EDITOR
             Debug.Log("Wrong Acess : Not Found AudioSlider");
+#endif
             return;
         }
         if (SliderValue <= -40f) MasterMixer.SetFloat("Master", -80f);

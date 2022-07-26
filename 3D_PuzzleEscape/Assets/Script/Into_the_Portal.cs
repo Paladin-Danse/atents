@@ -24,6 +24,7 @@ public class Into_the_Portal : InteractionObject
     {
         GameEndingUI.SetActive(true);
         GameManager.instance.SetActivePlayer(false);
+        GameManager.instance.SetActiveOption(false);
         GameManager.instance.OnCursorVisible();
     }
 }

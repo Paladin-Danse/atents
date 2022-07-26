@@ -36,7 +36,8 @@ public class PlayerMovement : MonoBehaviour
             Move();
             Rotate();
             Crouch();
-            if (playerInput.ActionCancelKey) Option();
+            if (playerInput.ActionCancelKey)
+                Option();
         }
     }
 
@@ -93,12 +94,19 @@ public class PlayerMovement : MonoBehaviour
     }
     public void Option()
     {
-        if (!GameManager.instance.playerMovement && GameManager.instance.GetBoolOption() == false) return;
+        if (!GameManager.instance.playerMovement) return;
+
+        if (GameManager.instance.GetBoolOption() == false)
+        {
+            GameManager.instance.SetActiveOption(true);
+            return;
+        }
 
         //옵션bool이 true일 때, 옵션창을 키고 옵션bool을 false로 바꾼다.
         //옵션bool이 false일 때, 옵션창을 끄고 옵션bool을 true로 바꾼다.
         UIManager.instance.SetGameOptionUI(b_OnOption);
 
+        //이곳에 SetActiveOption함수를 쓰지 말 것. Option창을 끌 때, 게임매니저에서 b_Option을 false로 바꾸고, 다시 이 함수로 돌아오지 못하는 문제가 발생한다.
         if (b_OnOption)
         {
             GameManager.instance.SetActivePlayer(false);

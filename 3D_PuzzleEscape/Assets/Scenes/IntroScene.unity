@@ -454,6 +454,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MasterMixer: {fileID: 24100000, guid: 6a66526591cfe4b4c9044a9cba3e0b24, type: 2}
+  bgm_Intro: {fileID: 8300000, guid: 7c601e21b7bc1404fa0ffa29deae1140, type: 3}
+  bgm_Game: {fileID: 0}
 --- !u!4 &1815691240
 Transform:
   m_ObjectHideFlags: 0

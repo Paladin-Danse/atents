@@ -24,8 +24,8 @@ public class LookInteraction : InteractionObject
         LookCam.gameObject.SetActive(true);
         b_Lookobj = true;
         UIManager.instance.SetUI(false);
-        GameManager.instance.SetBoolOption(false);
         GameManager.instance.SetActivePlayer(false);
+        GameManager.instance.SetActiveOption(false);
     }
 
     protected void Update()
@@ -35,7 +35,6 @@ public class LookInteraction : InteractionObject
             if(b_Lookobj && (playerInput.ActionCancelKey || playerInput.InteractionKey))
             {
                 UIManager.instance.SetUI(true);
-                GameManager.instance.SetBoolOption(true);
                 GameManager.instance.SetActivePlayer(true);
 
                 b_Lookobj = false;
