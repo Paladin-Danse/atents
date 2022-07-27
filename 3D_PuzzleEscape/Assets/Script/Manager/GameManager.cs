@@ -210,5 +210,6 @@ public class GameManager : MonoBehaviour
         mySavedata.itemdata = InventoryManager.instance.InventorySave(mySavedata.itemdata);
 
         GameSave(mySavedata);
+        StartCoroutine(UIManager.instance.SaveComplete());
     }
 }

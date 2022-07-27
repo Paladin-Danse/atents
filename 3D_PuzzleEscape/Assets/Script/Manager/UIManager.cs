@@ -30,7 +30,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image InteractUI;
     //미니게임UI
     [SerializeField] private GameObject MiniGameUI;
-    
+    //세이브UI
+    [SerializeField] private GameObject SaveLoadingUI;
+    public float UI_ActiveTime;
+
     //시작화면 버튼UI
     [SerializeField] private Button Button_GameStart;
     [SerializeField] private Button Button_GameOption;
@@ -79,6 +82,7 @@ public class UIManager : MonoBehaviour
     {
         if (gameObject != UIManager.instance.gameObject) Destroy(gameObject);
 
+        SaveLoadingUI = transform.Find("SaveLoading").gameObject;
         Content = Inventory_Scroll.transform.Find("Viewport/Content").gameObject;
         itemUIList = new List<ItemUI>();
         Description = transform.Find("Inventory_Scroll").Find("Description").gameObject;
@@ -125,6 +129,13 @@ public class UIManager : MonoBehaviour
 #endif
         }
         GameOptionUI.SetActive(false);
+        if (SaveLoadingUI) SaveLoadingUI.SetActive(false);
+        else
+        {
+#if UNITY_EDITOR
+            Debug.Log("Error(UIManager) : SaveLoadingUI is Not Found");
+#endif
+        }
         Off_MiniUI();
         SetVolumeText(AudioManager.instance.GetVolume().ToString());
         Button_OptionExit.onClick.AddListener(() => AudioManager.instance.SaveAudioOption());
@@ -361,6 +372,22 @@ public class UIManager : MonoBehaviour
 #endif
             return false;
         }
+    }
+    public IEnumerator SaveComplete()
+    {
+        if(!SaveLoadingUI.activeSelf)
+            SaveSetActive(true);
+        
+        yield return new WaitForSeconds(UI_ActiveTime);
+        
+        if(SaveLoadingUI.activeSelf)
+            SaveSetActive(false);
+    }
+
+    //세이브UI 끄고 키기.
+    private void SaveSetActive(bool setbool)
+    {
+        SaveLoadingUI.SetActive(setbool);
     }
     /*
     public void Set_HelpInfo(Image image, Text txt)
