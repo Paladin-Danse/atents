@@ -77,7 +77,6 @@ public class MiniGameInteraction : InteractionObject
         Mini_Cam.gameObject.SetActive(false);
     }
     //ESC버튼을 누르면 미니게임을 도중에 중단하는 함수.
-    //ESC버튼을 누르면 여길 먼저 거쳐서 플레이어의 On_Move변수를 true로 만들어서 똑같은 ESC버튼에 반응하는 Option함수를 거쳐 옵션창을 킨다...
     protected void DefaultCancel()
     {
         GameManager.instance.SetActivePlayer(true);

@@ -40,7 +40,6 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded;
         json_save = GetComponent<Json>();
         if (!json_save) Debug.LogError("GameManager Error : Json is Not Found!");
-        mySavedata = new SaveData();
         b_Option = false;
     }
 
@@ -85,6 +84,9 @@ public class GameManager : MonoBehaviour
         {
             InventoryManager.instance.LoadItem(mySavedata);
         }
+
+
+        /*
         Transform Stage_transform = mySavedata.Stage switch
         {
             STAGE Stage when Stage == STAGE.STAGE_1 => Stage_transform = GameObject.Find("Stage1_Pos").transform,
@@ -92,17 +94,18 @@ public class GameManager : MonoBehaviour
             STAGE Stage when Stage == STAGE.STAGE_3 => Stage_transform = GameObject.Find("Stage3_Pos").transform,
             _ => null
         };
-        if (Stage_transform)
+        */
+        if (mySavedata != null)
         {
-            Player.transform.position = Stage_transform.position;
-            Player.transform.rotation = Stage_transform.rotation;
+            Player.transform.position = new Vector3(mySavedata.PlayerPositionX, mySavedata.PlayerPositionY, mySavedata.PlayerPositionZ);
+            Player.transform.rotation = Quaternion.Euler(mySavedata.PlayerRotationX, mySavedata.PlayerRotationY, mySavedata.PlayerRotationZ);
         }
     }
 
     public void FirstGame()
     {
         mySavedata = new SaveData();
-        GameSave(mySavedata);
+        GameSave();
     }
     public void Continue()
     {
@@ -166,6 +169,7 @@ public class GameManager : MonoBehaviour
     public void On_Portal()
     {
         portal.SetActive(true);
+        MiniGameClear("Mannequin_Compare");
         Debug.Log("On_Portal");
     }
 
@@ -185,11 +189,29 @@ public class GameManager : MonoBehaviour
         return b_Option;
     }
 
-    public void GameSave(SaveData newSave)
+    public void GameSave()
     {
-        if (!json_save.SaveFile(newSave))
+        if (InventoryManager.instance)
+        {
+            mySavedata.itemdata = InventoryManager.instance.InventorySave(mySavedata.itemdata);
+        }
+        if (Player)
+        {
+            mySavedata.PlayerPositionX = Player.transform.position.x;
+            mySavedata.PlayerPositionY = Player.transform.position.y;
+            mySavedata.PlayerPositionZ = Player.transform.position.z;
+            //평범하게 rotation.x값을 가져오라고 하면 엉뚱한 값을 가져오는 경우가 있다. eulerAngles의 값은 꽤나 정확하다. 바꾸지 말 것.
+            mySavedata.PlayerRotationX = Player.transform.rotation.eulerAngles.x;
+            mySavedata.PlayerRotationY = Player.transform.rotation.eulerAngles.y;
+            mySavedata.PlayerRotationZ = Player.transform.rotation.eulerAngles.z;
+        }
+        if (!json_save.SaveFile(mySavedata))
         {
             Debug.LogError("Save Failed!");
+        }
+        if (UIManager.instance)
+        {
+            StartCoroutine(UIManager.instance.SaveComplete());
         }
     }
 
@@ -207,9 +229,29 @@ public class GameManager : MonoBehaviour
     public void StageClear(STAGE currentStage)
     {
         mySavedata.Stage = currentStage + 1;
-        mySavedata.itemdata = InventoryManager.instance.InventorySave(mySavedata.itemdata);
-
-        GameSave(mySavedata);
-        StartCoroutine(UIManager.instance.SaveComplete());
+        
+        GameSave();
+    }
+    
+    public void MiniGameClear(string MiniName)
+    {
+        switch(MiniName)
+        {
+            case "Safe":
+                mySavedata.Mini_1_Clear = true;
+                break;
+            case "MixPotion":
+                mySavedata.Mini_1_Clear = true;
+                mySavedata.Mini_2_Clear = true;
+                break;
+            case "Mannequin_Compare":
+                mySavedata.Mini_1_Clear = true;
+                mySavedata.Mini_2_Clear = true;
+                mySavedata.Mini_3_Clear = true;
+                break;
+            default:
+                break;
+        }
+        GameSave();
     }
 }

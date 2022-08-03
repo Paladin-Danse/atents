@@ -28,4 +28,16 @@ public class SaveData
 {
     public List<Save_ItemData> itemdata = new List<Save_ItemData>();
     public STAGE Stage = STAGE.STAGE_1;
+    
+    //Player
+    public float PlayerPositionX = -10f;
+    public float PlayerPositionY = 1.5f;
+    public float PlayerPositionZ = 4f;
+    public float PlayerRotationX = 0f;
+    public float PlayerRotationY = -90f;
+    public float PlayerRotationZ = 0f;
+
+    public bool Mini_1_Clear = false;
+    public bool Mini_2_Clear = false;
+    public bool Mini_3_Clear = false;
 }

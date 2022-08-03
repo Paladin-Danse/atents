@@ -152,6 +152,7 @@ public class Safe : MiniGameInteraction
         }
 
         MiniGameClear();
+        GameManager.instance.MiniGameClear(this.name);
     }
     private void DialWrong()
     {
