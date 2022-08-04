@@ -48,7 +48,7 @@ public class MiniGameInteraction : InteractionObject
             if (GameManager.instance.playerInput && playerInput == null) playerInput = GameManager.instance.playerInput;
             GameManager.instance.SetActivePlayer(false);
             GameManager.instance.SetActiveOption(false);
-            InventoryManager.instance.LockInventory();
+            InventoryManager.instance.SetInventory(false);
             UIManager.instance.SetUI(false);
 
             b_OnMiniGame = true;
@@ -66,21 +66,31 @@ public class MiniGameInteraction : InteractionObject
             ClearSoundEffect.Play();
         }
 
-        GameManager.instance.SetActivePlayer(true);
-        GameManager.instance.SetActiveOption(true);
-        InventoryManager.instance.UnlockInventory();
-        UIManager.instance.SetUI(true);
+        SetMiniInterface(true);
+        MiniGameDelete();
+    }
 
+    protected void SetMiniInterface(bool setbool)
+    {
+        GameManager.instance.SetActivePlayer(setbool);
+        GameManager.instance.SetActiveOption(setbool);
+        InventoryManager.instance.SetInventory(setbool);
+        UIManager.instance.SetUI(setbool);
+    }
+
+    protected void MiniGameDelete()
+    {
         b_OnMiniGame = false;
         InteractionEvent -= MiniGameStart;
         gameObject.layer = 2;
         Mini_Cam.gameObject.SetActive(false);
     }
+
     //ESC버튼을 누르면 미니게임을 도중에 중단하는 함수.
     protected void DefaultCancel()
     {
         GameManager.instance.SetActivePlayer(true);
-        InventoryManager.instance.UnlockInventory();
+        InventoryManager.instance.SetInventory(true);
         UIManager.instance.SetUI(true);
 
         b_OnMiniGame = false;

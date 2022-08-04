@@ -28,6 +28,21 @@ public class Safe : MiniGameInteraction
         Dial_Default_Rotation = SafeDial.transform.rotation;
 
         MiniGameCancel += DialWrong;
+
+        if(GameManager.instance.mySavedata.Mini_1_Clear)
+        {
+            if(SafeAnim)
+            {
+                SafeAnim[SafeAnim.clip.name].normalizedTime = 1.5f;
+            }
+            else
+            {
+#if UNITY_EDITOR
+                Debug.Log("Error(Safe) : SafeAnim is Not Found!");
+#endif
+            }
+            MiniGameDelete();
+        }
     }
     private new void Update()
     {
@@ -152,7 +167,7 @@ public class Safe : MiniGameInteraction
         }
 
         MiniGameClear();
-        GameManager.instance.MiniGameClear(this.name);
+        GameManager.instance.MiniGameClear("Safe");
     }
     private void DialWrong()
     {

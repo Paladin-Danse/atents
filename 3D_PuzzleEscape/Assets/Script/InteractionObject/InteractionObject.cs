@@ -15,7 +15,7 @@ public class InteractionObject : MonoBehaviour
 {
     [SerializeField] protected ItemData NeedItem;
     protected event Action InteractionEvent;
-    private StageClearEvent SC_Event;
+    protected StageClearEvent SC_Event;
     public OBJ_TYPE e_ObjectType { get; protected set; }
 
     protected void Start()

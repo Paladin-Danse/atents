@@ -214,7 +214,7 @@ public class MixPotion : MiniGameInteraction
     {
         MixPotion_Cancel();
         MiniGameClear();
-        GameManager.instance.MiniGameClear(this.name);
+        GameManager.instance.MiniGameClear("MixPotion");
         Flasks[SelectFlask_Num].GetComponentInChildren<ItemInteraction>().enabled = true;
         InventoryManager.instance.LostItem("ÇÇÆê");
         InventoryManager.instance.LostItem("³ì»ö¹°¾à");

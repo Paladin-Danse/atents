@@ -254,13 +254,10 @@ public class InventoryManager : MonoBehaviour
         }
     }
     */
-    public void LockInventory()
+
+    public void SetInventory(bool setbool)
     {
-        b_OnInventoryInput = false;
-    }
-    public void UnlockInventory()
-    {
-        b_OnInventoryInput = true;
+        b_OnInventoryInput = setbool;
     }
 
     public InventoryItem InventoryitemCheck(ItemData data)

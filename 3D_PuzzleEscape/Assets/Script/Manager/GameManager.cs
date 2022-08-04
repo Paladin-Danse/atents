@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject portal;
     [SerializeField] private GameObject hint_Obj;
     private Json json_save;
-    private SaveData mySavedata;
+    public SaveData mySavedata { get; private set; }
     private bool b_Option;
 
     [SerializeField] private Vector3 StagetoPlayerPosition;
@@ -85,16 +85,6 @@ public class GameManager : MonoBehaviour
             InventoryManager.instance.LoadItem(mySavedata);
         }
 
-
-        /*
-        Transform Stage_transform = mySavedata.Stage switch
-        {
-            STAGE Stage when Stage == STAGE.STAGE_1 => Stage_transform = GameObject.Find("Stage1_Pos").transform,
-            STAGE Stage when Stage == STAGE.STAGE_2 => Stage_transform = GameObject.Find("Stage2_Pos").transform,
-            STAGE Stage when Stage == STAGE.STAGE_3 => Stage_transform = GameObject.Find("Stage3_Pos").transform,
-            _ => null
-        };
-        */
         if (mySavedata != null)
         {
             Player.transform.position = new Vector3(mySavedata.PlayerPositionX, mySavedata.PlayerPositionY, mySavedata.PlayerPositionZ);
@@ -215,6 +205,32 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void GameSave(Transform StagePosition)
+    {
+        if (InventoryManager.instance)
+        {
+            mySavedata.itemdata = InventoryManager.instance.InventorySave(mySavedata.itemdata);
+        }
+        if (Player)
+        {
+            mySavedata.PlayerPositionX = StagePosition.position.x;
+            mySavedata.PlayerPositionY = StagePosition.position.y;
+            mySavedata.PlayerPositionZ = StagePosition.position.z;
+            //평범하게 rotation.x값을 가져오라고 하면 엉뚱한 값을 가져오는 경우가 있다. eulerAngles의 값은 꽤나 정확하다. 바꾸지 말 것.
+            mySavedata.PlayerRotationX = StagePosition.rotation.eulerAngles.x;
+            mySavedata.PlayerRotationY = StagePosition.rotation.eulerAngles.y;
+            mySavedata.PlayerRotationZ = StagePosition.rotation.eulerAngles.z;
+        }
+        if (!json_save.SaveFile(mySavedata))
+        {
+            Debug.LogError("Save Failed!");
+        }
+        if (UIManager.instance)
+        {
+            StartCoroutine(UIManager.instance.SaveComplete());
+        }
+    }
+
     public void GameLoad()
     {
         mySavedata = json_save.LoadFile();
@@ -229,8 +245,16 @@ public class GameManager : MonoBehaviour
     public void StageClear(STAGE currentStage)
     {
         mySavedata.Stage = currentStage + 1;
-        
-        GameSave();
+
+        Transform Stage_transform = mySavedata.Stage switch
+        {
+            STAGE Stage when Stage == STAGE.STAGE_1 => Stage_transform = GameObject.Find("Stage1_Pos").transform,
+            STAGE Stage when Stage == STAGE.STAGE_2 => Stage_transform = GameObject.Find("Stage2_Pos").transform,
+            STAGE Stage when Stage == STAGE.STAGE_3 => Stage_transform = GameObject.Find("Stage3_Pos").transform,
+            _ => null
+        };
+
+        GameSave(Stage_transform);
     }
     
     public void MiniGameClear(string MiniName)
