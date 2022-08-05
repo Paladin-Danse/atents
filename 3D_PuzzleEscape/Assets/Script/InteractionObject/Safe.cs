@@ -33,7 +33,8 @@ public class Safe : MiniGameInteraction
         {
             if(SafeAnim)
             {
-                SafeAnim[SafeAnim.clip.name].normalizedTime = 1.5f;
+                SafeAnim.clip = SafeAnim.GetClip("Safe_ClearLoad");
+                SafeAnim.Play();
             }
             else
             {
@@ -163,6 +164,7 @@ public class Safe : MiniGameInteraction
     {
         if (SafeAnim)
         {
+            SafeAnim.clip = SafeAnim.GetClip("Safe_ClearAnim");
             SafeAnim.Play();
         }
 

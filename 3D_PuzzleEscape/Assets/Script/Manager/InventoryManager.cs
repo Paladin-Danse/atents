@@ -59,7 +59,7 @@ public class InventoryManager : MonoBehaviour
         }
 
         //디버그용 아이템 획득 코드
-        //GetItem("인형머리"));
+        //GetItem("금속용매");
     }
     private void Update()
     {
