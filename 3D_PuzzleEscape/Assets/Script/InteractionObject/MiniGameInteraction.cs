@@ -4,6 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 
+public enum MINIGAME_SIRIES
+{
+    MINIGAME_SAFE,
+    MINIGAME_MIX_POTION,
+    MINIGAME_TWIN_PUPPET,
+    NONE
+}
+
 public class MiniGameInteraction : InteractionObject
 {
     [SerializeField] protected CinemachineVirtualCamera Mini_Cam;

@@ -213,13 +213,14 @@ public class MixPotion : MiniGameInteraction
     private void MixSuccess()
     {
         MixPotion_Cancel();
-        MiniGameClear();
         GameManager.instance.MiniGameClear("MixPotion");
         Flasks[SelectFlask_Num].GetComponentInChildren<ItemInteraction>().enabled = true;
         InventoryManager.instance.LostItem("ÇÇÆê");
         InventoryManager.instance.LostItem("³ì»ö¹°¾à");
         InventoryManager.instance.LostItem("»¡°£¹°¾à");
         InventoryManager.instance.LostItem("ÆÄ¶õ¹°¾à");
+
+        MiniGameClear();
     }
 
     private void Active_halo(GameObject halo)
