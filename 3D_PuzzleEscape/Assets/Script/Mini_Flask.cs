@@ -103,8 +103,6 @@ public class Mini_Flask : MonoBehaviour
 
     private IEnumerator Getting_Liquid(Material newLiquid)
     {
-        
-
         float t = 0;
         var oldLiquid = Liquid_Renderer.material;
 

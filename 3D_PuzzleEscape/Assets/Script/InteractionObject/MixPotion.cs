@@ -44,6 +44,18 @@ public class MixPotion : MiniGameInteraction
         {
             PotionRecipe.Add(PotionRecipe_liquid[i], PotionRecipe_Amount[i]);
         }
+
+        if (GameManager.instance.mySavedata.Mini_2_Clear)
+        {
+            float amount = 0;
+            foreach(Material key in PotionRecipe.Keys)
+            {
+                amount += PotionRecipe[key];
+            }
+            Flasks[0].Liquid_FillUp(amount, PotionRecipe);
+            Flasks[0].Liquid_Change(Potion_Success_Mat);
+            Flasks[0].GetComponentInChildren<ItemInteraction>().enabled = true;
+        }
     }
 
     private new void Update()

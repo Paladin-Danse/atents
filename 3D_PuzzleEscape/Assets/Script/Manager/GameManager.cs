@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     public PlayerMovement playerMovement { get; private set; }
     public PlayerInteraction playerInteraction { get; private set; }
     
-    List<ItemData> Ex_PartsData;
+    public List<ItemData> Ex_PartsData { get; private set; }
     List<ItemData> M_PartsData;
     [SerializeField] private GameObject portal;
     [SerializeField] private GameObject hint_Obj;
@@ -76,19 +76,27 @@ public class GameManager : MonoBehaviour
         hint_Obj = asphalt.transform.Find("Asphalt Moveable").gameObject;
 
         OffCursorVisible();
-        portal.SetActive(false);
-        hint_Obj.SetActive(true);
-        b_Option = true;
-
-        if (mySavedata.itemdata != null)
+        if (!mySavedata.Mini_3_Clear)
         {
-            InventoryManager.instance.LoadItem(mySavedata);
+            portal.SetActive(false);
+            hint_Obj.SetActive(true);
         }
+        else
+        {
+            portal.SetActive(true);
+            hint_Obj.SetActive(false);
+        }
+        b_Option = true;
 
         if (mySavedata != null)
         {
             Player.transform.position = new Vector3(mySavedata.PlayerPositionX, mySavedata.PlayerPositionY, mySavedata.PlayerPositionZ);
             Player.transform.rotation = Quaternion.Euler(mySavedata.PlayerRotationX, mySavedata.PlayerRotationY, mySavedata.PlayerRotationZ);
+
+            if (mySavedata.itemdata != null)
+            {
+                InventoryManager.instance.LoadItem(mySavedata);
+            }
         }
     }
 

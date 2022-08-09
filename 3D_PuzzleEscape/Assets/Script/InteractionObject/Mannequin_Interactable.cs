@@ -21,11 +21,29 @@ public class Mannequin_Interactable : InteractionObject
         base.Start();
         InteractionEvent += Mannequin_PartCheck;
 
-        Mannequin_Head.SetActive(false);
-        Mannequin_ArmL.SetActive(false);
-        Mannequin_ArmR.SetActive(false);
-        Mannequin_LegL.SetActive(false);
-        Mannequin_LegR.SetActive(false);
+        if (!GameManager.instance.mySavedata.Mini_3_Clear)
+        {
+            Mannequin_Head.SetActive(false);
+            Mannequin_ArmL.SetActive(false);
+            Mannequin_ArmR.SetActive(false);
+            Mannequin_LegL.SetActive(false);
+            Mannequin_LegR.SetActive(false);
+        }
+        else
+        {
+            List<ItemData> partsData = GameManager.instance.Ex_PartsData;
+            ItemData HeadData = partsData.Find(i => i.Data.name.Contains("인형머리"));
+            ItemData ArmLData = partsData.Find(i => i.Data.name.Contains("왼쪽 팔"));
+            ItemData ArmRData = partsData.Find(i => i.Data.name.Contains("오른쪽 팔"));
+            ItemData LegLData = partsData.Find(i => i.Data.name.Contains("왼쪽 다리"));
+            ItemData LegRData = partsData.Find(i => i.Data.name.Contains("오른쪽 다리"));
+
+            Mannequin_fit(Mannequin_Head, HeadData.Data, HeadData.Data.name);
+            Mannequin_fit(Mannequin_ArmL, ArmLData.Data, ArmLData.Data.name);
+            Mannequin_fit(Mannequin_ArmR, ArmRData.Data, ArmRData.Data.name);
+            Mannequin_fit(Mannequin_LegL, LegLData.Data, LegLData.Data.name);
+            Mannequin_fit(Mannequin_LegR, LegRData.Data, LegRData.Data.name);
+        }
     }
 
     //마네킹을 장비하고 있는 아이템으로 상호작용할 때 마네킹의 부품인지 체크하고 마네킹의 부품이 맞다면 어디 부위에 속하는지 확인하는 함수.
