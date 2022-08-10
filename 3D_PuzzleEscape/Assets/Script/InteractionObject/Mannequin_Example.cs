@@ -22,45 +22,6 @@ public class Mannequin_Example : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        foreach (GameObject iter in Mannequin_Parts)
-        {
-            ItemData data = new ItemData();
-
-            RandomMaterial_output(iter, ref data);
-
-            switch(iter.name)
-            {
-                case "dummy_Head":
-                    Mannequin_Head = data;
-                    break;
-                case "dummy_left_arm":
-                    Mannequin_ArmL = data;
-                    break;
-                case "dummy_right_arm":
-                    Mannequin_ArmR = data;
-                    break;
-                case "dummy_left_leg":
-                    Mannequin_LegL = data;
-                    break;
-                case "dummy_right_leg":
-                    Mannequin_LegR = data;
-                    break;
-                default:
-                    Debug.Log("Error(Mannequin_Example) : Not Found Mannequin_Parts");
-                    break;
-            }
-            /*
-            data = iter.name switch
-            {
-                string key when key.Contains("head") => Mannequin_Head,
-                string key when key.Contains("left_arm") => Mannequin_ArmL,
-                string key when key.Contains("right_arm") => Mannequin_ArmR,
-                string key when key.Contains("left_leg") => Mannequin_LegL,
-                string key when key.Contains("right_leg") => Mannequin_LegR,
-                _ => null
-            };
-            */
-        }
         GameManager.instance.M_Example_RandData_Read(this);
     }
 
@@ -113,6 +74,127 @@ public class Mannequin_Example : MonoBehaviour
         {
             Debug.Log("Error(Mannequin_Example) : Not Found PartsData!");
         }
-        
+    }
+    //게임을 새로시작할 때 랜덤한 값을 가져와 마네킹에 색을 입힘.
+    public void newRandomParts_Pit()
+    {
+        foreach (GameObject iter in Mannequin_Parts)
+        {
+            ItemData data = new ItemData();
+
+            RandomMaterial_output(iter, ref data);
+
+            switch (iter.name)
+            {
+                case "dummy_Head":
+                    Mannequin_Head = data;
+                    if (GameManager.instance.mySavedata.Mini_3_GameObject_Head == null)
+                        GameManager.instance.mySavedata.Mini_3_GameObject_Head = Mannequin_Head.Data.name;
+                    break;
+                case "dummy_left_arm":
+                    Mannequin_ArmL = data;
+                    if (GameManager.instance.mySavedata.Mini_3_GameObject_ArmL == null)
+                        GameManager.instance.mySavedata.Mini_3_GameObject_ArmL = Mannequin_ArmL.Data.name;
+                    break;
+                case "dummy_right_arm":
+                    Mannequin_ArmR = data;
+                    if (GameManager.instance.mySavedata.Mini_3_GameObject_ArmR == null)
+                        GameManager.instance.mySavedata.Mini_3_GameObject_ArmR = Mannequin_ArmR.Data.name;
+                    break;
+                case "dummy_left_leg":
+                    Mannequin_LegL = data;
+                    if (GameManager.instance.mySavedata.Mini_3_GameObject_LegL == null)
+                        GameManager.instance.mySavedata.Mini_3_GameObject_LegL = Mannequin_LegL.Data.name;
+                    break;
+                case "dummy_right_leg":
+                    Mannequin_LegR = data;
+                    if (GameManager.instance.mySavedata.Mini_3_GameObject_LegR == null)
+                        GameManager.instance.mySavedata.Mini_3_GameObject_LegR = Mannequin_LegR.Data.name;
+                    break;
+                default:
+                    Debug.Log("Error(Mannequin_Example) : Not Found Mannequin_Parts");
+                    break;
+            }
+            /*
+            data = iter.name switch
+            {
+                string key when key.Contains("head") => Mannequin_Head,
+                string key when key.Contains("left_arm") => Mannequin_ArmL,
+                string key when key.Contains("right_arm") => Mannequin_ArmR,
+                string key when key.Contains("left_leg") => Mannequin_LegL,
+                string key when key.Contains("right_leg") => Mannequin_LegR,
+                _ => null
+            };
+            */
+        }
+    }
+    //게임을 로드할때 세이브 데이터에서 마네킹 데이터를 가져오고 해당 데이터에 맞춰 마네킹에 색을 입힘.
+    public void MannequinEx_DataLoad()
+    {
+        SaveData savedata = GameManager.instance.mySavedata;
+
+        foreach(GameObject iter in Mannequin_Parts)
+        {
+            Material mat = null;
+
+            switch(iter.name)
+            {
+                case "dummy_Head":
+                    Mannequin_Head = Mannequin_PartsData.Find(i => i.Data.name == savedata.Mini_3_GameObject_Head);
+                    if (GameManager.instance.mySavedata.Mini_3_GameObject_Head == null)
+                        GameManager.instance.mySavedata.Mini_3_GameObject_Head = Mannequin_Head.Data.name;
+                    mat = GetColor(Mannequin_Head.Data.name);
+                    break;
+                case "dummy_left_arm":
+                    Mannequin_ArmL = Mannequin_PartsData.Find(i => i.Data.name == savedata.Mini_3_GameObject_ArmL);
+                    if (GameManager.instance.mySavedata.Mini_3_GameObject_ArmL == null)
+                        GameManager.instance.mySavedata.Mini_3_GameObject_ArmL = Mannequin_ArmL.Data.name;
+                    mat = GetColor(Mannequin_ArmL.Data.name);
+                    break;
+                case "dummy_right_arm":
+                    Mannequin_ArmR = Mannequin_PartsData.Find(i => i.Data.name == savedata.Mini_3_GameObject_ArmR);
+                    if (GameManager.instance.mySavedata.Mini_3_GameObject_ArmR == null)
+                        GameManager.instance.mySavedata.Mini_3_GameObject_ArmR = Mannequin_ArmR.Data.name;
+                    mat = GetColor(Mannequin_ArmR.Data.name);
+                    break;
+                case "dummy_left_leg":
+                    Mannequin_LegL = Mannequin_PartsData.Find(i => i.Data.name == savedata.Mini_3_GameObject_LegL);
+                    if (GameManager.instance.mySavedata.Mini_3_GameObject_LegL == null)
+                        GameManager.instance.mySavedata.Mini_3_GameObject_LegL = Mannequin_LegL.Data.name;
+                    mat = GetColor(Mannequin_LegL.Data.name);
+                    break;
+                case "dummy_right_leg":
+                    Mannequin_LegR = Mannequin_PartsData.Find(i => i.Data.name == savedata.Mini_3_GameObject_LegR);
+                    if (GameManager.instance.mySavedata.Mini_3_GameObject_LegR == null)
+                        GameManager.instance.mySavedata.Mini_3_GameObject_LegR = Mannequin_LegR.Data.name;
+                    mat = GetColor(Mannequin_LegR.Data.name);
+                    break;
+                default:
+                    Debug.Log("Error(Mannequin_Example) : Not Found Mannequin_Parts");
+                    break;
+            }
+
+            if (mat)
+            {
+                foreach (Renderer render in iter.GetComponentsInChildren<Renderer>())
+                {
+                    render.material = mat;
+                }
+            }
+        }
+    }
+    private Material GetColor(string PartsName)
+    {
+        switch(PartsName.Substring(PartsName.IndexOf("(") + 1, 1))
+        {
+            case "적":
+                return Red_Mat;
+            case "청":
+                return Blue_Mat;
+            case "녹":
+                return Green_Mat;
+            default:
+                return Default_Mat;
+        }
     }
 }

@@ -40,4 +40,11 @@ public class SaveData
     public bool Mini_1_Clear = false;
     public bool Mini_2_Clear = false;
     public bool Mini_3_Clear = false;
+
+    public bool b_Mannequin_Data = false;
+    public string Mini_3_GameObject_Head = null;
+    public string Mini_3_GameObject_ArmL = null;
+    public string Mini_3_GameObject_ArmR = null;
+    public string Mini_3_GameObject_LegL = null;
+    public string Mini_3_GameObject_LegR = null;
 }

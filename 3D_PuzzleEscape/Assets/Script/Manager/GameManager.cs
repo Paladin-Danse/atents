@@ -21,11 +21,12 @@ public class GameManager : MonoBehaviour
     public PlayerInput playerInput { get; private set; }
     public PlayerMovement playerMovement { get; private set; }
     public PlayerInteraction playerInteraction { get; private set; }
-    
+
+    private Mannequin_Example Mannequin_Ex;
     public List<ItemData> Ex_PartsData { get; private set; }
     List<ItemData> M_PartsData;
-    [SerializeField] private GameObject portal;
-    [SerializeField] private GameObject hint_Obj;
+    private GameObject portal;
+    private GameObject hint_Obj;
     private Json json_save;
     public SaveData mySavedata { get; private set; }
     private bool b_Option;
@@ -74,6 +75,7 @@ public class GameManager : MonoBehaviour
         asphalt = GameObject.Find("Hint&Portal");
         portal = asphalt.transform.Find("Portal").gameObject;
         hint_Obj = asphalt.transform.Find("Asphalt Moveable").gameObject;
+        Mannequin_Ex = GameObject.Find("Mannequin").GetComponent<Mannequin_Example>();
 
         OffCursorVisible();
         if (!mySavedata.Mini_3_Clear)
@@ -97,14 +99,27 @@ public class GameManager : MonoBehaviour
             {
                 InventoryManager.instance.LoadItem(mySavedata);
             }
+
+            if(mySavedata.b_Mannequin_Data)
+            {
+                Mannequin_Ex.MannequinEx_DataLoad();
+            }
+            else
+            {
+                Mannequin_Ex.newRandomParts_Pit();
+                mySavedata.b_Mannequin_Data = true;
+                GameSave();
+            }
         }
     }
-
+    //게임시작버튼, 게임재시작버튼
     public void FirstGame()
     {
         mySavedata = new SaveData();
         GameSave();
     }
+
+    //계속하기버튼
     public void Continue()
     {
         GameLoad();
