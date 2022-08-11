@@ -162,8 +162,6 @@ public class InventoryManager : MonoBehaviour
     {
         if (SelectedMixItem != null)
         {
-            Debug.Log(SelectedMixItem.data.name);
-
             var mixitem = MixRecipe.Find(i => (i.Data.item1.Data.name == SelectedMixItem.data.name || i.Data.item2.Data.name == SelectedMixItem.data.name) &&
                                               (i.Data.item1.Data.name == SelectedItem.data.name || i.Data.item2.Data.name == SelectedItem.data.name));
             if(mixitem && SelectedMixItem != SelectedItem)
@@ -176,8 +174,6 @@ public class InventoryManager : MonoBehaviour
 
                 SelectedMixItem = null;
                 UIManager.instance.SelectMixUIDisable();
-
-                Debug.Log(mixitem.Data.Mixeditem.name);
             }
             else
             {
@@ -242,6 +238,22 @@ public class InventoryManager : MonoBehaviour
 #endif
         }
     }
+    public void LostItem()
+    {
+        foreach(var item in InventoryList)
+        {
+            if(item.data.Quantity >= 0)
+            {
+                item.data.Quantity = 0;
+                item.data.Durability = item.data.Durability_Max;
+
+                SelectNum = 0;
+                UIManager.instance.SelectUIDisable();
+                UIManager.instance.ItemUIDisable(item);
+            }
+        }
+    }
+
     /*
     public void Show_ItemDescription()
     {

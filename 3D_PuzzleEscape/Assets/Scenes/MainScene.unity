@@ -5477,7 +5477,7 @@ MonoBehaviour:
   NeedItem: {fileID: 0}
   item: {fileID: 11400000, guid: d21c76ddde6b3b74983772863f6347d7, type: 2}
   myGame: 1
-  itemType: 1
+  itemType: 0
 --- !u!65 &765911467
 BoxCollider:
   m_ObjectHideFlags: 0

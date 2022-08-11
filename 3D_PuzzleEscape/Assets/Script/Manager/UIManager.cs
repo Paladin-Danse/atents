@@ -157,13 +157,23 @@ public class UIManager : MonoBehaviour
             //게임매니저가 IntroScene에서 생성되어 Editor에선 오브젝트를 직접 넣을 수가 없다.
             //고로 UI매니저가 생성되는 순간에 게임매니저를 찾아 버튼 컴퍼넌트를 가져와 onClick에 Event를 집어넣는다.
             //이외에 다른 버튼도 동일한 이유
-            Button_Restart.onClick.AddListener(() => GameManager.instance.FirstGame());
-            Button_Restart.onClick.AddListener(() => GameManager.instance.SceneMove("MainScene"));
-            Button_Restart.onClick.AddListener(() => EndingUI.SetActive(false));
-            Button_Home.onClick.AddListener(() => GameManager.instance.SceneMove("IntroScene"));
-            Button_Home.onClick.AddListener(() => EndingUI.SetActive(false));
+            if (Button_Restart)
+            {
+                Button_Restart.onClick.RemoveAllListeners();
+                Button_Restart.onClick.AddListener(() => GameManager.instance.FirstGame());
+                Button_Restart.onClick.AddListener(() => GameManager.instance.SceneMove("MainScene"));
+                Button_Restart.onClick.AddListener(() => EndingUI.SetActive(false));
+            }
+            if (Button_Home)
+            {
+                Button_Home.onClick.RemoveAllListeners();
+                Button_Home.onClick.AddListener(() => GameManager.instance.SceneMove("IntroScene"));
+                Button_Home.onClick.AddListener(() => EndingUI.SetActive(false));
+            }
             if (GameManager.instance.playerMovement)
             {
+                Button_OptionExit.onClick.RemoveAllListeners();
+                Button_OptionExit.onClick.AddListener(() => GameOptionUI.SetActive(false));
                 Button_OptionExit.onClick.AddListener(() => GameManager.instance.playerMovement.Option());
             }
             SetIntroUI(false);

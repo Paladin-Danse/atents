@@ -55,6 +55,8 @@ public class MixPotion : MiniGameInteraction
             Flasks[0].Liquid_FillUp(amount, PotionRecipe);
             Flasks[0].Liquid_Change(Potion_Success_Mat);
             Flasks[0].GetComponentInChildren<ItemInteraction>().enabled = true;
+
+            MiniGameDelete();
         }
     }
 
@@ -225,13 +227,13 @@ public class MixPotion : MiniGameInteraction
     private void MixSuccess()
     {
         MixPotion_Cancel();
-        GameManager.instance.MiniGameClear("MixPotion");
         Flasks[SelectFlask_Num].GetComponentInChildren<ItemInteraction>().enabled = true;
         InventoryManager.instance.LostItem("ÇÇÆê");
         InventoryManager.instance.LostItem("³ì»ö¹°¾à");
         InventoryManager.instance.LostItem("»¡°£¹°¾à");
         InventoryManager.instance.LostItem("ÆÄ¶õ¹°¾à");
 
+        GameManager.instance.MiniGameClear("MixPotion");
         MiniGameClear();
     }
 

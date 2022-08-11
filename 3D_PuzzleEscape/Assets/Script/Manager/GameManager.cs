@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
     public SaveData mySavedata { get; private set; }
     private bool b_Option;
 
-    [SerializeField] private Vector3 StagetoPlayerPosition;
+    //[SerializeField] private Vector3 StagetoPlayerPosition;
 
     private void Awake()
     {
@@ -78,20 +78,21 @@ public class GameManager : MonoBehaviour
         Mannequin_Ex = GameObject.Find("Mannequin").GetComponent<Mannequin_Example>();
 
         OffCursorVisible();
-        if (!mySavedata.Mini_3_Clear)
-        {
-            portal.SetActive(false);
-            hint_Obj.SetActive(true);
-        }
-        else
-        {
-            portal.SetActive(true);
-            hint_Obj.SetActive(false);
-        }
         b_Option = true;
 
         if (mySavedata != null)
         {
+            if (!mySavedata.Mini_3_Clear)
+            {
+                portal.SetActive(false);
+                hint_Obj.SetActive(true);
+            }
+            else
+            {
+                portal.SetActive(true);
+                hint_Obj.SetActive(false);
+            }
+
             Player.transform.position = new Vector3(mySavedata.PlayerPositionX, mySavedata.PlayerPositionY, mySavedata.PlayerPositionZ);
             Player.transform.rotation = Quaternion.Euler(mySavedata.PlayerRotationX, mySavedata.PlayerRotationY, mySavedata.PlayerRotationZ);
 
@@ -116,7 +117,8 @@ public class GameManager : MonoBehaviour
     public void FirstGame()
     {
         mySavedata = new SaveData();
-        GameSave();
+        InventoryManager.instance.LostItem();
+        StageClear(STAGE.GAMESTART);
     }
 
     //계속하기버튼

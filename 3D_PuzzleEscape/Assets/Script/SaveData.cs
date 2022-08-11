@@ -17,6 +17,7 @@ public struct Save_ItemData
 [System.Serializable]
 public enum STAGE
 {
+    GAMESTART = 0,
     STAGE_1 = 1,
     STAGE_2,
     STAGE_3,
