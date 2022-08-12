@@ -28,8 +28,13 @@ public class InteractionObject : MonoBehaviour
     {
         if (InteractionEvent != null)
         {
-            if (SC_Event) InteractionEvent += SC_Event.StageClear;
-            InteractionEvent();
+            if (SC_Event)
+            {
+                SC_Event.StageClear();
+                InteractionEvent();
+                SC_Event = null;
+            }
+            else InteractionEvent();
         }
     }
     public ItemData NeedItemCheck()

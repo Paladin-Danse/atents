@@ -12,15 +12,26 @@ public class Json : MonoBehaviour
     //[SerializeField] private SaveData savedata;
     //[SerializeField] private SaveData loaddata;
     private string Json_Data;
-    private string savePath = "/Resource/Save/SaveData.json";
+#if UNITY_EDITOR
+    private string savePath = "/Resource/Save/";
+#elif PLATFORM_STANDALONE
+    private string savePath = "/Resources/Save/";
+#endif
+
 
     public bool SaveFile(SaveData newSave)
     {
         Json_Data = SerializeObject(newSave);
-        if(Json_Data != null) File.WriteAllText(Application.dataPath + savePath, Json_Data);
+
+        if (!Directory.Exists(Application.dataPath + savePath))
+            Directory.CreateDirectory(Application.dataPath + savePath);
+
+        if(Json_Data != null) File.WriteAllText(Application.dataPath + savePath + "SaveData.json", Json_Data);
         else
         {
+#if UNITY_EDITOR
             Debug.LogError("Json(SaveFile) Error : Json_Data is Not Found");
+#endif
             return false;
         }
         return true;
@@ -29,11 +40,13 @@ public class Json : MonoBehaviour
     public SaveData LoadFile()
     {
         SaveData loaddata;
-        Json_Data = File.ReadAllText(Application.dataPath + savePath);
+        Json_Data = File.ReadAllText(Application.dataPath + savePath + "SaveData.json");
         if(Json_Data != null) loaddata = DeserializeObject<SaveData>(Json_Data);
         else
         {
+#if UNITY_EDITOR
             Debug.LogError("Json(LoadFile) Error : Json_Data is Not Found");
+#endif
             return null;
         }
         return loaddata;

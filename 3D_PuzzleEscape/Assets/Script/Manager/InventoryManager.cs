@@ -240,16 +240,19 @@ public class InventoryManager : MonoBehaviour
     }
     public void LostItem()
     {
-        foreach(var item in InventoryList)
+        if (InventoryList.Count >= 1)
         {
-            if(item.data.Quantity >= 0)
+            foreach (var item in InventoryList)
             {
-                item.data.Quantity = 0;
-                item.data.Durability = item.data.Durability_Max;
+                if (item.data.Quantity >= 0)
+                {
+                    item.data.Quantity = 0;
+                    item.data.Durability = item.data.Durability_Max;
 
-                SelectNum = 0;
-                UIManager.instance.SelectUIDisable();
-                UIManager.instance.ItemUIDisable(item);
+                    SelectNum = 0;
+                    UIManager.instance.SelectUIDisable();
+                    UIManager.instance.ItemUIDisable(item);
+                }
             }
         }
     }

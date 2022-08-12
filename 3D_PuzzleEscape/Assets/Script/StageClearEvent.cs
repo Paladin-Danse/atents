@@ -9,6 +9,5 @@ public class StageClearEvent : MonoBehaviour
     public void StageClear()
     {
         GameManager.instance.StageClear(ClearStage);
-        this.enabled = false;
     }
 }

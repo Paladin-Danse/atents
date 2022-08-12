@@ -117,7 +117,7 @@ public class GameManager : MonoBehaviour
     public void FirstGame()
     {
         mySavedata = new SaveData();
-        InventoryManager.instance.LostItem();
+        if(InventoryManager.instance) InventoryManager.instance.LostItem();
         StageClear(STAGE.GAMESTART);
     }
 
