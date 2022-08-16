@@ -35,9 +35,10 @@ public class UIManager : MonoBehaviour
     public float UI_ActiveTime;
 
     //시작화면 버튼UI
-    [SerializeField] private Button Button_GameStart;
-    [SerializeField] private Button Button_GameOption;
-    [SerializeField] private Button Button_Continue;
+    private Button Button_GameStart;
+    private Button Button_GameOption;
+    private Button Button_Continue;
+    private Button Button_GameExit;
 
     //아이템 목록
     private GameObject Content;
@@ -75,6 +76,7 @@ public class UIManager : MonoBehaviour
     //그러므로 어느 씬에서 컴포넌트에 직접 오브젝트를 끌어넣는 방식으로 변수를 채워넣는 건 불가능하며 옵션UI를 열 때 DataManager에 저장된 값과 변수를 불러와 채워넣는 방식을 써야할 듯 하다.
     private GameObject GameOptionUI;
     private Button Button_OptionExit;
+    private Button Button_GameSceneExit;
     public Slider Slider_Audio { get; private set; }//Intro, Main 어느 씬에서든 값이 똑같이 유지되어야하며 이는 설정UI에 다른 값이 추가되어도 똑같이 적용되어야 하는 사항임.
     private Text Text_AudioVolume;
 
@@ -92,8 +94,11 @@ public class UIManager : MonoBehaviour
         Button_GameStart = transform.Find("GameStart").gameObject.GetComponent<Button>();
         Button_GameOption = transform.Find("GameOption").gameObject.GetComponent<Button>();
         Button_Continue = transform.Find("Continue").gameObject.GetComponent<Button>();
+        Button_GameExit = transform.Find("ExitGame").gameObject.GetComponent<Button>();
+        Button_GameExit.onClick.AddListener(() => GameManager.instance.GameExit());
         GameOptionUI = transform.Find("OptionUI").gameObject;
-        Button_OptionExit = GameOptionUI.transform.Find("ExitButton").GetComponent<Button>();
+        Button_OptionExit = GameOptionUI.transform.Find("OptionExitButton").GetComponent<Button>();
+        Button_GameSceneExit = GameOptionUI.transform.Find("GameExitButton").GetComponent<Button>();
         Slider_Audio = GameOptionUI.transform.Find("Audio").Find("AudioSlider").GetComponent<Slider>();
         Text_AudioVolume = GameOptionUI.transform.Find("Audio").Find("VolumeValue").GetComponent<Text>();
 
@@ -148,10 +153,17 @@ public class UIManager : MonoBehaviour
             SetUI(false);
             SetIntroUI(true);
             Button_OptionExit.onClick.RemoveListener(() => GameManager.instance.playerMovement.Option());
+            Button_GameSceneExit.gameObject.SetActive(false);
         }
         else if(sceneName == "MainScene")
         {
             SetUI(true);
+
+            Button_GameSceneExit.gameObject.SetActive(true);
+            Button_GameSceneExit.onClick.RemoveAllListeners();
+            Button_GameSceneExit.onClick.AddListener(() => GameManager.instance.SceneMove("IntroScene"));
+            Button_GameSceneExit.onClick.AddListener(() => GameOptionUI.SetActive(false));
+
             GameOptionUI.SetActive(false);
             Off_MiniUI();
             //게임매니저가 IntroScene에서 생성되어 Editor에선 오브젝트를 직접 넣을 수가 없다.
@@ -310,7 +322,6 @@ public class UIManager : MonoBehaviour
     {
         InteractUI.gameObject.SetActive(setbool);
         Inventory_Scroll.gameObject.SetActive(setbool);
-
     }
     //IntroScene UI 관련 함수
     public void SetIntroUI(bool setbool)
@@ -318,6 +329,7 @@ public class UIManager : MonoBehaviour
         Button_GameStart.gameObject.SetActive(setbool);
         Button_GameOption.gameObject.SetActive(setbool);
         Button_Continue.gameObject.SetActive(setbool);
+        Button_GameExit.gameObject.SetActive(setbool);
     }
     //설정 관련 함수
     //설정UI관련

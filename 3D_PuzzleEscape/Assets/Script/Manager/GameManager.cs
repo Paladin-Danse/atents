@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     List<ItemData> M_PartsData;
     private GameObject portal;
     private GameObject hint_Obj;
-    private Json json_save;
+    [SerializeField] private Json json_save;
     public SaveData mySavedata { get; private set; }
     private bool b_Option;
 
@@ -39,8 +39,13 @@ public class GameManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
         SceneManager.sceneLoaded += OnSceneLoaded;
-        json_save = GetComponent<Json>();
-        if (!json_save) Debug.LogError("GameManager Error : Json is Not Found!");
+
+        if (!json_save)
+        {
+            Debug.Log("GameManager Error : Json is Not Found!");
+
+            json_save = gameObject.GetComponent<Json>();
+        }
         b_Option = false;
     }
 
@@ -258,9 +263,20 @@ public class GameManager : MonoBehaviour
 
     public void GameLoad()
     {
-        mySavedata = json_save.LoadFile();
+        //json스크립트를 변수에 넣어서 불러오려고 하면 에러가 난다. 디버그모드로 확인한 결과 null값으로 처리되기 때문에 비어있는 변수의 함수를 불러오는 명령이 되어버려 에러가 되는 것. 코드의 수정필요.
+        if(json_save) mySavedata = json_save.LoadFile();
+        else
+        {
+            if (!json_save)
+            {
+#if UNITY_EDITOR
+                Debug.Log("Error(GameManager) : json_save is Not Found!");
+#endif
+            }
+        }
         if (mySavedata == null)
         {
+            FirstGame();
             Debug.LogError("Load Failed!");
         }
     }
@@ -302,5 +318,10 @@ public class GameManager : MonoBehaviour
                 break;
         }
         GameSave();
+    }
+
+    public void GameExit()
+    {
+        Application.Quit();
     }
 }
