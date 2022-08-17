@@ -9,6 +9,18 @@ using System.IO;
 /// </summary>
 public class Json : MonoBehaviour
 {
+    private static Json m_instance;
+    public static Json instance
+    {
+        get
+        {
+            if (m_instance == null)
+            {
+                m_instance = GameObject.FindObjectOfType<Json>();
+            }
+            return m_instance;
+        }
+    }
     //[SerializeField] private SaveData savedata;
     //[SerializeField] private SaveData loaddata;
     private string Json_Data;
@@ -17,7 +29,12 @@ public class Json : MonoBehaviour
 #elif PLATFORM_STANDALONE
     private string savePath = "/Resources/Save/";
 #endif
+    private void Awake()
+    {
+        if (Json.instance.gameObject != gameObject) Destroy(gameObject);
 
+        DontDestroyOnLoad(gameObject);
+    }
 
     public bool SaveFile(SaveData newSave)
     {
@@ -40,7 +57,10 @@ public class Json : MonoBehaviour
     public SaveData LoadFile()
     {
         SaveData loaddata;
-        Json_Data = File.ReadAllText(Application.dataPath + savePath + "SaveData.json");
+        string path = Application.dataPath + savePath + "SaveData.json";//로드경로
+        if (!File.Exists(path)) return null;
+
+        Json_Data = File.ReadAllText(path);
         if(Json_Data != null) loaddata = DeserializeObject<SaveData>(Json_Data);
         else
         {

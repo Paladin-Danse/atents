@@ -39,7 +39,7 @@ public class ItemInteraction : InteractionObject
     {
         SaveData savedata = GameManager.instance.mySavedata;
 
-        if (itemType == MAPITEM_TYPE.MAPITEM_NORMAL)
+        if (itemType == MAPITEM_TYPE.MAPITEM_NORMAL && savedata != null)
         {
             switch (myGame)
             {
@@ -59,7 +59,7 @@ public class ItemInteraction : InteractionObject
                     break;
             }
         }
-        if(itemType == MAPITEM_TYPE.MAPITEM_KEY)
+        if(itemType == MAPITEM_TYPE.MAPITEM_KEY && savedata != null)
         {
             switch(savedata.Stage)
             {

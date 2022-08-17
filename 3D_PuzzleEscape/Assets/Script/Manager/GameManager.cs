@@ -27,7 +27,6 @@ public class GameManager : MonoBehaviour
     List<ItemData> M_PartsData;
     private GameObject portal;
     private GameObject hint_Obj;
-    [SerializeField] private Json json_save;
     public SaveData mySavedata { get; private set; }
     private bool b_Option;
 
@@ -40,12 +39,6 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         SceneManager.sceneLoaded += OnSceneLoaded;
 
-        if (!json_save)
-        {
-            Debug.Log("GameManager Error : Json is Not Found!");
-
-            json_save = gameObject.GetComponent<Json>();
-        }
         b_Option = false;
     }
 
@@ -225,13 +218,19 @@ public class GameManager : MonoBehaviour
             mySavedata.PlayerRotationY = Player.transform.rotation.eulerAngles.y;
             mySavedata.PlayerRotationZ = Player.transform.rotation.eulerAngles.z;
         }
-        if (!json_save.SaveFile(mySavedata))
+        if (!Json.instance.SaveFile(mySavedata))
         {
+#if UNITY_EDITOR
             Debug.LogError("Save Failed!");
+#endif
+
         }
-        if (UIManager.instance)
+        else
         {
-            StartCoroutine(UIManager.instance.SaveComplete());
+            if (UIManager.instance)
+            {
+                StartCoroutine(UIManager.instance.SaveComplete());
+            }
         }
     }
 
@@ -251,33 +250,30 @@ public class GameManager : MonoBehaviour
             mySavedata.PlayerRotationY = StagePosition.rotation.eulerAngles.y;
             mySavedata.PlayerRotationZ = StagePosition.rotation.eulerAngles.z;
         }
-        if (!json_save.SaveFile(mySavedata))
+        if (!Json.instance.SaveFile(mySavedata))
         {
             Debug.LogError("Save Failed!");
         }
-        if (UIManager.instance)
+        else
         {
-            StartCoroutine(UIManager.instance.SaveComplete());
+            if (UIManager.instance)
+            {
+                StartCoroutine(UIManager.instance.SaveComplete());
+            }
         }
     }
 
     public void GameLoad()
     {
         //json스크립트를 변수에 넣어서 불러오려고 하면 에러가 난다. 디버그모드로 확인한 결과 null값으로 처리되기 때문에 비어있는 변수의 함수를 불러오는 명령이 되어버려 에러가 되는 것. 코드의 수정필요.
-        if(json_save) mySavedata = json_save.LoadFile();
-        else
+        
+        mySavedata = Json.instance.LoadFile();
+        if(mySavedata == null)
         {
-            if (!json_save)
-            {
 #if UNITY_EDITOR
-                Debug.Log("Error(GameManager) : json_save is Not Found!");
+            Debug.Log("Error(GameManager) : mySavedata is Not Found!");
 #endif
-            }
-        }
-        if (mySavedata == null)
-        {
             FirstGame();
-            Debug.LogError("Load Failed!");
         }
     }
 
@@ -287,15 +283,28 @@ public class GameManager : MonoBehaviour
     {
         mySavedata.Stage = currentStage + 1;
 
-        Transform Stage_transform = mySavedata.Stage switch
-        {
-            STAGE Stage when Stage == STAGE.STAGE_1 => Stage_transform = GameObject.Find("Stage1_Pos").transform,
-            STAGE Stage when Stage == STAGE.STAGE_2 => Stage_transform = GameObject.Find("Stage2_Pos").transform,
-            STAGE Stage when Stage == STAGE.STAGE_3 => Stage_transform = GameObject.Find("Stage3_Pos").transform,
-            _ => null
-        };
+        GameObject st1obj = GameObject.Find("Stage1_Pos");
+        GameObject st2obj = GameObject.Find("Stage2_Pos");
+        GameObject st3obj = GameObject.Find("Stage3_Pos");
 
-        GameSave(Stage_transform);
+        if (st1obj && st2obj && st3obj)
+        {
+            Transform Stage_transform = mySavedata.Stage switch
+            {
+                STAGE Stage when Stage == STAGE.STAGE_1 => Stage_transform = st1obj.transform,
+                STAGE Stage when Stage == STAGE.STAGE_2 => Stage_transform = st2obj.transform,
+                STAGE Stage when Stage == STAGE.STAGE_3 => Stage_transform = st3obj.transform,
+                _ => null
+            };
+            GameSave(Stage_transform);
+        }
+        else
+        {
+#if UNITY_EDITOR
+            Debug.Log("Error(GameManager) : Stage_transform is Not Found!");
+#endif
+            GameSave();
+        }
     }
     
     public void MiniGameClear(string MiniName)

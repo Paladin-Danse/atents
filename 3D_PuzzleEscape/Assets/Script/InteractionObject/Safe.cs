@@ -29,20 +29,23 @@ public class Safe : MiniGameInteraction
 
         MiniGameCancel += DialWrong;
 
-        if(GameManager.instance.mySavedata.Mini_1_Clear)
+        if (GameManager.instance.mySavedata != null)
         {
-            if(SafeAnim)
+            if (GameManager.instance.mySavedata.Mini_1_Clear)
             {
-                SafeAnim.clip = SafeAnim.GetClip("Safe_ClearLoad");
-                SafeAnim.Play();
-            }
-            else
-            {
+                if (SafeAnim)
+                {
+                    SafeAnim.clip = SafeAnim.GetClip("Safe_ClearLoad");
+                    SafeAnim.Play();
+                }
+                else
+                {
 #if UNITY_EDITOR
-                Debug.Log("Error(Safe) : SafeAnim is Not Found!");
+                    Debug.Log("Error(Safe) : SafeAnim is Not Found!");
 #endif
+                }
+                MiniGameDelete();
             }
-            MiniGameDelete();
         }
     }
     private new void Update()

@@ -21,28 +21,31 @@ public class Mannequin_Interactable : InteractionObject
         base.Start();
         InteractionEvent += Mannequin_PartCheck;
 
-        if (!GameManager.instance.mySavedata.Mini_3_Clear)
+        if (GameManager.instance.mySavedata != null)
         {
-            Mannequin_Head.SetActive(false);
-            Mannequin_ArmL.SetActive(false);
-            Mannequin_ArmR.SetActive(false);
-            Mannequin_LegL.SetActive(false);
-            Mannequin_LegR.SetActive(false);
+            if (GameManager.instance.mySavedata.Mini_3_Clear)
+            {
+                List<ItemData> partsData = GameManager.instance.Ex_PartsData;
+                ItemData HeadData = partsData.Find(i => i.Data.name.Contains("ÀÎÇü¸Ó¸®"));
+                ItemData ArmLData = partsData.Find(i => i.Data.name.Contains("¿ÞÂÊ ÆÈ"));
+                ItemData ArmRData = partsData.Find(i => i.Data.name.Contains("¿À¸¥ÂÊ ÆÈ"));
+                ItemData LegLData = partsData.Find(i => i.Data.name.Contains("¿ÞÂÊ ´Ù¸®"));
+                ItemData LegRData = partsData.Find(i => i.Data.name.Contains("¿À¸¥ÂÊ ´Ù¸®"));
+
+                Mannequin_fit(Mannequin_Head, HeadData.Data, HeadData.Data.name);
+                Mannequin_fit(Mannequin_ArmL, ArmLData.Data, ArmLData.Data.name);
+                Mannequin_fit(Mannequin_ArmR, ArmRData.Data, ArmRData.Data.name);
+                Mannequin_fit(Mannequin_LegL, LegLData.Data, LegLData.Data.name);
+                Mannequin_fit(Mannequin_LegR, LegRData.Data, LegRData.Data.name);
+            }
+            else
+            {
+                Mannequin_Active(false);
+            }
         }
         else
         {
-            List<ItemData> partsData = GameManager.instance.Ex_PartsData;
-            ItemData HeadData = partsData.Find(i => i.Data.name.Contains("ÀÎÇü¸Ó¸®"));
-            ItemData ArmLData = partsData.Find(i => i.Data.name.Contains("¿ÞÂÊ ÆÈ"));
-            ItemData ArmRData = partsData.Find(i => i.Data.name.Contains("¿À¸¥ÂÊ ÆÈ"));
-            ItemData LegLData = partsData.Find(i => i.Data.name.Contains("¿ÞÂÊ ´Ù¸®"));
-            ItemData LegRData = partsData.Find(i => i.Data.name.Contains("¿À¸¥ÂÊ ´Ù¸®"));
-
-            Mannequin_fit(Mannequin_Head, HeadData.Data, HeadData.Data.name);
-            Mannequin_fit(Mannequin_ArmL, ArmLData.Data, ArmLData.Data.name);
-            Mannequin_fit(Mannequin_ArmR, ArmRData.Data, ArmRData.Data.name);
-            Mannequin_fit(Mannequin_LegL, LegLData.Data, LegLData.Data.name);
-            Mannequin_fit(Mannequin_LegR, LegRData.Data, LegRData.Data.name);
+            Mannequin_Active(false);
         }
     }
 
@@ -137,5 +140,14 @@ public class Mannequin_Interactable : InteractionObject
                 iter.material = mat;
             }
         }
+    }
+
+    void Mannequin_Active(bool setbool)
+    {
+        Mannequin_Head.SetActive(setbool);
+        Mannequin_ArmL.SetActive(setbool);
+        Mannequin_ArmR.SetActive(setbool);
+        Mannequin_LegL.SetActive(setbool);
+        Mannequin_LegR.SetActive(setbool);
     }
 }

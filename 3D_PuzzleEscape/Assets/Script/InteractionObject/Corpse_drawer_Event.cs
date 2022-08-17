@@ -21,11 +21,14 @@ public class Corpse_drawer_Event : InteractionObject
 
         MoveAnimation = GetComponent<Animation>();
 
-        if(GameManager.instance.mySavedata.Mini_3_Clear)
+        if (GameManager.instance.mySavedata != null)
         {
-            DropObj.SetActive(false);
-            moveInteraction.enabled = true;
-            this.enabled = false;
+            if (GameManager.instance.mySavedata.Mini_3_Clear)
+            {
+                DropObj.SetActive(false);
+                moveInteraction.enabled = true;
+                this.enabled = false;
+            }
         }
     }
     private new void Start()

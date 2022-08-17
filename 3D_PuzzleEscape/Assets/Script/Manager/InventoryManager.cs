@@ -50,11 +50,14 @@ public class InventoryManager : MonoBehaviour
             InventoryList.Add(invenitem);
         }
 
-        if(save_itemList.Count >= 1)
+        if (save_itemList != null)
         {
-            foreach(Save_ItemData iter in save_itemList)
+            if (save_itemList.Count >= 1)
             {
-                GetItem(iter.name);
+                foreach (Save_ItemData iter in save_itemList)
+                {
+                    GetItem(iter.name);
+                }
             }
         }
 
