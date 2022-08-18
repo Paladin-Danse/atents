@@ -183,7 +183,9 @@ public class GameManager : MonoBehaviour
     {
         portal.SetActive(true);
         MiniGameClear("Mannequin_Compare");
+#if UNITY_EDITOR
         Debug.Log("On_Portal");
+#endif
     }
 
     public void SceneMove(string SceneName)
@@ -287,7 +289,7 @@ public class GameManager : MonoBehaviour
         GameObject st2obj = GameObject.Find("Stage2_Pos");
         GameObject st3obj = GameObject.Find("Stage3_Pos");
 
-        if (st1obj && st2obj && st3obj)
+        if (st1obj != null && st2obj != null && st3obj != null)
         {
             Transform Stage_transform = mySavedata.Stage switch
             {
