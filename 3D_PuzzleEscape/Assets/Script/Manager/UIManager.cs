@@ -28,6 +28,8 @@ public class UIManager : MonoBehaviour
     }
     //상호작용UI
     [SerializeField] private Image InteractUI;
+    [SerializeField] private Color Interactable_Color;
+    [SerializeField] private Color Interact_Unable_Color;
     //미니게임UI
     [SerializeField] private GameObject MiniGameUI;
     //세이브UI
@@ -310,12 +312,12 @@ public class UIManager : MonoBehaviour
 
     public void OnInteractionUI()
     {
-        InteractUI.color = Color.black;
+        InteractUI.color = Interactable_Color;
     }
 
     public void OffInteractionUI()
     {
-        InteractUI.color = new Color(1.0f, 1.0f, 1.0f, 30f / 255f);
+        InteractUI.color = Interact_Unable_Color;
     }
     //MainScene 플레이어 UI 관련 함수
     public void SetUI(bool setbool)

@@ -638,6 +638,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2130518774, guid: 666cc1ae39485ce49a9aab79b1e1728b, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2130518774, guid: 666cc1ae39485ce49a9aab79b1e1728b, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2130518774, guid: 666cc1ae39485ce49a9aab79b1e1728b, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2013898103070720502, guid: 666cc1ae39485ce49a9aab79b1e1728b, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -673,6 +685,22 @@ PrefabInstance:
     - target: {fileID: 3224581769585673836, guid: 666cc1ae39485ce49a9aab79b1e1728b, type: 3}
       propertyPath: m_Name
       value: Canvas(UI Manager)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3224581769585673843, guid: 666cc1ae39485ce49a9aab79b1e1728b, type: 3}
+      propertyPath: Interactable_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3224581769585673843, guid: 666cc1ae39485ce49a9aab79b1e1728b, type: 3}
+      propertyPath: Interactable_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3224581769585673843, guid: 666cc1ae39485ce49a9aab79b1e1728b, type: 3}
+      propertyPath: Interact_Unable_Color.a
+      value: 0.39215687
+      objectReference: {fileID: 0}
+    - target: {fileID: 3224581769585673843, guid: 666cc1ae39485ce49a9aab79b1e1728b, type: 3}
+      propertyPath: Interact_Unable_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3224581769585673847, guid: 666cc1ae39485ce49a9aab79b1e1728b, type: 3}
       propertyPath: m_Pivot.x
@@ -756,6 +784,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3224581769585673847, guid: 666cc1ae39485ce49a9aab79b1e1728b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3224581769595016778, guid: 666cc1ae39485ce49a9aab79b1e1728b, type: 3}
+      propertyPath: m_Color.a
+      value: 0.78431374
+      objectReference: {fileID: 0}
+    - target: {fileID: 3224581769595016778, guid: 666cc1ae39485ce49a9aab79b1e1728b, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3224581769595016778, guid: 666cc1ae39485ce49a9aab79b1e1728b, type: 3}
+      propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3224581769728530515, guid: 666cc1ae39485ce49a9aab79b1e1728b, type: 3}
