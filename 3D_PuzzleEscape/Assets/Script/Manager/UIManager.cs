@@ -193,7 +193,7 @@ public class UIManager : MonoBehaviour
             SetIntroUI(false);
         }
     }
-
+    //게임을 시작할 때 Start에서 한번 만듦. 이후엔 쭉 비활성화와 활성화를 통해 생성과 제거를 함.
     public void ItemUICreate(InventoryItem m_item)
     {
         var UIObject = Instantiate(ItemUI, Content.transform);
