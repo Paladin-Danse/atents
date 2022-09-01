@@ -10,6 +10,9 @@ public class WashItem : InteractionObject
     [SerializeField] private ItemData Default_ArmR_data;
     [SerializeField] private ItemData Default_LegL_data;
     [SerializeField] private ItemData Default_LegR_data;
+    [SerializeField] private AudioClip Wash_Sound;
+    private AudioSource Interaction_Sound;
+    private IEnumerator Sound_Court;
 
     // Start is called before the first frame update
     private new void Start()
@@ -28,6 +31,14 @@ public class WashItem : InteractionObject
             Default_LegL_data = Resources.Load<ItemData>("Assets/Script/ScriptableData/Item/Puppet_left_leg.asset");
         if (!Default_LegR_data)
             Default_LegR_data = Resources.Load<ItemData>("Assets/Script/ScriptableData/Item/Puppet_right_leg.asset");
+
+        Interaction_Sound = GetComponent<AudioSource>();
+        if(!Interaction_Sound)
+        {
+#if UNITY_EDITOR
+            Debug.Log("Error(WashItem) : Interaction_Sound is Not Found!");
+#endif
+        }
     }
 
     //마네킹의 부품인지 체크하고 마네킹의 부품이 맞다면 어디 부위에 속하는지 확인하는 함수.
@@ -104,6 +115,17 @@ public class WashItem : InteractionObject
                 */
                 if (data)
                 {
+                    if (Interaction_Sound.isPlaying)
+                    {
+                        StopCoroutine(Sound_Court);
+                        Sound_Court = InteractionSound_Play();
+                        StartCoroutine(Sound_Court);
+                    }
+                    else
+                    {
+                        Sound_Court = InteractionSound_Play();
+                        StartCoroutine(Sound_Court);
+                    }
                     InventoryManager.instance.GetItem(data.Data.name);
                     InventoryManager.instance.UseItem(item);
                 }
@@ -114,5 +136,15 @@ public class WashItem : InteractionObject
                 break;
             }
         }
+    }
+
+    IEnumerator InteractionSound_Play()
+    {
+        if (Interaction_Sound.clip != Wash_Sound) Interaction_Sound.clip = Wash_Sound;
+        Interaction_Sound.Play();
+
+        yield return new WaitForSeconds(3.0f);
+
+        Interaction_Sound.Stop();
     }
 }
