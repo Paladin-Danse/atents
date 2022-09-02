@@ -165,18 +165,19 @@ public class GameManager : MonoBehaviour
         M_PartsData.RemoveAll(i => i.Data.name == m_itemData.Data.name);
     }
 
-    public void M_Example_Compare_Data()
+    public bool M_Example_Compare_Data()
     {
         foreach(ItemData iter in Ex_PartsData)
         {
             ItemData Contain = M_PartsData.Find(i => i.Data.name == iter.Data.name);
             if (!Contain)
             {
-                return;
+                return false;
             }
         }
-        if(hint_Obj) hint_Obj.SetActive(false);
+        if (hint_Obj) hint_Obj.SetActive(false);
         On_Portal();
+        return true;
     }
 
     public void On_Portal()

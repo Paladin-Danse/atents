@@ -19,6 +19,10 @@ public class AudioManager : MonoBehaviour
     }
 
     [SerializeField] private AudioMixer MasterMixer;
+    //오디오매니저인데 BGM소스 하나밖에 못쓴다...
+    //오디오매니저(오브젝트) 밑에 하위 오브젝트를 두고 거기에 오디오소스를 쓰는게 이상적일 것 같다.
+    //그리고 이제 하위오브젝트들을 각 사운드(BGM, Effect etc...)담당으로 만들고 오디오소스를 하나씩 넣으면 사운드별로 하나씩 소스를 가지게 된다.
+    //이제 다음 게임 혹은 다음 업데이트에 적용시키면 된다...
     private AudioSource BGM;
     [SerializeField] private AudioClip bgm_Intro;
     [SerializeField] private AudioClip bgm_Game;

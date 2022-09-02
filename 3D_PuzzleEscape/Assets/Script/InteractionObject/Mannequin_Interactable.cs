@@ -15,6 +15,10 @@ public class Mannequin_Interactable : InteractionObject
     [SerializeField] private Material Green_Mat;
     [SerializeField] private Material Default_Mat;
 
+    [SerializeField] private AudioClip Fit_Clip;
+    [SerializeField] private AudioClip pullout_Clip;
+    [SerializeField] private AudioClip GameClear_Clip;
+    private AudioSource InteractSound;
     // Start is called before the first frame update
     private new void Start()
     {
@@ -47,6 +51,8 @@ public class Mannequin_Interactable : InteractionObject
         {
             Mannequin_Active(false);
         }
+
+        InteractSound = GetComponent<AudioSource>();
     }
 
     //마네킹을 장비하고 있는 아이템으로 상호작용할 때 마네킹의 부품인지 체크하고 마네킹의 부품이 맞다면 어디 부위에 속하는지 확인하는 함수.
@@ -95,7 +101,14 @@ public class Mannequin_Interactable : InteractionObject
                         Mannequin_ArmR.activeSelf &&
                         Mannequin_LegL.activeSelf &&
                         Mannequin_LegR.activeSelf)
-                        GameManager.instance.M_Example_Compare_Data();
+                    {
+                        if (GameManager.instance.M_Example_Compare_Data() && GameClear_Clip != null)
+                        {
+                            if (InteractSound.isPlaying) InteractSound.Stop();
+                            InteractSound.clip = GameClear_Clip;
+                            InteractSound.Play();
+                        }
+                    }
                 }
                 else
                 {
@@ -128,6 +141,7 @@ public class Mannequin_Interactable : InteractionObject
             ItemData itemData = new ItemData();
             itemData.InputData(data);
             Part.GetComponent<Mannequin_GetParts>().SetItem(itemData);
+            Part.GetComponent<Mannequin_GetParts>().SetClip(pullout_Clip);
 
             //GameManager에 ItemData로 치환한 값 itemData를 M_PartsData에 입력한다.(인벤토리 내에 있는 아이템은 InventoryItem타입이라 ItemData와 호환불가).
             GameManager.instance.M_InteractableData_Read(itemData);
@@ -139,6 +153,11 @@ public class Mannequin_Interactable : InteractionObject
             {
                 iter.material = mat;
             }
+        }
+        if (Fit_Clip != null)
+        {
+            InteractSound.clip = Fit_Clip;
+            InteractSound.Play();
         }
     }
 

@@ -8802,6 +8802,7 @@ GameObject:
   - component: {fileID: 1402996398}
   - component: {fileID: 1402996399}
   - component: {fileID: 1402996400}
+  - component: {fileID: 1402996401}
   m_Layer: 3
   m_Name: Mannequin (1)
   m_TagString: Untagged
@@ -8867,6 +8868,9 @@ MonoBehaviour:
   Blue_Mat: {fileID: 2100000, guid: 04c5e7bea56f04b4e8b9d8c76766636a, type: 2}
   Green_Mat: {fileID: 2100000, guid: eb48fcd6db335614988b21eccec76425, type: 2}
   Default_Mat: {fileID: -8078617138743364992, guid: 96c6046c127c0f84fb510a9239e72b56, type: 3}
+  Fit_Clip: {fileID: 8300000, guid: 5f0068962e568ce4cbf8aa4693190062, type: 3}
+  pullout_Clip: {fileID: 8300000, guid: 62758b2a8a27cda42b607444eeac2db5, type: 3}
+  GameClear_Clip: {fileID: 8300000, guid: 7478151cf36724a7dada558f746c3633, type: 3}
 --- !u!65 &1402996400
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8880,6 +8884,102 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.55, y: 0.3, z: 0.3}
   m_Center: {x: 1.2, y: 0.1, z: 0}
+--- !u!82 &1402996401
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402996397}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 6a66526591cfe4b4c9044a9cba3e0b24, type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1440676852
 GameObject:
   m_ObjectHideFlags: 0
@@ -9657,6 +9757,16 @@ PrefabInstance:
     - target: {fileID: 1699261021787295255, guid: d8061f5d085d1154b97c8d583bcbf737, type: 3}
       propertyPath: m_LocalPosition.z
       value: 13.5985
+      objectReference: {fileID: 0}
+    - target: {fileID: 1944773593578915646, guid: d8061f5d085d1154b97c8d583bcbf737, type: 3}
+      propertyPath: m_Text
+      value: "\uC544\uBB34\uD2BC \uC7A1\uC124\uC740 \uC81C\uCCD0\uB450\uACE0,\n\uB0B4\uAC00
+        \uAC1C\uBC1C\uD55C \uC774 \uAE08\uC18D\uC6A9\uB9E4\uB294\n\uBD88\uD544\uC694\uD55C
+        \uC0AC\uACE0\uC608\uBC29\uC5D0 \uC9D1\uC911\n\uD588\uB2E4\uB294 \uAC83\uC774\uB2E4.\n\uC0C1\uC6A9\uD654\uAC00
+        \uB41C\uB2E4\uBA74 \uACE0\uAC1D\uC758 \uB208\n\uC5D0\uB294 3\uAC00\uC9C0\uC758
+        \uC561\uCCB4\uAC00\n\uB2F4\uAE34 \uC81C\uD488\uC744 \uBCFC \uC218 \uC788\uACA0\uC9C0.\n\uC11C\uB85C
+        \uBD84\uB9AC\uB41C \uC0C1\uD669\uC5D0\uC120 \uC6A9\uB9E4\n\uC758 \uC131\uC9C8\uC744
+        \uB744\uC9C0 \uC54A\uC9C0\uB9CC,"
       objectReference: {fileID: 0}
     - target: {fileID: 2349138283825956937, guid: d8061f5d085d1154b97c8d583bcbf737, type: 3}
       propertyPath: item
