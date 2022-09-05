@@ -24,7 +24,9 @@ public class Mannequin_Interactable : InteractionObject
     {
         base.Start();
         InteractionEvent += Mannequin_PartCheck;
+        InteractSound = GetComponent<AudioSource>();
 
+        //세이브파일이 있고, 인형 색 맞추기를 클리어한 이후인 경우 게임매니저에게 예시 나무인형의 데이터를 받아와서 똑같은 색을 입혀준다. 그게 아니라면 마네킹의 SetActive를 꺼준다.
         if (GameManager.instance.mySavedata != null)
         {
             if (GameManager.instance.mySavedata.Mini_3_Clear)
@@ -41,6 +43,8 @@ public class Mannequin_Interactable : InteractionObject
                 Mannequin_fit(Mannequin_ArmR, ArmRData.Data, ArmRData.Data.name);
                 Mannequin_fit(Mannequin_LegL, LegLData.Data, LegLData.Data.name);
                 Mannequin_fit(Mannequin_LegR, LegRData.Data, LegRData.Data.name);
+
+                if (InteractSound.isPlaying) InteractSound.Stop(); //세이브파일을 불러오는 과정에서 마네킹을 끼워맞추는 소리를 꺼주는 코드
             }
             else
             {
@@ -51,8 +55,6 @@ public class Mannequin_Interactable : InteractionObject
         {
             Mannequin_Active(false);
         }
-
-        InteractSound = GetComponent<AudioSource>();
     }
 
     //마네킹을 장비하고 있는 아이템으로 상호작용할 때 마네킹의 부품인지 체크하고 마네킹의 부품이 맞다면 어디 부위에 속하는지 확인하는 함수.
