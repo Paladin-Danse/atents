@@ -130,16 +130,16 @@ public class InventoryManager : MonoBehaviour
                         parabolaRenderer.positionCount = ((int)(maxTime / timeResolution));
 
                         Vector3 veloVector3 = mainCam.transform.forward * f_ThrowPower;
-                        ThrowVector = veloVector3;
+                        ThrowVector = veloVector3;//아이템이 던져졌을 때 던지는 방향과 힘을 알기위해 쓰이는 변수. 현재는 궤적만 그리고 있어서 값을 저장만 함.
 
                         Vector3 currentPosition = player.transform.position;
                         //플레이어의 발이 플레이어 위치값의 기준이 되어있으므로 약간 올림.
                         currentPosition.y += 1.25f;
-                        PlayerThrowItemPosition = currentPosition;
+                        PlayerThrowItemPosition = currentPosition;//아이템이 던져졌을 때 투척 아이템의 생성위치를 알기위해 쓰이는 변수. 위 ThrowVector처럼 궤적만 그리고 있기에 값만 저장.
 
-                        for (float t = 0.0f; t < maxTime; t += timeResolution)
+                        for (float t = 0.0f; t < maxTime; t += timeResolution)//timeResolution은 현재 좌표를 찍고 다음 좌표를 찍기까지의 시간(현재 정해진 값은 0.02f)
                         {
-                            //부딪히는 위치까지만 라인렌더러를 그리게 수정하기
+                            //부딪히는 위치까지만 LineRenderer를 그리게 수정하기
                             if (Physics.Raycast(currentPosition, mainCam.transform.forward, out hit, f_ThrowPower * timeResolution))
                             {
                                 parabolaRenderer.SetPosition(index, hit.point);
@@ -147,10 +147,10 @@ public class InventoryManager : MonoBehaviour
                                 break;
                             }
 
-                            parabolaRenderer.SetPosition(index, currentPosition);//플레이어 위치
+                            parabolaRenderer.SetPosition(index, currentPosition);//현재 LineRenderer 인덱스에 선을 그릴 좌표입력.
 
-                            currentPosition += veloVector3 * timeResolution;
-                            veloVector3 += Physics.gravity * timeResolution;
+                            currentPosition += veloVector3 * timeResolution;//선을 그릴 다음 좌표값을 넣어줌. 다음 좌표값은 현재 위치에 0.02초 * 힘의 벡터값
+                            veloVector3 += Physics.gravity * timeResolution;//벡터값에 0.02초 뒤의 중력값이 누적연산
 
                             index++;
                         }
