@@ -239,7 +239,6 @@ public class InventoryManager : MonoBehaviour
                 break;
         }
         if (item != null) LootItem(item);
-        
     }
 
     public void InventoryItemUse(ITEM_TYPE type)
