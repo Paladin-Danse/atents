@@ -198,9 +198,9 @@ public class InventoryManager : MonoBehaviour
     private void LootItem(UseItem item)
     {
         item.data.quantity++;//개수증가
-        if (selectItem == null)
+        if (selectItem == null)//장비중인 아이템이 없다면 방금 루팅한 아이템을 장비
         {
-            selectItem = item;//먹은 아이템을 장비
+            selectItem = item;
             i_SelectNum = InventoryItemList.FindIndex(i => i == selectItem);
         }
         if (selectItem.data.type == item.data.type)

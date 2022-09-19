@@ -11509,6 +11509,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HUD Canvas(UI Manager)
       objectReference: {fileID: 0}
+    - target: {fileID: 715788884160149017, guid: 1260ab0c56f7a0d4298b0737d1ccccdd, type: 3}
+      propertyPath: f_Size
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 715788884355257458, guid: 1260ab0c56f7a0d4298b0737d1ccccdd, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
