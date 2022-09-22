@@ -158,7 +158,7 @@ public class MixPotion : MiniGameInteraction
         Dictionary<Material, float> plusLiquid = new Dictionary<Material, float>();
         plusLiquid.Add(liquid, emptySize);
         flask.Liquid_FillUp(emptySize, plusLiquid);
-
+        //플라스크가 비어있거나, 지금 넣을 용액과 같은 용액이 든 플라스크일 경우
         if (flask.GetSize() == emptySize || flask.GetLiquid() == liquid)
             flask.Liquid_Change(liquid);
         else
